@@ -11,9 +11,14 @@
 		504D9E2E1FDBBD0F008EAB42 /* Nimble.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 504D9E2C1FDBBD0F008EAB42 /* Nimble.framework */; };
 		504D9E2F1FDBBD15008EAB42 /* Nimble.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 504D9E2C1FDBBD0F008EAB42 /* Nimble.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		504D9E301FDBBD15008EAB42 /* Quick.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 504D9E2B1FDBBD0F008EAB42 /* Quick.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		504D9E321FDBBD4E008EAB42 /* TestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 504D9E311FDBBD4E008EAB42 /* TestViewController.swift */; };
+		504D9E321FDBBD4E008EAB42 /* MainTabBarControllerSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 504D9E311FDBBD4E008EAB42 /* MainTabBarControllerSpec.swift */; };
+		504D9E371FDBE2C0008EAB42 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 504D9E361FDBE2C0008EAB42 /* MainTabBarController.swift */; };
+		504D9E3A1FDBEAEE008EAB42 /* PortfolioViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 504D9E391FDBEAEE008EAB42 /* PortfolioViewController.swift */; };
+		504D9E3C1FDBEB97008EAB42 /* CoinsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 504D9E3B1FDBEB97008EAB42 /* CoinsViewController.swift */; };
+		504D9E3F1FDBED03008EAB42 /* UIView+Anchor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 504D9E3E1FDBED03008EAB42 /* UIView+Anchor.swift */; };
+		504D9E411FDBED10008EAB42 /* UIColor+Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 504D9E401FDBED10008EAB42 /* UIColor+Theme.swift */; };
+		504D9E441FDBF254008EAB42 /* Coin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 504D9E431FDBF254008EAB42 /* Coin.swift */; };
 		50CDC1AF1FDBB87C009A2E22 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50CDC1AE1FDBB87C009A2E22 /* AppDelegate.swift */; };
-		50CDC1B11FDBB87C009A2E22 /* TestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50CDC1B01FDBB87C009A2E22 /* TestViewController.swift */; };
 		50CDC1B41FDBB87C009A2E22 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 50CDC1B21FDBB87C009A2E22 /* Main.storyboard */; };
 		50CDC1B61FDBB87C009A2E22 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 50CDC1B51FDBB87C009A2E22 /* Assets.xcassets */; };
 		50CDC1B91FDBB87C009A2E22 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 50CDC1B71FDBB87C009A2E22 /* LaunchScreen.storyboard */; };
@@ -46,10 +51,15 @@
 /* Begin PBXFileReference section */
 		504D9E2B1FDBBD0F008EAB42 /* Quick.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Quick.framework; path = Carthage/Build/iOS/Quick.framework; sourceTree = "<group>"; };
 		504D9E2C1FDBBD0F008EAB42 /* Nimble.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Nimble.framework; path = Carthage/Build/iOS/Nimble.framework; sourceTree = "<group>"; };
-		504D9E311FDBBD4E008EAB42 /* TestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestViewController.swift; sourceTree = "<group>"; };
+		504D9E311FDBBD4E008EAB42 /* MainTabBarControllerSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarControllerSpec.swift; sourceTree = "<group>"; };
+		504D9E361FDBE2C0008EAB42 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
+		504D9E391FDBEAEE008EAB42 /* PortfolioViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PortfolioViewController.swift; sourceTree = "<group>"; };
+		504D9E3B1FDBEB97008EAB42 /* CoinsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinsViewController.swift; sourceTree = "<group>"; };
+		504D9E3E1FDBED03008EAB42 /* UIView+Anchor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Anchor.swift"; sourceTree = "<group>"; };
+		504D9E401FDBED10008EAB42 /* UIColor+Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Theme.swift"; sourceTree = "<group>"; };
+		504D9E431FDBF254008EAB42 /* Coin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coin.swift; sourceTree = "<group>"; };
 		50CDC1AB1FDBB87C009A2E22 /* Coinster.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Coinster.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		50CDC1AE1FDBB87C009A2E22 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		50CDC1B01FDBB87C009A2E22 /* TestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestViewController.swift; sourceTree = "<group>"; };
 		50CDC1B31FDBB87C009A2E22 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		50CDC1B51FDBB87C009A2E22 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		50CDC1B81FDBB87C009A2E22 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -87,6 +97,46 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		504D9E331FDBE154008EAB42 /* Coins */ = {
+			isa = PBXGroup;
+			children = (
+				504D9E3B1FDBEB97008EAB42 /* CoinsViewController.swift */,
+			);
+			path = Coins;
+			sourceTree = "<group>";
+		};
+		504D9E381FDBEA99008EAB42 /* Porfolio */ = {
+			isa = PBXGroup;
+			children = (
+				504D9E391FDBEAEE008EAB42 /* PortfolioViewController.swift */,
+			);
+			path = Porfolio;
+			sourceTree = "<group>";
+		};
+		504D9E3D1FDBEC58008EAB42 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				504D9E3E1FDBED03008EAB42 /* UIView+Anchor.swift */,
+				504D9E401FDBED10008EAB42 /* UIColor+Theme.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		504D9E421FDBF244008EAB42 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				504D9E431FDBF254008EAB42 /* Coin.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		504D9E451FDC018D008EAB42 /* New Group */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "New Group";
+			sourceTree = "<group>";
+		};
 		50CDC1A21FDBB87B009A2E22 = {
 			isa = PBXGroup;
 			children = (
@@ -109,8 +159,13 @@
 		50CDC1AD1FDBB87C009A2E22 /* Coinster */ = {
 			isa = PBXGroup;
 			children = (
+				504D9E451FDC018D008EAB42 /* New Group */,
+				504D9E381FDBEA99008EAB42 /* Porfolio */,
+				504D9E331FDBE154008EAB42 /* Coins */,
+				504D9E421FDBF244008EAB42 /* Model */,
+				504D9E3D1FDBEC58008EAB42 /* Utils */,
 				50CDC1AE1FDBB87C009A2E22 /* AppDelegate.swift */,
-				50CDC1B01FDBB87C009A2E22 /* TestViewController.swift */,
+				504D9E361FDBE2C0008EAB42 /* MainTabBarController.swift */,
 				50CDC1B21FDBB87C009A2E22 /* Main.storyboard */,
 				50CDC1B51FDBB87C009A2E22 /* Assets.xcassets */,
 				50CDC1B71FDBB87C009A2E22 /* LaunchScreen.storyboard */,
@@ -123,7 +178,7 @@
 			isa = PBXGroup;
 			children = (
 				50CDC1C51FDBB87C009A2E22 /* Info.plist */,
-				504D9E311FDBBD4E008EAB42 /* TestViewController.swift */,
+				504D9E311FDBBD4E008EAB42 /* MainTabBarControllerSpec.swift */,
 			);
 			path = CoinsterTests;
 			sourceTree = "<group>";
@@ -233,8 +288,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				50CDC1B11FDBB87C009A2E22 /* TestViewController.swift in Sources */,
+				504D9E3C1FDBEB97008EAB42 /* CoinsViewController.swift in Sources */,
+				504D9E3F1FDBED03008EAB42 /* UIView+Anchor.swift in Sources */,
 				50CDC1AF1FDBB87C009A2E22 /* AppDelegate.swift in Sources */,
+				504D9E3A1FDBEAEE008EAB42 /* PortfolioViewController.swift in Sources */,
+				504D9E371FDBE2C0008EAB42 /* MainTabBarController.swift in Sources */,
+				504D9E411FDBED10008EAB42 /* UIColor+Theme.swift in Sources */,
+				504D9E441FDBF254008EAB42 /* Coin.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -242,7 +302,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				504D9E321FDBBD4E008EAB42 /* TestViewController.swift in Sources */,
+				504D9E321FDBBD4E008EAB42 /* MainTabBarControllerSpec.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
