@@ -18,6 +18,8 @@
 		504D9E3F1FDBED03008EAB42 /* UIView+Anchor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 504D9E3E1FDBED03008EAB42 /* UIView+Anchor.swift */; };
 		504D9E411FDBED10008EAB42 /* UIColor+Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 504D9E401FDBED10008EAB42 /* UIColor+Theme.swift */; };
 		504D9E441FDBF254008EAB42 /* Coin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 504D9E431FDBF254008EAB42 /* Coin.swift */; };
+		504D9E4E1FDC0864008EAB42 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 504D9E4D1FDC0863008EAB42 /* Alamofire.framework */; };
+		504D9E511FDC0CBD008EAB42 /* AlamofireImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 504D9E501FDC0CBC008EAB42 /* AlamofireImage.framework */; };
 		50CDC1AF1FDBB87C009A2E22 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50CDC1AE1FDBB87C009A2E22 /* AppDelegate.swift */; };
 		50CDC1B41FDBB87C009A2E22 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 50CDC1B21FDBB87C009A2E22 /* Main.storyboard */; };
 		50CDC1B61FDBB87C009A2E22 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 50CDC1B51FDBB87C009A2E22 /* Assets.xcassets */; };
@@ -58,6 +60,8 @@
 		504D9E3E1FDBED03008EAB42 /* UIView+Anchor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Anchor.swift"; sourceTree = "<group>"; };
 		504D9E401FDBED10008EAB42 /* UIColor+Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Theme.swift"; sourceTree = "<group>"; };
 		504D9E431FDBF254008EAB42 /* Coin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coin.swift; sourceTree = "<group>"; };
+		504D9E4D1FDC0863008EAB42 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
+		504D9E501FDC0CBC008EAB42 /* AlamofireImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AlamofireImage.framework; path = Carthage/Build/iOS/AlamofireImage.framework; sourceTree = "<group>"; };
 		50CDC1AB1FDBB87C009A2E22 /* Coinster.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Coinster.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		50CDC1AE1FDBB87C009A2E22 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		50CDC1B31FDBB87C009A2E22 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -73,6 +77,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				504D9E511FDC0CBD008EAB42 /* AlamofireImage.framework in Frameworks */,
+				504D9E4E1FDC0864008EAB42 /* Alamofire.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -91,6 +97,8 @@
 		504D9E2A1FDBBD0E008EAB42 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				504D9E501FDC0CBC008EAB42 /* AlamofireImage.framework */,
+				504D9E4D1FDC0863008EAB42 /* Alamofire.framework */,
 				504D9E2C1FDBBD0F008EAB42 /* Nimble.framework */,
 				504D9E2B1FDBBD0F008EAB42 /* Quick.framework */,
 			);
@@ -193,6 +201,7 @@
 				50CDC1A71FDBB87C009A2E22 /* Sources */,
 				50CDC1A81FDBB87C009A2E22 /* Frameworks */,
 				50CDC1A91FDBB87C009A2E22 /* Resources */,
+				504D9E4F1FDC0875008EAB42 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -211,6 +220,7 @@
 				50CDC1BC1FDBB87C009A2E22 /* Frameworks */,
 				50CDC1BD1FDBB87C009A2E22 /* Resources */,
 				504D9E251FDBBC43008EAB42 /* CopyFiles */,
+				504D9E4A1FDC069E008EAB42 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -282,6 +292,39 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		504D9E4A1FDC069E008EAB42 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/iOS/Nimble.framework\n",
+				"$(SRCROOT)/Carthage/Build/iOS/Quick.framework\n",
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/usr/local/bin/carthage copy-frameworks\n";
+		};
+		504D9E4F1FDC0875008EAB42 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/iOS/Alamofire.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/AlamofireImage.framework",
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/usr/local/bin/carthage copy-frameworks\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		50CDC1A71FDBB87C009A2E22 /* Sources */ = {
@@ -450,6 +493,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = TCJZB3N6X7;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = Coinster/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = io.hanernlee.Coinster;
@@ -466,6 +513,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = TCJZB3N6X7;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = Coinster/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = io.hanernlee.Coinster;
