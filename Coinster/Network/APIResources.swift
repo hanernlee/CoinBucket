@@ -16,13 +16,9 @@ protocol APIResource {
 
 extension APIResource {
     var url: URL {
-//        let baseUrl = "https://api.stackexchange.com/2.2"
-//        let site = "site=stackoverflow"
-//        let order = "order=desc"
-//        let sorting = "sort=votes"
-//        let tags = "tagged=ios"
-//        let url = baseUrl + methodPath + "?" + order + "&" + sorting + "&" + tags + "&" + site
-        let url = "https://api.coinmarketcap.com/v1/ticker/?limit=10"
+        let baseUrl = "https://api.coinmarketcap.com/v1/"
+        let limit = "10"
+        let url = baseUrl + methodPath + "?limit=" + limit
         return URL(string: url)!
     }
     
@@ -40,7 +36,7 @@ extension APIResource {
 }
 
 struct CoinsResource: APIResource {
-    let methodPath = "/questions"
+    let methodPath = "/ticker/"
     
     func makeModel(data: Data) -> Coin {
         return Coin(id: "", name: "", symbol: "", price_usd: "", price_btc: "", market_cap_usd: "", percent_change_24h: "")

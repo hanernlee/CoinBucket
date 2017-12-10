@@ -11,6 +11,8 @@ import UIKit
 class CoinsViewController: UICollectionViewController {
     
     fileprivate var request: AnyObject?
+    let coinCellId = "coinCellId"
+    var coins = [Coin]()
     
     // MARK: - ViewController Lifecycle
     override func viewDidLoad() {
@@ -20,19 +22,26 @@ class CoinsViewController: UICollectionViewController {
 
         navigationItem.title = "Title"
         
+        registerView()
         fetchCoins()
     }
     
     // MARK: - Fileprivate Methods
+    fileprivate func registerView() {
+        collectionView?.register(CoinCell.self, forCellWithReuseIdentifier: coinCellId)
+    }
+    
     fileprivate func fetchCoins() {
         let coinsResource = CoinsResource()
         let coinsRequest = APIRequest(resource: coinsResource)
         request = coinsRequest
-        coinsRequest.load { [weak self] (coins: [Coin]?) in
-            guard let coins = coins else { return }
+        coinsRequest.load { [weak self] (fetchedCoins: [Coin]?) in
+            guard let fetchedCoins = fetchedCoins else { return }
             
-
-            print(coins)
+            DispatchQueue.main.async {
+                self?.coins = fetchedCoins
+                self?.collectionView?.reloadData()
+            }
         }
     }
 }
