@@ -25,14 +25,13 @@ class CoinsViewController: UICollectionViewController {
     
     // MARK: - Fileprivate Methods
     fileprivate func fetchCoins() {
-        print("Fetch coins")
         let coinsResource = CoinsResource()
         let coinsRequest = APIRequest(resource: coinsResource)
         request = coinsRequest
-        print(request)
         coinsRequest.load { [weak self] (coins: [Coin]?) in
             guard let coins = coins else { return }
-            print("Retrieving Coins")
+            
+
             print(coins)
         }
     }
