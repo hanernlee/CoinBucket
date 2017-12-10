@@ -22,6 +22,7 @@
 		505910A11FDD3A1300D63F34 /* APIResources.swift in Sources */ = {isa = PBXBuildFile; fileRef = 505910A01FDD3A1300D63F34 /* APIResources.swift */; };
 		505910A51FDD495100D63F34 /* CoinsViewController+UICollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 505910A41FDD495100D63F34 /* CoinsViewController+UICollectionView.swift */; };
 		505910A71FDD4A0F00D63F34 /* CoinCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 505910A61FDD4A0F00D63F34 /* CoinCell.swift */; };
+		505910AB1FDD4E4600D63F34 /* CoinsViewControllerSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 505910AA1FDD4E4600D63F34 /* CoinsViewControllerSpec.swift */; };
 		50CDC1AF1FDBB87C009A2E22 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50CDC1AE1FDBB87C009A2E22 /* AppDelegate.swift */; };
 		50CDC1B41FDBB87C009A2E22 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 50CDC1B21FDBB87C009A2E22 /* Main.storyboard */; };
 		50CDC1B61FDBB87C009A2E22 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 50CDC1B51FDBB87C009A2E22 /* Assets.xcassets */; };
@@ -66,6 +67,7 @@
 		505910A01FDD3A1300D63F34 /* APIResources.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIResources.swift; sourceTree = "<group>"; };
 		505910A41FDD495100D63F34 /* CoinsViewController+UICollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CoinsViewController+UICollectionView.swift"; sourceTree = "<group>"; };
 		505910A61FDD4A0F00D63F34 /* CoinCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinCell.swift; sourceTree = "<group>"; };
+		505910AA1FDD4E4600D63F34 /* CoinsViewControllerSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinsViewControllerSpec.swift; sourceTree = "<group>"; };
 		50CDC1AB1FDBB87C009A2E22 /* Coinster.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Coinster.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		50CDC1AE1FDBB87C009A2E22 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		50CDC1B31FDBB87C009A2E22 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -199,6 +201,7 @@
 			children = (
 				50CDC1C51FDBB87C009A2E22 /* Info.plist */,
 				504D9E311FDBBD4E008EAB42 /* MainTabBarControllerSpec.swift */,
+				505910AA1FDD4E4600D63F34 /* CoinsViewControllerSpec.swift */,
 			);
 			path = CoinsterTests;
 			sourceTree = "<group>";
@@ -231,7 +234,6 @@
 				50CDC1BC1FDBB87C009A2E22 /* Frameworks */,
 				50CDC1BD1FDBB87C009A2E22 /* Resources */,
 				504D9E251FDBBC43008EAB42 /* CopyFiles */,
-				504D9E4A1FDC069E008EAB42 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -304,24 +306,6 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
-/* Begin PBXShellScriptBuildPhase section */
-		504D9E4A1FDC069E008EAB42 /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"$(SRCROOT)/Carthage/Build/iOS/Nimble.framework\n",
-				"$(SRCROOT)/Carthage/Build/iOS/Quick.framework\n",
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "/usr/local/bin/carthage copy-frameworks\n";
-		};
-/* End PBXShellScriptBuildPhase section */
-
 /* Begin PBXSourcesBuildPhase section */
 		50CDC1A71FDBB87C009A2E22 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -345,6 +329,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				505910AB1FDD4E4600D63F34 /* CoinsViewControllerSpec.swift in Sources */,
 				504D9E321FDBBD4E008EAB42 /* MainTabBarControllerSpec.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
