@@ -18,8 +18,9 @@
 		504D9E3F1FDBED03008EAB42 /* UIView+Anchor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 504D9E3E1FDBED03008EAB42 /* UIView+Anchor.swift */; };
 		504D9E411FDBED10008EAB42 /* UIColor+Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 504D9E401FDBED10008EAB42 /* UIColor+Theme.swift */; };
 		504D9E441FDBF254008EAB42 /* Coin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 504D9E431FDBF254008EAB42 /* Coin.swift */; };
-		504D9E4E1FDC0864008EAB42 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 504D9E4D1FDC0863008EAB42 /* Alamofire.framework */; };
-		504D9E511FDC0CBD008EAB42 /* AlamofireImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 504D9E501FDC0CBC008EAB42 /* AlamofireImage.framework */; };
+		504D9E531FDCAB93008EAB42 /* CoinController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 504D9E521FDCAB93008EAB42 /* CoinController.swift */; };
+		504D9E5A1FDD0E97008EAB42 /* NetworkRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 504D9E591FDD0E97008EAB42 /* NetworkRequest.swift */; };
+		504D9E5C1FDD12BA008EAB42 /* APIResource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 504D9E5B1FDD12BA008EAB42 /* APIResource.swift */; };
 		50CDC1AF1FDBB87C009A2E22 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50CDC1AE1FDBB87C009A2E22 /* AppDelegate.swift */; };
 		50CDC1B41FDBB87C009A2E22 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 50CDC1B21FDBB87C009A2E22 /* Main.storyboard */; };
 		50CDC1B61FDBB87C009A2E22 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 50CDC1B51FDBB87C009A2E22 /* Assets.xcassets */; };
@@ -60,8 +61,9 @@
 		504D9E3E1FDBED03008EAB42 /* UIView+Anchor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Anchor.swift"; sourceTree = "<group>"; };
 		504D9E401FDBED10008EAB42 /* UIColor+Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Theme.swift"; sourceTree = "<group>"; };
 		504D9E431FDBF254008EAB42 /* Coin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coin.swift; sourceTree = "<group>"; };
-		504D9E4D1FDC0863008EAB42 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
-		504D9E501FDC0CBC008EAB42 /* AlamofireImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AlamofireImage.framework; path = Carthage/Build/iOS/AlamofireImage.framework; sourceTree = "<group>"; };
+		504D9E521FDCAB93008EAB42 /* CoinController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinController.swift; sourceTree = "<group>"; };
+		504D9E591FDD0E97008EAB42 /* NetworkRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkRequest.swift; sourceTree = "<group>"; };
+		504D9E5B1FDD12BA008EAB42 /* APIResource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIResource.swift; sourceTree = "<group>"; };
 		50CDC1AB1FDBB87C009A2E22 /* Coinster.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Coinster.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		50CDC1AE1FDBB87C009A2E22 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		50CDC1B31FDBB87C009A2E22 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -77,8 +79,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				504D9E511FDC0CBD008EAB42 /* AlamofireImage.framework in Frameworks */,
-				504D9E4E1FDC0864008EAB42 /* Alamofire.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -97,8 +97,6 @@
 		504D9E2A1FDBBD0E008EAB42 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				504D9E501FDC0CBC008EAB42 /* AlamofireImage.framework */,
-				504D9E4D1FDC0863008EAB42 /* Alamofire.framework */,
 				504D9E2C1FDBBD0F008EAB42 /* Nimble.framework */,
 				504D9E2B1FDBBD0F008EAB42 /* Quick.framework */,
 			);
@@ -109,6 +107,7 @@
 			isa = PBXGroup;
 			children = (
 				504D9E3B1FDBEB97008EAB42 /* CoinsViewController.swift */,
+				504D9E521FDCAB93008EAB42 /* CoinController.swift */,
 			);
 			path = Coins;
 			sourceTree = "<group>";
@@ -138,11 +137,20 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
-		504D9E451FDC018D008EAB42 /* New Group */ = {
+		504D9E451FDC018D008EAB42 /* State */ = {
 			isa = PBXGroup;
 			children = (
 			);
-			path = "New Group";
+			path = State;
+			sourceTree = "<group>";
+		};
+		504D9E561FDCE073008EAB42 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				504D9E591FDD0E97008EAB42 /* NetworkRequest.swift */,
+				504D9E5B1FDD12BA008EAB42 /* APIResource.swift */,
+			);
+			path = Network;
 			sourceTree = "<group>";
 		};
 		50CDC1A21FDBB87B009A2E22 = {
@@ -167,10 +175,11 @@
 		50CDC1AD1FDBB87C009A2E22 /* Coinster */ = {
 			isa = PBXGroup;
 			children = (
-				504D9E451FDC018D008EAB42 /* New Group */,
 				504D9E381FDBEA99008EAB42 /* Porfolio */,
 				504D9E331FDBE154008EAB42 /* Coins */,
 				504D9E421FDBF244008EAB42 /* Model */,
+				504D9E451FDC018D008EAB42 /* State */,
+				504D9E561FDCE073008EAB42 /* Network */,
 				504D9E3D1FDBEC58008EAB42 /* Utils */,
 				50CDC1AE1FDBB87C009A2E22 /* AppDelegate.swift */,
 				504D9E361FDBE2C0008EAB42 /* MainTabBarController.swift */,
@@ -201,7 +210,6 @@
 				50CDC1A71FDBB87C009A2E22 /* Sources */,
 				50CDC1A81FDBB87C009A2E22 /* Frameworks */,
 				50CDC1A91FDBB87C009A2E22 /* Resources */,
-				504D9E4F1FDC0875008EAB42 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -309,21 +317,6 @@
 			shellPath = /bin/sh;
 			shellScript = "/usr/local/bin/carthage copy-frameworks\n";
 		};
-		504D9E4F1FDC0875008EAB42 /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"$(SRCROOT)/Carthage/Build/iOS/Alamofire.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/AlamofireImage.framework",
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "/usr/local/bin/carthage copy-frameworks\n";
-		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -335,6 +328,9 @@
 				504D9E3F1FDBED03008EAB42 /* UIView+Anchor.swift in Sources */,
 				50CDC1AF1FDBB87C009A2E22 /* AppDelegate.swift in Sources */,
 				504D9E3A1FDBEAEE008EAB42 /* PortfolioViewController.swift in Sources */,
+				504D9E5A1FDD0E97008EAB42 /* NetworkRequest.swift in Sources */,
+				504D9E531FDCAB93008EAB42 /* CoinController.swift in Sources */,
+				504D9E5C1FDD12BA008EAB42 /* APIResource.swift in Sources */,
 				504D9E371FDBE2C0008EAB42 /* MainTabBarController.swift in Sources */,
 				504D9E411FDBED10008EAB42 /* UIColor+Theme.swift in Sources */,
 				504D9E441FDBF254008EAB42 /* Coin.swift in Sources */,

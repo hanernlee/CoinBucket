@@ -10,6 +10,8 @@ import UIKit
 
 class CoinsViewController: UICollectionViewController {
     
+    fileprivate var request: AnyObject?
+    
     // MARK: - ViewController Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -17,7 +19,21 @@ class CoinsViewController: UICollectionViewController {
         collectionView?.backgroundColor = .blue
 
         navigationItem.title = "Title"
+        
+        fetchCoins()
     }
     
     // MARK: - Fileprivate Methods
+    fileprivate func fetchCoins() {
+        print("Fetch coins")
+        let coinsResource = CoinsResource()
+        let coinsRequest = APIRequest(resource: coinsResource)
+        request = coinsRequest
+        print(request)
+        coinsRequest.load { [weak self] (coins: [Coin]?) in
+            guard let coins = coins else { return }
+            print("Retrieving Coins")
+            print(coins)
+        }
+    }
 }

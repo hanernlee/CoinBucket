@@ -8,13 +8,16 @@
 
 import Foundation
 
-struct Coin {
-    let id: String
+struct Coin: Codable {
+//    let id: String
     let name: String
-    let symbol: String
-    let price_usd: String
-    let price_btc: String
-    let market_cap_usd: String
-    let percent_change_24h: String
+//    let symbol: String
+//    let price_usd: String
+//    let price_btc: String
+//    let market_cap_usd: String
+//    let percent_change_24h: String
 }
 
+extension Coin {
+    
+}
