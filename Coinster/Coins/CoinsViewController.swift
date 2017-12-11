@@ -35,13 +35,19 @@ class CoinsViewController: UICollectionViewController {
         let coinsRequest = CoinService()
         coinsRequest.load { (result) in
             switch result {
-            case .Success(let value):
-                print(value)
-            case .Failure(let error):
-                print(error)
+            case .Success(let result):
+                do {
+                    let jsonDecoder = JSONDecoder()
+                    let JSONCoins = try jsonDecoder.decode([Coin].self, from: result as! Data)
+                    print(JSONCoins)
+                } catch {
+                    
+                }
+            case .Failure(let err):
+                print(err)
+            default: break
             }
         }
-        
     }
 
 }

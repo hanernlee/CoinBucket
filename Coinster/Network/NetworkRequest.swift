@@ -24,7 +24,7 @@ protocol NetworkRequest: class {
 }
 
 extension NetworkRequest {
-    fileprivate func loadRequest(_ url: URL, withCompletion completion: @escaping (Result<Data>) -> Void) {
+    fileprivate func loadRequest(_ url: URL, withCompletion completion: @escaping (Result<Any>) -> Void) {
         let configuration = URLSessionConfiguration.ephemeral
         let session = URLSession(configuration: configuration, delegate: nil, delegateQueue: OperationQueue.main)
         let task = session.dataTask(with: url, completionHandler: { (data: Data?, response: URLResponse?, error: Error?) -> Void in
@@ -47,13 +47,13 @@ extension NetworkRequest {
 
 class CoinService: NetworkRequest {
     var url: URL {
-        let baseUrl = "https://api.coinmarketcap.com/v1/"
+        let baseUrl = "https://api.coinmarketcap.com/v1/ticker/"
         let limit = "10"
-        let url = baseUrl + "methodPath" + "?limit=" + limit
+        let url = baseUrl + "?limit=" + limit
         return URL(string: url)!
     }
 
-    func load(withCompletion completion: @escaping (Result<Data>) -> Void) {
+    func load(withCompletion completion: @escaping (Result<Any>) -> Void) {
         loadRequest(url, withCompletion: completion)
     }
 }
