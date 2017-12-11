@@ -23,7 +23,7 @@ class CoinsViewController: UICollectionViewController {
         navigationItem.title = "Title"
         
         registerView()
-        fetchCoins()
+
     }
     
     // MARK: - Fileprivate Methods
@@ -31,17 +31,7 @@ class CoinsViewController: UICollectionViewController {
         collectionView?.register(CoinCell.self, forCellWithReuseIdentifier: coinCellId)
     }
     
-    fileprivate func fetchCoins() {
-        let coinsResource = CoinsResource()
-        let coinsRequest = APIRequest(resource: coinsResource)
-        request = coinsRequest
-        coinsRequest.load { [weak self] (fetchedCoins: [Coin]?) in
-            guard let fetchedCoins = fetchedCoins else { return }
-            
-            DispatchQueue.main.async {
-                self?.coins = fetchedCoins
-                self?.collectionView?.reloadData()
-            }
-        }
+    fileprivate func fetchCoins(fromService service: CoinService) {
+        
     }
 }
