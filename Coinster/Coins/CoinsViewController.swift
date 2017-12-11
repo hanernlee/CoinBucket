@@ -23,7 +23,7 @@ class CoinsViewController: UICollectionViewController {
         navigationItem.title = "Title"
         
         registerView()
-
+        fetchCoins()
     }
     
     // MARK: - Fileprivate Methods
@@ -31,7 +31,17 @@ class CoinsViewController: UICollectionViewController {
         collectionView?.register(CoinCell.self, forCellWithReuseIdentifier: coinCellId)
     }
     
-    fileprivate func fetchCoins(fromService service: CoinService) {
+    func fetchCoins() {
+        let coinsRequest = CoinService()
+        coinsRequest.load { (result) in
+            switch result {
+            case .Success(let value):
+                print(value)
+            case .Failure(let error):
+                print(error)
+            }
+        }
         
     }
+
 }
