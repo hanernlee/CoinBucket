@@ -47,6 +47,7 @@ class CoinCell: UICollectionViewCell {
     
     func displayCoinInCell(using viewModel: CoinViewModel) {
         coinNameLabel.text = viewModel.name
+        coinImageView.image = UIImage(named: viewModel.name)
 
 //        movieImage.loadImageUsingCacheWithURLString(viewModel.imageURL, placeHolder: nil) { (bool) in
 //            //perform actions if needed
