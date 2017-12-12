@@ -22,6 +22,7 @@
 		505910A71FDD4A0F00D63F34 /* CoinCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 505910A61FDD4A0F00D63F34 /* CoinCell.swift */; };
 		505910AB1FDD4E4600D63F34 /* CoinsViewControllerSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 505910AA1FDD4E4600D63F34 /* CoinsViewControllerSpec.swift */; };
 		50A329591FDEB252003C0AE9 /* NetworkRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50A329581FDEB252003C0AE9 /* NetworkRequest.swift */; };
+		50A329611FDFEFE6003C0AE9 /* CoinViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50A329601FDFEFE6003C0AE9 /* CoinViewModel.swift */; };
 		50CDC1AF1FDBB87C009A2E22 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50CDC1AE1FDBB87C009A2E22 /* AppDelegate.swift */; };
 		50CDC1B41FDBB87C009A2E22 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 50CDC1B21FDBB87C009A2E22 /* Main.storyboard */; };
 		50CDC1B61FDBB87C009A2E22 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 50CDC1B51FDBB87C009A2E22 /* Assets.xcassets */; };
@@ -66,6 +67,7 @@
 		505910A61FDD4A0F00D63F34 /* CoinCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinCell.swift; sourceTree = "<group>"; };
 		505910AA1FDD4E4600D63F34 /* CoinsViewControllerSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinsViewControllerSpec.swift; sourceTree = "<group>"; };
 		50A329581FDEB252003C0AE9 /* NetworkRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkRequest.swift; sourceTree = "<group>"; };
+		50A329601FDFEFE6003C0AE9 /* CoinViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinViewModel.swift; sourceTree = "<group>"; };
 		50CDC1AB1FDBB87C009A2E22 /* Coinster.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Coinster.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		50CDC1AE1FDBB87C009A2E22 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		50CDC1B31FDBB87C009A2E22 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -111,6 +113,7 @@
 				504D9E3B1FDBEB97008EAB42 /* CoinsViewController.swift */,
 				505910A41FDD495100D63F34 /* CoinsViewController+UICollectionView.swift */,
 				505910A61FDD4A0F00D63F34 /* CoinCell.swift */,
+				50A329601FDFEFE6003C0AE9 /* CoinViewModel.swift */,
 			);
 			path = Coins;
 			sourceTree = "<group>";
@@ -316,6 +319,7 @@
 				504D9E3A1FDBEAEE008EAB42 /* PortfolioViewController.swift in Sources */,
 				504D9E371FDBE2C0008EAB42 /* MainTabBarController.swift in Sources */,
 				504D9E411FDBED10008EAB42 /* UIColor+Theme.swift in Sources */,
+				50A329611FDFEFE6003C0AE9 /* CoinViewModel.swift in Sources */,
 				505910A71FDD4A0F00D63F34 /* CoinCell.swift in Sources */,
 				504D9E441FDBF254008EAB42 /* Coin.swift in Sources */,
 			);

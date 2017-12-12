@@ -16,7 +16,14 @@ extension CoinsViewController: UICollectionViewDelegateFlowLayout {
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: coinCellId, for: indexPath) as! CoinCell
-        cell.backgroundColor = .red
+        let coin = coins[indexPath.item]
+        let coinViewModel = CoinViewModel(model: coin)
+        cell.displayCoinInCell(using: coinViewModel)
+        
         return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: view.frame.width, height: 60)
     }
 }

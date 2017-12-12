@@ -18,9 +18,8 @@ class CoinsViewController: UICollectionViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        collectionView?.backgroundColor = .blue
-
-        navigationItem.title = "Title"
+        collectionView?.backgroundColor = .white
+        navigationItem.title = "Coins"
         
         registerView()
         fetchCoins()
@@ -33,19 +32,25 @@ class CoinsViewController: UICollectionViewController {
     
     func fetchCoins() {
         let coinsRequest = CoinService()
-        coinsRequest.load { (result) in
+        coinsRequest.load { [weak self] (result) in
             switch result {
             case .Success(let result):
                 do {
                     let jsonDecoder = JSONDecoder()
                     let JSONCoins = try jsonDecoder.decode([Coin].self, from: result as! Data)
-                    print(JSONCoins)
-                } catch {
+                    self?.coins = JSONCoins;
                     
+                    DispatchQueue.main.async {
+                        self?.collectionView?.reloadData()
+                    }
+                    
+                } catch let error {
+                    print("Failed to Parse Coins:", error)
+                    return
                 }
             case .Failure(let err):
                 print(err)
-            default: break
+                return
             }
         }
     }
