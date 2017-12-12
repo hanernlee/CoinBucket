@@ -10,9 +10,15 @@ import UIKit
 
 class CoinsViewController: UICollectionViewController {
     
-    fileprivate var request: AnyObject?
     let coinCellId = "coinCellId"
-    var coins = [Coin]()
+    let service = CoinService()
+    
+    var coins = [Coin]() {
+        didSet {
+            self.collectionView?.reloadData()
+        }
+    }
+    
     
     // MARK: - ViewController Lifecycle
     override func viewDidLoad() {
@@ -31,26 +37,19 @@ class CoinsViewController: UICollectionViewController {
     }
     
     func fetchCoins() {
-        let coinsRequest = CoinService()
-        coinsRequest.load { [weak self] (result) in
+        service.get { [weak self] (result) in
             switch result {
-            case .Success(let result):
-                do {
-                    let jsonDecoder = JSONDecoder()
-                    let JSONCoins = try jsonDecoder.decode([Coin].self, from: result as! Data)
-                    self?.coins = JSONCoins;
-                    
-                    DispatchQueue.main.async {
-                        self?.collectionView?.reloadData()
+            case .Success(let coins):
+                var tempCoins = [Coin]()
+                for coin in coins {
+                    if let coin = coin {
+                        tempCoins.append(coin)
                     }
-                    
-                } catch let error {
-                    print("Failed to Parse Coins:", error)
-                    return
                 }
-            case .Failure(let err):
-                print(err)
-                return
+                self?.coins = tempCoins
+            case .Error(let error):
+                // @TODO Show Network Error / Placeholder
+                print(error)
             }
         }
     }
