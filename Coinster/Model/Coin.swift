@@ -17,6 +17,10 @@ struct Coin: Codable {
     let market_cap_usd: String
     let percent_change_24h: String
     
+    var imageUrl: String {
+        return "https://files.coinmarketcap.com/static/img/coins/32x32/\(id).png"
+    }
+    
     init(id: String, name: String, symbol: String, price_usd: String, price_btc: String, market_cap_usd: String, percent_change_24h: String) {
         self.id = id
         self.name = name

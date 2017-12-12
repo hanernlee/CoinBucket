@@ -13,7 +13,6 @@ class CoinCell: UICollectionViewCell {
     let coinImageView: UIImageView = {
         let iv = UIImageView()
         iv.contentMode = .scaleAspectFill
-        iv.backgroundColor = .red
         iv.layer.cornerRadius = 40/2
         iv.clipsToBounds = true
         return iv
@@ -47,10 +46,9 @@ class CoinCell: UICollectionViewCell {
     
     func displayCoinInCell(using viewModel: CoinViewModel) {
         coinNameLabel.text = viewModel.name
-        coinImageView.image = UIImage(named: viewModel.name)
-
-//        movieImage.loadImageUsingCacheWithURLString(viewModel.imageURL, placeHolder: nil) { (bool) in
-//            //perform actions if needed
-//        }
+        coinImageView.loadImageUsingCacheWithURLString(viewModel.imageUrl, placeHolder: nil) { (bool) in
+            print("Success")
+        }
+        
     }
 }
