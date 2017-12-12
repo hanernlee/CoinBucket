@@ -10,6 +10,15 @@ import UIKit
 
 class CoinCell: UICollectionViewCell {
     
+    let coinImageView: UIImageView = {
+        let iv = UIImageView()
+        iv.contentMode = .scaleAspectFill
+        iv.backgroundColor = .red
+        iv.layer.cornerRadius = 40/2
+        iv.clipsToBounds = true
+        return iv
+    }()
+    
     let coinNameLabel: UILabel = {
         let label = UILabel();
         return label
@@ -27,8 +36,12 @@ class CoinCell: UICollectionViewCell {
     }
     
     fileprivate func setupUI() {
+        addSubview(coinImageView)
+        coinImageView.anchor(top: nil, left: leftAnchor, bottom: nil, right: nil, paddingTop: 0, paddingLeft: 12, paddingBottom: 0, paddingRight: 0, width: 40, height: 40)
+        coinImageView.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
+
         addSubview(coinNameLabel)
-        coinNameLabel.anchor(top: topAnchor, left: leftAnchor, bottom: bottomAnchor, right: rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 0)
+        coinNameLabel.anchor(top: topAnchor, left: coinImageView.rightAnchor, bottom: bottomAnchor, right: rightAnchor, paddingTop: 0, paddingLeft: 12, paddingBottom: 0, paddingRight: 0, width: 0, height: 0)
     }
     
     

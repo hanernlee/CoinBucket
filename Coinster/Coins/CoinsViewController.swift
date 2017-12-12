@@ -28,7 +28,7 @@ class CoinsViewController: UICollectionViewController {
         navigationItem.title = "Coins"
         
         registerView()
-        fetchCoins()
+        getCoins(fromService: service)
     }
     
     // MARK: - Fileprivate Methods
@@ -36,7 +36,7 @@ class CoinsViewController: UICollectionViewController {
         collectionView?.register(CoinCell.self, forCellWithReuseIdentifier: coinCellId)
     }
     
-    func fetchCoins() {
+    fileprivate func getCoins<S: Gettable>(fromService service: S) where S.T == Array<Coin?> {
         service.get { [weak self] (result) in
             switch result {
             case .Success(let coins):
