@@ -69,7 +69,7 @@ class CoinCell: UICollectionViewCell {
         // LeftHandLabel
         let leftAttributedText = NSMutableAttributedString(string: viewModel.name, attributes: [NSAttributedStringKey.font: UIFont.boldSystemFont(ofSize: 16)])
         leftAttributedText.append(NSAttributedString(string: " (\(viewModel.symbol))", attributes: [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 12)]))
-        leftAttributedText.append(NSAttributedString(string: "\n\n)", attributes: [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 4)]))
+        leftAttributedText.append(NSAttributedString(string: "\n\n", attributes: [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 4)]))
         leftAttributedText.append(NSAttributedString(string: viewModel.market_cap_usd.formatCurrency(localeIdentifier: "en_US"), attributes: [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 14)]))
         
         // RightHandLabel

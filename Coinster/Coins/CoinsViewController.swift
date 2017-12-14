@@ -11,6 +11,8 @@ import UIKit
 class CoinsViewController: UICollectionViewController {
     
     let coinCellId = "coinCellId"
+    let headerCellId = "headerCellId"
+    
     let service = CoinService()
     
     var coins = [Coin]() {
@@ -24,16 +26,25 @@ class CoinsViewController: UICollectionViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        collectionView?.backgroundColor = .white
-        navigationItem.title = "Coins"
-        
+        setupUI()
         registerView()
         getCoins(fromService: service)
     }
     
     // MARK: - Fileprivate Methods
+    fileprivate func setupUI() {
+        collectionView?.backgroundColor = .white
+        navigationItem.title = "Coins"
+        
+        let searchController = UISearchController(searchResultsController: nil)
+        searchController.dimsBackgroundDuringPresentation = false
+        navigationItem.searchController = searchController
+        navigationItem.hidesSearchBarWhenScrolling = false
+    }
+    
     fileprivate func registerView() {
         collectionView?.register(CoinCell.self, forCellWithReuseIdentifier: coinCellId)
+        collectionView?.register(CoinHeaderView.self, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: headerCellId)
     }
     
     fileprivate func getCoins<S: Gettable>(fromService service: S) where S.T == Array<Coin?> {
