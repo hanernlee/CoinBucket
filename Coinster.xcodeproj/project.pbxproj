@@ -26,6 +26,7 @@
 		50A329631FDFF455003C0AE9 /* JSONDownloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50A329621FDFF455003C0AE9 /* JSONDownloader.swift */; };
 		50A329651FDFFA67003C0AE9 /* CoinService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50A329641FDFFA67003C0AE9 /* CoinService.swift */; };
 		50A329671FE01173003C0AE9 /* Cachable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50A329661FE01173003C0AE9 /* Cachable.swift */; };
+		50A329691FE140B5003C0AE9 /* CurrencyFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50A329681FE140B5003C0AE9 /* CurrencyFormatter.swift */; };
 		50CDC1AF1FDBB87C009A2E22 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50CDC1AE1FDBB87C009A2E22 /* AppDelegate.swift */; };
 		50CDC1B41FDBB87C009A2E22 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 50CDC1B21FDBB87C009A2E22 /* Main.storyboard */; };
 		50CDC1B61FDBB87C009A2E22 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 50CDC1B51FDBB87C009A2E22 /* Assets.xcassets */; };
@@ -74,6 +75,7 @@
 		50A329621FDFF455003C0AE9 /* JSONDownloader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONDownloader.swift; sourceTree = "<group>"; };
 		50A329641FDFFA67003C0AE9 /* CoinService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinService.swift; sourceTree = "<group>"; };
 		50A329661FE01173003C0AE9 /* Cachable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cachable.swift; sourceTree = "<group>"; };
+		50A329681FE140B5003C0AE9 /* CurrencyFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyFormatter.swift; sourceTree = "<group>"; };
 		50CDC1AB1FDBB87C009A2E22 /* Coinster.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Coinster.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		50CDC1AE1FDBB87C009A2E22 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		50CDC1B31FDBB87C009A2E22 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -137,6 +139,7 @@
 			children = (
 				504D9E3E1FDBED03008EAB42 /* UIView+Anchor.swift */,
 				504D9E401FDBED10008EAB42 /* UIColor+Theme.swift */,
+				50A329681FE140B5003C0AE9 /* CurrencyFormatter.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -316,6 +319,7 @@
 				50A329631FDFF455003C0AE9 /* JSONDownloader.swift in Sources */,
 				50A329591FDEB252003C0AE9 /* NetworkRequest.swift in Sources */,
 				504D9E3C1FDBEB97008EAB42 /* CoinsViewController.swift in Sources */,
+				50A329691FE140B5003C0AE9 /* CurrencyFormatter.swift in Sources */,
 				504D9E3F1FDBED03008EAB42 /* UIView+Anchor.swift in Sources */,
 				505910A51FDD495100D63F34 /* CoinsViewController+UICollectionView.swift in Sources */,
 				50CDC1AF1FDBB87C009A2E22 /* AppDelegate.swift in Sources */,

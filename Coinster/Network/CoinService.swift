@@ -14,7 +14,7 @@ protocol Gettable {
 }
 
 struct CoinService: Gettable {
-    let endpoint: String = "https://api.coinmarketcap.com/v1/ticker/?limit=10"
+    let endpoint: String = "https://api.coinmarketcap.com/v1/ticker/?limit=100"
     
     let downloader = JSONDownloader()
     typealias completionHandler = (Result<[Coin?]>) -> ()
@@ -33,7 +33,6 @@ struct CoinService: Gettable {
                 switch result {
                 case .Error(let error):
                     completion(.Error(error))
-                    return
                 case .Success(let json):
                     do {
                         let decoder = JSONDecoder()
@@ -43,7 +42,6 @@ struct CoinService: Gettable {
                     } catch let error {
                         print("Failed to Parse Coins:", error)
                         completion(.Error(.jsonConversionFailure))
-                        return
                     }
                 }
             }
