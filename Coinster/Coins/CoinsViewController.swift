@@ -11,8 +11,6 @@ import UIKit
 class CoinsViewController: UICollectionViewController {
     
     let coinCellId = "coinCellId"
-    let headerCellId = "headerCellId"
-    
     let service = CoinService()
     
     var coins = [Coin]() {
@@ -20,7 +18,6 @@ class CoinsViewController: UICollectionViewController {
             self.collectionView?.reloadData()
         }
     }
-    
     
     // MARK: - ViewController Lifecycle
     override func viewDidLoad() {
@@ -36,6 +33,11 @@ class CoinsViewController: UICollectionViewController {
         collectionView?.backgroundColor = .white
         navigationItem.title = "Coins"
         
+        let refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: #selector(handleRefresh), for: .valueChanged)
+        refreshControl.attributedTitle = NSAttributedString(string: "Last updated 5 minutes ago")
+        collectionView?.refreshControl = refreshControl
+        
         let searchController = UISearchController(searchResultsController: nil)
         searchController.dimsBackgroundDuringPresentation = false
         navigationItem.searchController = searchController
@@ -44,11 +46,13 @@ class CoinsViewController: UICollectionViewController {
     
     fileprivate func registerView() {
         collectionView?.register(CoinCell.self, forCellWithReuseIdentifier: coinCellId)
-        collectionView?.register(CoinHeaderView.self, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: headerCellId)
     }
     
     fileprivate func getCoins<S: Gettable>(fromService service: S) where S.T == Array<Coin?> {
         service.get { [weak self] (result) in
+            
+            self?.collectionView?.refreshControl?.endRefreshing()
+
             switch result {
             case .Success(let coins):
                 var tempCoins = [Coin]()
@@ -57,12 +61,19 @@ class CoinsViewController: UICollectionViewController {
                         tempCoins.append(coin)
                     }
                 }
+                print("fetchCoins")
                 self?.coins = tempCoins
             case .Error(let error):
                 // @TODO Show Network Error / Placeholder
                 print(error)
             }
         }
+    }
+    
+    // MARK: - #Selector Events
+    @objc func handleRefresh() {
+        coins.removeAll()
+        getCoins(fromService: service)
     }
 
 }

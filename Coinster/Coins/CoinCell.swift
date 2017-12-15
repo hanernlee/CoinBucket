@@ -77,8 +77,6 @@ class CoinCell: UICollectionViewCell {
         rightAttributedText.append(NSAttributedString(string: "\n\n", attributes: [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 4)]))
         rightAttributedText.append(NSAttributedString(string: "\(viewModel.percent_change_24h)%", attributes: [NSAttributedStringKey.foregroundColor: percentChangeColor, NSAttributedStringKey.font: UIFont.systemFont(ofSize: 14)]))
         
-        print(viewModel.price_usd)
-        
         coinLeftLabel.attributedText = leftAttributedText
         coinRightLabel.attributedText = rightAttributedText
         coinImageView.loadImageUsingCacheWithURLString(viewModel.imageUrl, placeHolder: nil) { (bool) in
