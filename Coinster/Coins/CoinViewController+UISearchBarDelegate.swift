@@ -16,6 +16,11 @@ extension CoinsViewController: UISearchBarDelegate, UISearchResultsUpdating {
     
     func updateSearchResults(for searchController: UISearchController) {
         let searchText = searchController.searchBar.text ?? ""
-        filterCoins(searchBar: searchController.searchBar, searchText: searchText)
+        filterCoins(searchBar: searchController.searchBar, searchText: searchText) { (coins) in
+            if (coins.isEmpty) {
+                NSObject.cancelPreviousPerformRequests(withTarget: self, selector: #selector(CoinsViewController.searchCoin), object: nil)
+                self.perform(#selector(CoinsViewController.searchCoin), with: nil, afterDelay: 0.5)
+            }
+        }
     }
 }

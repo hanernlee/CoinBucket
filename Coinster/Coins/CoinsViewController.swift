@@ -33,15 +33,20 @@ class CoinsViewController: UICollectionViewController {
     }
     
     // MARK: - Filter Coins
-    func filterCoins(searchBar: UISearchBar, searchText: String) {
+    func filterCoins(searchBar: UISearchBar, searchText: String, completion: (([Coin]) -> ())) {
         if searchText.isEmpty {
             filteredCoins = coins
         } else {
             filteredCoins = self.coins.filter { (coin) -> Bool in
                 return coin.name.lowercased().contains(searchText.lowercased())
             }
+            completion(filteredCoins)
         }
         collectionView?.reloadData()
+    }
+    
+    @objc func searchCoin() {
+        print("Searching Coin")
     }
     
     // MARK: - Fileprivate Methods
