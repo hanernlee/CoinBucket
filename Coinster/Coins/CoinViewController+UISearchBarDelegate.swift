@@ -8,8 +8,14 @@
 
 import UIKit
 
-extension CoinsViewController: UISearchBarDelegate {
+extension CoinsViewController: UISearchBarDelegate, UISearchResultsUpdating {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         print("Searching")
+        print(coins)
+    }
+    
+    func updateSearchResults(for searchController: UISearchController) {
+        let searchText = searchController.searchBar.text ?? ""
+        filterCoins(searchBar: searchController.searchBar, searchText: searchText)
     }
 }

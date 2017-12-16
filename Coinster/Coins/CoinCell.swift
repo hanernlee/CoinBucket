@@ -37,14 +37,14 @@ class CoinCell: UICollectionViewCell {
         super.init(frame: frame)
         
         backgroundColor = .white
-        setupUI()
+        configureUI()
     }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    fileprivate func setupUI() {
+    fileprivate func configureUI() {
         addSubview(coinImageView)
         coinImageView.anchor(top: nil, left: leftAnchor, bottom: nil, right: nil, paddingTop: 0, paddingLeft: 12, paddingBottom: 0, paddingRight: 0, width: 30, height: 30)
         coinImageView.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true

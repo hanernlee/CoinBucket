@@ -13,6 +13,7 @@ class CoinsViewController: UICollectionViewController {
     let coinCellId = "coinCellId"
     let service = CoinService()
     let dateFormatter = DateFormatter()
+    let searchController = UISearchController(searchResultsController: nil)
     
     var coins = [Coin]() {
         didSet {
@@ -20,17 +21,31 @@ class CoinsViewController: UICollectionViewController {
         }
     }
     
+    var filteredCoins = [Coin]()
+    
     // MARK: - ViewController Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        setupUI()
+        configureUI()
         registerView()
         getCoins(fromService: service)
     }
     
+    // MARK: - Filter Coins
+    func filterCoins(searchBar: UISearchBar, searchText: String) {
+        if searchText.isEmpty {
+            filteredCoins = coins
+        } else {
+            filteredCoins = self.coins.filter { (coin) -> Bool in
+                return coin.name.lowercased().contains(searchText.lowercased())
+            }
+        }
+        collectionView?.reloadData()
+    }
+    
     // MARK: - Fileprivate Methods
-    fileprivate func setupUI() {
+    fileprivate func configureUI() {
         collectionView?.backgroundColor = .white
         navigationItem.title = "Coins"
         
@@ -40,9 +55,9 @@ class CoinsViewController: UICollectionViewController {
         refreshControl.addTarget(self, action: #selector(handleRefresh), for: .valueChanged)
         collectionView?.refreshControl = refreshControl
         
-        let searchController = UISearchController(searchResultsController: nil)
         searchController.dimsBackgroundDuringPresentation = false
         searchController.searchBar.delegate = self
+        searchController.searchResultsUpdater = self
         navigationItem.searchController = searchController
         navigationItem.hidesSearchBarWhenScrolling = false
     }
@@ -68,6 +83,7 @@ class CoinsViewController: UICollectionViewController {
                 let updateString = now.toString(dateFormat: "d MMM yyyy h:mm a")
                 self?.collectionView?.refreshControl?.attributedTitle = NSAttributedString(string: "Last updated \(updateString)")
                 self?.coins = tempCoins
+                self?.filteredCoins = tempCoins
             case .Error(let error):
                 // @TODO Show Network Error / Placeholder
                 print(error)

@@ -10,12 +10,12 @@ import UIKit
 
 extension CoinsViewController: UICollectionViewDelegateFlowLayout {
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return coins.count
+        return filteredCoins.count
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: coinCellId, for: indexPath) as! CoinCell
-        let coin = coins[indexPath.item]
+        let coin = filteredCoins[indexPath.item]
         let coinViewModel = CoinViewModel(model: coin)
         cell.displayCoinInCell(using: coinViewModel)
         

@@ -25,7 +25,7 @@ struct CoinViewModel {
         self.imageUrl = model.imageUrl
         self.price_usd = NSDecimalNumber(string: model.price_usd)
         self.price_btc = model.price_btc
-        self.market_cap_usd = NSDecimalNumber(string: model.market_cap_usd)
-        self.percent_change_24h = (model.percent_change_24h as NSString).doubleValue
+        self.market_cap_usd = (model.market_cap_usd != nil) ? NSDecimalNumber(string: model.market_cap_usd) : NSDecimalNumber(string: "0")
+        self.percent_change_24h = (model.percent_change_24h != nil) ? (model.percent_change_24h! as NSString).doubleValue : Double(0.00)
     }
 }

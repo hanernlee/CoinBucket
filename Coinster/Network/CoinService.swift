@@ -14,7 +14,7 @@ protocol Gettable {
 }
 
 struct CoinService: Gettable {
-    let endpoint: String = "https://api.coinmarketcap.com/v1/ticker/?limit=100"
+    let endpoint: String = "https://api.coinmarketcap.com/v1/ticker/?limit=0"
     
     let downloader = JSONDownloader()
     typealias completionHandler = (Result<[Coin?]>) -> ()
