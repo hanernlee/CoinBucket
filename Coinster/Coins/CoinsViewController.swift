@@ -42,6 +42,7 @@ class CoinsViewController: UICollectionViewController {
         
         let searchController = UISearchController(searchResultsController: nil)
         searchController.dimsBackgroundDuringPresentation = false
+        searchController.searchBar.delegate = self
         navigationItem.searchController = searchController
         navigationItem.hidesSearchBarWhenScrolling = false
     }
@@ -52,7 +53,6 @@ class CoinsViewController: UICollectionViewController {
     
     fileprivate func getCoins<S: Gettable>(fromService service: S) where S.T == Array<Coin?> {
         service.get { [weak self] (result) in
-            
             self?.collectionView?.refreshControl?.endRefreshing()
 
             switch result {
@@ -63,9 +63,9 @@ class CoinsViewController: UICollectionViewController {
                         tempCoins.append(coin)
                     }
                 }
-                print("fetchCoins")
+
                 let now = Date()
-                let updateString = now.toString(dateFormat: "d MMM yyyy HH:mm a")
+                let updateString = now.toString(dateFormat: "d MMM yyyy h:mm a")
                 self?.collectionView?.refreshControl?.attributedTitle = NSAttributedString(string: "Last updated \(updateString)")
                 self?.coins = tempCoins
             case .Error(let error):
