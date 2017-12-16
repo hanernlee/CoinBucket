@@ -10,16 +10,18 @@ import UIKit
 
 extension CoinsViewController: UISearchBarDelegate, UISearchResultsUpdating {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        print("Searching")
         print(coins)
     }
     
     func updateSearchResults(for searchController: UISearchController) {
         let searchText = searchController.searchBar.text ?? ""
+        
         filterCoins(searchBar: searchController.searchBar, searchText: searchText) { (coins) in
             if (coins.isEmpty) {
-                NSObject.cancelPreviousPerformRequests(withTarget: self, selector: #selector(CoinsViewController.searchCoin), object: nil)
-                self.perform(#selector(CoinsViewController.searchCoin), with: nil, afterDelay: 0.5)
+                NSObject.cancelPreviousPerformRequests(withTarget: self, selector: #selector(searchCoin(id:)), object: lastSearched)
+                
+                lastSearched = searchText as NSString
+                self.perform(#selector(searchCoin(id:)), with: lastSearched, afterDelay: 1.0)
             }
         }
     }

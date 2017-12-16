@@ -23,6 +23,8 @@ class CoinsViewController: UICollectionViewController {
     
     var filteredCoins = [Coin]()
     
+    var lastSearched: NSString? = nil
+    
     // MARK: - ViewController Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -45,8 +47,10 @@ class CoinsViewController: UICollectionViewController {
         collectionView?.reloadData()
     }
     
-    @objc func searchCoin() {
+    @objc func searchCoin(id: String) {
         print("Searching Coin")
+        print("\(id)")
+//        getCoin(fromService: service, id: id)
     }
     
     // MARK: - Fileprivate Methods
@@ -72,7 +76,7 @@ class CoinsViewController: UICollectionViewController {
     }
     
     fileprivate func getCoins<S: Gettable>(fromService service: S) where S.T == Array<Coin?> {
-        service.get { [weak self] (result) in
+        service.get (id: nil) { [weak self] (result) in
             self?.collectionView?.refreshControl?.endRefreshing()
 
             switch result {
@@ -84,6 +88,31 @@ class CoinsViewController: UICollectionViewController {
                     }
                 }
 
+                let now = Date()
+                let updateString = now.toString(dateFormat: "d MMM yyyy h:mm a")
+                self?.collectionView?.refreshControl?.attributedTitle = NSAttributedString(string: "Last updated \(updateString)")
+                self?.coins = tempCoins
+                self?.filteredCoins = tempCoins
+            case .Error(let error):
+                // @TODO Show Network Error / Placeholder
+                print(error)
+            }
+        }
+    }
+    
+    fileprivate func getCoin<S: Gettable>(fromService service: S, id: String) where S.T == Array<Coin?> {
+        service.get (id: id) { [weak self] (result) in
+            self?.collectionView?.refreshControl?.endRefreshing()
+            
+            switch result {
+            case .Success(let coins):
+                var tempCoins = [Coin]()
+                for coin in coins {
+                    if let coin = coin {
+                        tempCoins.append(coin)
+                    }
+                }
+                
                 let now = Date()
                 let updateString = now.toString(dateFormat: "d MMM yyyy h:mm a")
                 self?.collectionView?.refreshControl?.attributedTitle = NSAttributedString(string: "Last updated \(updateString)")
