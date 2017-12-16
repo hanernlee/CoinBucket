@@ -20,11 +20,11 @@ class MainTabBarController: UITabBarController {
     // MARK: - Fileprivate Methods
     // Setup Tab Bar Items
     fileprivate func setupTabBarItems() {
-//        let portfolioNavController = templateNavController(unselectedImage: #imageLiteral(resourceName: "home_unselected"), selectedImage: #imageLiteral(resourceName: "home_selected"), rootViewController: PortfolioViewController())
+        let portfolioNavController = templateNavController(unselectedImage: #imageLiteral(resourceName: "home_unselected"), selectedImage: #imageLiteral(resourceName: "home_selected"), rootViewController: PortfolioViewController())
         
         let coinsNavController = templateNavController(unselectedImage: #imageLiteral(resourceName: "home_unselected"), selectedImage: #imageLiteral(resourceName: "home_selected"), rootViewController: CoinsViewController(collectionViewLayout: UICollectionViewFlowLayout()))
         
-        viewControllers = [coinsNavController]
+        viewControllers = [coinsNavController, portfolioNavController]
     }
     
     // Templating Navigation Controllers

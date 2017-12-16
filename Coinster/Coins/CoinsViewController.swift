@@ -12,6 +12,7 @@ class CoinsViewController: UICollectionViewController {
     
     let coinCellId = "coinCellId"
     let service = CoinService()
+    let dateFormatter = DateFormatter()
     
     var coins = [Coin]() {
         didSet {
@@ -33,9 +34,10 @@ class CoinsViewController: UICollectionViewController {
         collectionView?.backgroundColor = .white
         navigationItem.title = "Coins"
         
+        dateFormatter.dateFormat = "yyyy-MM-dd hh:mm:ss"
+
         let refreshControl = UIRefreshControl()
         refreshControl.addTarget(self, action: #selector(handleRefresh), for: .valueChanged)
-        refreshControl.attributedTitle = NSAttributedString(string: "Last updated 5 minutes ago")
         collectionView?.refreshControl = refreshControl
         
         let searchController = UISearchController(searchResultsController: nil)
@@ -62,6 +64,9 @@ class CoinsViewController: UICollectionViewController {
                     }
                 }
                 print("fetchCoins")
+                let now = Date()
+                let updateString = now.toString(dateFormat: "d MMM yyyy HH:mm a")
+                self?.collectionView?.refreshControl?.attributedTitle = NSAttributedString(string: "Last updated \(updateString)")
                 self?.coins = tempCoins
             case .Error(let error):
                 // @TODO Show Network Error / Placeholder
