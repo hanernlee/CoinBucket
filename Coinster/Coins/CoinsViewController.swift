@@ -11,6 +11,7 @@ import UIKit
 class CoinsViewController: UICollectionViewController {
     
     let coinCellId = "coinCellId"
+    let coinLoadingCell = "coinLoadingCell"
     let searchController = UISearchController(searchResultsController: nil)
     
     var coins = [Coin]() {
@@ -78,6 +79,7 @@ class CoinsViewController: UICollectionViewController {
     
     fileprivate func registerView() {
         collectionView?.register(CoinCell.self, forCellWithReuseIdentifier: coinCellId)
+        collectionView?.register(LoadingCell.self, forCellWithReuseIdentifier: coinLoadingCell)
     }
     
     // MARK: - #Selector Events
