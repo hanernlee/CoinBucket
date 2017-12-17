@@ -13,6 +13,7 @@ class CoinsViewController: UICollectionViewController {
     let coinCellId = "coinCellId"
     let coinLoadingCell = "coinLoadingCell"
     let searchController = UISearchController(searchResultsController: nil)
+    let progressHUD = ProgressHUD(text: "")
     
     var coins = [Coin]() {
         didSet {
@@ -29,7 +30,7 @@ class CoinsViewController: UICollectionViewController {
     // MARK: - ViewController Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         configureUI()
         registerView()
         
@@ -39,6 +40,7 @@ class CoinsViewController: UICollectionViewController {
     // MARK:- Fetch Coins
     func fetchCoins(start: Int) {
         let service = CoinService(id: nil, start: start)
+        progressHUD.text = "Fetching Coins"
         getCoins(fromService: service)
     }
     
@@ -75,6 +77,8 @@ class CoinsViewController: UICollectionViewController {
         searchController.searchResultsUpdater = self
         navigationItem.searchController = searchController
         navigationItem.hidesSearchBarWhenScrolling = false
+        
+        view.addSubview(progressHUD)
     }
     
     fileprivate func registerView() {
@@ -93,6 +97,8 @@ class CoinsViewController: UICollectionViewController {
     
     @objc func searchCoin(id: String) {
         let service = CoinService(id: id, start: 0)
+        progressHUD.show()
+        progressHUD.text = "Searching \(id)"
         getCoin(fromService: service)
     }
 }

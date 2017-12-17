@@ -10,14 +10,20 @@ import UIKit
 
 extension CoinsViewController: UICollectionViewDelegateFlowLayout {
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        if filteredCoins.count == 0 {
+            collectionView.backgroundView?.isHidden = false
+        } else {
+            collectionView.backgroundView?.isHidden = true
+        }
+        
         return filteredCoins.count
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if indexPath.item == coins.count - 1 && !isFinishedPaging {
-            fetchMoreCoins()
-
             let loadingCell = collectionView.dequeueReusableCell(withReuseIdentifier: coinLoadingCell, for: indexPath) as! LoadingCell
+            fetchMoreCoins()
+            
             return loadingCell
         }
         

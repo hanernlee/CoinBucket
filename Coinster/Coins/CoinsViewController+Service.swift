@@ -28,6 +28,7 @@ extension CoinsViewController {
                 self?.collectionView?.refreshControl?.attributedTitle = NSAttributedString(string: "Last updated \(updateString)")
                 self?.coins = tempCoins
                 self?.filteredCoins = tempCoins
+                self?.progressHUD.hide()
             case .Error(let error):
                 // @TODO Show Network Error / Placeholder
                 print(error)
@@ -74,6 +75,7 @@ extension CoinsViewController {
                 
                 self?.filteredCoins = tempCoins
                 self?.collectionView?.reloadData()
+                self?.progressHUD.hide()
             case .Error(let error):
                 // @TODO Show Network Error / Placeholder
                 print(error)
