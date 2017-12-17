@@ -78,6 +78,8 @@ extension CoinsViewController {
                 self?.progressHUD.hide()
             case .Error(let error):
                 // @TODO Show Network Error / Placeholder
+                self?.progressHUD.showWithoutSpinner()
+                self?.progressHUD.text = "Oops! Sorry can't find that Coin"
                 print(error)
             }
         }
