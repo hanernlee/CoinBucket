@@ -15,7 +15,7 @@ extension CurrencyFormatter {
         let currencyFormatter = NumberFormatter()
         currencyFormatter.usesGroupingSeparator = true
         currencyFormatter.numberStyle = .currency
-        currencyFormatter.maximumFractionDigits = 3
+        currencyFormatter.maximumFractionDigits = 5
         currencyFormatter.locale = Locale(identifier: localeIdentifier)
         guard let newNumber = self as? NSNumber else { return "" }
         return currencyFormatter.string(from: newNumber)!

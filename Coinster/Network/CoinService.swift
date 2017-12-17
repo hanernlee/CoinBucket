@@ -10,20 +10,28 @@ import Foundation
 
 protocol Gettable {
     associatedtype T
-    func get(id: String?, completion: @escaping (Result<T>) -> Void)
+    func get(completion: @escaping (Result<T>) -> Void)
 }
 
 struct CoinService: Gettable {
+    var id: String?
+    var start: Int
+    
     let downloader = JSONDownloader()
     typealias completionHandler = (Result<[Coin?]>) -> ()
 
-    func get(id: String?, completion: @escaping completionHandler) {
-        var endpoint = "https://api.coinmarketcap.com/v1/ticker/?limit=100"
+    func get(completion: @escaping completionHandler) {
+        let baseURL = "https://api.coinmarketcap.com/v1/ticker/"
+        var path: String
         
         if let id = id {
-            endpoint = "https://api.coinmarketcap.com/v1/ticker/\(id)"
+            path = "\(id)"
+        } else {
+            path = "?start=\(start)&limit=200"
         }
         
+        let endpoint = baseURL + path
+        print(endpoint)
         guard let url = URL(string: endpoint) else {
             completion(.Error(.invalidURL))
             return

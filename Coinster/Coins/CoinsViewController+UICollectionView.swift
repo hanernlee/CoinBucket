@@ -14,6 +14,11 @@ extension CoinsViewController: UICollectionViewDelegateFlowLayout {
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        if indexPath.item == self.coins.count - 1 && !isFinishedPaging {
+            print("Fetching More coins")
+            fetchMoreCoins()
+        }
+        
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: coinCellId, for: indexPath) as! CoinCell
         let coin = filteredCoins[indexPath.item]
         let coinViewModel = CoinViewModel(model: coin)
