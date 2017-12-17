@@ -40,6 +40,12 @@ extension CoinsViewController: UICollectionViewDelegateFlowLayout {
     }
     
     override func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
-        searchController.isActive = false
+        let searchText = searchController.searchBar.text ?? ""
+
+        if searchText.isEmpty {
+            searchController.isActive = false
+        } else {
+            searchController.searchBar.endEditing(true)
+        }
     }
 }
