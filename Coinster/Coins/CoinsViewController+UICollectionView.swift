@@ -40,6 +40,6 @@ extension CoinsViewController: UICollectionViewDelegateFlowLayout {
     }
     
     override func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
-        searchController.searchBar.resignFirstResponder()
+        searchController.isActive = false
     }
 }
