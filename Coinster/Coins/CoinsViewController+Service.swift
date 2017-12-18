@@ -74,6 +74,7 @@ extension CoinsViewController {
                 }
                 
                 self?.filteredCoins = tempCoins
+                self?.collectionView?.isHidden = false
                 self?.collectionView?.reloadData()
                 self?.progressHUD.hide()
             case .Error(let error):

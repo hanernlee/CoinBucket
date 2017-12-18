@@ -96,6 +96,7 @@ class CoinsViewController: UICollectionViewController {
     }
     
     @objc func searchCoin(id: String) {
+        collectionView?.isHidden = true
         let service = CoinService(id: id, start: 0)
         progressHUD.show()
         progressHUD.text = "Searching \(id)"
