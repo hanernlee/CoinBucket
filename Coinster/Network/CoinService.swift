@@ -27,7 +27,7 @@ struct CoinService: Gettable {
         if let id = id {
             path = "\(id)"
         } else {
-            path = "?start=\(start)&limit=200"
+            path = "?start=\(start)&limit=500"
         }
         
         let endpoint = baseURL + path

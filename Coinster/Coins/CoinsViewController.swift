@@ -45,7 +45,7 @@ class CoinsViewController: UICollectionViewController {
     }
     
     func fetchMoreCoins() {
-        start += 200
+        start += 500
         let service = CoinService(id: nil, start: start)
         getMoreCoins(fromService: service)
     }
@@ -96,7 +96,6 @@ class CoinsViewController: UICollectionViewController {
     }
     
     @objc func searchCoin(id: String) {
-        collectionView?.isHidden = true
         let service = CoinService(id: id, start: 0)
         progressHUD.show()
         progressHUD.text = "Searching \(id)"

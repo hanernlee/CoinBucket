@@ -49,7 +49,7 @@ extension CoinsViewController {
                         self?.filteredCoins.append(coin)
                     }
                 }
-                if coins.count < 200 {
+                if coins.count < 500 {
                     self?.isFinishedPaging = true
                 }
             case .Error(let error):
@@ -74,7 +74,6 @@ extension CoinsViewController {
                 }
                 
                 self?.filteredCoins = tempCoins
-                self?.collectionView?.isHidden = false
                 self?.collectionView?.reloadData()
                 self?.progressHUD.hide()
             case .Error(let error):
