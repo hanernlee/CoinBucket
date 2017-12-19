@@ -10,6 +10,9 @@
 		503D3B8F1FE62B2500AD8F4D /* CoinsViewController+Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = 503D3B8E1FE62B2500AD8F4D /* CoinsViewController+Service.swift */; };
 		503D3B911FE663F400AD8F4D /* LoadingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 503D3B901FE663F400AD8F4D /* LoadingCell.swift */; };
 		503D3B951FE6886700AD8F4D /* ProgressHUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 503D3B941FE6886700AD8F4D /* ProgressHUD.swift */; };
+		503D3B981FE9279E00AD8F4D /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 503D3B971FE9279E00AD8F4D /* SettingsViewController.swift */; };
+		503D3B9C1FE92CF100AD8F4D /* SettingsViewController+TableViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 503D3B9B1FE92CF100AD8F4D /* SettingsViewController+TableViewDelegate.swift */; };
+		503D3B9E1FE92D2000AD8F4D /* SettingsViewController+TableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 503D3B9D1FE92D2000AD8F4D /* SettingsViewController+TableViewDataSource.swift */; };
 		504D9E2D1FDBBD0F008EAB42 /* Quick.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 504D9E2B1FDBBD0F008EAB42 /* Quick.framework */; };
 		504D9E2E1FDBBD0F008EAB42 /* Nimble.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 504D9E2C1FDBBD0F008EAB42 /* Nimble.framework */; };
 		504D9E2F1FDBBD15008EAB42 /* Nimble.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 504D9E2C1FDBBD0F008EAB42 /* Nimble.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -65,6 +68,9 @@
 		503D3B8E1FE62B2500AD8F4D /* CoinsViewController+Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CoinsViewController+Service.swift"; sourceTree = "<group>"; };
 		503D3B901FE663F400AD8F4D /* LoadingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingCell.swift; sourceTree = "<group>"; };
 		503D3B941FE6886700AD8F4D /* ProgressHUD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressHUD.swift; sourceTree = "<group>"; };
+		503D3B971FE9279E00AD8F4D /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		503D3B9B1FE92CF100AD8F4D /* SettingsViewController+TableViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SettingsViewController+TableViewDelegate.swift"; sourceTree = "<group>"; };
+		503D3B9D1FE92D2000AD8F4D /* SettingsViewController+TableViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SettingsViewController+TableViewDataSource.swift"; sourceTree = "<group>"; };
 		504D9E2B1FDBBD0F008EAB42 /* Quick.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Quick.framework; path = Carthage/Build/iOS/Quick.framework; sourceTree = "<group>"; };
 		504D9E2C1FDBBD0F008EAB42 /* Nimble.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Nimble.framework; path = Carthage/Build/iOS/Nimble.framework; sourceTree = "<group>"; };
 		504D9E311FDBBD4E008EAB42 /* MainTabBarControllerSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarControllerSpec.swift; sourceTree = "<group>"; };
@@ -114,6 +120,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		503D3B961FE9278800AD8F4D /* Setting */ = {
+			isa = PBXGroup;
+			children = (
+				503D3B971FE9279E00AD8F4D /* SettingsViewController.swift */,
+				503D3B9B1FE92CF100AD8F4D /* SettingsViewController+TableViewDelegate.swift */,
+				503D3B9D1FE92D2000AD8F4D /* SettingsViewController+TableViewDataSource.swift */,
+			);
+			path = Setting;
+			sourceTree = "<group>";
+		};
 		504D9E2A1FDBBD0E008EAB42 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -200,9 +216,10 @@
 				504D9E331FDBE154008EAB42 /* Coins */,
 				504D9E421FDBF244008EAB42 /* Model */,
 				504D9E561FDCE073008EAB42 /* Network */,
+				503D3B961FE9278800AD8F4D /* Setting */,
 				504D9E3D1FDBEC58008EAB42 /* Utils */,
-				503D3B901FE663F400AD8F4D /* LoadingCell.swift */,
 				504D9E361FDBE2C0008EAB42 /* MainTabBarController.swift */,
+				503D3B901FE663F400AD8F4D /* LoadingCell.swift */,
 				50CDC1B21FDBB87C009A2E22 /* Main.storyboard */,
 				50CDC1AE1FDBB87C009A2E22 /* AppDelegate.swift */,
 				50CDC1B51FDBB87C009A2E22 /* Assets.xcassets */,
@@ -330,12 +347,14 @@
 				50A329671FE01173003C0AE9 /* Cachable.swift in Sources */,
 				50A329631FDFF455003C0AE9 /* JSONDownloader.swift in Sources */,
 				503D3B951FE6886700AD8F4D /* ProgressHUD.swift in Sources */,
+				503D3B981FE9279E00AD8F4D /* SettingsViewController.swift in Sources */,
 				50A3296F1FE4BCCE003C0AE9 /* CoinViewController+Search.swift in Sources */,
 				504D9E3C1FDBEB97008EAB42 /* CoinsViewController.swift in Sources */,
 				50A329691FE140B5003C0AE9 /* CurrencyFormatter.swift in Sources */,
 				50A3296D1FE3D1B9003C0AE9 /* Date+Extension.swift in Sources */,
 				503D3B911FE663F400AD8F4D /* LoadingCell.swift in Sources */,
 				504D9E3F1FDBED03008EAB42 /* UIView+Anchor.swift in Sources */,
+				503D3B9C1FE92CF100AD8F4D /* SettingsViewController+TableViewDelegate.swift in Sources */,
 				505910A51FDD495100D63F34 /* CoinsViewController+UICollectionView.swift in Sources */,
 				503D3B8F1FE62B2500AD8F4D /* CoinsViewController+Service.swift in Sources */,
 				50CDC1AF1FDBB87C009A2E22 /* AppDelegate.swift in Sources */,
@@ -343,6 +362,7 @@
 				504D9E371FDBE2C0008EAB42 /* MainTabBarController.swift in Sources */,
 				504D9E411FDBED10008EAB42 /* UIColor+Theme.swift in Sources */,
 				50A329611FDFEFE6003C0AE9 /* CoinViewModel.swift in Sources */,
+				503D3B9E1FE92D2000AD8F4D /* SettingsViewController+TableViewDataSource.swift in Sources */,
 				50A329651FDFFA67003C0AE9 /* CoinService.swift in Sources */,
 				505910A71FDD4A0F00D63F34 /* CoinCell.swift in Sources */,
 				504D9E441FDBF254008EAB42 /* Coin.swift in Sources */,
