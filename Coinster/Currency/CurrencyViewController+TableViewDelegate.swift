@@ -1,5 +1,5 @@
 //
-//  SettingsViewController+TableViewDelegate.swift
+//  CurrencyViewController+TableViewDelegate.swift
 //  Coinster
 //
 //  Created by Christopher Lee on 19/12/17.
@@ -8,6 +8,6 @@
 
 import UIKit
 
-extension SettingsViewController: UITableViewDelegate {
+extension CurrencyViewController: UITableViewDelegate {
     
 }
