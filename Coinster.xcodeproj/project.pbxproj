@@ -13,6 +13,7 @@
 		503D3B981FE9279E00AD8F4D /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 503D3B971FE9279E00AD8F4D /* SettingsViewController.swift */; };
 		503D3B9C1FE92CF100AD8F4D /* SettingsViewController+TableViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 503D3B9B1FE92CF100AD8F4D /* SettingsViewController+TableViewDelegate.swift */; };
 		503D3B9E1FE92D2000AD8F4D /* SettingsViewController+TableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 503D3B9D1FE92D2000AD8F4D /* SettingsViewController+TableViewDataSource.swift */; };
+		503D3BA01FE9315400AD8F4D /* SettingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 503D3B9F1FE9315400AD8F4D /* SettingCell.swift */; };
 		504D9E2D1FDBBD0F008EAB42 /* Quick.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 504D9E2B1FDBBD0F008EAB42 /* Quick.framework */; };
 		504D9E2E1FDBBD0F008EAB42 /* Nimble.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 504D9E2C1FDBBD0F008EAB42 /* Nimble.framework */; };
 		504D9E2F1FDBBD15008EAB42 /* Nimble.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 504D9E2C1FDBBD0F008EAB42 /* Nimble.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -71,6 +72,7 @@
 		503D3B971FE9279E00AD8F4D /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		503D3B9B1FE92CF100AD8F4D /* SettingsViewController+TableViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SettingsViewController+TableViewDelegate.swift"; sourceTree = "<group>"; };
 		503D3B9D1FE92D2000AD8F4D /* SettingsViewController+TableViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SettingsViewController+TableViewDataSource.swift"; sourceTree = "<group>"; };
+		503D3B9F1FE9315400AD8F4D /* SettingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingCell.swift; sourceTree = "<group>"; };
 		504D9E2B1FDBBD0F008EAB42 /* Quick.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Quick.framework; path = Carthage/Build/iOS/Quick.framework; sourceTree = "<group>"; };
 		504D9E2C1FDBBD0F008EAB42 /* Nimble.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Nimble.framework; path = Carthage/Build/iOS/Nimble.framework; sourceTree = "<group>"; };
 		504D9E311FDBBD4E008EAB42 /* MainTabBarControllerSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarControllerSpec.swift; sourceTree = "<group>"; };
@@ -126,6 +128,7 @@
 				503D3B971FE9279E00AD8F4D /* SettingsViewController.swift */,
 				503D3B9B1FE92CF100AD8F4D /* SettingsViewController+TableViewDelegate.swift */,
 				503D3B9D1FE92D2000AD8F4D /* SettingsViewController+TableViewDataSource.swift */,
+				503D3B9F1FE9315400AD8F4D /* SettingCell.swift */,
 			);
 			path = Setting;
 			sourceTree = "<group>";
@@ -357,6 +360,7 @@
 				503D3B9C1FE92CF100AD8F4D /* SettingsViewController+TableViewDelegate.swift in Sources */,
 				505910A51FDD495100D63F34 /* CoinsViewController+UICollectionView.swift in Sources */,
 				503D3B8F1FE62B2500AD8F4D /* CoinsViewController+Service.swift in Sources */,
+				503D3BA01FE9315400AD8F4D /* SettingCell.swift in Sources */,
 				50CDC1AF1FDBB87C009A2E22 /* AppDelegate.swift in Sources */,
 				504D9E3A1FDBEAEE008EAB42 /* PortfolioViewController.swift in Sources */,
 				504D9E371FDBE2C0008EAB42 /* MainTabBarController.swift in Sources */,

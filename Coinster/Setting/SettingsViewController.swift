@@ -15,7 +15,8 @@ class SettingsViewController: UIViewController {
         super.viewDidLoad()
         
         view.backgroundColor = .white
-        
+        navigationItem.title = "Settings"
+
         registerTableView()
     }
     
@@ -23,5 +24,8 @@ class SettingsViewController: UIViewController {
         let tableView = UITableView(frame: self.view.bounds, style: UITableViewStyle.grouped)
         tableView.delegate = self
         tableView.dataSource = self
+        tableView.register(SettingCell.self, forCellReuseIdentifier: tableCell)
+
+        view.addSubview(tableView)
     }
 }
