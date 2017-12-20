@@ -8,16 +8,16 @@
 
 import Foundation
 
-struct Currency {
-    let currency: String
+class Currency {
+    let name: String
     var checked = false
     
     
-    init(currency: String) {
-        self.currency = currency
+    init(name: String) {
+        self.name = name
     }
     
-    mutating func toggleChecked() {
+    func toggleChecked() {
         checked = !checked
     }
 }

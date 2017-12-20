@@ -18,7 +18,6 @@
 		503D3BA51FE93DE000AD8F4D /* CurrencyViewController+TableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 503D3BA41FE93DE000AD8F4D /* CurrencyViewController+TableViewDataSource.swift */; };
 		503D3BA71FE93E6600AD8F4D /* CurrencyViewController+TableViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 503D3BA61FE93E6600AD8F4D /* CurrencyViewController+TableViewDelegate.swift */; };
 		503D3BA91FE93E8700AD8F4D /* CurrencyCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 503D3BA81FE93E8700AD8F4D /* CurrencyCell.swift */; };
-		503D3BAD1FE9424500AD8F4D /* CurrencyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 503D3BAC1FE9424500AD8F4D /* CurrencyViewModel.swift */; };
 		503D3BAF1FE9440500AD8F4D /* Currency.swift in Sources */ = {isa = PBXBuildFile; fileRef = 503D3BAE1FE9440500AD8F4D /* Currency.swift */; };
 		504D9E2D1FDBBD0F008EAB42 /* Quick.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 504D9E2B1FDBBD0F008EAB42 /* Quick.framework */; };
 		504D9E2E1FDBBD0F008EAB42 /* Nimble.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 504D9E2C1FDBBD0F008EAB42 /* Nimble.framework */; };
@@ -83,7 +82,6 @@
 		503D3BA41FE93DE000AD8F4D /* CurrencyViewController+TableViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CurrencyViewController+TableViewDataSource.swift"; sourceTree = "<group>"; };
 		503D3BA61FE93E6600AD8F4D /* CurrencyViewController+TableViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CurrencyViewController+TableViewDelegate.swift"; sourceTree = "<group>"; };
 		503D3BA81FE93E8700AD8F4D /* CurrencyCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyCell.swift; sourceTree = "<group>"; };
-		503D3BAC1FE9424500AD8F4D /* CurrencyViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyViewModel.swift; sourceTree = "<group>"; };
 		503D3BAE1FE9440500AD8F4D /* Currency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Currency.swift; sourceTree = "<group>"; };
 		504D9E2B1FDBBD0F008EAB42 /* Quick.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Quick.framework; path = Carthage/Build/iOS/Quick.framework; sourceTree = "<group>"; };
 		504D9E2C1FDBBD0F008EAB42 /* Nimble.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Nimble.framework; path = Carthage/Build/iOS/Nimble.framework; sourceTree = "<group>"; };
@@ -152,7 +150,6 @@
 				503D3BA41FE93DE000AD8F4D /* CurrencyViewController+TableViewDataSource.swift */,
 				503D3BA61FE93E6600AD8F4D /* CurrencyViewController+TableViewDelegate.swift */,
 				503D3BA81FE93E8700AD8F4D /* CurrencyCell.swift */,
-				503D3BAC1FE9424500AD8F4D /* CurrencyViewModel.swift */,
 			);
 			path = Currency;
 			sourceTree = "<group>";
@@ -391,7 +388,6 @@
 				505910A51FDD495100D63F34 /* CoinsViewController+UICollectionView.swift in Sources */,
 				503D3B8F1FE62B2500AD8F4D /* CoinsViewController+Service.swift in Sources */,
 				503D3BA01FE9315400AD8F4D /* SettingCell.swift in Sources */,
-				503D3BAD1FE9424500AD8F4D /* CurrencyViewModel.swift in Sources */,
 				50CDC1AF1FDBB87C009A2E22 /* AppDelegate.swift in Sources */,
 				504D9E3A1FDBEAEE008EAB42 /* PortfolioViewController.swift in Sources */,
 				503D3BA71FE93E6600AD8F4D /* CurrencyViewController+TableViewDelegate.swift in Sources */,

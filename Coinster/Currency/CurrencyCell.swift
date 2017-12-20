@@ -14,8 +14,6 @@ class CurrencyCell: UITableViewCell {
         return label
     }()
     
-    var currentCurrency: String?
-    
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
     }
@@ -25,7 +23,7 @@ class CurrencyCell: UITableViewCell {
     }
     
     func displayCurrencyInCell(using viewModel: CurrencyViewModel) {
-        label.text = viewModel.currency
+        label.text = viewModel.name
         addSubview(label)
         label.anchor(top: topAnchor, left: leftAnchor, bottom: bottomAnchor, right: rightAnchor, paddingTop: 0, paddingLeft: 15, paddingBottom: 0, paddingRight: 0, width: 0, height: 45)
     }

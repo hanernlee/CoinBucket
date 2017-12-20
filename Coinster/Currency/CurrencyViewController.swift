@@ -10,10 +10,12 @@ import UIKit
 
 class CurrencyViewController: UIViewController {
     let tableCell = "tableCell"
+
+    var selectedIndexPath: IndexPath?
     
-    var currentCurrency = "AUD"
-    
-    let availableCurrencies = ["AUD", "BRL", "CAD", "CHF", "CLP", "CNY", "CZK", "DKK", "EUR", "GBP", "HKD", "HUF", "IDR", "ILS", "INR", "JPY", "KRW", "MXN", "MYR", "NOK", "NZD", "PHP", "PKR", "PLN", "RUB", "SEK", "SGD", "THB", "TRY", "TWD", "ZAR"]
+    var selectedCurrency = "USD"
+
+    let availableCurrencies = ["AUD", "BRL", "CAD", "CHF", "CLP", "CNY", "CZK", "DKK", "EUR", "GBP", "HKD", "HUF", "IDR", "ILS", "INR", "JPY", "KRW", "MXN", "MYR", "NOK", "NZD", "PHP", "PKR", "PLN", "RUB", "SEK", "SGD", "THB", "TRY", "TWD", "USD", "ZAR"]
     
     var currencies = [Currency]()
     
@@ -37,7 +39,7 @@ class CurrencyViewController: UIViewController {
     
     func createCurrencies() {
         for currency in availableCurrencies {
-            let currency = Currency(currency: currency)
+            let currency = Currency(name: currency)
             currencies.append(currency)
         }
     }
