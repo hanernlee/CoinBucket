@@ -24,6 +24,7 @@ class SettingsViewController: UIViewController {
         let tableView = UITableView(frame: self.view.bounds, style: UITableViewStyle.grouped)
         tableView.delegate = self
         tableView.dataSource = self
+        tableView.allowsMultipleSelection = false
         tableView.register(SettingCell.self, forCellReuseIdentifier: tableCell)
 
         view.addSubview(tableView)

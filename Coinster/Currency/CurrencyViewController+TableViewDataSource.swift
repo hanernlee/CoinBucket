@@ -17,23 +17,12 @@ extension CurrencyViewController: UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: tableCell, for: indexPath) as! CurrencyCell
         let currency = currencies[indexPath.row]
         
-        print(selectedCurrency)
-        print(currency.name)
-        
-        if (selectedCurrency == currency.name) {
-            print(currency)
-            selectedIndexPath = IndexPath(row: indexPath.row, section: 0)
-        }
-        print(selectedIndexPath)
-        
-        if indexPath == selectedIndexPath {
-            cell.accessoryType = .checkmark
-        } else {
-            cell.accessoryType = .none
+        if currency.name == selectedCurrency {
+            currency.toggleChecked()
         }
         
-        let currencyViewModel = CurrencyViewModel(model: currency)
-        cell.displayCurrencyInCell(using: currencyViewModel)
+        configureCheckmark(for: cell, with: currency)
+        cell.displayCurrencyInCell(using: currency)
         return cell
     }
 }

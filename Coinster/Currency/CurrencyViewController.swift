@@ -43,4 +43,12 @@ class CurrencyViewController: UIViewController {
             currencies.append(currency)
         }
     }
+    
+    func configureCheckmark(for cell: UITableViewCell, with currency: Currency) {
+        if currency.checked {
+            cell.accessoryType = .checkmark
+        } else {
+            cell.accessoryType = .none
+        }
+    }
 }

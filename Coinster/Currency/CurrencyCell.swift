@@ -22,8 +22,8 @@ class CurrencyCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func displayCurrencyInCell(using viewModel: CurrencyViewModel) {
-        label.text = viewModel.name
+    func displayCurrencyInCell(using currency: Currency) {
+        label.text = currency.name
         addSubview(label)
         label.anchor(top: topAnchor, left: leftAnchor, bottom: bottomAnchor, right: rightAnchor, paddingTop: 0, paddingLeft: 15, paddingBottom: 0, paddingRight: 0, width: 0, height: 45)
     }
