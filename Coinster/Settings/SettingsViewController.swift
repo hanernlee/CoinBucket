@@ -11,6 +11,8 @@ import UIKit
 class SettingsViewController: UIViewController {
     let tableCell = "tableCell"
     
+    var currency: Currency?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -28,5 +30,11 @@ class SettingsViewController: UIViewController {
         tableView.register(SettingCell.self, forCellReuseIdentifier: tableCell)
 
         view.addSubview(tableView)
+    }
+}
+
+extension SettingsViewController: CurrencyViewControllerDelegate {
+    func didSelectCurrency(currency: Currency) {
+        print(currency)
     }
 }

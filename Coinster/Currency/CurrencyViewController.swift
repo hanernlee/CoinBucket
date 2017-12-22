@@ -8,11 +8,14 @@
 
 import UIKit
 
+protocol CurrencyViewControllerDelegate {
+    func didSelectCurrency(currency: Currency)
+}
+
 class CurrencyViewController: UIViewController {
     let tableCell = "tableCell"
-
     var selectedIndexPath: IndexPath?
-    
+    var delegate: CurrencyViewControllerDelegate?
     var selectedCurrency = "USD"
 
     let availableCurrencies = ["AUD", "BRL", "CAD", "CHF", "CLP", "CNY", "CZK", "DKK", "EUR", "GBP", "HKD", "HUF", "IDR", "ILS", "INR", "JPY", "KRW", "MXN", "MYR", "NOK", "NZD", "PHP", "PKR", "PLN", "RUB", "SEK", "SGD", "THB", "TRY", "TWD", "USD", "ZAR"]
@@ -38,8 +41,14 @@ class CurrencyViewController: UIViewController {
     }
     
     func createCurrencies() {
-        for currency in availableCurrencies {
+        for (i, currency) in availableCurrencies.enumerated() {
             let currency = Currency(name: currency)
+            
+            if currency.name == selectedCurrency {
+                currency.toggleChecked()
+                selectedIndexPath = IndexPath(row: i, section: 0)
+            }
+            
             currencies.append(currency)
         }
     }

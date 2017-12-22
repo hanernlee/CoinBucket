@@ -10,13 +10,29 @@ import UIKit
 
 extension CurrencyViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+
+        if indexPath == selectedIndexPath! {
+            return
+        }
+        
         if let cell = tableView.cellForRow(at: indexPath) {
             let currency = currencies[indexPath.row]
-            currency.toggleChecked()
+            currency.checked = true
+            selectedCurrency = currency.name
+            
+            self.delegate?.didSelectCurrency(currency: currency)
             
             configureCheckmark(for: cell, with: currency)
         }
         
-        tableView.deselectRow(at: indexPath, animated: true)
+        if let oldCell = tableView.cellForRow(at: selectedIndexPath!) {
+            let oldCurrency = currencies[(selectedIndexPath?.row)!]
+            oldCurrency.checked = false
+            
+            configureCheckmark(for: oldCell, with: oldCurrency)
+        }
+        
+        selectedIndexPath = indexPath
     }
 }
