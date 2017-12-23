@@ -9,7 +9,7 @@
 import UIKit
 
 class SettingsViewController: UIViewController {
-    let tableCell = "tableCell"
+    let tableCell = "TableCell"
     
     var stateController: StateController!
     

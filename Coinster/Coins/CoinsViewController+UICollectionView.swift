@@ -27,7 +27,7 @@ extension CoinsViewController: UICollectionViewDelegateFlowLayout {
             return loadingCell
         }
         
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: coinCellId, for: indexPath) as! CoinCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: coinCell, for: indexPath) as! CoinCell
         let coin = filteredCoins[indexPath.item]
         let coinViewModel = CoinViewModel(model: coin)
         cell.displayCoinInCell(using: coinViewModel)

@@ -10,11 +10,12 @@ import UIKit
 
 class CoinsViewController: UICollectionViewController {
     
-    let coinCellId = "coinCellId"
-    let coinLoadingCell = "coinLoadingCell"
-    var stateController: StateController!
     let searchController = UISearchController(searchResultsController: nil)
     let progressHUD = ProgressHUD(text: "")
+    let coinCell = "CoinCell"
+    let coinLoadingCell = "CoinLoadingCell"
+    
+    var stateController: StateController!
     
     var coins = [Coin]() {
         didSet {
@@ -38,30 +39,10 @@ class CoinsViewController: UICollectionViewController {
         fetchCoins(start: start)
     }
     
-    // MARK:- Fetch Coins
-    func fetchCoins(start: Int) {
-        let service = CoinService(id: nil, start: start)
-        progressHUD.text = "Fetching Coins"
-        getCoins(fromService: service)
-    }
-    
-    func fetchMoreCoins() {
-        start += 500
-        let service = CoinService(id: nil, start: start)
-        getMoreCoins(fromService: service)
-    }
-    
-    // MARK: - Filter Coins
-    func filterCoins(searchBar: UISearchBar, searchText: String, completion: (([Coin]) -> ())) {
-        if searchText.isEmpty {
-            filteredCoins = coins
-        } else {
-            filteredCoins = self.coins.filter { (coin) -> Bool in
-                return coin.name.lowercased().contains(searchText.lowercased())
-            }
-            completion(filteredCoins)
-        }
-        collectionView?.reloadData()
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        print(stateController.currency.name)
     }
     
     // MARK: - Fileprivate Methods
@@ -83,7 +64,7 @@ class CoinsViewController: UICollectionViewController {
     }
     
     fileprivate func registerView() {
-        collectionView?.register(CoinCell.self, forCellWithReuseIdentifier: coinCellId)
+        collectionView?.register(CoinCell.self, forCellWithReuseIdentifier: coinCell)
         collectionView?.register(LoadingCell.self, forCellWithReuseIdentifier: coinLoadingCell)
     }
     
