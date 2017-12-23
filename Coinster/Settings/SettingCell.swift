@@ -22,11 +22,11 @@ class SettingCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func setupCell(with currency: String) {
+    func setupCell(with currency: Currency) {
         accessoryType = .disclosureIndicator
         selectionStyle = .none
         
-        label.text = currency
+        label.text = currency.name
         addSubview(label)
         label.anchor(top: topAnchor, left: leftAnchor, bottom: bottomAnchor, right: rightAnchor, paddingTop: 0, paddingLeft: 15, paddingBottom: 0, paddingRight: 0, width: 0, height: 45)
     }

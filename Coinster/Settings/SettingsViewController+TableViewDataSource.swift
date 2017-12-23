@@ -25,7 +25,8 @@ extension SettingsViewController: UITableViewDataSource {
         switch indexPath.section {
         case 0:
             let cell = tableView.dequeueReusableCell(withIdentifier: tableCell, for: indexPath) as! SettingCell
-            cell.setupCell(with: "USD")
+            print(stateController)
+            cell.setupCell(with: stateController.currency)
             return cell
         case 1:
             let cell = tableView.dequeueReusableCell(withIdentifier: tableCell, for: indexPath) as! SettingCell

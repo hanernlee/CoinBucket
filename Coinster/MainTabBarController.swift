@@ -10,23 +10,29 @@ import UIKit
 
 class MainTabBarController: UITabBarController {
     
+    var stateController: StateController!
+
     // MARK: - ViewController Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         setupTabBarItems()
     }
 
     // MARK: - Fileprivate Methods
-    // Setup Tab Bar Items
     fileprivate func setupTabBarItems() {
-//        let portfolioNavController = templateNavController(unselectedImage: #imageLiteral(resourceName: "home_unselected"), selectedImage: #imageLiteral(resourceName: "home_selected"), rootViewController: PortfolioViewController())
+        let stateController = StateController(currency: Currency(name: "USD"))
         
-        let coinsNavController = templateNavController(unselectedImage: #imageLiteral(resourceName: "home_unselected"), selectedImage: #imageLiteral(resourceName: "home_selected"), rootViewController: CoinsViewController(collectionViewLayout: UICollectionViewFlowLayout()))
+        let coinsViewController = CoinsViewController(collectionViewLayout: UICollectionViewFlowLayout())
+        coinsViewController.stateController = stateController
+        let coinsNavController = templateNavController(unselectedImage: #imageLiteral(resourceName: "home_unselected"), selectedImage: #imageLiteral(resourceName: "home_selected"), rootViewController: coinsViewController)
         
-        let settingsController = templateNavController(unselectedImage: #imageLiteral(resourceName: "home_unselected"), selectedImage: #imageLiteral(resourceName: "home_selected"), rootViewController: SettingsViewController())
+        let settingsController = SettingsViewController()
+        print(stateController)
+        settingsController.stateController = stateController
+        let settingsNavController = templateNavController(unselectedImage: #imageLiteral(resourceName: "home_unselected"), selectedImage: #imageLiteral(resourceName: "home_selected"), rootViewController: settingsController)
         
-        viewControllers = [coinsNavController, settingsController]
+        viewControllers = [coinsNavController, settingsNavController]
     }
     
     // Templating Navigation Controllers

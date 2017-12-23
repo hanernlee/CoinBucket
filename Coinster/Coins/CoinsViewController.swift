@@ -12,6 +12,7 @@ class CoinsViewController: UICollectionViewController {
     
     let coinCellId = "coinCellId"
     let coinLoadingCell = "coinLoadingCell"
+    var stateController: StateController!
     let searchController = UISearchController(searchResultsController: nil)
     let progressHUD = ProgressHUD(text: "")
     

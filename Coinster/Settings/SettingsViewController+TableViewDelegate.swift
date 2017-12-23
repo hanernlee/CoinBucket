@@ -22,6 +22,7 @@ extension SettingsViewController: UITableViewDelegate {
         case 0:
             if indexPath.row == 0 {
                 let currencyController = CurrencyViewController()
+                currencyController.stateController = stateController
                 currencyController.delegate = self
                 navigationController?.pushViewController(currencyController, animated: true)
             }

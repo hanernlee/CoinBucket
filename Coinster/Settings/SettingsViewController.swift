@@ -11,7 +11,9 @@ import UIKit
 class SettingsViewController: UIViewController {
     let tableCell = "tableCell"
     
-    var currency: Currency?
+    var stateController: StateController!
+    
+    var tableView: UITableView?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,18 +25,19 @@ class SettingsViewController: UIViewController {
     }
     
     func registerTableView() {
-        let tableView = UITableView(frame: self.view.bounds, style: UITableViewStyle.grouped)
-        tableView.delegate = self
-        tableView.dataSource = self
-        tableView.allowsMultipleSelection = false
-        tableView.register(SettingCell.self, forCellReuseIdentifier: tableCell)
+        tableView = UITableView(frame: self.view.bounds, style: UITableViewStyle.grouped)
+        tableView?.delegate = self
+        tableView?.dataSource = self
+        tableView?.allowsMultipleSelection = false
+        tableView?.register(SettingCell.self, forCellReuseIdentifier: tableCell)
 
-        view.addSubview(tableView)
+        view.addSubview(tableView!)
     }
 }
 
 extension SettingsViewController: CurrencyViewControllerDelegate {
     func didSelectCurrency(currency: Currency) {
-        print(currency)
+        stateController.currency = currency
+        tableView?.reloadData()
     }
 }

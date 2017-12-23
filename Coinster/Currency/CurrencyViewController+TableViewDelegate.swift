@@ -19,7 +19,7 @@ extension CurrencyViewController: UITableViewDelegate {
         if let cell = tableView.cellForRow(at: indexPath) {
             let currency = currencies[indexPath.row]
             currency.checked = true
-            selectedCurrency = currency.name
+            stateController.currency = currency
             
             self.delegate?.didSelectCurrency(currency: currency)
             
