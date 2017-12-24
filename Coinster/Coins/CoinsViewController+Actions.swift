@@ -11,14 +11,16 @@ import UIKit
 extension CoinsViewController {
     // MARK:- Fetch Coins
     func fetchCoins(start: Int) {
-        let service = CoinService(id: nil, start: start)
+        let service = CoinService(id: nil, start: start, convert: stateController.currency.name)
+        
         progressHUD.text = "Fetching Coins"
         getCoins(fromService: service)
     }
     
     func fetchMoreCoins() {
         start += 500
-        let service = CoinService(id: nil, start: start)
+        
+        let service = CoinService(id: nil, start: start, convert: stateController.currency.name)
         getMoreCoins(fromService: service)
     }
     

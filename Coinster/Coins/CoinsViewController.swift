@@ -16,6 +16,7 @@ class CoinsViewController: UICollectionViewController {
     let coinLoadingCell = "CoinLoadingCell"
     
     var stateController: StateController!
+    var selectedCurrency: Currency?
     
     var coins = [Coin]() {
         didSet {
@@ -36,13 +37,23 @@ class CoinsViewController: UICollectionViewController {
         configureUI()
         registerView()
         
+        selectedCurrency = stateController.currency
+        
         fetchCoins(start: start)
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        print(stateController.currency.name)
+        guard let selectedCurrency = selectedCurrency else { return }
+        
+        if selectedCurrency.name != stateController.currency.name {
+            
+            handleRefresh()
+
+        } else {
+            print("Same")
+        }
     }
     
     // MARK: - Fileprivate Methods
@@ -78,7 +89,7 @@ class CoinsViewController: UICollectionViewController {
     }
     
     @objc func searchCoin(id: String) {
-        let service = CoinService(id: id, start: 0)
+        let service = CoinService(id: id, start: 0, convert: stateController.currency.name)
         progressHUD.show()
         progressHUD.text = "Searching \(id)"
         getCoin(fromService: service)

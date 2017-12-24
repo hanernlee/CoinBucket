@@ -16,6 +16,7 @@ protocol Gettable {
 struct CoinService: Gettable {
     var id: String?
     var start: Int
+    var convert: String
     
     let downloader = JSONDownloader()
     typealias completionHandler = (Result<[Coin?]>) -> ()
@@ -27,10 +28,10 @@ struct CoinService: Gettable {
         if let id = id {
             path = "\(id)"
         } else {
-            path = "?start=\(start)&limit=500"
+            path = "&start=\(start)&limit=500"
         }
         
-        let endpoint = baseURL + path
+        let endpoint = baseURL + "?convert=\(convert)" + path
         print(endpoint)
         guard let url = URL(string: endpoint) else {
             completion(.Error(.invalidURL))
@@ -47,6 +48,7 @@ struct CoinService: Gettable {
                 case .Success(let json):
                     do {
                         let decoder = JSONDecoder()
+
                         let result = try decoder.decode([Coin].self, from: json)
                         
                         completion(.Success(result))

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		501BBAEE1FEF89EF0007C1F3 /* Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = 501BBAED1FEF89EF0007C1F3 /* Response.swift */; };
 		503D3B8F1FE62B2500AD8F4D /* CoinsViewController+Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = 503D3B8E1FE62B2500AD8F4D /* CoinsViewController+Service.swift */; };
 		503D3B911FE663F400AD8F4D /* LoadingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 503D3B901FE663F400AD8F4D /* LoadingCell.swift */; };
 		503D3B951FE6886700AD8F4D /* ProgressHUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 503D3B941FE6886700AD8F4D /* ProgressHUD.swift */; };
@@ -73,6 +74,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		501BBAED1FEF89EF0007C1F3 /* Response.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Response.swift; sourceTree = "<group>"; };
 		503D3B8E1FE62B2500AD8F4D /* CoinsViewController+Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CoinsViewController+Service.swift"; sourceTree = "<group>"; };
 		503D3B901FE663F400AD8F4D /* LoadingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingCell.swift; sourceTree = "<group>"; };
 		503D3B941FE6886700AD8F4D /* ProgressHUD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressHUD.swift; sourceTree = "<group>"; };
@@ -214,6 +216,7 @@
 			children = (
 				504D9E431FDBF254008EAB42 /* Coin.swift */,
 				503D3BAE1FE9440500AD8F4D /* Currency.swift */,
+				501BBAED1FEF89EF0007C1F3 /* Response.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -404,6 +407,7 @@
 				503D3B8F1FE62B2500AD8F4D /* CoinsViewController+Service.swift in Sources */,
 				503D3BA01FE9315400AD8F4D /* SettingCell.swift in Sources */,
 				50CDC1AF1FDBB87C009A2E22 /* AppDelegate.swift in Sources */,
+				501BBAEE1FEF89EF0007C1F3 /* Response.swift in Sources */,
 				504D9E3A1FDBEAEE008EAB42 /* PortfolioViewController.swift in Sources */,
 				503D3BA71FE93E6600AD8F4D /* CurrencyViewController+TableViewDelegate.swift in Sources */,
 				504D9E371FDBE2C0008EAB42 /* MainTabBarController.swift in Sources */,

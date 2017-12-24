@@ -13,19 +13,19 @@ struct CoinViewModel {
     let name: String
     let symbol: String
     let imageUrl: String
-    let price_usd: NSDecimalNumber
-    let price_btc: String
-    let market_cap_usd: NSDecimalNumber
-    let percent_change_24h: Double
+    let priceUSD: NSDecimalNumber
+    let priceBTC: String
+    let marketCapUSD: NSDecimalNumber
+    let percentChange24h: Double
     
     init(model: Coin) {
         self.id = model.id
         self.name = model.name
         self.symbol = model.symbol
         self.imageUrl = model.imageUrl
-        self.price_usd = NSDecimalNumber(string: model.price_usd)
-        self.price_btc = model.price_btc
-        self.market_cap_usd = (model.market_cap_usd != nil) ? NSDecimalNumber(string: model.market_cap_usd) : NSDecimalNumber(string: "0")
-        self.percent_change_24h = (model.percent_change_24h != nil) ? (model.percent_change_24h! as NSString).doubleValue : Double(0.00)
+        self.priceUSD = NSDecimalNumber(string: model.priceUSD)
+        self.priceBTC = model.priceBTC
+        self.marketCapUSD = (model.marketCapUSD != nil) ? NSDecimalNumber(string: model.marketCapUSD) : NSDecimalNumber(string: "0")
+        self.percentChange24h = (model.percentChange24h != nil) ? (model.percentChange24h! as NSString).doubleValue : Double(0.00)
     }
 }

@@ -24,6 +24,7 @@ extension SettingsViewController: UITableViewDelegate {
                 let currencyController = CurrencyViewController()
                 currencyController.stateController = stateController
                 currencyController.delegate = self
+                
                 navigationController?.pushViewController(currencyController, animated: true)
             }
         default: fatalError("Unknown section")
