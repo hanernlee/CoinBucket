@@ -17,6 +17,8 @@ struct CoinViewModel {
     let priceBTC: String
     let marketCapUSD: NSDecimalNumber
     let percentChange24h: Double
+    let price: NSDecimalNumber
+    let marketCap: NSDecimalNumber
     
     init(model: Coin) {
         self.id = model.id
@@ -27,5 +29,7 @@ struct CoinViewModel {
         self.priceBTC = model.priceBTC
         self.marketCapUSD = (model.marketCapUSD != nil) ? NSDecimalNumber(string: model.marketCapUSD) : NSDecimalNumber(string: "0")
         self.percentChange24h = (model.percentChange24h != nil) ? (model.percentChange24h! as NSString).doubleValue : Double(0.00)
+        self.price = NSDecimalNumber(string: model.price)
+        self.marketCap = (model.marketCap != nil) ? NSDecimalNumber(string: model.marketCap) : NSDecimalNumber(string: "0")
     }
 }

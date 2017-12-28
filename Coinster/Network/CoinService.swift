@@ -22,16 +22,16 @@ struct CoinService: Gettable {
     typealias completionHandler = (Result<[Coin?]>) -> ()
 
     func get(completion: @escaping completionHandler) {
-        let baseURL = "https://api.coinmarketcap.com/v1/ticker/"
+        let baseURL = "https://coinster.herokuapp.com/"
         var path: String
         
         if let id = id {
-            path = "\(id)"
+            path = "coin?id=\(id)"
         } else {
-            path = "&start=\(start)&limit=500"
+            path = "coins?start=\(start)"
         }
         
-        let endpoint = baseURL + "?convert=\(convert)" + path
+        let endpoint = baseURL + path + "&currency=\(convert)"
         print(endpoint)
         guard let url = URL(string: endpoint) else {
             completion(.Error(.invalidURL))

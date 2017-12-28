@@ -70,10 +70,10 @@ class CoinCell: UICollectionViewCell {
         let leftAttributedText = NSMutableAttributedString(string: viewModel.name, attributes: [NSAttributedStringKey.font: UIFont.boldSystemFont(ofSize: 16)])
         leftAttributedText.append(NSAttributedString(string: " (\(viewModel.symbol))", attributes: [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 12)]))
         leftAttributedText.append(NSAttributedString(string: "\n\n", attributes: [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 4)]))
-        leftAttributedText.append(NSAttributedString(string: viewModel.marketCapUSD.formatCurrency(localeIdentifier: "en_US"), attributes: [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 14)]))
+        leftAttributedText.append(NSAttributedString(string: viewModel.marketCap.formatCurrency(localeIdentifier: "en_US"), attributes: [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 14)]))
         
         // RightHandLabel
-        let rightAttributedText = NSMutableAttributedString(string: viewModel.priceUSD.formatCurrency(localeIdentifier: "en_US"), attributes: [NSAttributedStringKey.font: UIFont.boldSystemFont(ofSize: 14)])
+        let rightAttributedText = NSMutableAttributedString(string: viewModel.price.formatCurrency(localeIdentifier: "en_US"), attributes: [NSAttributedStringKey.font: UIFont.boldSystemFont(ofSize: 14)])
         rightAttributedText.append(NSAttributedString(string: "\n\n", attributes: [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 4)]))
         rightAttributedText.append(NSAttributedString(string: "\(viewModel.percentChange24h)%", attributes: [NSAttributedStringKey.foregroundColor: percentChangeColor, NSAttributedStringKey.font: UIFont.systemFont(ofSize: 14)]))
         

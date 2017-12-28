@@ -24,12 +24,12 @@ extension CoinsViewController: UISearchBarDelegate, UISearchResultsUpdating {
         progressHUD.hide()
         
         filterCoins(searchBar: searchController.searchBar, searchText: searchText) { (coins) in
-            if (coins.isEmpty) {
-                NSObject.cancelPreviousPerformRequests(withTarget: self, selector: #selector(searchCoin(id:)), object: lastSearched)
-                
-                lastSearched = searchText as NSString
-                self.perform(#selector(searchCoin(id:)), with: lastSearched, afterDelay: 1.0)
-            }
+//            if (coins.isEmpty) {
+//                NSObject.cancelPreviousPerformRequests(withTarget: self, selector: #selector(searchCoin(id:)), object: lastSearched)
+//
+//                lastSearched = searchText as NSString
+//                self.perform(#selector(searchCoin(id:)), with: lastSearched, afterDelay: 1.0)
+//            }
         }
     }
     

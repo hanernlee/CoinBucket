@@ -16,6 +16,8 @@ struct Coin: Codable {
     let priceBTC: String
     let marketCapUSD: String?
     let percentChange24h: String?
+    let price: String
+    let marketCap: String?
     
     var imageUrl: String {
         return "https://files.coinmarketcap.com/static/img/coins/32x32/\(id).png"
@@ -29,5 +31,7 @@ struct Coin: Codable {
         case priceBTC = "price_btc"
         case marketCapUSD = "market_cap_usd"
         case percentChange24h = "percent_change_24h"
+        case price = "price"
+        case marketCap = "market_cap"
     }
 }

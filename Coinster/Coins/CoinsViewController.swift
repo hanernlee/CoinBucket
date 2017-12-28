@@ -45,12 +45,11 @@ class CoinsViewController: UICollectionViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        guard let selectedCurrency = selectedCurrency else { return }
-        
-        if selectedCurrency.name != stateController.currency.name {
-            
-            handleRefresh()
+        guard let currentCurrency = selectedCurrency else { return }
 
+        if currentCurrency.name != stateController.currency.name {
+            selectedCurrency = stateController.currency
+            handleRefresh()
         } else {
             print("Same")
         }
