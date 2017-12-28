@@ -4,7 +4,7 @@ var request = require('request');
 var Coin = require("../models/coin")
 
 exports.list_all_coins = function(req, res) {
-  const currency = req.query.currency;
+  const currency = "USD";
   const currencyLower = currency.toLowerCase();
 
   request('https://api.coinmarketcap.com/v1/ticker/?convert=${currency}&limit=0', function (error, response, body) {
