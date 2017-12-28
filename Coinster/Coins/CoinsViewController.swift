@@ -57,8 +57,10 @@ class CoinsViewController: UICollectionViewController {
     
     // MARK: - Fileprivate Methods
     fileprivate func configureUI() {
-        collectionView?.backgroundColor = .white
+        collectionView?.backgroundColor = .blue
         navigationItem.title = "Coins"
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: stateController.currency.name, style: .plain, target: self, action: #selector(goToCurrencySelection))
+
 
         let refreshControl = UIRefreshControl()
         refreshControl.addTarget(self, action: #selector(handleRefresh), for: .valueChanged)
@@ -92,5 +94,9 @@ class CoinsViewController: UICollectionViewController {
         progressHUD.show()
         progressHUD.text = "Searching \(id)"
         getCoin(fromService: service)
+    }
+    
+    @objc func goToCurrencySelection() {
+        print("zz")
     }
 }
