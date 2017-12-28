@@ -4,32 +4,87 @@ var request = require('request');
 var Coin = require("../models/coin")
 
 exports.list_all_coins = function(req, res) {
-  request('https://api.coinmarketcap.com/v1/ticker/?limit=0', function (error, response, body) {
-    console.log('error:', error); // Print the error if one occurred and handle it
-    console.log('statusCode:', response && response.statusCode); // Print the response status code if a response was received
+  const currency = req.query.currency;
+  const currencyLower = currency.toLowerCase();
 
-    const bodyRes = JSON.parse(body);
-    console.log(bodyRes[0].id);
+  request('https://api.coinmarketcap.com/v1/ticker/?convert=${currency}&limit=0', function (error, response, body) {
+    if (error) {
+      res.send(error);
+    }
 
-    res.send(bodyRes);
+    if (response && response.statusCode && response.statusCode == 200) {
+      const data = JSON.parse(body);
 
+      var coins = [];
+
+      for(var i = 0; i < data.length; i ++) {
+        var coin = new Coin(data[i]);
+        coin.price = data[i]["price_" + currencyLower];
+        coin.market_cap = data[i]["market_cap_" + currencyLower];
+        coins.push(coin);
+      } 
+
+      res.send(coins);
+    } else {
+      res.send("API Error");
+    }
   });
 };
 
 exports.list_coins = function(req, res) {
-  console.log(req.params);
+  const currency = req.query.currency;
+  const currencyLower = currency.toLowerCase();
+  const start = req.query.start;
 
-  const convertCurrency = "USD";
-  const start = 0
+  request(`https://api.coinmarketcap.com/v1/ticker/?convert=${currency}&start=${start}&limit=500"`, function (error, response, body) {
+    if (error) {
+      res.send(error);
+    }
 
-  request(`https://api.coinmarketcap.com/v1/ticker/?convert=${convertCurrency}&start=${start}&limit=500`, function (error, response, body) {
-    console.log('error:', error); // Print the error if one occurred and handle it
-    console.log('statusCode:', response && response.statusCode); // Print the response status code if a response was received
+    if (response && response.statusCode && response.statusCode == 200) {
+      const data = JSON.parse(body);
 
-    const bodyRes = JSON.parse(body);
-    console.log(bodyRes[0].id);
+      var coins = [];
 
-    res.send(bodyRes);
+      for(var i = 0; i < data.length; i ++) {
+        var coin = new Coin(data[i]);
+        coin.price = data[i]["price_" + currencyLower];
+        coin.market_cap = data[i]["market_cap_" + currencyLower];
+        coins.push(coin);
+      } 
 
+      res.send(coins);
+    } else {
+      res.send("API Error");
+    }
+  });
+};
+
+exports.list_coin = function(req, res) {
+  const id = req.params.id;
+  const currency = req.query.currency;
+  const currencyLower = currency.toLowerCase();
+
+  request(`https://api.coinmarketcap.com/v1/ticker/${id}/?convert=${currency}&"`, function (error, response, body) {
+    if (error) {
+      res.send(error);
+    }
+
+    if (response && response.statusCode && response.statusCode == 200) {
+      const data = JSON.parse(body);
+
+      var coins = [];
+
+      for(var i = 0; i < data.length; i ++) {
+        var coin = new Coin(data[i]);
+        coin.price = data[i]["price_" + currencyLower];
+        coin.market_cap = data[i]["market_cap_" + currencyLower];
+        coins.push(coin);
+      } 
+
+      res.send(coins);
+    } else {
+      res.send("API Error");
+    }
   });
 };

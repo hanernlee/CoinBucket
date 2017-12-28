@@ -6,6 +6,9 @@ module.exports = function(app) {
   app.route('/')
     .get(coinList.list_all_coins);
 
-  app.route('/:coinID')
+  app.route('/coins')
     .get(coinList.list_coins);
+
+  app.route('/coin/:id')
+    .get(coinList.list_coin);
 };
