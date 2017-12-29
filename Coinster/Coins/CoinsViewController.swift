@@ -57,7 +57,7 @@ class CoinsViewController: UICollectionViewController {
     
     // MARK: - Fileprivate Methods
     fileprivate func configureUI() {
-        collectionView?.backgroundColor = .blue
+        collectionView?.backgroundColor = .white
         navigationItem.title = "Coins"
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: stateController.currency.name, style: .plain, target: self, action: #selector(goToCurrencySelection))
 
