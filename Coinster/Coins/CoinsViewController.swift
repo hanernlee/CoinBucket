@@ -59,8 +59,6 @@ class CoinsViewController: UICollectionViewController {
     fileprivate func configureUI() {
         collectionView?.backgroundColor = .white
         navigationItem.title = "Coins"
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: stateController.currency.name, style: .plain, target: self, action: #selector(goToCurrencySelection))
-
 
         let refreshControl = UIRefreshControl()
         refreshControl.addTarget(self, action: #selector(handleRefresh), for: .valueChanged)
