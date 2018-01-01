@@ -93,8 +93,4 @@ class CoinsViewController: UICollectionViewController {
         progressHUD.text = "Searching \(id)"
         getCoin(fromService: service)
     }
-    
-    @objc func goToCurrencySelection() {
-        print("zz")
-    }
 }
