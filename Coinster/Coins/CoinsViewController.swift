@@ -58,7 +58,7 @@ class CoinsViewController: UICollectionViewController {
     // MARK: - Fileprivate Methods
     fileprivate func configureUI() {
         collectionView?.backgroundColor = .white
-        navigationItem.title = "Coins"
+        navigationItem.title = "Coins (\(stateController.currency.name)"
 
         let refreshControl = UIRefreshControl()
         refreshControl.addTarget(self, action: #selector(handleRefresh), for: .valueChanged)
