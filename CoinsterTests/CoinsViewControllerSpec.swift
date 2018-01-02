@@ -1,6 +1,6 @@
 //
 //  CoinsViewControllerSpec.swift
-//  CoinsterTests
+//  CoinBucketTests
 //
 //  Created by Christopher Lee on 10/12/17.
 //  Copyright © 2017 Christopher Lee. All rights reserved.
@@ -12,7 +12,7 @@ import Foundation
 import Quick
 import Nimble
 
-@testable import Coinster
+@testable import CoinBucket
 
 class CoinsViewControllerSpec: QuickSpec {
     override func spec() {
