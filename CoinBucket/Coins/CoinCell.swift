@@ -33,10 +33,16 @@ class CoinCell: UICollectionViewCell {
         return label
     }()
     
+    let separatorView: UIView = {
+        let view = UIView()
+        view.backgroundColor = UIColor(white: 0, alpha: 0.5)
+        return view
+    }()
+
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        backgroundColor = .white
         configureUI()
     }
     
@@ -45,6 +51,8 @@ class CoinCell: UICollectionViewCell {
     }
     
     fileprivate func configureUI() {
+        backgroundColor = .white
+
         addSubview(coinImageView)
         coinImageView.anchor(top: nil, left: leftAnchor, bottom: nil, right: nil, paddingTop: 0, paddingLeft: 12, paddingBottom: 0, paddingRight: 0, width: 30, height: 30)
         coinImageView.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
@@ -54,6 +62,9 @@ class CoinCell: UICollectionViewCell {
         
         addSubview(coinLeftLabel)
         coinLeftLabel.anchor(top: topAnchor, left: coinImageView.rightAnchor, bottom: bottomAnchor, right: coinRightLabel.leftAnchor, paddingTop: 0, paddingLeft: 8, paddingBottom: 0, paddingRight: 0, width: 0, height: 0)
+        
+        addSubview(separatorView)
+        separatorView.anchor(top: nil, left: coinLeftLabel.leftAnchor, bottom: bottomAnchor, right: rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 0.5)
     }
     
     

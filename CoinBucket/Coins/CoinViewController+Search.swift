@@ -25,8 +25,10 @@ extension CoinsViewController: UISearchBarDelegate, UISearchResultsUpdating {
         
         filterCoins(searchBar: searchController.searchBar, searchText: searchText) { (coins) in
             if (coins.isEmpty) {
-                progressHUD.showWithoutSpinner()
-                progressHUD.text = "Sorry can't find `\(searchText)`. Try hitting 'Search'."
+                
+                let label = UILabel()
+                label.text = "Can't find \(searchText)"
+                collectionView?.addSubview(label)
                 
 //                NSObject.cancelPreviousPerformRequests(withTarget: self, selector: #selector(searchCoin(id:)), object: lastSearched)
 //                lastSearched = searchText as NSString

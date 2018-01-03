@@ -98,6 +98,8 @@ class CoinsViewController: UICollectionViewController {
         isFinishedPaging = false
         searchController.isActive = false
         fetchCoins(start: start)
+        progressHUD.show()
+        progressHUD.text = "Updating..."
     }
     
     @objc func searchCoin(id: String) {

@@ -32,7 +32,7 @@ struct CoinService: Gettable {
         }
         
         let endpoint = baseURL + path + "&currency=\(convert)"
-
+        
         guard let url = URL(string: endpoint) else {
             completion(.Error(.invalidURL))
             return
