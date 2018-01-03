@@ -10,9 +10,9 @@ import UIKit
 
 class CoinsViewController: UICollectionViewController {
     
-    let currencyRightButton: UIButton = {
+    lazy var currencyRightButton: UIButton = {
         let button = UIButton()
-        button.addTarget(self, action: #selector(rightButtonTapped), for: .touchUpInside)
+        button.addTarget(self, action: #selector(goToSettings), for: .touchUpInside)
         button.setTitleColor(.gray, for: .normal)
         return button
     }()
@@ -62,6 +62,7 @@ class CoinsViewController: UICollectionViewController {
         }
 
         guard let navigationBar = navigationController?.navigationBar else { return }
+        
         navigationBar.addSubview(currencyRightButton)
         currencyRightButton.setTitle("\(stateController.currency.name)", for: .normal)
         currencyRightButton.anchor(top: nil, left: nil, bottom: navigationBar.bottomAnchor, right: navigationBar.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 5, paddingRight: 16, width: 0, height: 0)
@@ -106,7 +107,7 @@ class CoinsViewController: UICollectionViewController {
         getCoin(fromService: service)
     }
     
-    @objc func rightButtonTapped() {
-        print("ZZZ")
+    @objc func goToSettings() {
+        tabBarController?.selectedIndex = 1
     }
 }
