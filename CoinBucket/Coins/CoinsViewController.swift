@@ -10,6 +10,13 @@ import UIKit
 
 class CoinsViewController: UICollectionViewController {
     
+    let currencyRightButton: UIButton = {
+        let button = UIButton()
+        button.addTarget(self, action: #selector(rightButtonTapped), for: .touchUpInside)
+        button.setTitleColor(.gray, for: .normal)
+        return button
+    }()
+    
     let searchController = UISearchController(searchResultsController: nil)
     let progressHUD = ProgressHUD(text: "")
     let coinCell = "CoinCell"
@@ -49,11 +56,15 @@ class CoinsViewController: UICollectionViewController {
 
         if currentCurrency.name != stateController.currency.name {
             selectedCurrency = stateController.currency
-            navigationItem.title = "Coins (\(stateController.currency.name))"
             handleRefresh()
         } else {
             print("Same")
         }
+
+        guard let navigationBar = navigationController?.navigationBar else { return }
+        navigationBar.addSubview(currencyRightButton)
+        currencyRightButton.setTitle("\(stateController.currency.name)", for: .normal)
+        currencyRightButton.anchor(top: nil, left: nil, bottom: navigationBar.bottomAnchor, right: navigationBar.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 5, paddingRight: 16, width: 0, height: 0)
     }
     
     // MARK: - Fileprivate Methods
@@ -69,6 +80,7 @@ class CoinsViewController: UICollectionViewController {
         searchController.searchResultsUpdater = self
         navigationItem.searchController = searchController
         navigationItem.hidesSearchBarWhenScrolling = false
+        navigationItem.title = "Coins"
         
         view.addSubview(progressHUD)
     }
@@ -92,5 +104,9 @@ class CoinsViewController: UICollectionViewController {
         progressHUD.show()
         progressHUD.text = "Searching \(id)"
         getCoin(fromService: service)
+    }
+    
+    @objc func rightButtonTapped() {
+        print("ZZZ")
     }
 }
