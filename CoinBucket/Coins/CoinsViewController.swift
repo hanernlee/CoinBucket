@@ -100,6 +100,7 @@ class CoinsViewController: UICollectionViewController {
         fetchCoins(start: start)
         progressHUD.show()
         progressHUD.text = "Updating..."
+        
     }
     
     @objc func searchCoin(id: String) {
