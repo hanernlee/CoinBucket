@@ -27,9 +27,11 @@ extension CoinsViewController: UISearchBarDelegate, UISearchResultsUpdating {
             if (coins.isEmpty) {
                 
                 let label = UILabel()
-                label.text = "Can't find \(searchText)"
-                collectionView?.addSubview(label)
-                
+                label.numberOfLines = 0
+                label.text = "Search for '\(searchText)'"
+                label.backgroundColor = .green
+                label.sizeToFit()
+                self.collectionView?.backgroundView = label
 //                NSObject.cancelPreviousPerformRequests(withTarget: self, selector: #selector(searchCoin(id:)), object: lastSearched)
 //                lastSearched = searchText as NSString
 //                self.perform(#selector(searchCoin(id:)), with: lastSearched, afterDelay: 1.0)
