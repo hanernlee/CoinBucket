@@ -25,23 +25,15 @@ extension CoinsViewController: UISearchBarDelegate, UISearchResultsUpdating {
         
         filterCoins(searchBar: searchController.searchBar, searchText: searchText) { (coins) in
             if (coins.isEmpty) {
-                
-                let view = UIView()
-                view.backgroundColor = .yellow
-                
                 let navigationBarHeight: CGFloat = self.navigationController!.navigationBar.frame.height
 
-                let label = UILabel()
-                label.numberOfLines = 0
-                label.text = "Search for '\(searchText)'"
-                label.backgroundColor = .red
-                label.sizeToFit()
-                view.addSubview(label)
-                label.anchor(top: view.topAnchor, left: nil, bottom: nil, right: nil, paddingTop: navigationBarHeight, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 0)
-                self.collectionView?.backgroundView = view
-//                NSObject.cancelPreviousPerformRequests(withTarget: self, selector: #selector(searchCoin(id:)), object: lastSearched)
-//                lastSearched = searchText as NSString
-//                self.perform(#selector(searchCoin(id:)), with: lastSearched, afterDelay: 1.0)
+                self.collectionView?.backgroundView = emptyView
+                emptyTextView.text = """
+                    Search for "\(searchText)"
+                """
+                emptyView.addSubview(emptyTextView)
+                emptyTextView.anchor(top: view.topAnchor, left: view.leftAnchor, bottom: nil, right: view.rightAnchor, paddingTop: navigationBarHeight + 20, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 0)
+
             }
         }
     }

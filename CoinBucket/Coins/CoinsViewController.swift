@@ -10,6 +10,18 @@ import UIKit
 
 class CoinsViewController: UICollectionViewController {
     
+    let emptyView: UIView = {
+        let view = UIView()
+        view.backgroundColor = .yellow
+        return view
+    }()
+    
+    let emptyTextView: UITextView = {
+        let textView = UITextView()
+        textView.backgroundColor = .red
+        return textView
+    }()
+    
     lazy var currencyRightButton: UIButton = {
         let button = UIButton()
         button.addTarget(self, action: #selector(goToSettings), for: .touchUpInside)
