@@ -8,7 +8,7 @@
 
 import UIKit
 
-extension CoinsViewController: UISearchBarDelegate, UISearchResultsUpdating, UITextViewDelegate {
+extension CoinsViewController: UISearchBarDelegate, UISearchResultsUpdating {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         guard let searchText = searchBar.text else { return }
                 
@@ -40,10 +40,5 @@ extension CoinsViewController: UISearchBarDelegate, UISearchResultsUpdating, UIT
         progressHUD.hide()
         searchController.isActive = true
         emptyTextView.removeFromSuperview()
-    }
-    
-    func textViewDidChange(_ textView: UITextView) {
-        view.layoutIfNeeded()
-        view.setNeedsUpdateConstraints()
     }
 }
