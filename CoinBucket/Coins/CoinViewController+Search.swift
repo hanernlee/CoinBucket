@@ -29,8 +29,6 @@ extension CoinsViewController: UISearchBarDelegate, UISearchResultsUpdating {
 
                 emptyView.addSubview(emptyTextView)
                 emptyTextView.anchor(top: nil, left: nil, bottom: nil, right: nil, paddingTop: navigationBarHeight, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: view.frame.width, height: view.frame.height)
-                
-                emptyTextView.delegate = self
                 emptyTextView.text = "Search for '\(searchText)'"
             }
         }
