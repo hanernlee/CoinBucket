@@ -26,11 +26,9 @@ extension CoinsViewController: UISearchBarDelegate, UISearchResultsUpdating, UIT
         filterCoins(searchBar: searchController.searchBar, searchText: searchText) { (coins) in
             if (coins.isEmpty) {
                 let navigationBarHeight: CGFloat = self.navigationController!.navigationBar.frame.height
-                collectionView?.backgroundView = emptyView
 
                 emptyView.addSubview(emptyTextView)
-                emptyView.anchor(top: view.topAnchor, left: view.leftAnchor, bottom: view.bottomAnchor, right: view.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 0)
-                emptyTextView.anchor(top: nil, left: nil, bottom: nil, right: nil, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: emptyView.frame.width, height: emptyView.frame.height + navigationBarHeight)
+                emptyTextView.anchor(top: nil, left: nil, bottom: nil, right: nil, paddingTop: navigationBarHeight, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: view.frame.width, height: view.frame.height)
                 
                 emptyTextView.delegate = self
                 emptyTextView.text = "Search for '\(searchText)'"
@@ -46,5 +44,6 @@ extension CoinsViewController: UISearchBarDelegate, UISearchResultsUpdating, UIT
     
     func textViewDidChange(_ textView: UITextView) {
         view.layoutIfNeeded()
+        view.setNeedsUpdateConstraints()
     }
 }

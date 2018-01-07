@@ -56,7 +56,7 @@ class CoinsViewController: UICollectionViewController {
         super.viewDidLoad()
         
         definesPresentationContext = true
-
+        
         configureUI()
         registerView()
         
@@ -87,6 +87,7 @@ class CoinsViewController: UICollectionViewController {
     // MARK: - Fileprivate Methods
     fileprivate func configureUI() {
         collectionView?.backgroundColor = .white
+        collectionView?.backgroundView = emptyView
 
         let refreshControl = UIRefreshControl()
         refreshControl.addTarget(self, action: #selector(handleRefresh), for: .valueChanged)
