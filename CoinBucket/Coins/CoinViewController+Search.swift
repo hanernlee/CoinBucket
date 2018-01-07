@@ -8,10 +8,10 @@
 
 import UIKit
 
-extension CoinsViewController: UISearchBarDelegate, UISearchResultsUpdating {
+extension CoinsViewController: UISearchBarDelegate, UISearchResultsUpdating, UITextViewDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         guard let searchText = searchBar.text else { return }
-        
+                
         NSObject.cancelPreviousPerformRequests(withTarget: self, selector: #selector(searchCoin(id:)), object: lastSearched)
         
         lastSearched = searchText as NSString
@@ -26,19 +26,25 @@ extension CoinsViewController: UISearchBarDelegate, UISearchResultsUpdating {
         filterCoins(searchBar: searchController.searchBar, searchText: searchText) { (coins) in
             if (coins.isEmpty) {
                 let navigationBarHeight: CGFloat = self.navigationController!.navigationBar.frame.height
+                collectionView?.backgroundView = emptyView
 
-                self.collectionView?.backgroundView = emptyView
-                emptyTextView.text = """
-                    Search for "\(searchText)"
-                """
                 emptyView.addSubview(emptyTextView)
-                emptyTextView.anchor(top: view.topAnchor, left: view.leftAnchor, bottom: nil, right: view.rightAnchor, paddingTop: navigationBarHeight + 20, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 0)
-
+                emptyView.anchor(top: view.topAnchor, left: view.leftAnchor, bottom: view.bottomAnchor, right: view.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 0)
+                emptyTextView.anchor(top: nil, left: nil, bottom: nil, right: nil, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: emptyView.frame.width, height: emptyView.frame.height + navigationBarHeight)
+                
+                emptyTextView.delegate = self
+                emptyTextView.text = "Search for '\(searchText)'"
             }
         }
     }
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         progressHUD.hide()
+        searchController.isActive = true
+        emptyTextView.removeFromSuperview()
+    }
+    
+    func textViewDidChange(_ textView: UITextView) {
+        view.layoutIfNeeded()
     }
 }

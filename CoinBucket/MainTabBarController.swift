@@ -28,7 +28,6 @@ class MainTabBarController: UITabBarController {
         let coinsNavController = templateNavController(unselectedImage: #imageLiteral(resourceName: "home_unselected"), selectedImage: #imageLiteral(resourceName: "home_selected"), rootViewController: coinsViewController)
         
         let settingsController = SettingsViewController()
-        print(stateController)
         settingsController.stateController = stateController
         let settingsNavController = templateNavController(unselectedImage: #imageLiteral(resourceName: "home_unselected"), selectedImage: #imageLiteral(resourceName: "home_selected"), rootViewController: settingsController)
         

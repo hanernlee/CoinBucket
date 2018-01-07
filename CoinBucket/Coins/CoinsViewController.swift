@@ -12,13 +12,15 @@ class CoinsViewController: UICollectionViewController {
     
     let emptyView: UIView = {
         let view = UIView()
-        view.backgroundColor = .yellow
+        view.backgroundColor = .white
         return view
     }()
     
-    let emptyTextView: UITextView = {
+    lazy var emptyTextView: UITextView = {
         let textView = UITextView()
-        textView.backgroundColor = .red
+        textView.font = UIFont.systemFont(ofSize: 16)
+        textView.textContainerInset = UIEdgeInsets(top: 16, left: 16, bottom: 0, right: 16);
+        textView.textColor = .gray
         return textView
     }()
     
@@ -52,6 +54,8 @@ class CoinsViewController: UICollectionViewController {
     // MARK: - ViewController Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        definesPresentationContext = true
 
         configureUI()
         registerView()
@@ -94,7 +98,7 @@ class CoinsViewController: UICollectionViewController {
         navigationItem.searchController = searchController
         navigationItem.hidesSearchBarWhenScrolling = false
         navigationItem.title = "Coins"
-        
+                
         view.addSubview(progressHUD)
     }
     
@@ -117,6 +121,8 @@ class CoinsViewController: UICollectionViewController {
     
     @objc func searchCoin(id: String) {
         let service = CoinService(id: id, start: 0, convert: stateController.currency.name)
+        emptyTextView.removeFromSuperview()
+
         progressHUD.show()
         progressHUD.text = "Searching \(id)"
         getCoin(fromService: service)
