@@ -44,6 +44,7 @@ struct CoinService: Gettable {
             DispatchQueue.main.async {
                 switch result {
                 case .Error(let error):
+                    // Error handling
                     completion(.Error(error))
                 case .Success(let json):
                     do {
