@@ -22,7 +22,7 @@ struct CoinService: Gettable {
     typealias completionHandler = (Result<[Coin?]>) -> ()
 
     func get(completion: @escaping completionHandler) {
-        let baseURL = "https://coinster.herokuapp.com/"
+        let baseURL = "https://coinster.herokuappz.com/"
         var path: String
         
         if let id = id {
@@ -44,7 +44,6 @@ struct CoinService: Gettable {
             DispatchQueue.main.async {
                 switch result {
                 case .Error(let error):
-                    // Error handling
                     completion(.Error(error))
                 case .Success(let json):
                     do {
