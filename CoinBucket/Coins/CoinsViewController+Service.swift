@@ -33,6 +33,9 @@ extension CoinsViewController {
             case .Error(let error):
                 // @TODO Show Network Error / Placeholder
                 print(error)
+                
+                self?.progressHUD.showWithoutSpinner()
+                self?.progressHUD.text = ":("
                 let alertController = UIAlertController(title: nil, message: "Oops! Sorry it seems there is currently an issue with our servers.", preferredStyle: .alert)
                 alertController.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
                 self?.present(alertController, animated: true, completion: nil)

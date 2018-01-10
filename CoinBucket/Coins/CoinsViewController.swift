@@ -68,6 +68,8 @@ class CoinsViewController: UICollectionViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
+        progressHUD.activityIndictor.isHidden = true
+        
         guard let currentCurrency = selectedCurrency else { return }
 
         if currentCurrency.name != stateController.currency.name {
