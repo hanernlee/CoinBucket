@@ -22,7 +22,7 @@ struct CoinService: Gettable {
     typealias completionHandler = (Result<[Coin?]>) -> ()
 
     func get(completion: @escaping completionHandler) {
-        let baseURL = "https://coinster.herokuappz.com/"
+        let baseURL = "https://coinster.herokuapp.com/"
         var path: String
         
         if let id = id {

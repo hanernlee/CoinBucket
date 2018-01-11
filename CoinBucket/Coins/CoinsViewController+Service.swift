@@ -31,9 +31,7 @@ extension CoinsViewController {
                 self?.filteredCoins = tempCoins
                 self?.progressHUD.hide()
             case .Error(let error):
-                // @TODO Show Network Error / Placeholder
                 print(error)
-                
                 self?.progressHUD.showWithoutSpinner()
                 self?.progressHUD.text = ":("
                 let alertController = UIAlertController(title: nil, message: "Oops! Sorry it seems there is currently an issue with our servers.", preferredStyle: .alert)
@@ -60,8 +58,12 @@ extension CoinsViewController {
                     self?.isFinishedPaging = true
                 }
             case .Error(let error):
-                // @TODO Show Network Error / Placeholder
                 print(error)
+                self?.progressHUD.showWithoutSpinner()
+                self?.progressHUD.text = ":("
+                let alertController = UIAlertController(title: nil, message: "Oops! Sorry it seems there is currently an issue with our servers.", preferredStyle: .alert)
+                alertController.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
+                self?.present(alertController, animated: true, completion: nil)
             }
         }
     }
@@ -84,7 +86,6 @@ extension CoinsViewController {
                 self?.collectionView?.reloadData()
                 self?.progressHUD.hide()
             case .Error(let error):
-                // @TODO Show Network Error / Placeholder
                 if self?.filteredCoins.count == 0 {
                     self?.progressHUD.showWithoutSpinner()
                     self?.progressHUD.text = "Oops! Sorry can't find that Coin"
