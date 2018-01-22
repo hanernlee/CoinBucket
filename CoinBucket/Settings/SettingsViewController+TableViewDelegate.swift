@@ -12,7 +12,7 @@ extension SettingsViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         switch section {
         case 0: return "Currency"
-        case 1: return "Nightmode"
+//        case 1: return "Nightmode"
         default: fatalError("Unknown section")
         }
     }

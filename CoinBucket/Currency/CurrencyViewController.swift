@@ -26,7 +26,7 @@ class CurrencyViewController: UIViewController {
         super.viewDidLoad()
         
         navigationItem.title = "Currencies"
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Save", style: .plain, target: nil, action: nil)
+//        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Save", style: .plain, target: nil, action: nil)
         
         createCurrencies()
         registerTableView()
