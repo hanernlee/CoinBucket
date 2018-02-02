@@ -1,1 +1,3 @@
-Work In Progress
+# CoinBucket
+
+Notes & Thoughts In Progress
