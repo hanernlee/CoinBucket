@@ -1,5 +1,5 @@
 # CoinBucket
-Cryptocurrency iOS price tracker App
+Cryptocurrency iOS  price tracker App
 
 <img src="https://firebasestorage.googleapis.com/v0/b/foliotopher.appspot.com/o/coinbucket.jpg?alt=media&token=a6a355a4-3e47-4ddb-9a5a-d52926ee49a7" width="400">
 
@@ -18,7 +18,7 @@ Having no prior iOS development experience and being self-taught, building this 
 At this stage, I am still not happy enough for it to be published on the AppStore. There is still a whole lot of features to be added and I am definitely working towards it.
 
 ### Final Thoughts
-After diving into iOS development, I can confidently say that I am in love and super passionate about iOS development. Just can't wait to learn more throughout this journey.
+After diving into iOS development, I can confidently say that I am in love and super passionate about the iOS environment. Just can't wait to learn more throughout this journey.
 
 ### *Future features
 1. Ability to add Coins to Portfolio
