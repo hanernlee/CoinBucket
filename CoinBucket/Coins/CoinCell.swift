@@ -33,13 +33,6 @@ class CoinCell: UICollectionViewCell {
         return label
     }()
     
-    let separatorView: UIView = {
-        let view = UIView()
-        view.backgroundColor = UIColor(white: 0, alpha: 0.5)
-        return view
-    }()
-
-    
     override init(frame: CGRect) {
         super.init(frame: frame)
         
@@ -62,9 +55,6 @@ class CoinCell: UICollectionViewCell {
         
         addSubview(coinLeftLabel)
         coinLeftLabel.anchor(top: topAnchor, left: coinImageView.rightAnchor, bottom: bottomAnchor, right: coinRightLabel.leftAnchor, paddingTop: 0, paddingLeft: 8, paddingBottom: 0, paddingRight: 0, width: 0, height: 0)
-        
-        addSubview(separatorView)
-        separatorView.anchor(top: nil, left: coinLeftLabel.leftAnchor, bottom: bottomAnchor, right: rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 0.5)
     }
     
     
@@ -91,7 +81,7 @@ class CoinCell: UICollectionViewCell {
         coinLeftLabel.attributedText = leftAttributedText
         coinRightLabel.attributedText = rightAttributedText
         coinImageView.loadImageUsingCacheWithURLString(viewModel.imageUrl, placeHolder: nil) { (bool) in
-            
+            //@TODO handle success
         }
     }
 }
