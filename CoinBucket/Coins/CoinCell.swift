@@ -33,6 +33,12 @@ class CoinCell: UICollectionViewCell {
         return label
     }()
     
+    let separatorView: UIView = {
+        let view = UIView()
+        view.backgroundColor = UIColor(white: 0, alpha: 0.5)
+        return view
+    }()
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         
