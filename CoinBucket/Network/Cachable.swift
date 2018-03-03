@@ -28,7 +28,9 @@ extension Cachable where Self: UIImageView {
             }
             return
         }
-        self.image = placeHolder
+        DispatchQueue.main.async {
+            self.image = placeHolder
+        }
         
         if let url = URL(string: URLString) {
             URLSession.shared.dataTask(with: url, completionHandler: { (data, response, error) in
@@ -48,11 +50,15 @@ extension Cachable where Self: UIImageView {
                         }
                     }
                 } else {
-                    self.image = placeHolder
+                    DispatchQueue.main.async {
+                        self.image = placeHolder
+                    }
                 }
             }).resume()
         } else {
-            self.image = placeHolder
+            DispatchQueue.main.async {
+                self.image = placeHolder
+            }
         }
     }
 }

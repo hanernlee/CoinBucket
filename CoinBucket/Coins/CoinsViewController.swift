@@ -123,7 +123,9 @@ class CoinsViewController: UICollectionViewController {
     }
     
     @objc func searchCoin(id: String) {
-        let service = CoinService(id: id, start: 0, convert: stateController.currency.name)
+        let coinID = id.replacingOccurrences(of: " ", with: "-")
+
+        let service = CoinService(id: coinID, start: 0, convert: stateController.currency.name)
         emptyTextView.removeFromSuperview()
 
         progressHUD.show()
