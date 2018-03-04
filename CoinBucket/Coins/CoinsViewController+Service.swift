@@ -32,7 +32,7 @@ extension CoinsViewController {
                 self?.progressHUD.hide()
             case .Error(let error):
                 print(error)
-                self?.progressHUD.showWithoutSpinner()
+                self?.progressHUD.show()
                 self?.progressHUD.text = ":("
                 let alertController = UIAlertController(title: nil, message: "Oops! Sorry it seems there is currently an issue with our servers.", preferredStyle: .alert)
                 alertController.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
@@ -59,7 +59,7 @@ extension CoinsViewController {
                 }
             case .Error(let error):
                 print(error)
-                self?.progressHUD.showWithoutSpinner()
+                self?.progressHUD.show()
                 self?.progressHUD.text = ":("
                 let alertController = UIAlertController(title: nil, message: "Oops! Sorry it seems there is currently an issue with our servers.", preferredStyle: .alert)
                 alertController.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
@@ -87,8 +87,11 @@ extension CoinsViewController {
                 self?.progressHUD.hide()
             case .Error(let error):
                 if self?.filteredCoins.count == 0 {
-                    self?.progressHUD.showWithoutSpinner()
-                    self?.progressHUD.text = "Oops! Sorry can't find that Coin"
+                    self?.progressHUD.show()
+                    self?.progressHUD.text = ":("
+                    let alertController = UIAlertController(title: nil, message: "Oops! Sorry we can't seem to find that coin.", preferredStyle: .alert)
+                    alertController.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
+                    self?.present(alertController, animated: true, completion: nil)
                 }
                 print(error)
             }

@@ -68,8 +68,6 @@ class CoinsViewController: UICollectionViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        progressHUD.activityIndictor.isHidden = true
-        
         guard let currentCurrency = selectedCurrency else { return }
 
         if currentCurrency.name != stateController.currency.name {
@@ -119,7 +117,7 @@ class CoinsViewController: UICollectionViewController {
         fetchCoins(start: start)
         emptyTextView.removeFromSuperview()
         progressHUD.show()
-        progressHUD.text = "Updating..."
+        progressHUD.text = "Updating"
     }
     
     @objc func searchCoin(id: String) {

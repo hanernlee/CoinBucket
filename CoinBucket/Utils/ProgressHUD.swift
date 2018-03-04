@@ -15,8 +15,8 @@ class ProgressHUD: UIVisualEffectView {
         }
     }
     
-    let activityIndictor: UIActivityIndicatorView = UIActivityIndicatorView(activityIndicatorStyle: .gray)
     let label: UILabel = UILabel()
+    let labelView: UIView = UIView()
     let blurEffect = UIBlurEffect(style: .prominent)
     let vibrancyView: UIVisualEffectView
     
@@ -36,9 +36,7 @@ class ProgressHUD: UIVisualEffectView {
     
     func setup() {
         contentView.addSubview(vibrancyView)
-        contentView.addSubview(activityIndictor)
-        contentView.addSubview(label)
-        activityIndictor.startAnimating()
+        contentView.addSubview(labelView)
     }
     
     override func didMoveToSuperview() {
@@ -46,51 +44,55 @@ class ProgressHUD: UIVisualEffectView {
         
         if let superview = self.superview {
             
-            let width = superview.frame.size.width / 2.0
+            let width = superview.bounds.width / 2
             let height: CGFloat = 50.0
             self.frame = CGRect(
-                x: superview.frame.size.width / 2 - width / 2,
-                y: superview.frame.height / 2 - height / 2,
+                x: 0,
+                y: 0,
+                width: superview.bounds.width,
+                height: superview.bounds.height
+            )
+            vibrancyView.frame = self.bounds
+
+            layer.cornerRadius = 8.0
+            layer.masksToBounds = true
+            
+            labelView.frame = CGRect(
+                x: superview.frame.width / 2 - width / 2,
+                y: superview.frame.height / 2,
                 width: width,
                 height: height
             )
-            vibrancyView.frame = self.bounds
+            labelView.backgroundColor = .gray
+            UIView.animate(withDuration: 1.0, delay: 0.0, options:[UIViewAnimationOptions.repeat, UIViewAnimationOptions.autoreverse], animations: {
+                self.labelView.backgroundColor = UIColor.gray
+                self.labelView.backgroundColor = UIColor.black
+                self.labelView.backgroundColor = UIColor.gray
+            }, completion: nil)
             
-            let activityIndicatorSize: CGFloat = 40
-            activityIndictor.frame = CGRect(
-                x: 5,
-                y: height / 2 - activityIndicatorSize / 2,
-                width: activityIndicatorSize,
-                height: activityIndicatorSize
-            )
+            labelView.layer.cornerRadius = 12.0
+            labelView.layer.masksToBounds = true
+            labelView.addSubview(label)
             
-            layer.cornerRadius = 8.0
-            layer.masksToBounds = true
             label.numberOfLines = 0
             label.text = text
             label.textAlignment = NSTextAlignment.center
+            label.textColor = .white
+            label.font = UIFont.boldSystemFont(ofSize: 14)
             label.frame = CGRect(
-                x: activityIndicatorSize,
+                x: labelView.frame.width / 2 - width / 2,
                 y: 0,
-                width: width - activityIndicatorSize - 30,
+                width: width,
                 height: height
             )
-            label.textColor = .gray
-            label.font = UIFont.boldSystemFont(ofSize: 14)
         }
     }
     
     func show() {
-        self.activityIndictor.isHidden = false
         self.isHidden = false
     }
     
     func hide() {
         self.isHidden = true
-    }
-    
-    func showWithoutSpinner() {
-        self.activityIndictor.isHidden = true
-        self.isHidden = false
     }
 }
