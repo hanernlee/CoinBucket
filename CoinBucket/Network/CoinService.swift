@@ -24,7 +24,7 @@ struct CoinService: Gettable {
     func get(completion: @escaping completionHandler) {
         let baseURL = "https://coinster.herokuapp.com/"
         var path: String
-        print(start)
+
         if let id = id {
             path = "coin?id=\(id)"
         } else {
