@@ -63,7 +63,7 @@ class ProgressHUD: UIVisualEffectView {
                 width: width,
                 height: height
             )
-            labelView.backgroundColor = .gray
+
             UIView.animate(withDuration: 1.0, delay: 0.0, options:[UIViewAnimationOptions.repeat, UIViewAnimationOptions.autoreverse], animations: {
                 self.labelView.backgroundColor = UIColor.gray
                 self.labelView.backgroundColor = UIColor.black

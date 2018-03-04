@@ -86,7 +86,7 @@ class CoinsViewController: UICollectionViewController {
     
     // MARK: - Fileprivate Methods
     fileprivate func configureUI() {
-        collectionView?.backgroundColor = .white
+        collectionView?.backgroundColor = .groupTableViewBackground
         collectionView?.backgroundView = emptyView
 
         let refreshControl = UIRefreshControl()
@@ -132,6 +132,6 @@ class CoinsViewController: UICollectionViewController {
     }
     
     @objc func goToSettings() {
-        tabBarController?.selectedIndex = 1
+        tabBarController?.selectedIndex = 2
     }
 }

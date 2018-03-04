@@ -9,9 +9,14 @@
 import UIKit
 
 class PortfolioViewController: UIViewController {
+    
+    var stateController: StateController!
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        view.backgroundColor = .red
+        view.backgroundColor = .groupTableViewBackground
+        navigationItem.title = "Portfolio"
+
     }
 }
