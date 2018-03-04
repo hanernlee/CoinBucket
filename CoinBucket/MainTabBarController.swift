@@ -22,7 +22,13 @@ class MainTabBarController: UITabBarController {
 
     // MARK: - Fileprivate Methods
     fileprivate func setupTabBarItems() {
-        let stateController = StateController(currency: Currency(name: "USD"))
+        let userDefaults = UserDefaults.standard
+
+        if let currency = userDefaults.string(forKey: "currency") {
+            stateController = StateController(currency: Currency(name: "\(currency)"))
+        } else {
+            stateController = StateController(currency: Currency(name: "USD"))
+        }
         
         let portfolioViewController = PortfolioViewController()
         portfolioViewController.stateController = stateController

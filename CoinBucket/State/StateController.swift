@@ -6,6 +6,8 @@
 //  Copyright © 2017 Christopher Lee. All rights reserved.
 //
 
+var userDefaults = UserDefaults.standard
+
 import Foundation
 
 class StateController {
