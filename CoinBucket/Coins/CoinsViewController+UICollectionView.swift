@@ -36,7 +36,20 @@ extension CoinsViewController: UICollectionViewDelegateFlowLayout {
     }
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        print(filteredCoins[indexPath.item])
+        let selectedCoin = filteredCoins[indexPath.item]
+        
+        let userDefaults = UserDefaults.standard
+        
+        if let data = userDefaults.value(forKey: "savedCoins") as? Data {
+            let coins = try? PropertyListDecoder().decode(Array<Coin>.self, from: data)
+            guard var savedCoins = coins else { return }
+            // @TODO loop to prevent duplicate coins
+            savedCoins.append(selectedCoin)
+            userDefaults.set(try? PropertyListEncoder().encode(savedCoins), forKey: "savedCoins")
+            
+        } else {
+            userDefaults.set(try? PropertyListEncoder().encode([selectedCoin]), forKey: "savedCoins")
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {

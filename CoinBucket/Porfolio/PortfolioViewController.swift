@@ -8,10 +8,12 @@
 
 import UIKit
 
-class PortfolioViewController: UIViewController {
+class PortfolioViewController: UICollectionViewController {
     
     var stateController: StateController!
     
+    let headerCell = "HeaderCell"
+
     let emptyView: UIView = {
         let view = UIView()
         view.backgroundColor = .red
@@ -21,15 +23,32 @@ class PortfolioViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        view.backgroundColor = .groupTableViewBackground
+        collectionView?.backgroundColor = .groupTableViewBackground
+        
         navigationItem.title = "Portfolio"
         
         configureUI()
-
+        registerView()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        setupCoins()
     }
     
     fileprivate func configureUI() {
-        view.addSubview(emptyView)
-        emptyView.frame = CGRect(x: 0, y: (navigationController?.navigationBar.frame.height)! + 40, width: view.frame.width, height: view.frame.height / 2 - 50)
+        
+    }
+    
+    fileprivate func setupCoins() {
+        if let data = UserDefaults.standard.value(forKey: "savedCoins") as? Data {
+            let coins = try? PropertyListDecoder().decode(Array<Coin>.self, from: data)
+            print(coins)
+        }
+    }
+    
+    fileprivate func registerView() {
+        collectionView?.register(PortfolioHeaderCell.self, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: headerCell)
     }
 }

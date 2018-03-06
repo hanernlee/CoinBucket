@@ -23,14 +23,14 @@ class MainTabBarController: UITabBarController {
     // MARK: - Fileprivate Methods
     fileprivate func setupTabBarItems() {
         let userDefaults = UserDefaults.standard
-
+        
         if let currency = userDefaults.string(forKey: "currency") {
             stateController = StateController(currency: Currency(name: "\(currency)"))
         } else {
             stateController = StateController(currency: Currency(name: "USD"))
         }
         
-        let portfolioViewController = PortfolioViewController()
+        let portfolioViewController = PortfolioViewController(collectionViewLayout: UICollectionViewFlowLayout())
         portfolioViewController.stateController = stateController
         let portfolioNavController = templateNavController(title: "Portfolio", unselectedImage: #imageLiteral(resourceName: "coins_unselected").withRenderingMode(.alwaysOriginal), selectedImage: #imageLiteral(resourceName: "coins_selected").withRenderingMode(.alwaysOriginal), rootViewController: portfolioViewController)
         
