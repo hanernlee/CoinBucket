@@ -37,18 +37,19 @@ extension CoinsViewController: UICollectionViewDelegateFlowLayout {
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let selectedCoin = filteredCoins[indexPath.item]
-        
+        let symbol = selectedCoin.symbol
+        let coinsDict: [String: Coin] = ["\(symbol)": selectedCoin]
         let userDefaults = UserDefaults.standard
         
+        
+        // TODO Popup logic to save
         if let data = userDefaults.value(forKey: "savedCoins") as? Data {
-            let coins = try? PropertyListDecoder().decode(Array<Coin>.self, from: data)
-            guard var savedCoins = coins else { return }
-            // @TODO loop to prevent duplicate coins
-            savedCoins.append(selectedCoin)
-            userDefaults.set(try? PropertyListEncoder().encode(savedCoins), forKey: "savedCoins")
-            
+            var currentCoinsDict = try? PropertyListDecoder().decode([String: Coin].self, from: data)
+            currentCoinsDict![symbol] = selectedCoin
+
+            userDefaults.set(try? PropertyListEncoder().encode(currentCoinsDict), forKey: "savedCoins")
         } else {
-            userDefaults.set(try? PropertyListEncoder().encode([selectedCoin]), forKey: "savedCoins")
+            userDefaults.set(try? PropertyListEncoder().encode(coinsDict), forKey: "savedCoins")
         }
     }
     

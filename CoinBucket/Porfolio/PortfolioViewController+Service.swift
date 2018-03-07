@@ -16,13 +16,22 @@ extension PortfolioViewController {
             
             switch result {
             case .Success(let coins):
-
-                let coin = coins[0]
+                let userDefaults = UserDefaults.standard
+                let coin = coins[0]!
                 
-                for savedCoin in self?.savedCoins {
+                if let data = userDefaults.value(forKey: "savedCoins") as? Data {
+                    var coinDict = try? PropertyListDecoder().decode([String: Coin].self, from: data)
                     
+                    for (key, _) in coinDict! {
+                        if (key == coin.symbol) {
+                            coinDict![key] = coin
+                        }
+                    }
+                    
+                    userDefaults.set(try? PropertyListEncoder().encode(coinDict), forKey: "savedCoins")
                 }
 
+                self?.setupCoins()
                 self?.collectionView?.reloadData()
                 self?.progressHUD.hide()
             case .Error(let error):

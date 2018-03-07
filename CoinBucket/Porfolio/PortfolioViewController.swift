@@ -49,11 +49,19 @@ class PortfolioViewController: UICollectionViewController {
         collectionView?.refreshControl = refreshControl
     }
     
-    fileprivate func setupCoins() {
-        if let data = UserDefaults.standard.value(forKey: "savedCoins") as? Data {
-            let coins = try? PropertyListDecoder().decode(Array<Coin>.self, from: data)
-            guard let newCoins = coins else { return }
-            savedCoins = newCoins
+    func setupCoins() {
+        let userDefaults = UserDefaults.standard
+
+        if let data = userDefaults.value(forKey: "savedCoins") as? Data {
+            let coins = try? PropertyListDecoder().decode([String: Coin].self, from: data)
+
+            savedCoins.removeAll()
+
+            for (_, value) in coins! {
+                savedCoins.append(value)
+            }
+            
+            savedCoins = savedCoins.sorted(by: { $0.name < $1.name })
         }
     }
     
