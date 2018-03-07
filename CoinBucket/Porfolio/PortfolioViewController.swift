@@ -11,6 +11,7 @@ import UIKit
 class PortfolioViewController: UICollectionViewController {
     
     var stateController: StateController!
+    var selectedCurrency: Currency?
     var savedCoins = [Coin]()
 
     let progressHUD = ProgressHUD(text: "")
@@ -28,16 +29,19 @@ class PortfolioViewController: UICollectionViewController {
         super.viewDidLoad()
         
         collectionView?.backgroundColor = .groupTableViewBackground
-        
         navigationItem.title = "Portfolio"
         
         configureUI()
         registerView()
+        
+        progressHUD.hide()
+        selectedCurrency = stateController.currency
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
+        changeCurrency()
         setupCoins()
         collectionView?.reloadData()
     }
@@ -47,6 +51,24 @@ class PortfolioViewController: UICollectionViewController {
         let refreshControl = UIRefreshControl()
         refreshControl.addTarget(self, action: #selector(handleRefresh), for: .valueChanged)
         collectionView?.refreshControl = refreshControl
+        
+        view.addSubview(progressHUD)
+    }
+    
+    fileprivate func registerView() {
+        collectionView?.register(PortfolioHeaderCell.self, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: headerCell)
+        collectionView?.register(CoinCell.self, forCellWithReuseIdentifier: coinCell)
+    }
+    
+    fileprivate func changeCurrency() {
+        guard let currentCurrency = selectedCurrency else { return }
+        
+        if currentCurrency.name != stateController.currency.name {
+            selectedCurrency = stateController.currency
+            handleRefresh()
+        } else {
+            print("Same")
+        }
     }
     
     func setupCoins() {
@@ -65,18 +87,13 @@ class PortfolioViewController: UICollectionViewController {
         }
     }
     
-    fileprivate func registerView() {
-        collectionView?.register(PortfolioHeaderCell.self, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: headerCell)
-        collectionView?.register(CoinCell.self, forCellWithReuseIdentifier: coinCell)
-    }
-    
     // MARK: - #Selector Events
     @objc func handleRefresh() {
+        progressHUD.show()
+        progressHUD.text = "Updating"
         for coin in savedCoins {
             let service = CoinService(id: coin.id, start: 0, convert: stateController.currency.name)
             
-            progressHUD.show()
-            progressHUD.text = "Updating prices"
             getCoin(fromService: service)
         }
     }

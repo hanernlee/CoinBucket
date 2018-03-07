@@ -68,14 +68,7 @@ class CoinsViewController: UICollectionViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        guard let currentCurrency = selectedCurrency else { return }
-
-        if currentCurrency.name != stateController.currency.name {
-            selectedCurrency = stateController.currency
-            handleRefresh()
-        } else {
-            print("Same")
-        }
+        changeCurrency()
 
         guard let navigationBar = navigationController?.navigationBar else { return }
         
@@ -106,6 +99,17 @@ class CoinsViewController: UICollectionViewController {
     fileprivate func registerView() {
         collectionView?.register(CoinCell.self, forCellWithReuseIdentifier: coinCell)
         collectionView?.register(LoadingCell.self, forCellWithReuseIdentifier: coinLoadingCell)
+    }
+    
+    fileprivate func changeCurrency() {
+        guard let currentCurrency = selectedCurrency else { return }
+        
+        if currentCurrency.name != stateController.currency.name {
+            selectedCurrency = stateController.currency
+            handleRefresh()
+        } else {
+            print("Same")
+        }
     }
     
     // MARK: - #Selector Events
