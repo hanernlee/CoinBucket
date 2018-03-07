@@ -44,6 +44,7 @@
 		50A3296F1FE4BCCE003C0AE9 /* CoinViewController+Search.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50A3296E1FE4BCCE003C0AE9 /* CoinViewController+Search.swift */; };
 		50AAD46C204E9DC100B1E902 /* PortfolioViewController+UICollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50AAD46B204E9DC100B1E902 /* PortfolioViewController+UICollectionView.swift */; };
 		50AAD46E204EA3C600B1E902 /* PortfolioHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50AAD46D204EA3C600B1E902 /* PortfolioHeaderCell.swift */; };
+		50AAD470205012E500B1E902 /* PortfolioViewController+Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50AAD46F205012E500B1E902 /* PortfolioViewController+Service.swift */; };
 		50CDC1AF1FDBB87C009A2E22 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50CDC1AE1FDBB87C009A2E22 /* AppDelegate.swift */; };
 		50CDC1B41FDBB87C009A2E22 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 50CDC1B21FDBB87C009A2E22 /* Main.storyboard */; };
 		50CDC1B61FDBB87C009A2E22 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 50CDC1B51FDBB87C009A2E22 /* Assets.xcassets */; };
@@ -110,6 +111,7 @@
 		50A3296E1FE4BCCE003C0AE9 /* CoinViewController+Search.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CoinViewController+Search.swift"; sourceTree = "<group>"; };
 		50AAD46B204E9DC100B1E902 /* PortfolioViewController+UICollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PortfolioViewController+UICollectionView.swift"; sourceTree = "<group>"; };
 		50AAD46D204EA3C600B1E902 /* PortfolioHeaderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PortfolioHeaderCell.swift; sourceTree = "<group>"; };
+		50AAD46F205012E500B1E902 /* PortfolioViewController+Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PortfolioViewController+Service.swift"; sourceTree = "<group>"; };
 		50CDC1AB1FDBB87C009A2E22 /* CoinBucket.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CoinBucket.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		50CDC1AE1FDBB87C009A2E22 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		50CDC1B31FDBB87C009A2E22 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -198,6 +200,7 @@
 			children = (
 				504D9E391FDBEAEE008EAB42 /* PortfolioViewController.swift */,
 				50AAD46B204E9DC100B1E902 /* PortfolioViewController+UICollectionView.swift */,
+				50AAD46F205012E500B1E902 /* PortfolioViewController+Service.swift */,
 				50AAD46D204EA3C600B1E902 /* PortfolioHeaderCell.swift */,
 			);
 			path = Porfolio;
@@ -418,6 +421,7 @@
 				50A329611FDFEFE6003C0AE9 /* CoinViewModel.swift in Sources */,
 				503D3B9E1FE92D2000AD8F4D /* SettingsViewController+TableViewDataSource.swift in Sources */,
 				50AAD46E204EA3C600B1E902 /* PortfolioHeaderCell.swift in Sources */,
+				50AAD470205012E500B1E902 /* PortfolioViewController+Service.swift in Sources */,
 				50A329651FDFFA67003C0AE9 /* CoinService.swift in Sources */,
 				505910A71FDD4A0F00D63F34 /* CoinCell.swift in Sources */,
 				504D9E441FDBF254008EAB42 /* Coin.swift in Sources */,
