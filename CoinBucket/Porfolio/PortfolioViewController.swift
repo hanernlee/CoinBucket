@@ -41,8 +41,8 @@ class PortfolioViewController: UICollectionViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        changeCurrency()
         setupCoins()
+        changeCurrency()
         collectionView?.reloadData()
     }
     
@@ -62,10 +62,17 @@ class PortfolioViewController: UICollectionViewController {
     
     fileprivate func changeCurrency() {
         guard let currentCurrency = selectedCurrency else { return }
-        
+        print(savedCoins)
+
         if currentCurrency.name != stateController.currency.name {
             selectedCurrency = stateController.currency
             handleRefresh()
+        } else if !savedCoins.isEmpty {
+            for coin in savedCoins {
+                if (coin.currency != stateController.currency.name) {
+                    return handleRefresh()
+                }
+            }
         } else {
             print("Same")
         }
@@ -91,9 +98,10 @@ class PortfolioViewController: UICollectionViewController {
     @objc func handleRefresh() {
         progressHUD.show()
         progressHUD.text = "Updating"
+        
         for coin in savedCoins {
             let service = CoinService(id: coin.id, start: 0, convert: stateController.currency.name)
-            
+                
             getCoin(fromService: service)
         }
     }
