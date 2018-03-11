@@ -69,12 +69,6 @@ class CoinsViewController: UICollectionViewController {
         super.viewDidAppear(animated)
         
         changeCurrency()
-
-        guard let navigationBar = navigationController?.navigationBar else { return }
-        
-        navigationBar.addSubview(currencyRightButton)
-        currencyRightButton.setTitle("\(stateController.currency.name)", for: .normal)
-        currencyRightButton.anchor(top: nil, left: nil, bottom: navigationBar.bottomAnchor, right: navigationBar.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 5, paddingRight: 16, width: 0, height: 0)
     }
     
     // MARK: - Fileprivate Methods
@@ -92,6 +86,10 @@ class CoinsViewController: UICollectionViewController {
         navigationItem.searchController = searchController
         navigationItem.hidesSearchBarWhenScrolling = false
         navigationItem.title = "Coins"
+        
+        guard let navigationBar = navigationController?.navigationBar else { return }
+        navigationBar.addSubview(currencyRightButton)
+        currencyRightButton.anchor(top: nil, left: nil, bottom: navigationBar.bottomAnchor, right: navigationBar.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 5, paddingRight: 16, width: 0, height: 0)
                 
         view.addSubview(progressHUD)
     }
@@ -102,6 +100,8 @@ class CoinsViewController: UICollectionViewController {
     }
     
     fileprivate func changeCurrency() {
+        currencyRightButton.setTitle("\(stateController.currency.name)", for: .normal)
+
         guard let currentCurrency = selectedCurrency else { return }
         
         if currentCurrency.name != stateController.currency.name {

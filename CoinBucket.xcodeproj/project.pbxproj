@@ -237,6 +237,13 @@
 			path = Network;
 			sourceTree = "<group>";
 		};
+		50AAD4712054BAA300B1E902 /* CoinInfo */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = CoinInfo;
+			sourceTree = "<group>";
+		};
 		50CDC1A21FDBB87B009A2E22 = {
 			isa = PBXGroup;
 			children = (
@@ -262,6 +269,7 @@
 				504D9E331FDBE154008EAB42 /* Coins */,
 				504D9E381FDBEA99008EAB42 /* Porfolio */,
 				503D3B961FE9278800AD8F4D /* Settings */,
+				50AAD4712054BAA300B1E902 /* CoinInfo */,
 				504D9E421FDBF244008EAB42 /* Model */,
 				503D3BEC1FEE85FF00AD8F4D /* State */,
 				504D9E561FDCE073008EAB42 /* Network */,

@@ -23,6 +23,13 @@ class PortfolioViewController: UICollectionViewController {
         view.backgroundColor = .red
         return view
     }()
+    
+    lazy var currencyRightButton: UIButton = {
+        let button = UIButton()
+        button.addTarget(self, action: #selector(goToSettings), for: .touchUpInside)
+        button.setTitleColor(.gray, for: .normal)
+        return button
+    }()
 
     // MARK: - ViewController Lifecycle
     override func viewDidLoad() {
@@ -52,6 +59,10 @@ class PortfolioViewController: UICollectionViewController {
         refreshControl.addTarget(self, action: #selector(handleRefresh), for: .valueChanged)
         collectionView?.refreshControl = refreshControl
         
+        guard let navigationBar = navigationController?.navigationBar else { return }
+        navigationBar.addSubview(currencyRightButton)
+        currencyRightButton.anchor(top: nil, left: nil, bottom: navigationBar.bottomAnchor, right: navigationBar.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 5, paddingRight: 16, width: 0, height: 0)
+        
         view.addSubview(progressHUD)
     }
     
@@ -61,8 +72,8 @@ class PortfolioViewController: UICollectionViewController {
     }
     
     fileprivate func changeCurrency() {
+        currencyRightButton.setTitle("\(stateController.currency.name)", for: .normal)
         guard let currentCurrency = selectedCurrency else { return }
-        print(savedCoins)
 
         if currentCurrency.name != stateController.currency.name {
             selectedCurrency = stateController.currency
@@ -104,5 +115,9 @@ class PortfolioViewController: UICollectionViewController {
                 
             getCoin(fromService: service)
         }
+    }
+    
+    @objc func goToSettings() {
+        tabBarController?.selectedIndex = 2
     }
 }
