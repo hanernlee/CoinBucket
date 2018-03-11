@@ -38,7 +38,7 @@ class CoinCell: UICollectionViewCell {
         view.backgroundColor = UIColor(white: 0, alpha: 0.5)
         return view
     }()
-    
+        
     override init(frame: CGRect) {
         super.init(frame: frame)
 
@@ -74,15 +74,12 @@ class CoinCell: UICollectionViewCell {
         
         addSubview(coinLeftLabel)
         coinLeftLabel.anchor(top: topAnchor, left: coinImageView.rightAnchor, bottom: bottomAnchor, right: coinRightLabel.leftAnchor, paddingTop: 0, paddingLeft: 8, paddingBottom: 0, paddingRight: 0, width: 0, height: 0)
-        
-//        addSubview(separatorView)
-//        separatorView.anchor(top: nil, left: coinLeftLabel.leftAnchor, bottom: bottomAnchor, right: rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 0.5)
     }
     
     
     func displayCoinInCell(using viewModel: CoinViewModel) {
         var percentChangeColor: UIColor
-        
+
         if viewModel.percentChange24h > 0 {
             percentChangeColor = .green
         } else {
@@ -93,7 +90,12 @@ class CoinCell: UICollectionViewCell {
         let leftAttributedText = NSMutableAttributedString(string: viewModel.name, attributes: [NSAttributedStringKey.font: UIFont.boldSystemFont(ofSize: 16)])
         leftAttributedText.append(NSAttributedString(string: " (\(viewModel.symbol))", attributes: [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 12)]))
         leftAttributedText.append(NSAttributedString(string: "\n\n", attributes: [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 4)]))
-        leftAttributedText.append(NSAttributedString(string: "\(viewModel.priceBTC) BTC", attributes: [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 14)]))
+        
+        if let type = viewModel.coinType, type == viewType.PortfolioCoin.rawValue  {
+            leftAttributedText.append(NSAttributedString(string: "1", attributes: [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 14)]))
+        } else {
+            leftAttributedText.append(NSAttributedString(string: "\(viewModel.priceBTC) BTC", attributes: [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 14)]))
+        }
         
         // RightHandLabel
         let rightAttributedText = NSMutableAttributedString(string: viewModel.price.formatCurrency(localeIdentifier: "en_US"), attributes: [NSAttributedStringKey.font: UIFont.boldSystemFont(ofSize: 14)])

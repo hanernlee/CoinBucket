@@ -20,7 +20,8 @@ extension PortfolioViewController: UICollectionViewDelegateFlowLayout {
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: coinCell, for: indexPath) as! CoinCell
         let coin = savedCoins[indexPath.item]
-        let coinViewModel = CoinViewModel(model: coin)
+        var coinViewModel = CoinViewModel(model: coin)
+        coinViewModel.coinType = "\(viewType.PortfolioCoin)"
         cell.displayCoinInCell(using: coinViewModel)
         
         return cell

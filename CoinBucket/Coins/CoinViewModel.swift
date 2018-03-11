@@ -8,6 +8,10 @@
 
 import Foundation
 
+enum viewType: String {
+    case PortfolioCoin
+}
+
 struct CoinViewModel {
     let id: String
     let name: String
@@ -17,6 +21,7 @@ struct CoinViewModel {
     let percentChange24h: Double
     let price: NSDecimalNumber
     let marketCap: NSDecimalNumber
+    var coinType: String?
     
     init(model: Coin) {
         self.id = model.id
