@@ -41,16 +41,17 @@ extension CoinsViewController: UICollectionViewDelegateFlowLayout {
         let coinsDict: [String: Coin] = ["\(symbol)": selectedCoin]
         let userDefaults = UserDefaults.standard
         
+        let coinDataView = CoinDataViewController()
+        navigationController?.pushViewController(coinDataView, animated: true)
         
-        // TODO Popup logic to save
-        if let data = userDefaults.value(forKey: "savedCoins") as? Data {
-            var currentCoinsDict = try? PropertyListDecoder().decode([String: Coin].self, from: data)
-            currentCoinsDict![symbol] = selectedCoin
-
-            userDefaults.set(try? PropertyListEncoder().encode(currentCoinsDict), forKey: "savedCoins")
-        } else {
-            userDefaults.set(try? PropertyListEncoder().encode(coinsDict), forKey: "savedCoins")
-        }
+//        if let data = userDefaults.value(forKey: "savedCoins") as? Data {
+//            var currentCoinsDict = try? PropertyListDecoder().decode([String: Coin].self, from: data)
+//            currentCoinsDict![symbol] = selectedCoin
+//
+//            userDefaults.set(try? PropertyListEncoder().encode(currentCoinsDict), forKey: "savedCoins")
+//        } else {
+//            userDefaults.set(try? PropertyListEncoder().encode(coinsDict), forKey: "savedCoins")
+//        }
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
