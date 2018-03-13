@@ -39,7 +39,7 @@ extension CoinsViewController: UICollectionViewDelegateFlowLayout {
         let selectedCoin = filteredCoins[indexPath.item]
         let coinViewModel = CoinViewModel(model: selectedCoin)
         
-        let coinDataView = CoinDataViewController()
+        let coinDataView = CoinDataViewController(collectionViewLayout: UICollectionViewFlowLayout())
         coinDataView.model = coinViewModel
         coinDataView.coin = selectedCoin
         coinDataView.stateController = stateController

@@ -40,7 +40,7 @@ extension PortfolioViewController: UICollectionViewDelegateFlowLayout {
         let coin = savedCoins[indexPath.item]
         let coinViewModel = CoinViewModel(model: coin)
         
-        let coinDataView = CoinDataViewController()
+        let coinDataView = CoinDataViewController(collectionViewLayout: UICollectionViewFlowLayout())
         coinDataView.model = coinViewModel
         coinDataView.coin = coin
         coinDataView.stateController = stateController
