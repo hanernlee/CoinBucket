@@ -49,8 +49,6 @@ class MainTabBarController: UITabBarController {
         let viewController = rootViewController
         let navController = UINavigationController(rootViewController: viewController)
         navController.navigationBar.prefersLargeTitles = true
-        navController.tabBarItem.imageInsets = UIEdgeInsets(top: 6, left: 0, bottom: -6, right: 0)
-        navController.tabBarItem.titlePositionAdjustment = UIOffsetMake(0, 5)
         navController.tabBarItem.title = title
         navController.tabBarItem.image = unselectedImage
         navController.tabBarItem.selectedImage = selectedImage

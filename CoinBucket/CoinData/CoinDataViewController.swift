@@ -22,6 +22,10 @@ class CoinDataViewController: UICollectionViewController {
         registerView()
         configureUI()
     }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        navigationController?.popViewController(animated: true)
+    }
 
     // MARK: - Fileprivate Methods
     fileprivate func registerView() {

@@ -95,7 +95,7 @@ class PortfolioViewController: UICollectionViewController {
             let coins = try? PropertyListDecoder().decode([String: Coin].self, from: data)
 
             savedCoins.removeAll()
-            print(coins!)
+
             for (_, value) in coins! {
                 savedCoins.append(value)
             }
