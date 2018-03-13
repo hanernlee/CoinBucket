@@ -91,12 +91,11 @@ class PortfolioViewController: UICollectionViewController {
     
     func setupCoins() {
         let userDefaults = UserDefaults.standard
-
         if let data = userDefaults.value(forKey: "savedCoins") as? Data {
             let coins = try? PropertyListDecoder().decode([String: Coin].self, from: data)
 
             savedCoins.removeAll()
-
+            print(coins!)
             for (_, value) in coins! {
                 savedCoins.append(value)
             }

@@ -37,21 +37,13 @@ extension CoinsViewController: UICollectionViewDelegateFlowLayout {
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let selectedCoin = filteredCoins[indexPath.item]
-        let symbol = selectedCoin.symbol
-        let coinsDict: [String: Coin] = ["\(symbol)": selectedCoin]
-        let userDefaults = UserDefaults.standard
+        let coinViewModel = CoinViewModel(model: selectedCoin)
         
         let coinDataView = CoinDataViewController()
+        coinDataView.model = coinViewModel
+        coinDataView.coin = selectedCoin
+        coinDataView.stateController = stateController
         navigationController?.pushViewController(coinDataView, animated: true)
-        
-//        if let data = userDefaults.value(forKey: "savedCoins") as? Data {
-//            var currentCoinsDict = try? PropertyListDecoder().decode([String: Coin].self, from: data)
-//            currentCoinsDict![symbol] = selectedCoin
-//
-//            userDefaults.set(try? PropertyListEncoder().encode(currentCoinsDict), forKey: "savedCoins")
-//        } else {
-//            userDefaults.set(try? PropertyListEncoder().encode(coinsDict), forKey: "savedCoins")
-//        }
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {

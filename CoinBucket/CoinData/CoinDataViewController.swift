@@ -11,10 +11,11 @@ import UIKit
 class CoinDataViewController: UIViewController {
     
     var model: CoinViewModel?
+    var coin: Coin?
     var stateController: StateController?
 
     let imageSize: CGFloat = 32
-
+    
     let topView: UIView = {
         let view = UIView()
         return view
@@ -70,6 +71,35 @@ class CoinDataViewController: UIViewController {
         label.numberOfLines = 0
         return label
     }()
+    
+    let quantityLabel: UILabel = {
+        let label = UILabel()
+        label.numberOfLines = 0
+        return label
+    }()
+    
+    let qtyTextField: UITextField = {
+        let tf = UITextField()
+        tf.placeholder = "Enter quantity here"
+        tf.font = UIFont.systemFont(ofSize: 18)
+        tf.textColor = .gray
+        tf.keyboardType = UIKeyboardType.decimalPad
+        return tf
+    }()
+    
+    let updateBtn: UIButton = {
+        let button = UIButton(type: .system)
+        button.setTitle("Update Bucket", for: .normal)
+        button.setTitleColor(.black, for: .normal)
+        button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 14)
+        button.backgroundColor = .groupTableViewBackground
+        button.contentEdgeInsets = UIEdgeInsets(top: 12, left: 12, bottom: 12, right: 12)
+        button.layer.cornerRadius = 12.0
+        button.layer.masksToBounds = true
+        
+        button.addTarget(self, action: #selector(updateBucket), for: .touchUpInside)
+        return button
+    }()
 
     let coinDataContainer: UIView = {
         let coinDataContainer = UIView()
@@ -92,7 +122,9 @@ class CoinDataViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
+        qtyTextField.delegate = self
+
         configureUI()
         setupCoin()
     }
@@ -101,6 +133,10 @@ class CoinDataViewController: UIViewController {
         super.viewDidLayoutSubviews()
         
         coinImageView.frame = CGRect(x: 0, y: topView.frame.height / 2 - imageSize / 2, width: imageSize, height: imageSize)
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        view.endEditing(true)
     }
 
     // MARK: - Fileprivate Methods
@@ -120,8 +156,14 @@ class CoinDataViewController: UIViewController {
         topView.addSubview(coinTitle)
         coinTitle.anchor(top: topView.topAnchor, left: coinImageView.rightAnchor, bottom: topView.bottomAnchor, right: nil, paddingTop: 0, paddingLeft: 12, paddingBottom: 0, paddingRight: 0, width: 0, height: 0)
         
+        coinDataContainer.addSubview(quantityLabel)
+        quantityLabel.anchor(top: topView.bottomAnchor, left: coinDataContainer.leftAnchor, bottom: nil, right: coinDataContainer.rightAnchor, paddingTop: 24, paddingLeft: 24, paddingBottom: 0, paddingRight: 24, width: 0, height: 0)
+        
+        coinDataContainer.addSubview(qtyTextField)
+        qtyTextField.anchor(top: quantityLabel.bottomAnchor, left: coinDataContainer.leftAnchor, bottom: nil, right: coinDataContainer.rightAnchor, paddingTop: 4, paddingLeft: 24, paddingBottom: 0, paddingRight: 24, width: 0, height: 0)
+        
         coinDataContainer.addSubview(priceView)
-        priceView.anchor(top: topView.bottomAnchor, left: coinDataContainer.leftAnchor, bottom: nil, right: coinDataContainer.rightAnchor, paddingTop: 24, paddingLeft: 24, paddingBottom: 24, paddingRight: 24, width: 0, height: 0)
+        priceView.anchor(top: qtyTextField.bottomAnchor, left: coinDataContainer.leftAnchor, bottom: nil, right: coinDataContainer.rightAnchor, paddingTop: 24, paddingLeft: 24, paddingBottom: 24, paddingRight: 24, width: 0, height: 0)
         
         priceView.addSubview(priceLabel)
         priceLabel.anchor(top: priceView.topAnchor, left: priceView.leftAnchor, bottom: priceView.bottomAnchor, right: nil, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 0)
@@ -137,8 +179,9 @@ class CoinDataViewController: UIViewController {
         
         coinDataContainer.addSubview(supplyLabel)
         supplyLabel.anchor(top: volumeLabel.bottomAnchor, left: coinDataContainer.leftAnchor, bottom: nil, right: coinDataContainer.rightAnchor, paddingTop: 24, paddingLeft: 24, paddingBottom: 0, paddingRight: 24, width: 0, height: 0)
-
-
+        
+        coinDataContainer.addSubview(updateBtn)
+        updateBtn.anchor(top: supplyLabel.bottomAnchor, left: nil, bottom: nil, right: coinDataContainer.rightAnchor, paddingTop: 24, paddingLeft: 24, paddingBottom: 0, paddingRight: 24, width: 0, height: 0)
     }
     
     fileprivate func setupCoin() {
@@ -147,7 +190,8 @@ class CoinDataViewController: UIViewController {
         guard let currency = stateController?.currency else { return }
         
         guard let model = model else { return }
-        print(model)
+        guard let coin = coin else { return }
+        
         coinImageView.loadImageUsingCacheWithURLString(model.imageUrl, placeHolder: nil) { (bool) in
             //@TODO handle success
         }
@@ -156,6 +200,11 @@ class CoinDataViewController: UIViewController {
         attributedText.append(NSAttributedString(string: " (\(model.symbol))", attributes: [NSAttributedStringKey.font: UIFont.boldSystemFont(ofSize: 20), NSAttributedStringKey.foregroundColor: UIColor.gray]))
         coinTitle.attributedText = attributedText
         
+        quantityLabel.attributedText = NSMutableAttributedString(string: "Bucket Qty", attributes: [NSAttributedStringKey.font: UIFont.boldSystemFont(ofSize: 24)])
+        if coin.quantity != "0" {
+            qtyTextField.text = coin.quantity
+        }
+
         priceLabel.attributedText = setupAttributedText(firstString: "Price", secondString: "\(currency.name) \(model.price.formatCurrency(localeIdentifier: "en_US"))", color: .gray)
         
         if model.percentChange24h > 0 {
@@ -180,5 +229,27 @@ class CoinDataViewController: UIViewController {
         attributedText.append(NSAttributedString(string: "\n\n", attributes: [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 4)]))
         attributedText.append(NSAttributedString(string: secondString, attributes: [NSAttributedStringKey.foregroundColor: color, NSAttributedStringKey.font: UIFont.systemFont(ofSize: 18)]))
         return attributedText
+    }
+    
+    // MARK: - #Selector Events
+    @objc func updateBucket() {
+        guard let coinQty = qtyTextField.text, !coinQty.isEmpty else { return }
+        guard var coin = coin else { return }
+
+        let symbol = coin.symbol
+        coin.quantity = coinQty
+
+        let coinsDict: [String: Coin] = ["\(symbol)": coin]
+
+        let userDefaults = UserDefaults.standard
+        if let data = userDefaults.value(forKey: "savedCoins") as? Data {
+            var currentCoinsDict = try? PropertyListDecoder().decode([String: Coin].self, from: data)
+
+            currentCoinsDict![symbol] = coin
+
+            userDefaults.set(try? PropertyListEncoder().encode(currentCoinsDict), forKey: "savedCoins")
+        } else {
+            userDefaults.set(try? PropertyListEncoder().encode(coinsDict), forKey: "savedCoins")
+        }
     }
 }

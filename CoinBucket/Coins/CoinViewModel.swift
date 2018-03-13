@@ -23,6 +23,7 @@ struct CoinViewModel {
     let marketCap: NSDecimalNumber
     let availableSupply: NSDecimalNumber
     let volume: NSDecimalNumber
+    let quantity: String
 
     var coinType: String?
     
@@ -37,5 +38,6 @@ struct CoinViewModel {
         self.marketCap = (model.marketCap != nil) ? NSDecimalNumber(string: model.marketCap) : NSDecimalNumber(string: "0")
         self.availableSupply = !model.availableSupply.isEmpty ? NSDecimalNumber(string: model.availableSupply) : NSDecimalNumber(string: "0")
         self.volume = !model.volume.isEmpty ? NSDecimalNumber(string: model.volume) : NSDecimalNumber(string: "0")
+        self.quantity = model.quantity ?? "0"
     }
 }

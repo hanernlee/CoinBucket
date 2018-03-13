@@ -92,7 +92,7 @@ class CoinCell: UICollectionViewCell {
         leftAttributedText.append(NSAttributedString(string: "\n\n", attributes: [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 4)]))
         
         if let type = viewModel.coinType, type == viewType.PortfolioCoin.rawValue  {
-            leftAttributedText.append(NSAttributedString(string: "1", attributes: [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 14)]))
+            leftAttributedText.append(NSAttributedString(string: "Bucket Qty: \(viewModel.quantity)", attributes: [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 14)]))
         } else {
             leftAttributedText.append(NSAttributedString(string: "\(viewModel.priceBTC) BTC", attributes: [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 14)]))
         }

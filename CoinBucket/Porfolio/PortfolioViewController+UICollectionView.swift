@@ -39,11 +39,12 @@ extension PortfolioViewController: UICollectionViewDelegateFlowLayout {
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let coin = savedCoins[indexPath.item]
         let coinViewModel = CoinViewModel(model: coin)
-
-        let coinInfoView = CoinDataViewController()
-        coinInfoView.model = coinViewModel
-        coinInfoView.stateController = stateController
-        navigationController?.pushViewController(coinInfoView, animated: true)
+        
+        let coinDataView = CoinDataViewController()
+        coinDataView.model = coinViewModel
+        coinDataView.coin = coin
+        coinDataView.stateController = stateController
+        navigationController?.pushViewController(coinDataView, animated: true)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
