@@ -123,6 +123,12 @@ class CoinDataHeaderCell: UICollectionViewCell {
         return coinDataContainer
     }()
     
+    let alertController: UIAlertController = {
+        let alert = UIAlertController(title: "Bucket Updated", message: "Succesfully updated bucket!", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
+        return alert
+    }()
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         
@@ -253,8 +259,12 @@ class CoinDataHeaderCell: UICollectionViewCell {
             currentCoinsDict![symbol] = coin
             
             userDefaults.set(try? PropertyListEncoder().encode(currentCoinsDict), forKey: "savedCoins")
+
+            self.window?.rootViewController?.present(alertController, animated: true, completion: nil)
         } else {
             userDefaults.set(try? PropertyListEncoder().encode(coinsDict), forKey: "savedCoins")
+            
+            self.window?.rootViewController?.present(alertController, animated: true, completion: nil)
         }
     }
 }

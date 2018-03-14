@@ -17,13 +17,14 @@ extension PortfolioViewController {
             switch result {
             case .Success(let coins):
                 let userDefaults = UserDefaults.standard
-                let coin = coins[0]!
+                var coin = coins[0]!
                 
                 if let data = userDefaults.value(forKey: "savedCoins") as? Data {
                     var coinDict = try? PropertyListDecoder().decode([String: Coin].self, from: data)
-                    
+
                     for (key, _) in coinDict! {
                         if (key == coin.symbol) {
+                            coin.quantity = coinDict![key]?.quantity
                             coinDict![key] = coin
                         }
                     }
