@@ -17,6 +17,8 @@ class CoinDataHeaderCell: UICollectionViewCell {
         }
     }
 
+    let userDefaults = UserDefaults.standard
+
     let imageSize: CGFloat = 32
 
     let topView: UIView = {
@@ -197,6 +199,12 @@ class CoinDataHeaderCell: UICollectionViewCell {
     }
     
     fileprivate func setupCoin() {
+        if let data = userDefaults.value(forKey: "savedCoins") as? Data {
+            var coinDict = try? PropertyListDecoder().decode([String: Coin].self, from: data)
+            let symbol = coin?.symbol
+            coin?.quantity = coinDict![symbol!]?.quantity
+        }
+        
         var percentChangeColor: UIColor
 
         guard let currency = stateController?.currency else { return }

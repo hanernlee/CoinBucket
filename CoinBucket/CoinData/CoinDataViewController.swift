@@ -15,7 +15,7 @@ class CoinDataViewController: UICollectionViewController {
     var stateController: StateController?
 
     let headerCell = "HeaderCell"
-    
+        
     override func viewDidLoad() {
         super.viewDidLoad()
 
