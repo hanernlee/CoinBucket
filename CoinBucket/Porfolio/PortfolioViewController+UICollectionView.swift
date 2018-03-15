@@ -31,6 +31,8 @@ extension PortfolioViewController: UICollectionViewDelegateFlowLayout {
         switch kind {
         case UICollectionElementKindSectionHeader:
             let cell = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionElementKindSectionHeader, withReuseIdentifier: headerCell, for: indexPath) as! PortfolioHeaderCell
+            cell.savedCoins = savedCoins
+            cell.totalCoins = 0
             return cell
         default:  fatalError("Unexpected element kind")
         }
@@ -64,6 +66,6 @@ extension PortfolioViewController: UICollectionViewDelegateFlowLayout {
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
-        return CGSize(width: collectionView.frame.width, height: 200)
+        return CGSize(width: collectionView.frame.width, height: 300)
     }
 }
