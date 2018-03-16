@@ -98,12 +98,23 @@ class CoinCell: UICollectionViewCell {
         }
         
         // RightHandLabel
-        let rightAttributedText = NSMutableAttributedString(string: viewModel.price.formatCurrency(localeIdentifier: "en_US"), attributes: [NSAttributedStringKey.font: UIFont.boldSystemFont(ofSize: 14)])
-        rightAttributedText.append(NSAttributedString(string: "\n\n", attributes: [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 4)]))
-        rightAttributedText.append(NSAttributedString(string: "\(viewModel.percentChange24h)%", attributes: [NSAttributedStringKey.foregroundColor: percentChangeColor, NSAttributedStringKey.font: UIFont.systemFont(ofSize: 14)]))
+        if let type = viewModel.coinType, type == viewType.PortfolioCoin.rawValue  {
+            let quantity = NSDecimalNumber(string: viewModel.quantity)
+            let price = NSDecimalNumber(string: viewModel.price.toDecimals())
+            let totalPrice = ((quantity as Decimal) * (price as Decimal)) as NSDecimalNumber
+            
+            let rightAttributedText = NSMutableAttributedString(string: totalPrice.formatCurrency(localeIdentifier: "en_US"), attributes: [NSAttributedStringKey.font: UIFont.boldSystemFont(ofSize: 14)])
+            
+            coinRightLabel.attributedText = rightAttributedText
+        } else {
+            let rightAttributedText = NSMutableAttributedString(string: viewModel.price.formatCurrency(localeIdentifier: "en_US"), attributes: [NSAttributedStringKey.font: UIFont.boldSystemFont(ofSize: 14)])
+            rightAttributedText.append(NSAttributedString(string: "\n\n", attributes: [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 4)]))
+            rightAttributedText.append(NSAttributedString(string: "\(viewModel.percentChange24h)%", attributes: [NSAttributedStringKey.foregroundColor: percentChangeColor, NSAttributedStringKey.font: UIFont.systemFont(ofSize: 14)]))
+            
+            coinRightLabel.attributedText = rightAttributedText
+        }
         
         coinLeftLabel.attributedText = leftAttributedText
-        coinRightLabel.attributedText = rightAttributedText
         coinImageView.loadImageUsingCacheWithURLString(viewModel.imageUrl, placeHolder: nil) { (bool) in
             //@TODO handle success
         }

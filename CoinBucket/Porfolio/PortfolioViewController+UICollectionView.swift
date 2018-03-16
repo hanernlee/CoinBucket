@@ -32,7 +32,6 @@ extension PortfolioViewController: UICollectionViewDelegateFlowLayout {
         case UICollectionElementKindSectionHeader:
             let cell = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionElementKindSectionHeader, withReuseIdentifier: headerCell, for: indexPath) as! PortfolioHeaderCell
             cell.savedCoins = savedCoins
-            cell.totalCoins = 0
             return cell
         default:  fatalError("Unexpected element kind")
         }

@@ -26,6 +26,19 @@ extension CurrencyFormatter {
         
         return currencyFormatter.string(from: newNumber)!
     }
+    
+    func toDecimals() -> String {
+        let numberFormatter = NumberFormatter()
+        guard let newNumber = self as? NSNumber else { return "" }
+        
+        if (Double(truncating: newNumber) >= 1.00) {
+            numberFormatter.maximumFractionDigits = 2
+        } else {
+            numberFormatter.maximumFractionDigits = 5
+        }
+
+        return numberFormatter.string(from: newNumber)!
+    }
 }
 
 extension Double: CurrencyFormatter {}
