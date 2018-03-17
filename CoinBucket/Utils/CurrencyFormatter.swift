@@ -41,5 +41,6 @@ extension CurrencyFormatter {
     }
 }
 
+extension Float: CurrencyFormatter {}
 extension Double: CurrencyFormatter {}
 extension NSDecimalNumber: CurrencyFormatter {}

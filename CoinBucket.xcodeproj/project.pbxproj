@@ -35,6 +35,7 @@
 		505910A51FDD495100D63F34 /* CoinsViewController+UICollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 505910A41FDD495100D63F34 /* CoinsViewController+UICollectionView.swift */; };
 		505910A71FDD4A0F00D63F34 /* CoinCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 505910A61FDD4A0F00D63F34 /* CoinCell.swift */; };
 		505910AB1FDD4E4600D63F34 /* CoinsViewControllerSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 505910AA1FDD4E4600D63F34 /* CoinsViewControllerSpec.swift */; };
+		5099B9CA205CBDE1009C71EE /* CountingLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5099B9C9205CBDE1009C71EE /* CountingLabel.swift */; };
 		50A329611FDFEFE6003C0AE9 /* CoinViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50A329601FDFEFE6003C0AE9 /* CoinViewModel.swift */; };
 		50A329631FDFF455003C0AE9 /* JSONDownloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50A329621FDFF455003C0AE9 /* JSONDownloader.swift */; };
 		50A329651FDFFA67003C0AE9 /* CoinService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50A329641FDFFA67003C0AE9 /* CoinService.swift */; };
@@ -106,6 +107,7 @@
 		505910A41FDD495100D63F34 /* CoinsViewController+UICollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CoinsViewController+UICollectionView.swift"; sourceTree = "<group>"; };
 		505910A61FDD4A0F00D63F34 /* CoinCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinCell.swift; sourceTree = "<group>"; };
 		505910AA1FDD4E4600D63F34 /* CoinsViewControllerSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinsViewControllerSpec.swift; sourceTree = "<group>"; };
+		5099B9C9205CBDE1009C71EE /* CountingLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountingLabel.swift; sourceTree = "<group>"; };
 		50A329601FDFEFE6003C0AE9 /* CoinViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinViewModel.swift; sourceTree = "<group>"; };
 		50A329621FDFF455003C0AE9 /* JSONDownloader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONDownloader.swift; sourceTree = "<group>"; };
 		50A329641FDFFA67003C0AE9 /* CoinService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinService.swift; sourceTree = "<group>"; };
@@ -222,6 +224,7 @@
 				50A329681FE140B5003C0AE9 /* CurrencyFormatter.swift */,
 				50A3296C1FE3D1B9003C0AE9 /* Date+Extension.swift */,
 				503D3B941FE6886700AD8F4D /* ProgressHUD.swift */,
+				5099B9C9205CBDE1009C71EE /* CountingLabel.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -428,6 +431,7 @@
 				50A3296D1FE3D1B9003C0AE9 /* Date+Extension.swift in Sources */,
 				503D3BA51FE93DE000AD8F4D /* CurrencyViewController+TableViewDataSource.swift in Sources */,
 				50A3A3DA2057E0FD00379364 /* CoinDataHeaderCell.swift in Sources */,
+				5099B9CA205CBDE1009C71EE /* CountingLabel.swift in Sources */,
 				503D3B911FE663F400AD8F4D /* LoadingCell.swift in Sources */,
 				504D9E3F1FDBED03008EAB42 /* UIView+Anchor.swift in Sources */,
 				50AAD4732054BB1C00B1E902 /* CoinDataViewController.swift in Sources */,
