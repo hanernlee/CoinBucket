@@ -9,6 +9,8 @@
 import UIKit
 
 class CoinDataHeaderCell: UICollectionViewCell {
+    weak var navigationController: UINavigationController?
+
     var model: CoinViewModel?
     var coin: Coin?
     var stateController: StateController? {
@@ -85,16 +87,17 @@ class CoinDataHeaderCell: UICollectionViewCell {
     
     let qtyTextField: UITextField = {
         let tf = UITextField()
-        tf.placeholder = "Enter quantity here"
+        tf.placeholder = "Enter quantity"
         tf.font = UIFont.systemFont(ofSize: 18)
         tf.textColor = .gray
         tf.keyboardType = UIKeyboardType.decimalPad
+        
         return tf
     }()
     
     let updateBtn: UIButton = {
         let button = UIButton(type: .system)
-        button.setTitle("Update Bucket", for: .normal)
+        button.setImage(#imageLiteral(resourceName: "coins_selected"), for: .normal)
         button.setTitleColor(.black, for: .normal)
         button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 14)
         button.backgroundColor = .groupTableViewBackground
@@ -102,7 +105,19 @@ class CoinDataHeaderCell: UICollectionViewCell {
         button.layer.cornerRadius = 12.0
         button.layer.masksToBounds = true
         
-        button.addTarget(self, action: #selector(updateBucket), for: .touchUpInside)
+        return button
+    }()
+    
+    let removeBtn: UIButton = {
+        let button = UIButton(type: .system)
+        button.setImage(#imageLiteral(resourceName: "coins_selected"), for: .normal)
+        button.setTitleColor(.black, for: .normal)
+        button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 14)
+        button.backgroundColor = .red
+        button.contentEdgeInsets = UIEdgeInsets(top: 12, left: 12, bottom: 12, right: 12)
+        button.layer.cornerRadius = 12.0
+        button.layer.masksToBounds = true
+        
         return button
     }()
     
@@ -127,7 +142,6 @@ class CoinDataHeaderCell: UICollectionViewCell {
     
     let alertController: UIAlertController = {
         let alert = UIAlertController(title: "Bucket Updated", message: "Succesfully updated bucket!", preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
         return alert
     }()
     
@@ -144,6 +158,22 @@ class CoinDataHeaderCell: UICollectionViewCell {
         super.layoutSubviews()
         
         coinImageView.frame = CGRect(x: 0, y: topView.frame.height / 2 - imageSize / 2, width: imageSize, height: imageSize)
+        
+        let border = CALayer()
+        let width = CGFloat(2.0)
+        border.borderColor = UIColor.lightGray.cgColor
+        border.frame = CGRect(x: 0, y: qtyTextField.frame.size.height - width , width: qtyTextField.frame.size.width - (updateBtn.frame.width + removeBtn.frame.width) - 48, height: qtyTextField.frame.size.height)
+        border.borderWidth = width
+        qtyTextField.layer.addSublayer(border)
+        qtyTextField.layer.masksToBounds = true
+        
+        guard let coin = coin else { return }
+        
+        if coin.quantity != "0" {
+            removeBtn.isHidden = false
+        } else {
+            removeBtn.isHidden = true
+        }
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -156,16 +186,12 @@ class CoinDataHeaderCell: UICollectionViewCell {
     
     fileprivate func configureUI() {
         backgroundColor = .groupTableViewBackground
-        
+
         addSubview(coinDataContainer)
         coinDataContainer.anchor(top: topAnchor, left: leftAnchor, bottom: bottomAnchor, right: rightAnchor, paddingTop: 12, paddingLeft: 12, paddingBottom: 12, paddingRight: 12, width: 0, height: 0)
 
-        coinDataContainer.addSubview(updateBtn)
-        updateBtn.anchor(top: coinDataContainer.topAnchor, left: nil, bottom: nil, right: coinDataContainer.rightAnchor, paddingTop: 24, paddingLeft: 24, paddingBottom: 0, paddingRight: 24, width: 0, height: 0)
-        updateBtn.addTarget(self, action: #selector(updateBucket), for: .touchUpInside)
-        
         coinDataContainer.addSubview(topView)
-        topView.anchor(top: updateBtn.bottomAnchor, left: coinDataContainer.leftAnchor, bottom: nil, right: coinDataContainer.rightAnchor, paddingTop: 12, paddingLeft: 24, paddingBottom: 0, paddingRight: 24, width: coinDataContainer.frame.width, height: 40)
+        topView.anchor(top: coinDataContainer.topAnchor, left: coinDataContainer.leftAnchor, bottom: nil, right: coinDataContainer.rightAnchor, paddingTop: 24, paddingLeft: 24, paddingBottom: 0, paddingRight: 24, width: coinDataContainer.frame.width, height: 40)
 
         topView.addSubview(coinImageView)
         coinImageView.anchor(top: topView.topAnchor, left: topView.leftAnchor, bottom: nil, right: nil, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: imageSize, height: imageSize)
@@ -175,6 +201,14 @@ class CoinDataHeaderCell: UICollectionViewCell {
 
         coinDataContainer.addSubview(quantityLabel)
         quantityLabel.anchor(top: topView.bottomAnchor, left: coinDataContainer.leftAnchor, bottom: nil, right: coinDataContainer.rightAnchor, paddingTop: 12, paddingLeft: 24, paddingBottom: 0, paddingRight: 24, width: 0, height: 0)
+        
+        coinDataContainer.addSubview(updateBtn)
+        updateBtn.anchor(top: topView.bottomAnchor, left: nil, bottom: nil, right: coinDataContainer.rightAnchor, paddingTop: 12, paddingLeft: 24, paddingBottom: 0, paddingRight: 24, width: 0, height: 0)
+        updateBtn.addTarget(self, action: #selector(updateBucket), for: .touchUpInside)
+        
+        coinDataContainer.addSubview(removeBtn)
+        removeBtn.anchor(top: topView.bottomAnchor, left: nil, bottom: nil, right: updateBtn.leftAnchor, paddingTop: 12, paddingLeft: 0, paddingBottom: 0, paddingRight: 12, width: 0, height: 0)
+        removeBtn.addTarget(self, action: #selector(removeFromBucket), for: .touchUpInside)
 
         coinDataContainer.addSubview(qtyTextField)
         qtyTextField.anchor(top: quantityLabel.bottomAnchor, left: coinDataContainer.leftAnchor, bottom: nil, right: coinDataContainer.rightAnchor, paddingTop: 4, paddingLeft: 24, paddingBottom: 0, paddingRight: 24, width: 0, height: 0)
@@ -250,10 +284,43 @@ class CoinDataHeaderCell: UICollectionViewCell {
         return attributedText
     }
     
+    func deleteCoin() {
+        guard let coin = coin else { return }
+        let symbol = coin.symbol
+        
+        if let data = userDefaults.value(forKey: "savedCoins") as? Data {
+            var currentCoinsDict = try? PropertyListDecoder().decode([String: Coin].self, from: data)
+            
+            currentCoinsDict?.removeValue(forKey: symbol)
+            
+            userDefaults.set(try? PropertyListEncoder().encode(currentCoinsDict), forKey: "savedCoins")
+            navigationController?.popViewController(animated: true)
+        }
+    }
+    
+    func dismissCell() {
+        navigationController?.popViewController(animated: true)
+    }
+    
     // MARK: - #Selector Events
+    @objc func removeFromBucket() {
+        let alertActionSheet = UIAlertController(title: "Are you sure you wish to remove this coin from your bucket? ", message: nil, preferredStyle: .actionSheet)
+        alertActionSheet.addAction(UIAlertAction(title: "Remove", style: .destructive, handler: { _ in
+            self.deleteCoin()
+        }))
+        alertActionSheet.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        
+        self.window?.rootViewController?.present(alertActionSheet, animated: true, completion: nil)
+    }
+    
     @objc func updateBucket() {
+        endEditing(true)
         guard let coinQty = qtyTextField.text, !coinQty.isEmpty else { return }
         guard var coin = coin else { return }
+        
+        alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: { _ in
+            self.dismissCell()
+        }))
         
         let symbol = coin.symbol
         coin.quantity = coinQty

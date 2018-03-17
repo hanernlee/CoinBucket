@@ -16,12 +16,23 @@ class PortfolioViewController: UICollectionViewController {
 
     let progressHUD = ProgressHUD(text: "")
     let headerCell = "HeaderCell"
+    let headerEmptyCell = "HeaderEmptyCell"
     let coinCell = "CoinCell"
 
     let emptyView: UIView = {
         let view = UIView()
-        view.backgroundColor = .red
         return view
+    }()
+    
+    lazy var addCoinBtn: UIButton = {
+        let button = UIButton()
+        button.setTitle("Add Coins", for: .normal)
+        button.backgroundColor = .red
+        button.frame = CGRect(x: 0, y: 0, width: 150, height: 50)
+        button.layer.cornerRadius = 12.0
+        button.layer.masksToBounds = true
+        button.addTarget(self, action: #selector(goToCoins), for: .touchUpInside)
+        return button
     }()
     
     lazy var currencyRightButton: UIButton = {
@@ -50,11 +61,18 @@ class PortfolioViewController: UICollectionViewController {
         
         setupCoins()
         changeCurrency()
+        toggleAddCoinBtn()
+
         collectionView?.reloadData()
     }
     
     // MARK: - Fileprivate Methods
     fileprivate func configureUI() {
+        collectionView?.backgroundView = emptyView
+        view.addSubview(addCoinBtn)
+        addCoinBtn.center = view.center
+        toggleAddCoinBtn()
+        
         let refreshControl = UIRefreshControl()
         refreshControl.addTarget(self, action: #selector(handleRefresh), for: .valueChanged)
         collectionView?.refreshControl = refreshControl
@@ -66,8 +84,17 @@ class PortfolioViewController: UICollectionViewController {
         view.addSubview(progressHUD)
     }
     
+    fileprivate func toggleAddCoinBtn() {
+        if savedCoins.count == 0 {
+            addCoinBtn.isHidden = false
+        } else {
+            addCoinBtn.isHidden = true
+        }
+    }
+    
     fileprivate func registerView() {
         collectionView?.register(PortfolioHeaderCell.self, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: headerCell)
+        collectionView?.register(PortfolioHeaderEmptyCell.self, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: headerEmptyCell)
         collectionView?.register(CoinCell.self, forCellWithReuseIdentifier: coinCell)
     }
     
@@ -118,5 +145,10 @@ class PortfolioViewController: UICollectionViewController {
     
     @objc func goToSettings() {
         tabBarController?.selectedIndex = 2
+    }
+    
+    @objc func goToCoins() {
+        print("z")
+        tabBarController?.selectedIndex = 1
     }
 }

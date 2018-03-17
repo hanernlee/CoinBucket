@@ -25,13 +25,8 @@ class PortfolioHeaderCell: UICollectionViewCell {
         countingLabel.font = UIFont.boldSystemFont(ofSize: 16)
         return countingLabel
     }()
-    
-    let trackLayer: CAShapeLayer = {
-        let trackLayer = CAShapeLayer()
-        return trackLayer
-    }()
-    
-    let shapeLayer: CAShapeLayer = {
+
+    var shapeLayer: CAShapeLayer = {
         let shapeLayer = CAShapeLayer()
         return shapeLayer
     }()
@@ -54,6 +49,18 @@ class PortfolioHeaderCell: UICollectionViewCell {
         NotificationCenter.default.addObserver(self, selector: #selector(handleEnterForeground), name: .UIApplicationWillEnterForeground, object: nil)
     }
     
+    private func createCircleShapeLayer(strokeColor: UIColor, fillColor: UIColor) -> CAShapeLayer {
+        let circularPath = UIBezierPath(arcCenter: .zero, radius: 100, startAngle: 0, endAngle: 2 * CGFloat.pi, clockwise: true)
+        let layer = CAShapeLayer()
+        layer.path = circularPath.cgPath
+        layer.strokeColor = strokeColor.cgColor
+        layer.lineWidth = 20
+        layer.fillColor = fillColor.cgColor
+        layer.lineCap = kCALineCapRound
+        layer.position = center
+        return layer
+    }
+    
     // MARK: - #Selector Events
     @objc func handleEnterForeground() {
         animatePulsatingLayer()
@@ -61,37 +68,19 @@ class PortfolioHeaderCell: UICollectionViewCell {
     
     // MARK: - Fileprivate Methods
     fileprivate func setupCircle() {
-        let circularPath = UIBezierPath(arcCenter: .zero, radius: 100, startAngle: 0, endAngle: 2 * CGFloat.pi, clockwise: true)
-        
         // Create pulsating layer
-        pulsatingLayer = CAShapeLayer()
-        pulsatingLayer.path = circularPath.cgPath
-        pulsatingLayer.strokeColor = UIColor.clear.cgColor
-        pulsatingLayer.lineWidth = 10
-        pulsatingLayer.fillColor = UIColor.yellow.cgColor
-        pulsatingLayer.position = center
+        pulsatingLayer = createCircleShapeLayer(strokeColor: .clear , fillColor: .yellow)
         layer.addSublayer(pulsatingLayer)
 
         animatePulsatingLayer()
 
         // Create track layer
-        trackLayer.path = circularPath.cgPath
-        trackLayer.strokeColor = UIColor.lightGray.cgColor
-        trackLayer.lineWidth = 20
-        trackLayer.fillColor = UIColor.orange.cgColor
-        trackLayer.position = center
+        let trackLayer = createCircleShapeLayer(strokeColor: .lightGray , fillColor: .orange)
         layer.addSublayer(trackLayer)
         
         // Create shape layer
-        shapeLayer.path = circularPath.cgPath
-        shapeLayer.strokeColor = UIColor.red.cgColor
-        shapeLayer.lineWidth = 20
-        shapeLayer.fillColor = UIColor.white.cgColor
-        shapeLayer.lineCap = kCALineCapRound
-        shapeLayer.position = center
-        
+        shapeLayer = createCircleShapeLayer(strokeColor: .red, fillColor: .clear)
         shapeLayer.transform = CATransform3DMakeRotation(-CGFloat.pi / 2, 0, 0, 1)
-        
         shapeLayer.strokeEnd = 0
         
         layer.addSublayer(shapeLayer)

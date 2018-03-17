@@ -30,6 +30,11 @@ extension PortfolioViewController: UICollectionViewDelegateFlowLayout {
     override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         switch kind {
         case UICollectionElementKindSectionHeader:
+            if (savedCoins.count == 0) {
+                let cell = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionElementKindSectionHeader, withReuseIdentifier: headerEmptyCell, for: indexPath) as! PortfolioHeaderEmptyCell
+                return cell
+            }
+            
             let cell = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionElementKindSectionHeader, withReuseIdentifier: headerCell, for: indexPath) as! PortfolioHeaderCell
             cell.savedCoins = savedCoins
             cell.totalPrice = 0

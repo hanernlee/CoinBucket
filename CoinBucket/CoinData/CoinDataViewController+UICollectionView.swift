@@ -21,6 +21,7 @@ extension CoinDataViewController: UICollectionViewDelegateFlowLayout {
         switch kind {
         case UICollectionElementKindSectionHeader:
             let cell = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionElementKindSectionHeader, withReuseIdentifier: headerCell, for: indexPath) as! CoinDataHeaderCell
+            cell.navigationController = navigationController
             cell.model = model
             cell.coin = coin
             cell.stateController = stateController
