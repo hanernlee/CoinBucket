@@ -13,7 +13,6 @@ extension CoinsViewController {
     func fetchCoins(start: Int) {
         let service = CoinService(id: nil, start: start, convert: stateController.currency.name)
         
-        progressHUD.text = "Fetching coins"
         getCoins(fromService: service)
     }
     

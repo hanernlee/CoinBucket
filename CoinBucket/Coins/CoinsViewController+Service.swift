@@ -29,11 +29,10 @@ extension CoinsViewController {
                 self?.collectionView?.refreshControl?.attributedTitle = NSAttributedString(string: "Last updated \(updateString)")
                 self?.coins = tempCoins
                 self?.filteredCoins = tempCoins
-                self?.progressHUD.hide()
+                self?.loadingHUD.hide()
             case .Error(let error):
                 print(error)
-                self?.progressHUD.show()
-                self?.progressHUD.text = ":("
+                self?.loadingHUD.show()
                 let alertController = UIAlertController(title: nil, message: "Oops! Sorry it seems there is currently an issue with our servers.", preferredStyle: .alert)
                 alertController.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
                 self?.present(alertController, animated: true, completion: nil)
@@ -59,8 +58,7 @@ extension CoinsViewController {
                 }
             case .Error(let error):
                 print(error)
-                self?.progressHUD.show()
-                self?.progressHUD.text = ":("
+                self?.loadingHUD.show()
                 let alertController = UIAlertController(title: nil, message: "Oops! Sorry it seems there is currently an issue with our servers.", preferredStyle: .alert)
                 alertController.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
                 self?.present(alertController, animated: true, completion: nil)
@@ -84,11 +82,10 @@ extension CoinsViewController {
                 
                 self?.filteredCoins = tempCoins
                 self?.collectionView?.reloadData()
-                self?.progressHUD.hide()
+                self?.loadingHUD.hide()
             case .Error(let error):
                 if self?.filteredCoins.count == 0 {
-                    self?.progressHUD.show()
-                    self?.progressHUD.text = ":("
+                    self?.loadingHUD.show()
                     let alertController = UIAlertController(title: nil, message: "Oops! Sorry we can't seem to find that coin.", preferredStyle: .alert)
                     alertController.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
                     self?.present(alertController, animated: true, completion: nil)

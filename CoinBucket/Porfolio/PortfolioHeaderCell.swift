@@ -61,15 +61,10 @@ class PortfolioHeaderCell: UICollectionViewCell {
         return layer
     }
     
-    // MARK: - #Selector Events
-    @objc func handleEnterForeground() {
-        animatePulsatingLayer()
-    }
-    
     // MARK: - Fileprivate Methods
     fileprivate func setupCircle() {
         // Create pulsating layer
-        pulsatingLayer = createCircleShapeLayer(strokeColor: .clear , fillColor: .yellow)
+        pulsatingLayer = createCircleShapeLayer(strokeColor: .clear , fillColor: .lightBlue)
         layer.addSublayer(pulsatingLayer)
 
         animatePulsatingLayer()
@@ -79,7 +74,7 @@ class PortfolioHeaderCell: UICollectionViewCell {
         layer.addSublayer(trackLayer)
         
         // Create shape layer
-        shapeLayer = createCircleShapeLayer(strokeColor: .red, fillColor: .clear)
+        shapeLayer = createCircleShapeLayer(strokeColor: .blue, fillColor: .clear)
         shapeLayer.transform = CATransform3DMakeRotation(-CGFloat.pi / 2, 0, 0, 1)
         shapeLayer.strokeEnd = 0
         
@@ -132,6 +127,11 @@ class PortfolioHeaderCell: UICollectionViewCell {
         basicAnimation.repeatCount = .infinity
 
         pulsatingLayer.add(basicAnimation, forKey: "pulsatingLayer")
+    }
+    
+    // MARK: - #Selector Events
+    @objc func handleEnterForeground() {
+        animatePulsatingLayer()
     }
 }
 

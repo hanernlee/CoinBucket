@@ -34,11 +34,10 @@ extension PortfolioViewController {
 
                 self?.setupCoins()
                 self?.collectionView?.reloadData()
-                self?.progressHUD.hide()
+                self?.loadingHUD.hide()
             case .Error(let error):
                 if self?.savedCoins.count == 0 {
-                    self?.progressHUD.show()
-                    self?.progressHUD.text = ":("
+                    self?.loadingHUD.show()
                     let alertController = UIAlertController(title: nil, message: "Oops! Sorry we can't seem to find that coin.", preferredStyle: .alert)
                     alertController.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
                     self?.present(alertController, animated: true, completion: nil)

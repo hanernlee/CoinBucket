@@ -86,7 +86,10 @@ class CountingLabel: UILabel {
         case .Int:
             self.text = "\(Int(value))"
         case .Float:
-            self.text = value.formatCurrency(localeIdentifier: "en_US")
+            let attributedText = NSMutableAttributedString(string: "Total", attributes: [NSAttributedStringKey.font: UIFont.boldSystemFont(ofSize: 20)])
+            attributedText.append(NSAttributedString(string: "\n\n", attributes: [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 4)]))
+            attributedText.append(NSAttributedString(string: "\(value.formatCurrency(localeIdentifier: "en_US"))", attributes: [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 18)]))
+            self.attributedText = attributedText
         }
     }
     

@@ -89,8 +89,11 @@ class CoinDataHeaderCell: UICollectionViewCell {
         let tf = UITextField()
         tf.placeholder = "Enter quantity"
         tf.font = UIFont.systemFont(ofSize: 18)
-        tf.textColor = .gray
+        tf.textColor = .blue
         tf.keyboardType = UIKeyboardType.decimalPad
+        tf.layer.cornerRadius = 6.0
+        tf.layer.masksToBounds = true
+        tf.backgroundColor = .groupTableViewBackground
         
         return tf
     }()
@@ -159,14 +162,6 @@ class CoinDataHeaderCell: UICollectionViewCell {
         
         coinImageView.frame = CGRect(x: 0, y: topView.frame.height / 2 - imageSize / 2, width: imageSize, height: imageSize)
         
-        let border = CALayer()
-        let width = CGFloat(2.0)
-        border.borderColor = UIColor.lightGray.cgColor
-        border.frame = CGRect(x: 0, y: qtyTextField.frame.size.height - width , width: qtyTextField.frame.size.width - (updateBtn.frame.width + removeBtn.frame.width) - 48, height: qtyTextField.frame.size.height)
-        border.borderWidth = width
-        qtyTextField.layer.addSublayer(border)
-        qtyTextField.layer.masksToBounds = true
-        
         guard let coin = coin else { return }
         
         if coin.quantity != "0" {
@@ -188,10 +183,10 @@ class CoinDataHeaderCell: UICollectionViewCell {
         backgroundColor = .groupTableViewBackground
 
         addSubview(coinDataContainer)
-        coinDataContainer.anchor(top: topAnchor, left: leftAnchor, bottom: bottomAnchor, right: rightAnchor, paddingTop: 12, paddingLeft: 12, paddingBottom: 12, paddingRight: 12, width: 0, height: 0)
+        coinDataContainer.anchor(top: topAnchor, left: leftAnchor, bottom: bottomAnchor, right: rightAnchor, paddingTop: 12, paddingLeft: 12, paddingBottom: 24, paddingRight: 12, width: 0, height: 0)
 
         coinDataContainer.addSubview(topView)
-        topView.anchor(top: coinDataContainer.topAnchor, left: coinDataContainer.leftAnchor, bottom: nil, right: coinDataContainer.rightAnchor, paddingTop: 24, paddingLeft: 24, paddingBottom: 0, paddingRight: 24, width: coinDataContainer.frame.width, height: 40)
+        topView.anchor(top: coinDataContainer.topAnchor, left: coinDataContainer.leftAnchor, bottom: nil, right: coinDataContainer.rightAnchor, paddingTop: 24, paddingLeft: 24, paddingBottom: 24, paddingRight: 24, width: coinDataContainer.frame.width, height: 40)
 
         topView.addSubview(coinImageView)
         coinImageView.anchor(top: topView.topAnchor, left: topView.leftAnchor, bottom: nil, right: nil, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: imageSize, height: imageSize)
@@ -200,18 +195,18 @@ class CoinDataHeaderCell: UICollectionViewCell {
         coinTitle.anchor(top: topView.topAnchor, left: coinImageView.rightAnchor, bottom: topView.bottomAnchor, right: nil, paddingTop: 0, paddingLeft: 12, paddingBottom: 0, paddingRight: 0, width: 0, height: 0)
 
         coinDataContainer.addSubview(quantityLabel)
-        quantityLabel.anchor(top: topView.bottomAnchor, left: coinDataContainer.leftAnchor, bottom: nil, right: coinDataContainer.rightAnchor, paddingTop: 12, paddingLeft: 24, paddingBottom: 0, paddingRight: 24, width: 0, height: 0)
+        quantityLabel.anchor(top: topView.bottomAnchor, left: coinDataContainer.leftAnchor, bottom: nil, right: coinDataContainer.rightAnchor, paddingTop: 24, paddingLeft: 24, paddingBottom: 0, paddingRight: 24, width: 0, height: 0)
         
         coinDataContainer.addSubview(updateBtn)
-        updateBtn.anchor(top: topView.bottomAnchor, left: nil, bottom: nil, right: coinDataContainer.rightAnchor, paddingTop: 12, paddingLeft: 24, paddingBottom: 0, paddingRight: 24, width: 0, height: 0)
+        updateBtn.anchor(top: topView.bottomAnchor, left: nil, bottom: nil, right: coinDataContainer.rightAnchor, paddingTop: 24, paddingLeft: 24, paddingBottom: 0, paddingRight: 24, width: 0, height: 0)
         updateBtn.addTarget(self, action: #selector(updateBucket), for: .touchUpInside)
         
         coinDataContainer.addSubview(removeBtn)
-        removeBtn.anchor(top: topView.bottomAnchor, left: nil, bottom: nil, right: updateBtn.leftAnchor, paddingTop: 12, paddingLeft: 0, paddingBottom: 0, paddingRight: 12, width: 0, height: 0)
+        removeBtn.anchor(top: topView.bottomAnchor, left: nil, bottom: nil, right: updateBtn.leftAnchor, paddingTop: 24, paddingLeft: 0, paddingBottom: 0, paddingRight: 12, width: 0, height: 0)
         removeBtn.addTarget(self, action: #selector(removeFromBucket), for: .touchUpInside)
 
         coinDataContainer.addSubview(qtyTextField)
-        qtyTextField.anchor(top: quantityLabel.bottomAnchor, left: coinDataContainer.leftAnchor, bottom: nil, right: coinDataContainer.rightAnchor, paddingTop: 4, paddingLeft: 24, paddingBottom: 0, paddingRight: 24, width: 0, height: 0)
+        qtyTextField.anchor(top: quantityLabel.bottomAnchor, left: coinDataContainer.leftAnchor, bottom: nil, right: removeBtn.leftAnchor, paddingTop: 4, paddingLeft: 24, paddingBottom: 0, paddingRight: 24, width: 0, height: 0)
 
         coinDataContainer.addSubview(priceView)
         priceView.anchor(top: qtyTextField.bottomAnchor, left: coinDataContainer.leftAnchor, bottom: nil, right: coinDataContainer.rightAnchor, paddingTop: 24, paddingLeft: 24, paddingBottom: 24, paddingRight: 24, width: 0, height: 0)

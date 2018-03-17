@@ -14,7 +14,7 @@ class PortfolioViewController: UICollectionViewController {
     var selectedCurrency: Currency?
     var savedCoins = [Coin]()
 
-    let progressHUD = ProgressHUD(text: "")
+    let loadingHUD = LoadingHUD()
     let headerCell = "HeaderCell"
     let headerEmptyCell = "HeaderEmptyCell"
     let coinCell = "CoinCell"
@@ -32,6 +32,7 @@ class PortfolioViewController: UICollectionViewController {
         button.layer.cornerRadius = 12.0
         button.layer.masksToBounds = true
         button.addTarget(self, action: #selector(goToCoins), for: .touchUpInside)
+        button.isHidden = true
         return button
     }()
     
@@ -52,7 +53,6 @@ class PortfolioViewController: UICollectionViewController {
         configureUI()
         registerView()
         
-        progressHUD.hide()
         selectedCurrency = stateController.currency
     }
     
@@ -81,7 +81,8 @@ class PortfolioViewController: UICollectionViewController {
         navigationBar.addSubview(currencyRightButton)
         currencyRightButton.anchor(top: nil, left: nil, bottom: navigationBar.bottomAnchor, right: navigationBar.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 5, paddingRight: 16, width: 0, height: 0)
         
-        view.addSubview(progressHUD)
+        view.addSubview(loadingHUD)
+        loadingHUD.show(withLabel: true)
     }
     
     fileprivate func toggleAddCoinBtn() {
@@ -133,8 +134,7 @@ class PortfolioViewController: UICollectionViewController {
     
     // MARK: - #Selector Events
     @objc func handleRefresh() {
-        progressHUD.show()
-        progressHUD.text = "Updating"
+        loadingHUD.show()
         
         for coin in savedCoins {
             let service = CoinService(id: coin.id, start: 0, convert: stateController.currency.name)
@@ -148,7 +148,6 @@ class PortfolioViewController: UICollectionViewController {
     }
     
     @objc func goToCoins() {
-        print("z")
         tabBarController?.selectedIndex = 1
     }
 }

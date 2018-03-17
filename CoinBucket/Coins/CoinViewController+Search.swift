@@ -21,7 +21,7 @@ extension CoinsViewController: UISearchBarDelegate, UISearchResultsUpdating {
     func updateSearchResults(for searchController: UISearchController) {
         let searchText = searchController.searchBar.text ?? ""
         
-        progressHUD.hide()
+        loadingHUD.hide()
         
         filterCoins(searchBar: searchController.searchBar, searchText: searchText) { (coins) in
             if (coins.isEmpty) {
@@ -35,7 +35,7 @@ extension CoinsViewController: UISearchBarDelegate, UISearchResultsUpdating {
     }
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-        progressHUD.hide()
+        loadingHUD.hide()
         searchController.isActive = true
         emptyTextView.removeFromSuperview()
     }
