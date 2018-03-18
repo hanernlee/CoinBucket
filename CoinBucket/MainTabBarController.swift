@@ -42,7 +42,7 @@ class MainTabBarController: UITabBarController {
         
         let portfolioViewController = PortfolioViewController(collectionViewLayout: UICollectionViewFlowLayout())
         portfolioViewController.stateController = stateController
-        let portfolioNavController = templateNavController(title: "Portfolio", unselectedImage: #imageLiteral(resourceName: "coins_unselected").withRenderingMode(.alwaysOriginal), selectedImage: #imageLiteral(resourceName: "coins_selected").withRenderingMode(.alwaysOriginal), rootViewController: portfolioViewController)
+        let portfolioNavController = templateNavController(title: "Bucket", unselectedImage: #imageLiteral(resourceName: "bucket_unselected").withRenderingMode(.alwaysOriginal), selectedImage: #imageLiteral(resourceName: "bucket_selected"), rootViewController: portfolioViewController)
         
         let coinsViewController = CoinsViewController(collectionViewLayout: UICollectionViewFlowLayout())
         coinsViewController.stateController = stateController
