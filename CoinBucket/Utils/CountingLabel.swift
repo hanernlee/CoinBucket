@@ -26,6 +26,7 @@ class CountingLabel: UILabel {
     var startNumber: Float = 0.0
     var endNumber: Float = 0.0
     
+    var stateController: StateController!    
     var progress: TimeInterval!
     var duration: TimeInterval!
     var lastUpdate: TimeInterval!
@@ -86,9 +87,9 @@ class CountingLabel: UILabel {
         case .Int:
             self.text = "\(Int(value))"
         case .Float:
-            let attributedText = NSMutableAttributedString(string: "Total", attributes: [NSAttributedStringKey.font: UIFont.boldSystemFont(ofSize: 20)])
+            let attributedText = NSMutableAttributedString(string: "Total", attributes: [NSAttributedStringKey.font: UIFont.boldSystemFont(ofSize: 20), NSAttributedStringKey.foregroundColor: UIColor.black])
             attributedText.append(NSAttributedString(string: "\n\n", attributes: [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 4)]))
-            attributedText.append(NSAttributedString(string: "\(value.formatCurrency(localeIdentifier: "en_US"))", attributes: [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 18)]))
+            attributedText.append(NSAttributedString(string: "\(value.formatCurrency(localeIdentifier: "en_US"))", attributes: [NSAttributedStringKey.font: UIFont.boldSystemFont(ofSize: 18), NSAttributedStringKey.foregroundColor: UIColor.black]))
             self.attributedText = attributedText
         }
     }

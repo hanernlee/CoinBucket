@@ -38,6 +38,8 @@ class CoinCell: UICollectionViewCell {
         view.backgroundColor = UIColor(white: 0, alpha: 0.5)
         return view
     }()
+    
+    var stateController: StateController!
         
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -103,11 +105,11 @@ class CoinCell: UICollectionViewCell {
             let price = NSDecimalNumber(string: viewModel.price.toDecimals())
             let totalPrice = ((quantity as Decimal) * (price as Decimal)) as NSDecimalNumber
             
-            let rightAttributedText = NSMutableAttributedString(string: totalPrice.formatCurrency(localeIdentifier: "en_US"), attributes: [NSAttributedStringKey.font: UIFont.boldSystemFont(ofSize: 14)])
+            let rightAttributedText = NSMutableAttributedString(string: totalPrice.formatCurrency(localeIdentifier: stateController.currency.locale), attributes: [NSAttributedStringKey.font: UIFont.boldSystemFont(ofSize: 14)])
             
             coinRightLabel.attributedText = rightAttributedText
         } else {
-            let rightAttributedText = NSMutableAttributedString(string: viewModel.price.formatCurrency(localeIdentifier: "en_US"), attributes: [NSAttributedStringKey.font: UIFont.boldSystemFont(ofSize: 14)])
+            let rightAttributedText = NSMutableAttributedString(string: viewModel.price.formatCurrency(localeIdentifier: stateController.currency.locale), attributes: [NSAttributedStringKey.font: UIFont.boldSystemFont(ofSize: 14)])
             rightAttributedText.append(NSAttributedString(string: "\n\n", attributes: [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 4)]))
             rightAttributedText.append(NSAttributedString(string: "\(viewModel.percentChange24h)%", attributes: [NSAttributedStringKey.foregroundColor: percentChangeColor, NSAttributedStringKey.font: UIFont.systemFont(ofSize: 14)]))
             

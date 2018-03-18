@@ -17,16 +17,48 @@ class CurrencyViewController: UIViewController {
     var stateController: StateController!
     var selectedIndexPath: IndexPath?
     let tableCell = "tableCell"
-
-    let availableCurrencies = ["AUD", "BRL", "CAD", "CHF", "CLP", "CNY", "CZK", "DKK", "EUR", "GBP", "HKD", "HUF", "IDR", "ILS", "INR", "JPY", "KRW", "MXN", "MYR", "NOK", "NZD", "PHP", "PKR", "PLN", "RUB", "SEK", "SGD", "THB", "TRY", "TWD", "USD", "ZAR"]
     
     var currencies = [Currency]()
+
+    let availableCurrencies = [
+        "AUD": "en_AU",
+        "BRL": "pt_BR",
+        "CAD": "en_CA",
+        "CHF": "en_CH",
+        "CLP": "es_CL",
+        "CNY": "zh_CN",
+        "CZK": "en_CZ",
+        "DKK": "en_DK",
+        "EUR": "eu_ES",
+        "GBP": "en_GB",
+        "HKD": "en_HK",
+        "HUF": "en_HU",
+        "IDR": "id_ID",
+        "ILS": "he_IL",
+        "INR": "en_IN",
+        "JPY": "ja_JP",
+        "KRW": "ko_KR",
+        "MXN": "es_MX",
+        "MYR": "ms_MY",
+        "NOK": "en_NO",
+        "NZD": "en_NZ",
+        "PHP": "en_PH",
+        "PKR": "en_PK",
+        "PLN": "en_PL",
+        "RUB": "en_RU",
+        "SEK": "en_SE",
+        "SGD": "en_SG",
+        "THB": "th_TH",
+        "TRY": "en_TR",
+        "TWD": "zh_TW",
+        "USD": "en_US",
+        "ZAR": "en_ZA"
+    ]
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         navigationItem.title = "Currencies"
-//        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Save", style: .plain, target: nil, action: nil)
         
         createCurrencies()
         registerTableView()
@@ -42,15 +74,19 @@ class CurrencyViewController: UIViewController {
     }
     
     func createCurrencies() {
-        for (i, currency) in availableCurrencies.enumerated() {
-            let currency = Currency(name: currency)
+        for currency in availableCurrencies {
+            let currency = Currency(name: currency.key, locale: currency.value)
             
+            currencies.append(currency)
+        }
+
+        currencies = currencies.sorted(by: { $0.name < $1.name })
+        
+        for (i ,currency) in currencies.enumerated() {
             if currency.name == stateController.currency.name {
                 currency.toggleChecked()
                 selectedIndexPath = IndexPath(row: i, section: 0)
             }
-            
-            currencies.append(currency)
         }
     }
     

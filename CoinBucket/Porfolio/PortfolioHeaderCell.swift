@@ -17,6 +17,7 @@ class PortfolioHeaderCell: UICollectionViewCell {
     }
     
     var pulsatingLayer: CAShapeLayer!
+    var stateController: StateController!
     
     let totalPriceLabel: CountingLabel = {
         let countingLabel = CountingLabel()
@@ -70,7 +71,7 @@ class PortfolioHeaderCell: UICollectionViewCell {
         animatePulsatingLayer()
 
         // Create track layer
-        let trackLayer = createCircleShapeLayer(strokeColor: .lightGray , fillColor: .orange)
+        let trackLayer = createCircleShapeLayer(strokeColor: .lightGray , fillColor: .white)
         layer.addSublayer(trackLayer)
         
         // Create shape layer

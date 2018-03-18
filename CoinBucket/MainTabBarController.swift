@@ -23,11 +23,22 @@ class MainTabBarController: UITabBarController {
     // MARK: - Fileprivate Methods
     fileprivate func setupTabBarItems() {
         let userDefaults = UserDefaults.standard
-        if let currency = userDefaults.string(forKey: "currency") {
-            stateController = StateController(currency: Currency(name: "\(currency)"))
+        if let data = userDefaults.value(forKey: "currency") as? Data {
+            var currencyDict = try? PropertyListDecoder().decode([String: Currency].self, from: data)
+            
+            let currency = currencyDict!["currency"]
+            
+            stateController = StateController(currency: Currency(name: (currency?.name)!, locale: (currency?.locale)!))
         } else {
-            stateController = StateController(currency: Currency(name: "USD"))
+            stateController = StateController(currency: Currency(name: "USD", locale: "en_US"))
         }
+
+//        if let currency = userDefaults.object(forKey: "currency") {
+//            print(currency)
+//            stateController = StateController(currency: Currency(name: currency as! String, locale: currency as! String))
+//        } else {
+//            stateController = StateController(currency: Currency(name: "USD", locale: "en_US"))
+//        }
         
         let portfolioViewController = PortfolioViewController(collectionViewLayout: UICollectionViewFlowLayout())
         portfolioViewController.stateController = stateController

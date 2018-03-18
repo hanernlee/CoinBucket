@@ -32,10 +32,11 @@ class CoinsViewController: UICollectionViewController {
     }()
     
     let searchController = UISearchController(searchResultsController: nil)
+
     let coinCell = "CoinCell"
     let coinLoadingCell = "CoinLoadingCell"
-    let loadingHUD = LoadingHUD()
     
+    let loadingHUD = LoadingHUD()
     var stateController: StateController!
     var selectedCurrency: Currency?
     

@@ -9,20 +9,6 @@
 import UIKit
 
 class CoinDataHeaderCell: UICollectionViewCell {
-    weak var navigationController: UINavigationController?
-
-    var model: CoinViewModel?
-    var coin: Coin?
-    var stateController: StateController? {
-        didSet {
-            setupCoin()
-        }
-    }
-
-    let userDefaults = UserDefaults.standard
-
-    let imageSize: CGFloat = 32
-
     let topView: UIView = {
         let view = UIView()
         return view
@@ -148,6 +134,20 @@ class CoinDataHeaderCell: UICollectionViewCell {
         return alert
     }()
     
+    weak var navigationController: UINavigationController?
+    
+    var model: CoinViewModel?
+    var coin: Coin?
+    var stateController: StateController? {
+        didSet {
+            setupCoin()
+        }
+    }
+    
+    let userDefaults = UserDefaults.standard
+    
+    let imageSize: CGFloat = 32
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         
@@ -253,7 +253,7 @@ class CoinDataHeaderCell: UICollectionViewCell {
             qtyTextField.text = coin.quantity
         }
         
-        priceLabel.attributedText = setupAttributedText(firstString: "Price", secondString: "\(currency.name) \(model.price.formatCurrency(localeIdentifier: "en_US"))", color: .gray)
+        priceLabel.attributedText = setupAttributedText(firstString: "Price", secondString: "\(currency.name) \(model.price.formatCurrency(localeIdentifier: (stateController?.currency.locale)!))", color: .gray)
         
         if model.percentChange24h > 0 {
             percentChangeColor = .green
@@ -262,9 +262,9 @@ class CoinDataHeaderCell: UICollectionViewCell {
         }
         percentLabel.attributedText = setupAttributedText(firstString: "(%)", secondString: "\(model.percentChange24h)%", color: percentChangeColor)
         
-        marketCapLabel.attributedText = setupAttributedText(firstString: "Market Cap", secondString: "\(currency.name) \(model.marketCap.formatCurrency(localeIdentifier: "en_US"))", color: .gray)
+        marketCapLabel.attributedText = setupAttributedText(firstString: "Market Cap", secondString: "\(currency.name) \(model.marketCap.formatCurrency(localeIdentifier: (stateController?.currency.locale)!))", color: .gray)
         
-        volumeLabel.attributedText = setupAttributedText(firstString: "Volume (24h)", secondString: "\(currency.name) \(model.volume.formatCurrency(localeIdentifier: "en_US"))", color: .gray)
+        volumeLabel.attributedText = setupAttributedText(firstString: "Volume (24h)", secondString: "\(currency.name) \(model.volume.formatCurrency(localeIdentifier: (stateController?.currency.locale)!))", color: .gray)
         
         let numberFormatter = NumberFormatter()
         numberFormatter.numberStyle = NumberFormatter.Style.decimal

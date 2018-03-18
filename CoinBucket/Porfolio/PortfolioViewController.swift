@@ -9,16 +9,6 @@
 import UIKit
 
 class PortfolioViewController: UICollectionViewController {
-    
-    var stateController: StateController!
-    var selectedCurrency: Currency?
-    var savedCoins = [Coin]()
-
-    let loadingHUD = LoadingHUD()
-    let headerCell = "HeaderCell"
-    let headerEmptyCell = "HeaderEmptyCell"
-    let coinCell = "CoinCell"
-
     let emptyView: UIView = {
         let view = UIView()
         return view
@@ -27,7 +17,7 @@ class PortfolioViewController: UICollectionViewController {
     lazy var addCoinBtn: UIButton = {
         let button = UIButton()
         button.setTitle("Add Coins", for: .normal)
-        button.backgroundColor = .red
+        button.backgroundColor = .blue
         button.frame = CGRect(x: 0, y: 0, width: 150, height: 50)
         button.layer.cornerRadius = 12.0
         button.layer.masksToBounds = true
@@ -42,6 +32,15 @@ class PortfolioViewController: UICollectionViewController {
         button.setTitleColor(.gray, for: .normal)
         return button
     }()
+    
+    var stateController: StateController!
+    var selectedCurrency: Currency?
+    var savedCoins = [Coin]()
+    let loadingHUD = LoadingHUD()
+
+    let headerCell = "HeaderCell"
+    let headerEmptyCell = "HeaderEmptyCell"
+    let coinCell = "CoinCell"
 
     // MARK: - ViewController Lifecycle
     override func viewDidLoad() {
@@ -62,6 +61,7 @@ class PortfolioViewController: UICollectionViewController {
         setupCoins()
         changeCurrency()
         toggleAddCoinBtn()
+        loadingHUD.hide()
 
         collectionView?.reloadData()
     }
@@ -135,6 +135,11 @@ class PortfolioViewController: UICollectionViewController {
     // MARK: - #Selector Events
     @objc func handleRefresh() {
         loadingHUD.show()
+        
+        if savedCoins.count == 0 {
+            loadingHUD.hide()
+            collectionView?.refreshControl?.endRefreshing()
+        }
         
         for coin in savedCoins {
             let service = CoinService(id: coin.id, start: 0, convert: stateController.currency.name)

@@ -8,13 +8,15 @@
 
 import Foundation
 
-class Currency {
+class Currency: Codable {
     let name: String
+    let locale: String
     var checked = false
     
     
-    init(name: String) {
+    init(name: String, locale: String) {
         self.name = name
+        self.locale = locale
     }
     
     func toggleChecked() {

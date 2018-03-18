@@ -22,6 +22,8 @@ extension PortfolioViewController: UICollectionViewDelegateFlowLayout {
         let coin = savedCoins[indexPath.item]
         var coinViewModel = CoinViewModel(model: coin)
         coinViewModel.coinType = "\(viewType.PortfolioCoin)"
+
+        cell.stateController = stateController
         cell.displayCoinInCell(using: coinViewModel)
         
         return cell
@@ -36,6 +38,7 @@ extension PortfolioViewController: UICollectionViewDelegateFlowLayout {
             }
             
             let cell = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionElementKindSectionHeader, withReuseIdentifier: headerCell, for: indexPath) as! PortfolioHeaderCell
+            cell.stateController = stateController
             cell.savedCoins = savedCoins
             cell.totalPrice = 0
             return cell

@@ -21,8 +21,9 @@ extension CurrencyViewController: UITableViewDelegate {
             currency.checked = true
             stateController.currency = currency
             
+            let currencyDict: [String: Currency] = ["currency": currency]
             let userDefaults = UserDefaults.standard
-            userDefaults.setValue(currency.name, forKey: "currency")
+            userDefaults.set(try? PropertyListEncoder().encode(currencyDict), forKey: "currency")
             
             self.delegate?.didSelectCurrency(currency: currency)
             

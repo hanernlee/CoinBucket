@@ -10,9 +10,8 @@ import UIKit
 
 class SettingsViewController: UIViewController {
     let tableCell = "TableCell"
-    
+
     var stateController: StateController!
-    
     var tableView: UITableView?
     
     override func viewDidLoad() {

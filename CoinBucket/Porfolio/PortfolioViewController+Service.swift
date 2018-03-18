@@ -31,6 +31,10 @@ extension PortfolioViewController {
                     
                     userDefaults.set(try? PropertyListEncoder().encode(coinDict), forKey: "savedCoins")
                 }
+                
+                let now = Date()
+                let updateString = now.toString(dateFormat: "d MMM yyyy h:mm a")
+                self?.collectionView?.refreshControl?.attributedTitle = NSAttributedString(string: "Last updated \(updateString)")
 
                 self?.setupCoins()
                 self?.collectionView?.reloadData()
