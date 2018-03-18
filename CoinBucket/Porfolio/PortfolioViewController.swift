@@ -47,7 +47,7 @@ class PortfolioViewController: UICollectionViewController {
         super.viewDidLoad()
         
         collectionView?.backgroundColor = .groupTableViewBackground
-        navigationItem.title = "Portfolio"
+        navigationItem.title = "Bucket"
         
         configureUI()
         registerView()

@@ -46,11 +46,11 @@ class MainTabBarController: UITabBarController {
         
         let coinsViewController = CoinsViewController(collectionViewLayout: UICollectionViewFlowLayout())
         coinsViewController.stateController = stateController
-        let coinsNavController = templateNavController(title: "Coins", unselectedImage: #imageLiteral(resourceName: "coins_unselected").withRenderingMode(.alwaysOriginal), selectedImage: #imageLiteral(resourceName: "coins_selected").withRenderingMode(.alwaysOriginal), rootViewController: coinsViewController)
+        let coinsNavController = templateNavController(title: "Coins", unselectedImage: #imageLiteral(resourceName: "coins_unselected").withRenderingMode(.alwaysOriginal), selectedImage: #imageLiteral(resourceName: "coins_selected"), rootViewController: coinsViewController)
         
         let settingsController = SettingsViewController()
         settingsController.stateController = stateController
-        let settingsNavController = templateNavController(title: "Settings", unselectedImage: #imageLiteral(resourceName: "settings_unselected").withRenderingMode(.alwaysOriginal), selectedImage: #imageLiteral(resourceName: "settings_selected").withRenderingMode(.alwaysOriginal), rootViewController: settingsController)
+        let settingsNavController = templateNavController(title: "Settings", unselectedImage: #imageLiteral(resourceName: "settings_unselected").withRenderingMode(.alwaysOriginal), selectedImage: #imageLiteral(resourceName: "settings_selected"), rootViewController: settingsController)
         
         viewControllers = [portfolioNavController, coinsNavController, settingsNavController]
     }

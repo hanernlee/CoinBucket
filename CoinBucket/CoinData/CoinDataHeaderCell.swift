@@ -86,7 +86,7 @@ class CoinDataHeaderCell: UICollectionViewCell {
     
     let updateBtn: UIButton = {
         let button = UIButton(type: .system)
-        button.setImage(#imageLiteral(resourceName: "coins_selected"), for: .normal)
+        button.setImage(#imageLiteral(resourceName: "coin_deposit"), for: .normal)
         button.setTitleColor(.black, for: .normal)
         button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 14)
         button.backgroundColor = .groupTableViewBackground
@@ -99,10 +99,10 @@ class CoinDataHeaderCell: UICollectionViewCell {
     
     let removeBtn: UIButton = {
         let button = UIButton(type: .system)
-        button.setImage(#imageLiteral(resourceName: "coins_selected"), for: .normal)
+        button.setImage(#imageLiteral(resourceName: "delete_trash").withRenderingMode(.alwaysOriginal), for: .normal)
         button.setTitleColor(.black, for: .normal)
         button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 14)
-        button.backgroundColor = .red
+        button.backgroundColor = .groupTableViewBackground
         button.contentEdgeInsets = UIEdgeInsets(top: 12, left: 12, bottom: 12, right: 12)
         button.layer.cornerRadius = 12.0
         button.layer.masksToBounds = true
