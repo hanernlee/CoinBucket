@@ -82,7 +82,7 @@ class PortfolioViewController: UICollectionViewController {
         currencyRightButton.anchor(top: nil, left: nil, bottom: navigationBar.bottomAnchor, right: navigationBar.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 5, paddingRight: 16, width: 0, height: 0)
         
         view.addSubview(loadingHUD)
-        loadingHUD.show(withLabel: true)
+        loadingHUD.hide()
     }
     
     fileprivate func toggleAddCoinBtn() {

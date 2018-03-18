@@ -32,7 +32,7 @@ extension CoinsViewController {
                 self?.loadingHUD.hide()
             case .Error(let error):
                 print(error)
-                self?.loadingHUD.show()
+                self?.loadingHUD.showFail(text: "Network error :(")
                 let alertController = UIAlertController(title: nil, message: "Oops! Sorry it seems there is currently an issue with our servers.", preferredStyle: .alert)
                 alertController.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
                 self?.present(alertController, animated: true, completion: nil)
@@ -58,7 +58,7 @@ extension CoinsViewController {
                 }
             case .Error(let error):
                 print(error)
-                self?.loadingHUD.show()
+                self?.loadingHUD.showFail(text: "Network error :(")
                 let alertController = UIAlertController(title: nil, message: "Oops! Sorry it seems there is currently an issue with our servers.", preferredStyle: .alert)
                 alertController.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
                 self?.present(alertController, animated: true, completion: nil)
@@ -84,13 +84,16 @@ extension CoinsViewController {
                 self?.collectionView?.reloadData()
                 self?.loadingHUD.hide()
             case .Error(let error):
-                if self?.filteredCoins.count == 0 {
-                    self?.loadingHUD.show()
-                    let alertController = UIAlertController(title: nil, message: "Oops! Sorry we can't seem to find that coin.", preferredStyle: .alert)
-                    alertController.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
-                    self?.present(alertController, animated: true, completion: nil)
-                }
                 print(error)
+                let alertController = UIAlertController(title: nil, message: "Oops! Sorry, we can't seem to find that coin.", preferredStyle: .alert)
+                alertController.addAction(UIAlertAction(title: "OK", style: .cancel, handler: { _ in
+                    self?.loadingHUD.showFail(text: "Unable to find coin :(")
+
+                    Timer.scheduledTimer(withTimeInterval: 2.0, repeats: false, block: { _ in
+                        self?.loadingHUD.hide()
+                    })
+                }))
+                self?.present(alertController, animated: true, completion: nil)
             }
         }
     }

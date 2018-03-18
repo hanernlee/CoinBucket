@@ -92,6 +92,7 @@ class CoinsViewController: UICollectionViewController {
         currencyRightButton.anchor(top: nil, left: nil, bottom: navigationBar.bottomAnchor, right: navigationBar.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 5, paddingRight: 16, width: 0, height: 0)
                 
         view.addSubview(loadingHUD)
+        loadingHUD.show()
     }
     
     fileprivate func registerView() {
@@ -129,8 +130,7 @@ class CoinsViewController: UICollectionViewController {
         let service = CoinService(id: coinID, start: 0, convert: stateController.currency.name)
         emptyTextView.removeFromSuperview()
 
-        loadingHUD.show()
-//        progressHUD.text = "Searching \(id)"
+        loadingHUD.show(withLabel: true, text: "Searching '\(id)'")
         getCoin(fromService: service)
     }
     

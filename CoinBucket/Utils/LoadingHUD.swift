@@ -12,6 +12,12 @@ class LoadingHUD: UIVisualEffectView {
     let blurEffect = UIBlurEffect(style: .light)
     let vibrancyView: UIVisualEffectView
     
+    let frameWidth: CGFloat = 300
+    let frameHeight: CGFloat = 150
+    
+    let labelWidth: CGFloat = 200
+    let labelHeight: CGFloat = 50
+    
     var shapeLayer: CAShapeLayer = {
         let shapeLayer = CAShapeLayer()
         return shapeLayer
@@ -24,6 +30,17 @@ class LoadingHUD: UIVisualEffectView {
     
     let label: UILabel = {
         let label = UILabel()
+        label.textAlignment = .center
+        label.numberOfLines = 0
+        label.font = UIFont.boldSystemFont(ofSize: 18)
+        return label
+    }()
+    
+    let failLabel: UILabel = {
+        let label = UILabel()
+        label.textAlignment = .center
+        label.numberOfLines = 0
+        label.font = UIFont.boldSystemFont(ofSize: 18)
         return label
     }()
 
@@ -48,20 +65,20 @@ class LoadingHUD: UIVisualEffectView {
         
         if let superview = self.superview {
             vibrancyView.frame = self.bounds
-            self.frame = CGRect(x: 0, y: 0, width: 300, height: 150)
+            self.frame = CGRect(x: 0, y: 0, width: frameWidth, height: frameHeight)
             self.layer.cornerRadius = 12.0
             self.layer.masksToBounds = true
             self.center = superview.center
             
-            shapeLayer.position = CGPoint(x: 300 / 2, y: 150 / 2)
-            loadingLayer.position = CGPoint(x: 300 / 2, y: 150 / 2)
-            
-            animateLoadingLayer()
+            shapeLayer.position = CGPoint(x: frameWidth / 2, y: frameHeight / 2)
+            loadingLayer.position = CGPoint(x: frameWidth / 2, y: frameHeight / 2)
         }
     }
     
     func setup() {
         contentView.addSubview(vibrancyView)
+        contentView.addSubview(label)
+        contentView.addSubview(failLabel)
         setupCircle()
         setupNotificationObservers()
     }
@@ -76,13 +93,34 @@ class LoadingHUD: UIVisualEffectView {
         layer.addSublayer(loadingLayer)
     }
     
-    func show(withLabel: Bool = false) {
-        if (withLabel) {
-            contentView.addSubview(label)
-//            label.center = CGPoint(x: 300 / 2, y: 150 / 2)
-            label.anchor(top: topAnchor, left: leftAnchor, bottom: bottomAnchor, right: rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 0)
-            label.text = "Hellos"
-            print(label )
+    func show(withLabel: Bool = false, text: String = "") {
+        print(text)
+        reset {
+            if (withLabel) {
+                label.isHidden = false
+                label.text = text
+                label.frame = CGRect(x: frameWidth / 2 - labelWidth / 2, y: 12, width: labelWidth, height: labelHeight)
+                
+                shapeLayer.position = CGPoint(x: frameWidth / 2, y: frameHeight - labelHeight)
+                loadingLayer.position = CGPoint(x: frameWidth / 2, y: frameHeight - labelHeight)
+            }
+            
+            shapeLayer.isHidden = false
+            loadingLayer.isHidden = false
+            
+            animateLoadingLayer()
+        }
+        self.isHidden = false
+    }
+    
+    func showFail(text: String = "") {
+        reset {
+            failLabel.isHidden = false
+            shapeLayer.isHidden = true
+            loadingLayer.isHidden = true
+            
+            failLabel.text = text
+            failLabel.anchor(top: topAnchor, left: leftAnchor, bottom: bottomAnchor, right: rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 0)
         }
         
         self.isHidden = false
@@ -90,6 +128,14 @@ class LoadingHUD: UIVisualEffectView {
     
     func hide() {
         self.isHidden = true
+    }
+    
+    func reset(completion: () -> Void) {
+        failLabel.isHidden = true
+        label.isHidden = true
+        shapeLayer.position = CGPoint(x: frameWidth / 2, y: frameHeight / 2)
+        loadingLayer.position = CGPoint(x: frameWidth / 2, y: frameHeight / 2)
+        completion()
     }
     
     // MARK: - Private Methods
@@ -113,7 +159,7 @@ class LoadingHUD: UIVisualEffectView {
         let basicAnimation = CABasicAnimation(keyPath: "transform.rotation")
         basicAnimation.byValue = 2 * CGFloat.pi
         basicAnimation.duration = 0.8
-        basicAnimation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseOut)
+        basicAnimation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionLinear)
         basicAnimation.repeatCount = .infinity
 
         loadingLayer.add(basicAnimation, forKey: "spinAnimation")
