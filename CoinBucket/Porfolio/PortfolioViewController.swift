@@ -57,11 +57,11 @@ class PortfolioViewController: UICollectionViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        
+
+        loadingHUD.hide()
         setupCoins()
         changeCurrency()
         toggleAddCoinBtn()
-        loadingHUD.hide()
 
         collectionView?.reloadData()
     }
@@ -105,6 +105,7 @@ class PortfolioViewController: UICollectionViewController {
 
         if currentCurrency.name != stateController.currency.name {
             selectedCurrency = stateController.currency
+            loadingHUD.show()
             handleRefresh()
         } else if !savedCoins.isEmpty {
             for coin in savedCoins {

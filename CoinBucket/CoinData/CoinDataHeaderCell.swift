@@ -93,7 +93,6 @@ class CoinDataHeaderCell: UICollectionViewCell {
         button.contentEdgeInsets = UIEdgeInsets(top: 12, left: 12, bottom: 12, right: 12)
         button.layer.cornerRadius = 12.0
         button.layer.masksToBounds = true
-        
         return button
     }()
     
@@ -198,11 +197,11 @@ class CoinDataHeaderCell: UICollectionViewCell {
         quantityLabel.anchor(top: topView.bottomAnchor, left: coinDataContainer.leftAnchor, bottom: nil, right: coinDataContainer.rightAnchor, paddingTop: 24, paddingLeft: 24, paddingBottom: 0, paddingRight: 24, width: 0, height: 0)
         
         coinDataContainer.addSubview(updateBtn)
-        updateBtn.anchor(top: topView.bottomAnchor, left: nil, bottom: nil, right: coinDataContainer.rightAnchor, paddingTop: 24, paddingLeft: 24, paddingBottom: 0, paddingRight: 24, width: 0, height: 0)
+        updateBtn.anchor(top: topView.bottomAnchor, left: nil, bottom: nil, right: coinDataContainer.rightAnchor, paddingTop: 24, paddingLeft: 24, paddingBottom: 0, paddingRight: 24, width: 50, height: 0)
         updateBtn.addTarget(self, action: #selector(updateBucket), for: .touchUpInside)
         
         coinDataContainer.addSubview(removeBtn)
-        removeBtn.anchor(top: topView.bottomAnchor, left: nil, bottom: nil, right: updateBtn.leftAnchor, paddingTop: 24, paddingLeft: 0, paddingBottom: 0, paddingRight: 12, width: 0, height: 0)
+        removeBtn.anchor(top: topView.bottomAnchor, left: nil, bottom: nil, right: updateBtn.leftAnchor, paddingTop: 24, paddingLeft: 0, paddingBottom: 0, paddingRight: 12, width: 50, height: 0)
         removeBtn.addTarget(self, action: #selector(removeFromBucket), for: .touchUpInside)
 
         coinDataContainer.addSubview(qtyTextField)
