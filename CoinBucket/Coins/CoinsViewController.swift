@@ -109,8 +109,6 @@ class CoinsViewController: UICollectionViewController {
         if currentCurrency.name != stateController.currency.name {
             selectedCurrency = stateController.currency
             handleRefresh()
-        } else {
-            print("Same")
         }
     }
     

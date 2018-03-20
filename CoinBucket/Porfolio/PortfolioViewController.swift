@@ -113,8 +113,6 @@ class PortfolioViewController: UICollectionViewController {
                     return handleRefresh()
                 }
             }
-        } else {
-            print("Same")
         }
     }
     
