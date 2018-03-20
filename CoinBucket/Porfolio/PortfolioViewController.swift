@@ -17,7 +17,7 @@ class PortfolioViewController: UICollectionViewController {
     lazy var addCoinBtn: UIButton = {
         let button = UIButton()
         button.setTitle("Add Coins", for: .normal)
-        button.backgroundColor = .blue
+        button.backgroundColor = .orange
         button.frame = CGRect(x: 0, y: 0, width: 150, height: 50)
         button.layer.cornerRadius = 12.0
         button.layer.masksToBounds = true

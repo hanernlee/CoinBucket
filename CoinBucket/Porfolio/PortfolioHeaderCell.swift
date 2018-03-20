@@ -65,7 +65,7 @@ class PortfolioHeaderCell: UICollectionViewCell {
     // MARK: - Fileprivate Methods
     fileprivate func setupCircle() {
         // Create pulsating layer
-        pulsatingLayer = createCircleShapeLayer(strokeColor: .clear , fillColor: .lightBlue)
+        pulsatingLayer = createCircleShapeLayer(strokeColor: .clear , fillColor: .lightOrangey)
         layer.addSublayer(pulsatingLayer)
 
         animatePulsatingLayer()
@@ -75,7 +75,7 @@ class PortfolioHeaderCell: UICollectionViewCell {
         layer.addSublayer(trackLayer)
         
         // Create shape layer
-        shapeLayer = createCircleShapeLayer(strokeColor: .blue, fillColor: .clear)
+        shapeLayer = createCircleShapeLayer(strokeColor: .orangey, fillColor: .clear)
         shapeLayer.transform = CATransform3DMakeRotation(-CGFloat.pi / 2, 0, 0, 1)
         shapeLayer.strokeEnd = 0
         

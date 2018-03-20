@@ -32,13 +32,6 @@ class MainTabBarController: UITabBarController {
         } else {
             stateController = StateController(currency: Currency(name: "USD", locale: "en_US"))
         }
-
-//        if let currency = userDefaults.object(forKey: "currency") {
-//            print(currency)
-//            stateController = StateController(currency: Currency(name: currency as! String, locale: currency as! String))
-//        } else {
-//            stateController = StateController(currency: Currency(name: "USD", locale: "en_US"))
-//        }
         
         let portfolioViewController = PortfolioViewController(collectionViewLayout: UICollectionViewFlowLayout())
         portfolioViewController.stateController = stateController

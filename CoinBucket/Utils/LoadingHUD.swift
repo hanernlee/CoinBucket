@@ -88,7 +88,7 @@ class LoadingHUD: UIVisualEffectView {
         shapeLayer.transform = CATransform3DMakeRotation(-CGFloat.pi / 2, 0, 0, 1)
         layer.addSublayer(shapeLayer)
 
-        loadingLayer = createCircleShapeLayer(strokeColor: .blue , fillColor: .clear)
+        loadingLayer = createCircleShapeLayer(strokeColor: .orange , fillColor: .clear)
         loadingLayer.strokeEnd = 0.5
         layer.addSublayer(loadingLayer)
     }
