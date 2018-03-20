@@ -69,6 +69,10 @@ class CoinsViewController: UICollectionViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
+        if (collectionView?.refreshControl?.isRefreshing)! || filteredCoins.count == 0 {
+            loadingHUD.show()
+        }
+        
         changeCurrency()
     }
     

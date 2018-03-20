@@ -94,7 +94,6 @@ class LoadingHUD: UIVisualEffectView {
     }
     
     func show(withLabel: Bool = false, text: String = "") {
-        print(text)
         reset {
             if (withLabel) {
                 label.isHidden = false
@@ -124,6 +123,8 @@ class LoadingHUD: UIVisualEffectView {
         }
         
         self.isHidden = false
+        
+        
     }
     
     func hide() {

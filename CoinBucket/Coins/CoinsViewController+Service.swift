@@ -36,6 +36,10 @@ extension CoinsViewController {
                 let alertController = UIAlertController(title: nil, message: "Oops! Sorry it seems there is currently an issue with our servers.", preferredStyle: .alert)
                 alertController.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
                 self?.present(alertController, animated: true, completion: nil)
+                
+                Timer.scheduledTimer(withTimeInterval: 2.0, repeats: false, block: { _ in
+                    self?.loadingHUD.hide()
+                })
             }
         }
     }
@@ -62,6 +66,10 @@ extension CoinsViewController {
                 let alertController = UIAlertController(title: nil, message: "Oops! Sorry it seems there is currently an issue with our servers.", preferredStyle: .alert)
                 alertController.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
                 self?.present(alertController, animated: true, completion: nil)
+                
+                Timer.scheduledTimer(withTimeInterval: 2.0, repeats: false, block: { _ in
+                    self?.loadingHUD.hide()
+                })
             }
         }
     }

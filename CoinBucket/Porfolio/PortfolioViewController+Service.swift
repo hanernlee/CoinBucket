@@ -45,6 +45,10 @@ extension PortfolioViewController {
                     let alertController = UIAlertController(title: nil, message: "Oops! Failed to retrieve coins.", preferredStyle: .alert)
                     alertController.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
                     self?.present(alertController, animated: true, completion: nil)
+                    
+                    Timer.scheduledTimer(withTimeInterval: 2.0, repeats: false, block: { _ in
+                        self?.loadingHUD.hide()
+                    })
                 }
                 print(error)
             }
