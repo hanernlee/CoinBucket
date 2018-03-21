@@ -25,6 +25,7 @@ At this stage, I am still not happy enough for it to be published on the AppStor
 After diving into iOS development, I can confidently say that I am in love and super passionate about the iOS environment. Just can't wait to learn more throughout this journey.
 
 ### *Future features
-[X] 1. Ability to add Coins to Portfolio
-2. Nightmode ability
-[X] 3. Fluid animations and better design (Better UX/UI)
+- [X] Ability to add Coins to Portfolio
+- [X] Fluid animations and better design (Better UX/UI)
+- [ ] Nightmode ability
+- [ ] Submit Feedback Functionality
