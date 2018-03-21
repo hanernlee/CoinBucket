@@ -40,6 +40,7 @@ extension PortfolioViewController {
                 self?.collectionView?.reloadData()
                 self?.loadingHUD.hide()
             case .Error(let error):
+                // Shows alertController & loadingHUD
                 if self?.savedCoins.count == 0 {
                     self?.loadingHUD.showFail(text: "Unable to get coin :(")
                     let alertController = UIAlertController(title: nil, message: "Oops! Failed to retrieve coins.", preferredStyle: .alert)

@@ -54,6 +54,7 @@ class CoinCell: UICollectionViewCell {
     fileprivate func configureUI() {
         backgroundColor = .white
         
+        // Sets cornerRadius and shadow
         self.contentView.layer.cornerRadius = 12.0
         self.contentView.layer.borderWidth = 1.0
         self.contentView.layer.borderColor = UIColor.clear.cgColor
@@ -117,8 +118,6 @@ class CoinCell: UICollectionViewCell {
         }
         
         coinLeftLabel.attributedText = leftAttributedText
-        coinImageView.loadImageUsingCacheWithURLString(viewModel.imageUrl, placeHolder: nil) { (bool) in
-            //@TODO handle success
-        }
+        coinImageView.loadImageUsingCacheWithURLString(viewModel.imageUrl, placeHolder: nil) { (bool) in }
     }
 }

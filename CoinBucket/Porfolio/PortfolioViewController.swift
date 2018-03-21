@@ -16,7 +16,7 @@ class PortfolioViewController: UICollectionViewController {
     
     lazy var addCoinBtn: UIButton = {
         let button = UIButton()
-        button.setTitle("Add Coins", for: .normal)
+        button.setTitle("+ Add Coins", for: .normal)
         button.backgroundColor = .orange
         button.frame = CGRect(x: 0, y: 0, width: 150, height: 50)
         button.layer.cornerRadius = 12.0
@@ -73,10 +73,12 @@ class PortfolioViewController: UICollectionViewController {
         addCoinBtn.center = view.center
         toggleAddCoinBtn()
         
+        // Setup refreshControl
         let refreshControl = UIRefreshControl()
         refreshControl.addTarget(self, action: #selector(handleRefresh), for: .valueChanged)
         collectionView?.refreshControl = refreshControl
         
+        // Setup currency button that goes to Settings
         guard let navigationBar = navigationController?.navigationBar else { return }
         navigationBar.addSubview(currencyRightButton)
         currencyRightButton.anchor(top: nil, left: nil, bottom: navigationBar.bottomAnchor, right: navigationBar.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 5, paddingRight: 16, width: 0, height: 0)
@@ -85,6 +87,7 @@ class PortfolioViewController: UICollectionViewController {
         loadingHUD.hide()
     }
     
+    // Toggle Add Coin button
     fileprivate func toggleAddCoinBtn() {
         if savedCoins.count == 0 {
             addCoinBtn.isHidden = false
@@ -93,12 +96,14 @@ class PortfolioViewController: UICollectionViewController {
         }
     }
     
+    // Registers reusable cells
     fileprivate func registerView() {
         collectionView?.register(PortfolioHeaderCell.self, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: headerCell)
         collectionView?.register(PortfolioHeaderEmptyCell.self, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: headerEmptyCell)
         collectionView?.register(CoinCell.self, forCellWithReuseIdentifier: coinCell)
     }
     
+    // Handle currency change
     fileprivate func changeCurrency() {
         currencyRightButton.setTitle("\(stateController.currency.name)", for: .normal)
         guard let currentCurrency = selectedCurrency else { return }
@@ -116,6 +121,7 @@ class PortfolioViewController: UICollectionViewController {
         }
     }
     
+    // Setup coins if saved in UserDefaults
     func setupCoins() {
         let userDefaults = UserDefaults.standard
         if let data = userDefaults.value(forKey: "savedCoins") as? Data {
@@ -132,6 +138,7 @@ class PortfolioViewController: UICollectionViewController {
     }
     
     // MARK: - #Selector Events
+    // Handle refresh of saved coins
     @objc func handleRefresh() {
         loadingHUD.show()
         
@@ -147,10 +154,12 @@ class PortfolioViewController: UICollectionViewController {
         }
     }
     
+    // Handles tap that goes to Settings
     @objc func goToSettings() {
         tabBarController?.selectedIndex = 2
     }
     
+    // Handles tap that goes to Coins
     @objc func goToCoins() {
         tabBarController?.selectedIndex = 1
     }

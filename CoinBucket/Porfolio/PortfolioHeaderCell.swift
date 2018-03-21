@@ -50,6 +50,7 @@ class PortfolioHeaderCell: UICollectionViewCell {
         NotificationCenter.default.addObserver(self, selector: #selector(handleEnterForeground), name: .UIApplicationWillEnterForeground, object: nil)
     }
     
+    // Generate circleShape
     private func createCircleShapeLayer(strokeColor: UIColor, fillColor: UIColor) -> CAShapeLayer {
         let circularPath = UIBezierPath(arcCenter: .zero, radius: 100, startAngle: 0, endAngle: 2 * CGFloat.pi, clockwise: true)
         let layer = CAShapeLayer()
@@ -82,6 +83,7 @@ class PortfolioHeaderCell: UICollectionViewCell {
         layer.addSublayer(shapeLayer)
     }
 
+    // Gets the totalPrice of savedCoins
     fileprivate func getTotalCoin() {
         for coin in savedCoins {
             let quantity = NSDecimalNumber(string: coin.quantity)
@@ -99,6 +101,7 @@ class PortfolioHeaderCell: UICollectionViewCell {
         configureTotalPrice()
     }
     
+    // Animate totalPrice
     fileprivate func configureTotalPrice() {
         let totalPriceFloat = Float(truncating: totalPrice)
         
@@ -131,6 +134,7 @@ class PortfolioHeaderCell: UICollectionViewCell {
     }
     
     // MARK: - #Selector Events
+    // Handle Animation when enterForeground
     @objc func handleEnterForeground() {
         animatePulsatingLayer()
     }

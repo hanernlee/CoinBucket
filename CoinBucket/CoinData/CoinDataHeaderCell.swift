@@ -239,9 +239,7 @@ class CoinDataHeaderCell: UICollectionViewCell {
         guard let model = model else { return }
         guard let coin = coin else { return }
 
-        coinImageView.loadImageUsingCacheWithURLString(model.imageUrl, placeHolder: nil) { (bool) in
-            //@TODO handle success
-        }
+        coinImageView.loadImageUsingCacheWithURLString(model.imageUrl, placeHolder: nil) { (bool) in }
         
         let attributedText = NSMutableAttributedString(string: model.name, attributes: [NSAttributedStringKey.font: UIFont.boldSystemFont(ofSize: 30)])
         attributedText.append(NSAttributedString(string: " (\(model.symbol))", attributes: [NSAttributedStringKey.font: UIFont.boldSystemFont(ofSize: 20), NSAttributedStringKey.foregroundColor: UIColor.gray]))
@@ -297,6 +295,7 @@ class CoinDataHeaderCell: UICollectionViewCell {
     }
     
     // MARK: - #Selector Events
+    // Remove saved coin from UserDefaults
     @objc func removeFromBucket() {
         let alertActionSheet = UIAlertController(title: "Are you sure you wish to remove this coin from your bucket? ", message: nil, preferredStyle: .actionSheet)
         alertActionSheet.addAction(UIAlertAction(title: "Remove", style: .destructive, handler: { _ in
@@ -307,6 +306,7 @@ class CoinDataHeaderCell: UICollectionViewCell {
         self.window?.rootViewController?.present(alertActionSheet, animated: true, completion: nil)
     }
     
+    // Update/Save coin to UserDefaults
     @objc func updateBucket() {
         endEditing(true)
         guard let coinQty = qtyTextField.text, !coinQty.isEmpty else { return }

@@ -31,6 +31,7 @@ extension CoinsViewController {
                 self?.filteredCoins = tempCoins
                 self?.loadingHUD.hide()
             case .Error(let error):
+                // Shows alertController & loadingHUD
                 print(error)
                 self?.loadingHUD.showFail(text: "Network error :(")
                 let alertController = UIAlertController(title: nil, message: "Oops! Sorry it seems there is currently an issue with our servers.", preferredStyle: .alert)
@@ -61,6 +62,7 @@ extension CoinsViewController {
                     self?.isFinishedPaging = true
                 }
             case .Error(let error):
+                // Shows alertController & loadingHUD
                 print(error)
                 self?.loadingHUD.showFail(text: "Network error :(")
                 let alertController = UIAlertController(title: nil, message: "Oops! Sorry it seems there is currently an issue with our servers.", preferredStyle: .alert)
@@ -92,6 +94,7 @@ extension CoinsViewController {
                 self?.collectionView?.reloadData()
                 self?.loadingHUD.hide()
             case .Error(let error):
+                // Shows alertController & loadingHUD
                 print(error)
                 let alertController = UIAlertController(title: nil, message: "Oops! Sorry, we can't seem to find that coin.", preferredStyle: .alert)
                 alertController.addAction(UIAlertAction(title: "OK", style: .cancel, handler: { _ in

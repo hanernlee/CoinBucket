@@ -81,10 +81,12 @@ class CoinsViewController: UICollectionViewController {
         collectionView?.backgroundColor = .groupTableViewBackground
         collectionView?.backgroundView = emptyView
 
+        // Setup refreshControl
         let refreshControl = UIRefreshControl()
         refreshControl.addTarget(self, action: #selector(handleRefresh), for: .valueChanged)
         collectionView?.refreshControl = refreshControl
         
+        // Setup searchController and navigationItem
         searchController.dimsBackgroundDuringPresentation = false
         searchController.searchBar.delegate = self
         searchController.searchResultsUpdater = self
@@ -92,19 +94,22 @@ class CoinsViewController: UICollectionViewController {
         navigationItem.hidesSearchBarWhenScrolling = false
         navigationItem.title = "Coins"
         
+        // Setup currency button that goes to Settings
         guard let navigationBar = navigationController?.navigationBar else { return }
         navigationBar.addSubview(currencyRightButton)
         currencyRightButton.anchor(top: nil, left: nil, bottom: navigationBar.bottomAnchor, right: navigationBar.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 5, paddingRight: 16, width: 0, height: 0)
-                
+        
         view.addSubview(loadingHUD)
         loadingHUD.show()
     }
     
+    // Register cells
     fileprivate func registerView() {
         collectionView?.register(CoinCell.self, forCellWithReuseIdentifier: coinCell)
         collectionView?.register(LoadingCell.self, forCellWithReuseIdentifier: coinLoadingCell)
     }
     
+    // Handle currency change
     fileprivate func changeCurrency() {
         currencyRightButton.setTitle("\(stateController.currency.name)", for: .normal)
 
@@ -117,6 +122,8 @@ class CoinsViewController: UICollectionViewController {
     }
     
     // MARK: - #Selector Events
+    // Handles the refresh of coins
+    // Resets everything back to initial state
     @objc func handleRefresh() {
         coins.removeAll()
         start = 0
@@ -127,6 +134,7 @@ class CoinsViewController: UICollectionViewController {
         loadingHUD.show()
     }
     
+    // Handles the searching of a single coin
     @objc func searchCoin(id: String) {
         let coinID = id.replacingOccurrences(of: " ", with: "-")
 
@@ -137,6 +145,7 @@ class CoinsViewController: UICollectionViewController {
         getCoin(fromService: service)
     }
     
+    // Handles tap that goes to Settings
     @objc func goToSettings() {
         tabBarController?.selectedIndex = 2
     }

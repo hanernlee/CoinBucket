@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
-    <device id="retina4_7" orientation="portrait">
+    <device id="retina5_9" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -15,21 +15,21 @@
             <objects>
                 <viewController id="01J-lp-oVM" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="orangey" translatesAutoresizingMaskIntoConstraints="NO" id="P6k-YB-M3u">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                            </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bucket_logo" translatesAutoresizingMaskIntoConstraints="NO" id="0aJ-gw-VnC">
-                                <rect key="frame" x="54" y="234" width="266" height="176"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CoinBucket" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yu3-hf-Ze7">
-                                <rect key="frame" x="54" y="495" width="266" height="43"/>
+                                <rect key="frame" x="54" y="519" width="266" height="43"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="36"/>
                                 <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bucket_logo" translatesAutoresizingMaskIntoConstraints="NO" id="0aJ-gw-VnC">
+                                <rect key="frame" x="54" y="245" width="266" height="278"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -37,11 +37,10 @@
                             <constraint firstAttribute="trailing" secondItem="P6k-YB-M3u" secondAttribute="trailing" id="DYu-us-Kao"/>
                             <constraint firstAttribute="bottom" secondItem="P6k-YB-M3u" secondAttribute="bottom" id="Jok-KN-Idq"/>
                             <constraint firstItem="0aJ-gw-VnC" firstAttribute="leading" secondItem="Yu3-hf-Ze7" secondAttribute="leading" id="K9u-nT-Akf"/>
-                            <constraint firstItem="0aJ-gw-VnC" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="214" id="Qe3-98-B5w"/>
+                            <constraint firstItem="0aJ-gw-VnC" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="201" id="Qe3-98-B5w"/>
                             <constraint firstItem="P6k-YB-M3u" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="X52-s8-HWL"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="0aJ-gw-VnC" secondAttribute="bottom" constant="257" id="Xx1-0R-QBv"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="0aJ-gw-VnC" secondAttribute="bottom" constant="255" id="Xx1-0R-QBv"/>
                             <constraint firstItem="P6k-YB-M3u" firstAttribute="centerX" secondItem="0aJ-gw-VnC" secondAttribute="centerX" id="eAB-bD-aKV"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="Yu3-hf-Ze7" secondAttribute="bottom" constant="184" id="ibT-uG-p0t"/>
                             <constraint firstItem="Yu3-hf-Ze7" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="475" id="k9B-LK-jjz"/>
                             <constraint firstItem="P6k-YB-M3u" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" id="ods-rv-a9G"/>
                             <constraint firstItem="0aJ-gw-VnC" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="54" id="vzm-Uh-LUo"/>

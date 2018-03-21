@@ -9,6 +9,7 @@
 import UIKit
 
 extension CoinsViewController: UISearchBarDelegate, UISearchResultsUpdating {
+    // Handle Search button clicked
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         guard let searchText = searchBar.text else { return }
                 
@@ -18,6 +19,7 @@ extension CoinsViewController: UISearchBarDelegate, UISearchResultsUpdating {
         self.perform(#selector(searchCoin(id:)), with: lastSearched, afterDelay: 1.0)
     }
     
+    // Update Search results
     func updateSearchResults(for searchController: UISearchController) {
         let searchText = searchController.searchBar.text ?? ""
         
