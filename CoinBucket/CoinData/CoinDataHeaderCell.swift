@@ -134,6 +134,11 @@ class CoinDataHeaderCell: UICollectionViewCell {
         return alert
     }()
     
+    let removeAlertController: UIAlertController = {
+        let alert = UIAlertController(title: "Bucket Updated", message: "Succesfully removed coin from bucket!", preferredStyle: .alert)
+        return alert
+    }()
+    
     weak var navigationController: UINavigationController?
     
     var model: CoinViewModel?
@@ -229,9 +234,13 @@ class CoinDataHeaderCell: UICollectionViewCell {
     
     fileprivate func setupCoin() {
         if let data = userDefaults.value(forKey: "savedCoins") as? Data {
-            var coinDict = try? PropertyListDecoder().decode([String: Coin].self, from: data)
-            let symbol = coin?.symbol
-            coin?.quantity = coinDict![symbol!]?.quantity
+            do {
+                var coinDict = try PropertyListDecoder().decode([String: Coin].self, from: data)
+                let symbol = coin?.symbol
+                coin?.quantity = coinDict[symbol!]?.quantity
+            } catch {
+                print(error)
+            }
         }
         
         var percentChangeColor: UIColor
@@ -282,12 +291,22 @@ class CoinDataHeaderCell: UICollectionViewCell {
         let symbol = coin.symbol
         
         if let data = userDefaults.value(forKey: "savedCoins") as? Data {
-            var currentCoinsDict = try? PropertyListDecoder().decode([String: Coin].self, from: data)
-            
-            currentCoinsDict?.removeValue(forKey: symbol)
-            
-            userDefaults.set(try? PropertyListEncoder().encode(currentCoinsDict), forKey: "savedCoins")
-            navigationController?.popViewController(animated: true)
+            do {
+                var currentCoinsDict = try PropertyListDecoder().decode([String: Coin].self, from: data)
+                
+                currentCoinsDict.removeValue(forKey: symbol)
+                
+                userDefaults.set(try PropertyListEncoder().encode(currentCoinsDict), forKey: "savedCoins")
+                removeAlertController.addAction(UIAlertAction(title: "OK", style: .default, handler: { [weak self] (error) -> Void in
+                    self?.navigationController?.popViewController(animated: true)
+                }))
+                self.window?.rootViewController?.present(removeAlertController, animated: true, completion: nil)
+            } catch {
+                print(error)
+                removeAlertController.title = "Failed"
+                removeAlertController.message = "Failed to update bucket :(."
+                self.window?.rootViewController?.present(removeAlertController, animated: true, completion: nil)
+            }
         }
     }
     
@@ -324,17 +343,31 @@ class CoinDataHeaderCell: UICollectionViewCell {
         
         let userDefaults = UserDefaults.standard
         if let data = userDefaults.value(forKey: "savedCoins") as? Data {
-            var currentCoinsDict = try? PropertyListDecoder().decode([String: Coin].self, from: data)
-            
-            currentCoinsDict![symbol] = coin
-            
-            userDefaults.set(try? PropertyListEncoder().encode(currentCoinsDict), forKey: "savedCoins")
-
-            self.window?.rootViewController?.present(alertController, animated: true, completion: nil)
+            do {
+                var currentCoinsDict = try PropertyListDecoder().decode([String: Coin].self, from: data)
+                
+                currentCoinsDict[symbol] = coin
+                
+                userDefaults.set(try PropertyListEncoder().encode(currentCoinsDict), forKey: "savedCoins")
+                
+                self.window?.rootViewController?.present(alertController, animated: true, completion: nil)
+            } catch {
+                print(error)
+                alertController.title = "Failed"
+                alertController.message = "Failed to update bucket :(."
+                self.window?.rootViewController?.present(alertController, animated: true, completion: nil)
+            }
         } else {
-            userDefaults.set(try? PropertyListEncoder().encode(coinsDict), forKey: "savedCoins")
-            
-            self.window?.rootViewController?.present(alertController, animated: true, completion: nil)
+            do {
+                userDefaults.set(try PropertyListEncoder().encode(coinsDict), forKey: "savedCoins")
+                
+                self.window?.rootViewController?.present(alertController, animated: true, completion: nil)
+            } catch {
+                print(error)
+                alertController.title = "Failed"
+                alertController.message = "Failed to update bucket :(."
+                self.window?.rootViewController?.present(alertController, animated: true, completion: nil)
+            }
         }
     }
 }

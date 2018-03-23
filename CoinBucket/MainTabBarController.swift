@@ -24,11 +24,16 @@ class MainTabBarController: UITabBarController {
     fileprivate func setupTabBarItems() {
         let userDefaults = UserDefaults.standard
         if let data = userDefaults.value(forKey: "currency") as? Data {
-            var currencyDict = try? PropertyListDecoder().decode([String: Currency].self, from: data)
             
-            let currency = currencyDict!["currency"]
-            
-            stateController = StateController(currency: Currency(name: (currency?.name)!, locale: (currency?.locale)!))
+            do {
+                var currencyDict = try PropertyListDecoder().decode([String: Currency].self, from: data)
+                
+                let currency = currencyDict["currency"]
+
+                stateController = StateController(currency: Currency(name: (currency?.name)!, locale: (currency?.locale)!))
+            } catch {
+                print(error)
+            }
         } else {
             stateController = StateController(currency: Currency(name: "USD", locale: "en_US"))
         }
