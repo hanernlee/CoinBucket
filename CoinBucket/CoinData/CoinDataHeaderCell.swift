@@ -98,6 +98,7 @@ class CoinDataHeaderCell: UICollectionViewCell {
     
     let removeBtn: UIButton = {
         let button = UIButton(type: .system)
+        button.isHidden = true
         button.setImage(#imageLiteral(resourceName: "delete_trash").withRenderingMode(.alwaysOriginal), for: .normal)
         button.setTitleColor(.black, for: .normal)
         button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 14)
@@ -163,10 +164,10 @@ class CoinDataHeaderCell: UICollectionViewCell {
         
         guard let coin = coin else { return }
         
-        if coin.quantity != "0" {
-            removeBtn.isHidden = false
-        } else {
+        if coin.quantity == nil || coin.quantity == "0" {
             removeBtn.isHidden = true
+        } else {
+            removeBtn.isHidden = false
         }
     }
     
