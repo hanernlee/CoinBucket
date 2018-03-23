@@ -21,6 +21,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         UITabBar.appearance().tintColor = .orange
         
+        StoreReviewHelper.incrementAppOpenedCount()
+
         return true
     }
 }
