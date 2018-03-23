@@ -12,6 +12,7 @@ extension SettingsViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         switch section {
         case 0: return "Currency"
+        case 1: return "Contact"
         default: fatalError("Unknown section")
         }
     }
@@ -26,6 +27,8 @@ extension SettingsViewController: UITableViewDelegate {
                 
                 navigationController?.pushViewController(currencyController, animated: true)
             }
+        case 1:
+            sendEmail()
         default: fatalError("Unknown section")
         }
     }
