@@ -5,8 +5,7 @@ Cryptocurrency Portfolio Tracker iOS  App
 
 ## Technologies
 1. Swift
-2. Nimble & Quick using Carthage
-3. CoinMarketCap API (Parsed through coinster.herokuapp.com)
+2. CoinMarketCap API (Parsed through coinster.herokuapp.com)
 
 ## Background
 Blockchain and Cryptocurrency has been making headlines for the most of 2017 and I figured it would be good to get my feet wet by combining both my interest in iOS development together with cryptocurrencies. Having invested in some of these coins, I found myself having to check prices of these crypto coins constantly and that was when I decided to create this app for my personal use. At the moment, the app is powered using CoinMarketCap's API which has over 1400 coins and support for 31 different currencies.
@@ -28,3 +27,5 @@ After diving into iOS development, I can confidently say that I am in love and s
 - [X] Ability to add Coins to Portfolio
 - [X] Fluid animations and better design (Better UX/UI)
 - [X] Submit Feedback Functionality
+
+*Icons provided by https://icons8.com/license/*
