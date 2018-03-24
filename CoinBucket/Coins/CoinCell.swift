@@ -118,6 +118,6 @@ class CoinCell: UICollectionViewCell {
         }
         
         coinLeftLabel.attributedText = leftAttributedText
-        coinImageView.loadImageUsingCacheWithURLString(viewModel.imageUrl, placeHolder: nil) { (bool) in }
+        coinImageView.loadImageUsingCacheWithURLString(viewModel.imageUrl, placeHolder: #imageLiteral(resourceName: "coin_deposit")) { (bool) in }
     }
 }

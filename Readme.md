@@ -27,5 +27,4 @@ After diving into iOS development, I can confidently say that I am in love and s
 ### *Future features
 - [X] Ability to add Coins to Portfolio
 - [X] Fluid animations and better design (Better UX/UI)
-- [ ] Nightmode ability
-- [ ] Submit Feedback Functionality
+- [X] Submit Feedback Functionality

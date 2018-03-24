@@ -249,7 +249,7 @@ class CoinDataHeaderCell: UICollectionViewCell {
         guard let model = model else { return }
         guard let coin = coin else { return }
 
-        coinImageView.loadImageUsingCacheWithURLString(model.imageUrl, placeHolder: nil) { (bool) in }
+        coinImageView.loadImageUsingCacheWithURLString(model.imageUrl, placeHolder: #imageLiteral(resourceName: "coin_deposit")) { (bool) in }
         
         let attributedText = NSMutableAttributedString(string: model.name, attributes: [NSAttributedStringKey.font: UIFont.boldSystemFont(ofSize: 30)])
         attributedText.append(NSAttributedString(string: " (\(model.symbol))", attributes: [NSAttributedStringKey.font: UIFont.boldSystemFont(ofSize: 20), NSAttributedStringKey.foregroundColor: UIColor.gray]))
