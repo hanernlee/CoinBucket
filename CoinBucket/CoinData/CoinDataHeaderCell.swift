@@ -300,6 +300,7 @@ class CoinDataHeaderCell: UICollectionViewCell {
                 removeAlertController.addAction(UIAlertAction(title: "OK", style: .default, handler: { [weak self] (error) -> Void in
                     self?.navigationController?.popViewController(animated: true)
                 }))
+                
                 self.window?.rootViewController?.present(removeAlertController, animated: true, completion: nil)
             } catch {
                 print(error)
@@ -313,7 +314,7 @@ class CoinDataHeaderCell: UICollectionViewCell {
     func dismissCell() {
         navigationController?.popViewController(animated: true)
     }
-    
+
     // MARK: - #Selector Events
     // Remove saved coin from UserDefaults
     @objc func removeFromBucket() {
@@ -323,6 +324,10 @@ class CoinDataHeaderCell: UICollectionViewCell {
         }))
         alertActionSheet.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
         
+        alertActionSheet.popoverPresentationController?.sourceView = removeBtn
+        alertActionSheet.popoverPresentationController?.sourceRect = removeBtn.bounds
+        alertActionSheet.popoverPresentationController?.permittedArrowDirections = UIPopoverArrowDirection.right;
+
         self.window?.rootViewController?.present(alertActionSheet, animated: true, completion: nil)
     }
     
@@ -349,7 +354,7 @@ class CoinDataHeaderCell: UICollectionViewCell {
                 currentCoinsDict[symbol] = coin
                 
                 userDefaults.set(try PropertyListEncoder().encode(currentCoinsDict), forKey: "savedCoins")
-                
+
                 self.window?.rootViewController?.present(alertController, animated: true, completion: nil)
             } catch {
                 print(error)

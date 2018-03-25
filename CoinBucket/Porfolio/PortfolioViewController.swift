@@ -62,7 +62,6 @@ class PortfolioViewController: UICollectionViewController {
         setupCoins()
         changeCurrency()
         toggleAddCoinBtn()
-
         collectionView?.reloadData()
     }
     
@@ -75,6 +74,7 @@ class PortfolioViewController: UICollectionViewController {
         
         // Setup refreshControl
         let refreshControl = UIRefreshControl()
+        refreshControl.attributedTitle = NSAttributedString(string: "Pull down to refresh")
         refreshControl.addTarget(self, action: #selector(handleRefresh), for: .valueChanged)
         collectionView?.refreshControl = refreshControl
         
