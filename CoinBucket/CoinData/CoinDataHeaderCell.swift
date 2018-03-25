@@ -19,6 +19,11 @@ class CoinDataHeaderCell: UICollectionViewCell {
         return view
     }()
     
+    let priceBTCView: UIView = {
+        let view = UIView()
+        return view
+    }()
+    
     let coinImageView: UIImageView = {
         let iv = UIImageView()
         iv.contentMode = .scaleAspectFill
@@ -35,6 +40,12 @@ class CoinDataHeaderCell: UICollectionViewCell {
     }()
     
     let priceLabel: UILabel = {
+        let label = UILabel()
+        label.numberOfLines = 0
+        return label
+    }()
+    
+    let priceBTCLabel: UILabel = {
         let label = UILabel()
         label.numberOfLines = 0
         return label
@@ -221,9 +232,15 @@ class CoinDataHeaderCell: UICollectionViewCell {
 
         priceView.addSubview(percentLabel)
         percentLabel.anchor(top: priceView.topAnchor, left: nil, bottom: priceView.bottomAnchor, right: priceView.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 0)
+        
+        coinDataContainer.addSubview(priceBTCView)
+        priceBTCView.anchor(top: priceView.bottomAnchor, left: coinDataContainer.leftAnchor, bottom: nil, right: coinDataContainer.rightAnchor, paddingTop: 24, paddingLeft: 24, paddingBottom: 24, paddingRight: 24, width: 0, height: 0)
+
+        priceBTCView.addSubview(priceBTCLabel)
+        priceBTCLabel.anchor(top: priceBTCView.topAnchor, left: priceBTCView.leftAnchor, bottom: priceBTCView.bottomAnchor, right: priceBTCView.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 0)
 
         coinDataContainer.addSubview(marketCapLabel)
-        marketCapLabel.anchor(top: priceView.bottomAnchor, left: coinDataContainer.leftAnchor, bottom: nil, right: coinDataContainer.rightAnchor, paddingTop: 24, paddingLeft: 24, paddingBottom: 0, paddingRight: 24, width: 0, height: 0)
+        marketCapLabel.anchor(top: priceBTCView.bottomAnchor, left: coinDataContainer.leftAnchor, bottom: nil, right: coinDataContainer.rightAnchor, paddingTop: 24, paddingLeft: 24, paddingBottom: 0, paddingRight: 24, width: 0, height: 0)
 
         coinDataContainer.addSubview(volumeLabel)
         volumeLabel.anchor(top: marketCapLabel.bottomAnchor, left: coinDataContainer.leftAnchor, bottom: nil, right: coinDataContainer.rightAnchor, paddingTop: 24, paddingLeft: 24, paddingBottom: 0, paddingRight: 24, width: 0, height: 0)
@@ -261,6 +278,8 @@ class CoinDataHeaderCell: UICollectionViewCell {
         }
         
         priceLabel.attributedText = setupAttributedText(firstString: "Price", secondString: "\(currency.name) \(model.price.formatCurrency(localeIdentifier: (stateController?.currency.locale)!))", color: .gray)
+        
+        priceBTCLabel.attributedText = setupAttributedText(firstString: "Price (BTC)", secondString: "\(model.priceBTC) BTC", color: .gray)
         
         if model.percentChange24h > 0 {
             percentChangeColor = .green
