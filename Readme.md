@@ -33,9 +33,9 @@ Having no prior iOS development experience and being self-taught, building this 
 
 As a Web Developer, I felt comfortable coding everything from scratch but for my next App I would definitely love to combine both techniques where necessary.
 
-### To-Dos
+### Update
 *Update 27/03/2018: I am proud to announce that <a href="https://itunes.apple.com/us/app/coinbucket/id1363663110?mt=8">CoinBucket</a> is now live on the AppStore*
-At this stage, I am still not happy enough for it to be published on the AppStore. There is still a whole lot of features to be added and I am definitely working towards it.
+
 
 ### Final Thoughts
 After diving into iOS development, I can confidently say that I am in love and super passionate about the iOS environment. Just can't wait to learn more throughout this journey.
