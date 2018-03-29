@@ -13,17 +13,17 @@ Track the prices of over 1400 different cryptocurrencies including Bitcoin, Ethe
 
 Supports conversion to 31 different Fiat Currencies (USD, AUD, EUR, etc).
 
-No registration is required and data saved is only stored locally on the device.
+Please note that this app does not connect to any Cryptocurrency wallets or blockchain. There is no registration required and data that is saved is only storred locally on the device. 
 
-*Cryptocurrency data provided by coinmarketcap.com*
-*Icons provided by https://icons8.com/*
+Cryptocurrency data provided by https://coinmarketcap.com
+Icons provided by https://icons8.com/
 
 ## Version
 v1.2
 
 ## Technologies
 1. Swift
-2. https://coinmarketcap.com/api/
+2. <a href="https://coinmarketcap.com/api/">CoinMarketCap</a>
 
 ## Background
 Blockchain and Cryptocurrency has been making headlines for the most of 2017 and I figured it would be good to get my feet wet by combining both my interest in iOS development together with cryptocurrencies. Having invested in some of these coins, I found myself having to check prices of these crypto coins constantly and that was when I decided to create this app for my personal use. At the moment, the app is powered using coinmarketcap's API which has over 1400 coins and support for 31 different currencies.
