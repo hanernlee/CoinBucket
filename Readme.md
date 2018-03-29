@@ -31,7 +31,7 @@ Blockchain and Cryptocurrency has been making headlines for the most of 2017 and
 ## Thoughts & Challenges
 Having no prior iOS development experience and being self-taught, building this app was definitely a challenge. I opted to code everything programatically as compared to using storyboards to see the difference and to understand how UIKit works under the hood. 
 
-As a Web Developer, I felt comfortable coding everything from scratch but for my next App I would definitely love to combine both techniques where necessary.
+As a Web Developer, I felt comfortable coding everything from scratch but for my next App I would definitely love to combine both techniques of using Storyboards and coding UI programmatically where necessary.
 
 ### Update
 *Update 27/03/2018: I am proud to announce that <a href="https://itunes.apple.com/us/app/coinbucket/id1363663110?mt=8">CoinBucket</a> is now live on the AppStore*
