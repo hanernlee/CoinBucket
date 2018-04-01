@@ -19,7 +19,7 @@ Cryptocurrency data provided by https://coinmarketcap.com
 Icons provided by https://icons8.com/
 
 ## Version
-v1.2
+v1.3
 
 ## Technologies
 1. Swift
