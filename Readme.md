@@ -33,6 +33,9 @@ Having no prior iOS development experience and being self-taught, building this 
 
 As a Web Developer, I felt comfortable coding everything from scratch but for my next App I would definitely love to combine both techniques of using Storyboards and coding UI programmatically where necessary.
 
+## Room for improvements
+There are defintely a lot of areas that I could improve on. The current app architecture and flow of data could be a lot better and DRY-er. I also wished I read this <a href="https://academy.realm.io/posts/sommer-panage-writing-your-ui-swiftly/">article on how to write UI Swiftly</a> earlier. The UI could also be a lot better with cool animations and transitions. Overall, I really enjoyed reflecting on what I could have done better, I am currently learning everyday to improve my skills to build better and quality iOS apps. 
+
 ### Update
 *Update 27/03/2018: I am proud to announce that <a href="https://itunes.apple.com/us/app/coinbucket/id1363663110?mt=8">CoinBucket</a> is now live on the AppStore*
 
