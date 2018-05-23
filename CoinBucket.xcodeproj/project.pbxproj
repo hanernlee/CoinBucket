@@ -191,7 +191,7 @@
 			path = Coins;
 			sourceTree = "<group>";
 		};
-		504D9E381FDBEA99008EAB42 /* Porfolio */ = {
+		504D9E381FDBEA99008EAB42 /* Portfolio */ = {
 			isa = PBXGroup;
 			children = (
 				504D9E391FDBEAEE008EAB42 /* PortfolioViewController.swift */,
@@ -200,7 +200,7 @@
 				50AAD46D204EA3C600B1E902 /* PortfolioHeaderCell.swift */,
 				50579F0B205CE05500B9AD60 /* PortfolioHeaderEmptyCell.swift */,
 			);
-			path = Porfolio;
+			path = Portfolio;
 			sourceTree = "<group>";
 		};
 		504D9E3D1FDBEC58008EAB42 /* Utils */ = {
@@ -268,7 +268,7 @@
 			isa = PBXGroup;
 			children = (
 				504D9E331FDBE154008EAB42 /* Coins */,
-				504D9E381FDBEA99008EAB42 /* Porfolio */,
+				504D9E381FDBEA99008EAB42 /* Portfolio */,
 				503D3B961FE9278800AD8F4D /* Settings */,
 				50AAD4712054BAA300B1E902 /* CoinData */,
 				503D3BA11FE93B9C00AD8F4D /* Currency */,
