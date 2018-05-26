@@ -47,6 +47,22 @@ extension CoinsViewController: UICollectionViewDelegateFlowLayout {
         navigationController?.pushViewController(coinDataView, animated: true)
     }
     
+    override func collectionView(_ collectionView: UICollectionView, didHighlightItemAt indexPath: IndexPath) {
+        UIView.animate(withDuration: 0.7, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 1.0, options: .curveEaseOut, animations: {
+            if let cell = collectionView.cellForItem(at: indexPath) as? CoinCell {
+                cell.transform = CGAffineTransform(scaleX: 0.95, y: 0.95)
+            }
+        }, completion: nil)
+    }
+    
+    override func collectionView(_ collectionView: UICollectionView, didUnhighlightItemAt indexPath: IndexPath) {
+        UIView.animate(withDuration: 0.7, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 1.0, options: .curveEaseOut, animations: {
+            if let cell = collectionView.cellForItem(at: indexPath) as? CoinCell {
+                cell.transform = .identity
+            }
+        }, completion: nil)
+    }
+    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         return UIEdgeInsets(top: 10, left: 0, bottom: 0, right: 0)
     }

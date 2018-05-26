@@ -82,8 +82,8 @@ class CoinDataHeaderCell: UICollectionViewCell {
         return label
     }()
     
-    let qtyTextField: UITextField = {
-        let tf = UITextField()
+    let qtyTextField: TextField = {
+        let tf = TextField()
         tf.placeholder = "Enter quantity"
         tf.font = UIFont.systemFont(ofSize: 18)
         tf.textColor = .blue
@@ -91,7 +91,6 @@ class CoinDataHeaderCell: UICollectionViewCell {
         tf.layer.cornerRadius = 6.0
         tf.layer.masksToBounds = true
         tf.backgroundColor = .groupTableViewBackground
-        
         return tf
     }()
     
@@ -131,9 +130,9 @@ class CoinDataHeaderCell: UICollectionViewCell {
         coinDataContainer.layer.masksToBounds = true
         
         coinDataContainer.layer.shadowColor = UIColor.lightGray.cgColor
-        coinDataContainer.layer.shadowOffset = CGSize(width: 0, height: 2.0)
-        coinDataContainer.layer.shadowRadius = 2.0
-        coinDataContainer.layer.shadowOpacity = 1.0
+        coinDataContainer.layer.shadowOffset = CGSize(width: 0, height: 1.0)
+        coinDataContainer.layer.shadowRadius = 1.0
+        coinDataContainer.layer.shadowOpacity = 0.5
         coinDataContainer.layer.masksToBounds = false
         coinDataContainer.layer.cornerRadius = 12.0
         
@@ -177,6 +176,7 @@ class CoinDataHeaderCell: UICollectionViewCell {
         super.layoutSubviews()
         
         coinImageView.frame = CGRect(x: 0, y: topView.frame.height / 2 - imageSize / 2, width: imageSize, height: imageSize)
+        qtyTextField.frame.size.height = 30
         
         guard let coin = coin else { return }
         
@@ -223,6 +223,7 @@ class CoinDataHeaderCell: UICollectionViewCell {
 
         coinDataContainer.addSubview(qtyTextField)
         qtyTextField.anchor(top: quantityLabel.bottomAnchor, left: coinDataContainer.leftAnchor, bottom: nil, right: removeBtn.leftAnchor, paddingTop: 4, paddingLeft: 24, paddingBottom: 0, paddingRight: 24, width: 0, height: 0)
+        qtyTextField.frame.size.height = 100
 
         coinDataContainer.addSubview(priceView)
         priceView.anchor(top: qtyTextField.bottomAnchor, left: coinDataContainer.leftAnchor, bottom: nil, right: coinDataContainer.rightAnchor, paddingTop: 24, paddingLeft: 24, paddingBottom: 24, paddingRight: 24, width: 0, height: 0)

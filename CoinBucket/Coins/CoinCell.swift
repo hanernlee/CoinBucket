@@ -61,9 +61,9 @@ class CoinCell: UICollectionViewCell {
         self.contentView.layer.masksToBounds = true
         
         self.layer.shadowColor = UIColor.lightGray.cgColor
-        self.layer.shadowOffset = CGSize(width: 0, height: 2.0)
-        self.layer.shadowRadius = 2.0
-        self.layer.shadowOpacity = 1.0
+        self.layer.shadowOffset = CGSize(width: 0, height: 1.0)
+        self.layer.shadowRadius = 1.0
+        self.layer.shadowOpacity = 0.5
         self.layer.masksToBounds = false
         self.layer.cornerRadius = 12.0
         self.layer.shadowPath = UIBezierPath(roundedRect: self.bounds, cornerRadius: self.contentView.layer.cornerRadius).cgPath

@@ -37,7 +37,6 @@ class PortfolioHeaderCell: UICollectionViewCell {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        setupNotificationObservers()
         setupCircle()
     }
 
@@ -46,10 +45,6 @@ class PortfolioHeaderCell: UICollectionViewCell {
     }
     
     // MARK: - Private Methods
-    private func setupNotificationObservers() {
-        NotificationCenter.default.addObserver(self, selector: #selector(handleEnterForeground), name: .UIApplicationWillEnterForeground, object: nil)
-    }
-    
     // Generate circleShape
     private func createCircleShapeLayer(strokeColor: UIColor, fillColor: UIColor) -> CAShapeLayer {
         let circularPath = UIBezierPath(arcCenter: .zero, radius: 100, startAngle: 0, endAngle: 2 * CGFloat.pi, clockwise: true)
@@ -108,13 +103,13 @@ class PortfolioHeaderCell: UICollectionViewCell {
         addSubview(totalPriceLabel)
         totalPriceLabel.frame = CGRect(x: 0, y: 0, width: 150, height: 100)
         totalPriceLabel.center = center
-        totalPriceLabel.count(fromValue: 0, to: totalPriceFloat, withDuration: 2, andAnimationType: .EaseOut, andCounterType: .Float)
+        totalPriceLabel.count(fromValue: 0, to: totalPriceFloat, withDuration: 0.7, andAnimationType: .EaseOut, andCounterType: .Float)
     }
     
     fileprivate func animateShapeLayer() {
         let basicAnimation = CABasicAnimation(keyPath: "strokeEnd")
         basicAnimation.toValue = 1
-        basicAnimation.duration = 2
+        basicAnimation.duration = 0.7
         basicAnimation.fillMode = kCAFillModeForwards
         basicAnimation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseOut)
         basicAnimation.isRemovedOnCompletion = false
@@ -125,18 +120,12 @@ class PortfolioHeaderCell: UICollectionViewCell {
     fileprivate func animatePulsatingLayer() {
         let basicAnimation = CABasicAnimation(keyPath: "transform.scale")
         basicAnimation.toValue = 1.3
-        basicAnimation.duration = 0.8
+        basicAnimation.duration = 0.4
         basicAnimation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseOut)
         basicAnimation.autoreverses = true
-        basicAnimation.repeatCount = .infinity
+        basicAnimation.isRemovedOnCompletion = true
 
         pulsatingLayer.add(basicAnimation, forKey: "pulsatingLayer")
-    }
-    
-    // MARK: - #Selector Events
-    // Handle Animation when enterForeground
-    @objc func handleEnterForeground() {
-        animatePulsatingLayer()
     }
 }
 

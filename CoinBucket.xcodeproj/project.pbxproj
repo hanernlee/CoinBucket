@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5002039420B9BC4E00DA6609 /* TextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5002039320B9BC4E00DA6609 /* TextField.swift */; };
 		50390BBE20651F44003D66BC /* MailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50390BBD20651F43003D66BC /* MailCell.swift */; };
 		50390BC0206522D3003D66BC /* SettingsViewController+MFMailComposeViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50390BBF206522D3003D66BC /* SettingsViewController+MFMailComposeViewControllerDelegate.swift */; };
 		50390BC420652BF0003D66BC /* StoreReviewHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50390BC320652BF0003D66BC /* StoreReviewHelper.swift */; };
@@ -77,6 +78,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		5002039320B9BC4E00DA6609 /* TextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextField.swift; sourceTree = "<group>"; };
 		50390BBD20651F43003D66BC /* MailCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MailCell.swift; sourceTree = "<group>"; };
 		50390BBF206522D3003D66BC /* SettingsViewController+MFMailComposeViewControllerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SettingsViewController+MFMailComposeViewControllerDelegate.swift"; sourceTree = "<group>"; };
 		50390BC320652BF0003D66BC /* StoreReviewHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreReviewHelper.swift; sourceTree = "<group>"; };
@@ -213,6 +215,7 @@
 				5099B9C9205CBDE1009C71EE /* CountingLabel.swift */,
 				50579F0D205D26F200B9AD60 /* LoadingHUD.swift */,
 				50390BC320652BF0003D66BC /* StoreReviewHelper.swift */,
+				5002039320B9BC4E00DA6609 /* TextField.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -333,7 +336,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0920;
-				LastUpgradeCheck = 0920;
+				LastUpgradeCheck = 0930;
 				ORGANIZATIONNAME = "Christopher Lee";
 				TargetAttributes = {
 					50CDC1AA1FDBB87C009A2E22 = {
@@ -407,6 +410,7 @@
 				503D3BA51FE93DE000AD8F4D /* CurrencyViewController+TableViewDataSource.swift in Sources */,
 				50A3A3DA2057E0FD00379364 /* CoinDataHeaderCell.swift in Sources */,
 				5099B9CA205CBDE1009C71EE /* CountingLabel.swift in Sources */,
+				5002039420B9BC4E00DA6609 /* TextField.swift in Sources */,
 				503D3B911FE663F400AD8F4D /* LoadingCell.swift in Sources */,
 				504D9E3F1FDBED03008EAB42 /* UIView+Anchor.swift in Sources */,
 				50390BC420652BF0003D66BC /* StoreReviewHelper.swift in Sources */,
@@ -488,6 +492,7 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -495,6 +500,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -545,6 +551,7 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -552,6 +559,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;

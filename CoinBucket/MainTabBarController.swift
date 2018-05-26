@@ -57,6 +57,7 @@ class MainTabBarController: UITabBarController {
     fileprivate func templateNavController(title: String, unselectedImage: UIImage, selectedImage: UIImage, rootViewController: UIViewController = UIViewController()) -> UINavigationController {
         let viewController = rootViewController
         let navController = UINavigationController(rootViewController: viewController)
+        navController.navigationBar.tintColor = .orangey
         navController.navigationBar.prefersLargeTitles = true
         navController.tabBarItem.title = title
         navController.tabBarItem.image = unselectedImage
