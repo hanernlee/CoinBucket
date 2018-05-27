@@ -58,7 +58,7 @@ extension CoinsViewController {
                         self?.filteredCoins.append(coin)
                     }
                 }
-                if coins.count < 500 {
+                if coins.count < 100 {
                     self?.isFinishedPaging = true
                 }
             case .Error(let error):

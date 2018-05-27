@@ -17,7 +17,7 @@ extension CoinsViewController {
     }
     
     func fetchMoreCoins() {
-        start += 500
+        start += 100
         
         let service = CoinService(id: nil, start: start, convert: stateController.currency.name)
         getMoreCoins(fromService: service)
