@@ -34,6 +34,7 @@ public class TabBarController: UITabBarController {
     private func configureTabViewController(_ title: String, unselectedImage: UIImage, selectedImage: UIImage, rootViewController: UIViewController) -> UINavigationController {
         let viewController = rootViewController
         let navigationController = UINavigationController(rootViewController: viewController)
+        navigationController.navigationBar.prefersLargeTitles = true
         navigationController.tabBarItem.title = title
         navigationController.tabBarItem.image = unselectedImage
         navigationController.tabBarItem.selectedImage = selectedImage

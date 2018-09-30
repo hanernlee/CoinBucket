@@ -16,7 +16,6 @@ public class AllCoinsViewController: UIViewController {
     // MARK: - Private properties
     private var viewModel: AllCoinsViewModel!
     
-    
     // MARK: - Lifecycle
     public override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,22 +32,39 @@ public class AllCoinsViewController: UIViewController {
     
     // MARK: - Configure
     private func configure() {
+        configureNavigationTitle()
         configureCollectionView()
         configureInitialCoinCollection()
     }
     
-    // MARK: - Configure Collection View
+    // MARK: - Configure Navigation Title
+    private func configureNavigationTitle() {
+        navigationItem.title = "Coins"
+    }
+    
+    // MARK: - Configure CollectionView
     private func configureCollectionView() {
-        collectionView.register(UINib(nibName:"CoinCell", bundle: nil), forCellWithReuseIdentifier: CustomCellIdentifier.coinCell)
-        collectionView.register(CoinCell.self, forCellWithReuseIdentifier: CustomCellIdentifier.coinCell)
-
         collectionView.delegate = self
         collectionView.dataSource = self
+        collectionView.register(UINib(nibName: "CoinCell", bundle: nil), forCellWithReuseIdentifier: CustomCellIdentifier.coinCell)
+        configureCollectionViewFlowLayout()
+    }
+    
+    // MARK: - Configure CollectionViewFlowLayout
+
+    private func configureCollectionViewFlowLayout() {
+        let layout = UICollectionViewFlowLayout()
+        layout.sectionInset = UIEdgeInsets(top: 12, left: 0, bottom: 12, right: 0)
+        layout.itemSize = CGSize(width: self.view.frame.width - 24, height: 70)
+        collectionView.collectionViewLayout = layout
     }
     
     // MARK: - Configure Initial Coin Collection
     private func configureInitialCoinCollection() {
+        self.view.showLoadingIndicator()
+
         viewModel.getAllCoins {
+            self.view.hideLoadingIndicator()
             self.collectionView.reloadData()
         }
     }
@@ -56,7 +72,6 @@ public class AllCoinsViewController: UIViewController {
 
 extension AllCoinsViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     public func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        print(viewModel.getCoinsCount())
         return viewModel.getCoinsCount()
     }
     

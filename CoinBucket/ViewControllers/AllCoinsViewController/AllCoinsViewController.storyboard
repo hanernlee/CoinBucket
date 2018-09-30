@@ -40,7 +40,7 @@
                         <viewLayoutGuide key="safeArea" id="pkN-Ho-lMn"/>
                     </view>
                     <connections>
-                        <outlet property="collectionView" destination="IRH-7j-hIO" id="nsl-NU-8pl"/>
+                        <outlet property="collectionView" destination="IRH-7j-hIO" id="nvB-co-5wf"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="70S-HP-DMz" userLabel="First Responder" sceneMemberID="firstResponder"/>

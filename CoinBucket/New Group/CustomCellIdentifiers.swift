@@ -9,5 +9,5 @@
 import Foundation
 
 enum CustomCellIdentifier {
-    static let coinCell = "CoinCell"
+    static let coinCell = "CoinCellID"
 }
