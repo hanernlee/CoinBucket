@@ -15,9 +15,10 @@
 		505967282160A0E200DA1124 /* LoadingIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 505967272160A0E200DA1124 /* LoadingIndicator.swift */; };
 		5059672A2160A27600DA1124 /* UIView+LoadingIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 505967292160A27600DA1124 /* UIView+LoadingIndicator.swift */; };
 		505967302160BFFB00DA1124 /* UIView+Center.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5059672F2160BFFB00DA1124 /* UIView+Center.swift */; };
-		505967362160EAEC00DA1124 /* AllCoinsViewControllerCollectionViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 505967352160EAEC00DA1124 /* AllCoinsViewControllerCollectionViewLayout.swift */; };
 		505967392160F55F00DA1124 /* CoinCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 505967372160F55F00DA1124 /* CoinCell.swift */; };
 		5059673A2160F55F00DA1124 /* CoinCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 505967382160F55F00DA1124 /* CoinCell.xib */; };
+		5059673C2160FF8600DA1124 /* CoinCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5059673B2160FF8600DA1124 /* CoinCellViewModel.swift */; };
+		50596740216104CF00DA1124 /* AlamofireImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5059673F216104CF00DA1124 /* AlamofireImage.framework */; };
 		5074D9DF213985DD0082C962 /* BucketViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5074D9DE213985DD0082C962 /* BucketViewController.swift */; };
 		5074D9E1213985F40082C962 /* AllCoinsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5074D9E0213985F40082C962 /* AllCoinsViewController.swift */; };
 		5074D9E32139860C0082C962 /* CoinViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5074D9E22139860C0082C962 /* CoinViewController.swift */; };
@@ -46,9 +47,11 @@
 		505967272160A0E200DA1124 /* LoadingIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingIndicator.swift; sourceTree = "<group>"; };
 		505967292160A27600DA1124 /* UIView+LoadingIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+LoadingIndicator.swift"; sourceTree = "<group>"; };
 		5059672F2160BFFB00DA1124 /* UIView+Center.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Center.swift"; sourceTree = "<group>"; };
-		505967352160EAEC00DA1124 /* AllCoinsViewControllerCollectionViewLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllCoinsViewControllerCollectionViewLayout.swift; sourceTree = "<group>"; };
 		505967372160F55F00DA1124 /* CoinCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinCell.swift; sourceTree = "<group>"; };
 		505967382160F55F00DA1124 /* CoinCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CoinCell.xib; sourceTree = "<group>"; };
+		5059673B2160FF8600DA1124 /* CoinCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinCellViewModel.swift; sourceTree = "<group>"; };
+		5059673D216104C700DA1124 /* AlamofireImage.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; name = AlamofireImage.framework.dSYM; path = Carthage/Build/iOS/AlamofireImage.framework.dSYM; sourceTree = "<group>"; };
+		5059673F216104CF00DA1124 /* AlamofireImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AlamofireImage.framework; path = Carthage/Build/iOS/AlamofireImage.framework; sourceTree = "<group>"; };
 		5074D9DE213985DD0082C962 /* BucketViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BucketViewController.swift; sourceTree = "<group>"; };
 		5074D9E0213985F40082C962 /* AllCoinsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllCoinsViewController.swift; sourceTree = "<group>"; };
 		5074D9E22139860C0082C962 /* CoinViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinViewController.swift; sourceTree = "<group>"; };
@@ -76,6 +79,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				503F9E91213ACF9900D1714E /* Alamofire.framework in Frameworks */,
+				50596740216104CF00DA1124 /* AlamofireImage.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -93,6 +97,8 @@
 		503F9E90213ACF9900D1714E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				5059673F216104CF00DA1124 /* AlamofireImage.framework */,
+				5059673D216104C700DA1124 /* AlamofireImage.framework.dSYM */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -112,6 +118,7 @@
 			children = (
 				505967372160F55F00DA1124 /* CoinCell.swift */,
 				505967382160F55F00DA1124 /* CoinCell.xib */,
+				5059673B2160FF8600DA1124 /* CoinCellViewModel.swift */,
 			);
 			path = CoinCell;
 			sourceTree = "<group>";
@@ -180,7 +187,6 @@
 				5074DA1021399FDA0082C962 /* AllCoinsViewModel.swift */,
 				5074D9E0213985F40082C962 /* AllCoinsViewController.swift */,
 				505967192160861B00DA1124 /* AllCoinsViewController.storyboard */,
-				505967352160EAEC00DA1124 /* AllCoinsViewControllerCollectionViewLayout.swift */,
 			);
 			path = AllCoinsViewController;
 			sourceTree = "<group>";
@@ -333,9 +339,11 @@
 			);
 			inputPaths = (
 				"$(SRCROOT)/Carthage/Build/iOS/Alamofire.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/AlamofireImage.framework",
 			);
 			outputPaths = (
 				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/Alamofire.framework",
+				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/AlamofireImage.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -355,6 +363,7 @@
 				5074DA0F21399DC10082C962 /* Coin.swift in Sources */,
 				5074D9EB213987500082C962 /* DataStorage.swift in Sources */,
 				5074DA1121399FDA0082C962 /* AllCoinsViewModel.swift in Sources */,
+				5059673C2160FF8600DA1124 /* CoinCellViewModel.swift in Sources */,
 				5074D9EF2139878F0082C962 /* NetworkService.swift in Sources */,
 				5074DA0D21399DB70082C962 /* Result.swift in Sources */,
 				5074D9DF213985DD0082C962 /* BucketViewController.swift in Sources */,
@@ -370,7 +379,6 @@
 				5074D9E32139860C0082C962 /* CoinViewController.swift in Sources */,
 				5059672A2160A27600DA1124 /* UIView+LoadingIndicator.swift in Sources */,
 				503F9E8C213ACA8200D1714E /* Storyboardable.swift in Sources */,
-				505967362160EAEC00DA1124 /* AllCoinsViewControllerCollectionViewLayout.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

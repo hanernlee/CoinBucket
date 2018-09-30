@@ -73,6 +73,10 @@
             </constraints>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <size key="customSize" width="243" height="56"/>
+            <connections>
+                <outlet property="coinFullName" destination="2f9-1C-yn9" id="jMf-Gu-dFH"/>
+                <outlet property="coinImage" destination="dhC-nP-czL" id="lak-hv-siW"/>
+            </connections>
             <point key="canvasLocation" x="292" y="121.4392803598201"/>
         </collectionViewCell>
     </objects>

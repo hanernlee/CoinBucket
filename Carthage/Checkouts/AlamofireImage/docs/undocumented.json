@@ -1,0 +1,110 @@
+{
+  "warnings": [
+    {
+      "file": "/Users/jshier/Desktop/Code/AlamofireImage/Source/AFIError.swift",
+      "line": 32,
+      "symbol": "AFIError.requestCancelled",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jshier/Desktop/Code/AlamofireImage/Source/AFIError.swift",
+      "line": 33,
+      "symbol": "AFIError.imageSerializationFailed",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jshier/Desktop/Code/AlamofireImage/Source/Image.swift",
+      "line": 29,
+      "symbol": "Image",
+      "symbol_kind": "source.lang.swift.decl.typealias",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jshier/Desktop/Code/AlamofireImage/Source/ImageDownloader.swift",
+      "line": 73,
+      "symbol": "ImageDownloader.DownloadPrioritization.fifo",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jshier/Desktop/Code/AlamofireImage/Source/ImageDownloader.swift",
+      "line": 73,
+      "symbol": "ImageDownloader.DownloadPrioritization.lifo",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jshier/Desktop/Code/AlamofireImage/Source/Request+AlamofireImage.swift",
+      "line": 207,
+      "symbol": "DataRequest.imageScale",
+      "symbol_kind": "source.lang.swift.decl.var.class",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jshier/Desktop/Code/AlamofireImage/Source/UIImageView+AlamofireImage.swift",
+      "line": 44,
+      "symbol": "UIImageView.ImageTransition.noTransition",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jshier/Desktop/Code/AlamofireImage/Source/UIImageView+AlamofireImage.swift",
+      "line": 45,
+      "symbol": "UIImageView.ImageTransition.crossDissolve(_:)",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jshier/Desktop/Code/AlamofireImage/Source/UIImageView+AlamofireImage.swift",
+      "line": 46,
+      "symbol": "UIImageView.ImageTransition.curlDown(_:)",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jshier/Desktop/Code/AlamofireImage/Source/UIImageView+AlamofireImage.swift",
+      "line": 47,
+      "symbol": "UIImageView.ImageTransition.curlUp(_:)",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jshier/Desktop/Code/AlamofireImage/Source/UIImageView+AlamofireImage.swift",
+      "line": 48,
+      "symbol": "UIImageView.ImageTransition.flipFromBottom(_:)",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jshier/Desktop/Code/AlamofireImage/Source/UIImageView+AlamofireImage.swift",
+      "line": 49,
+      "symbol": "UIImageView.ImageTransition.flipFromLeft(_:)",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jshier/Desktop/Code/AlamofireImage/Source/UIImageView+AlamofireImage.swift",
+      "line": 50,
+      "symbol": "UIImageView.ImageTransition.flipFromRight(_:)",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jshier/Desktop/Code/AlamofireImage/Source/UIImageView+AlamofireImage.swift",
+      "line": 51,
+      "symbol": "UIImageView.ImageTransition.flipFromTop(_:)",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jshier/Desktop/Code/AlamofireImage/Source/UIImageView+AlamofireImage.swift",
+      "line": 52,
+      "symbol": "UIImageView.ImageTransition.custom(duration:animationOptions:animations:completion:)",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    }
+  ],
+  "source_directory": "/Users/jshier/Desktop/Code/AlamofireImage"
+}

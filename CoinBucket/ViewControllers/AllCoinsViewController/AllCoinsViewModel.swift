@@ -31,6 +31,14 @@ public class AllCoinsViewModel {
         }
     }
     
+    func getCoin(at index: Int) -> Coin? {
+        if coins.count > 0 {
+            return coins[index]
+        } else {
+            return nil
+        }
+    }
+    
     func getCoinsCount() -> Int {
         return coins.count
     }

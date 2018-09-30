@@ -83,6 +83,12 @@ extension AllCoinsViewController: UICollectionViewDelegate, UICollectionViewData
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CustomCellIdentifier.coinCell, for: indexPath) as? CoinCell else {
             return UICollectionViewCell()
         }
+        
+        if let coin = viewModel.getCoin(at: indexPath.row) {
+            let coinCellViewModel = CoinCellViewModel(model: coin)
+            cell.configure(using: coinCellViewModel)
+        }
+
         return cell
     }
 }

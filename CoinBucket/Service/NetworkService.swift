@@ -43,8 +43,8 @@ public struct NetworkService: Gettable {
                     coins.append(value)
                 }
                 
-                coins = coins.sorted(by: { Int($0.sortOrder)! > Int($1.sortOrder)! })
-                
+                coins = coins.sorted(by: { Int($0.sortOrder)! < Int($1.sortOrder)! })
+
                 completion(.Success(coins))
             }
             catch let decodeError {
