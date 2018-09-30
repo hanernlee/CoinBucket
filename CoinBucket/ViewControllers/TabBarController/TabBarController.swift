@@ -9,7 +9,7 @@
 import UIKit
 
 public class TabBarController: UITabBarController {
-    private let viewControllerFactory: ViewControllerFactory
+    private var viewControllerFactory: ViewControllerFactory
 
     public override func viewDidLoad() {
         super.viewDidLoad()
@@ -17,14 +17,13 @@ public class TabBarController: UITabBarController {
         configure()
     }
     
-    init(factory: ViewControllerFactory) {
+    public init(factory: ViewControllerFactory) {
         self.viewControllerFactory = factory
-        super.init()
+        super.init(nibName: nil, bundle: nil)
     }
     
-    public required init?(coder aDecoder: NSCoder) {
-        self.viewControllerFactory = nil
-        super.init(coder: aDecoder)
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
     
     private func configure() {

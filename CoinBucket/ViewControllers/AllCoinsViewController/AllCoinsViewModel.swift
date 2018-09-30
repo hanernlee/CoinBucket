@@ -16,17 +16,22 @@ public class AllCoinsViewModel {
     init (environmentService: EnvironmentServiceProtocol, networkService: NetworkService) {
         self.environmentService = environmentService
         self.networkService = networkService
+        
     }
     
-    func getAllCoins() -> [Coin] {
+    func getAllCoins(completion: @escaping () -> Void) {
         networkService.getAllCoins { result in
             switch result {
             case .Success(let coins):
                 self.coins = coins
+                completion()
             case .Error:
                 print("Failed")
             }
         }
-        return coins
+    }
+    
+    func getCoinsCount() -> Int {
+        return coins.count
     }
 }

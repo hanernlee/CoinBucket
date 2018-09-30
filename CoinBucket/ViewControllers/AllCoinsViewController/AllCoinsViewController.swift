@@ -8,34 +8,66 @@
 
 import UIKit
 
-public class AllCoinsViewController: UITableViewController {
-    private var viewModel: AllCoinsViewModel! = nil
+public class AllCoinsViewController: UIViewController {
     
+    // MARK: - IBOutlets
+    @IBOutlet weak var collectionView: UICollectionView!
+    
+    // MARK: - Private properties
+    private var viewModel: AllCoinsViewModel!
+    
+    
+    // MARK: - Lifecycle
     public override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         configure()
     }
     
-    public func configure() {
-        view.backgroundColor = .yellow
-        
-    }
-    
+    // MARK: - Instantiate
     public static func instantiate(viewModel: AllCoinsViewModel) -> AllCoinsViewController {
         let viewController = AllCoinsViewController.instantiateFromStoryboard()
         viewController.viewModel = viewModel
         return viewController
     }
-}
-
-extension AllCoinsViewController {
-    public override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+    
+    // MARK: - Configure
+    private func configure() {
+        configureCollectionView()
+        configureInitialCoinCollection()
     }
     
-    public override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = UITableViewCell()
+    // MARK: - Configure Collection View
+    private func configureCollectionView() {
+        collectionView.register(UINib(nibName:"CoinCell", bundle: nil), forCellWithReuseIdentifier: CustomCellIdentifier.coinCell)
+        collectionView.register(CoinCell.self, forCellWithReuseIdentifier: CustomCellIdentifier.coinCell)
+
+        collectionView.delegate = self
+        collectionView.dataSource = self
+    }
+    
+    // MARK: - Configure Initial Coin Collection
+    private func configureInitialCoinCollection() {
+        viewModel.getAllCoins {
+            self.collectionView.reloadData()
+        }
+    }
+}
+
+extension AllCoinsViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+    public func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        print(viewModel.getCoinsCount())
+        return viewModel.getCoinsCount()
+    }
+    
+    public func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return 1
+    }
+    
+    public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CustomCellIdentifier.coinCell, for: indexPath) as? CoinCell else {
+            return UICollectionViewCell()
+        }
         return cell
     }
 }

@@ -13,15 +13,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
         window = UIWindow(frame: UIScreen.main.bounds)
         
         let networkService = NetworkService()
         let enviromentService = EnvironmentService()
         let viewControllerFactory = ViewControllerFactory(environmentService: enviromentService, networkService: networkService)
-        let tabBarController = TabBarController()
-        tabBarController.viewControllerFactory = viewControllerFactory
+        let tabBarController = TabBarController(factory: viewControllerFactory)
         
         window?.rootViewController = tabBarController
         window?.makeKeyAndVisible()

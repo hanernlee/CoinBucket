@@ -20,7 +20,7 @@ class EnvironmentService: EnvironmentServiceProtocol {
         dataStorage.removeValue(forKey: DataStorageKeys.theme)
     }
     
-    var theme : String {
+    var theme: String {
         get { return dataStorage.getValue(forKey: DataStorageKeys.theme)}
         set { dataStorage.setValue(newValue, forKey: DataStorageKeys.theme) }
     }
