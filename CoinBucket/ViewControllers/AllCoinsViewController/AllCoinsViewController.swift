@@ -84,10 +84,7 @@ extension AllCoinsViewController: UICollectionViewDelegate, UICollectionViewData
             return UICollectionViewCell()
         }
         
-        if let coin = viewModel.getCoin(at: indexPath.row) {
-            let coinCellViewModel = CoinCellViewModel(model: coin)
-            cell.configure(using: coinCellViewModel)
-        }
+        viewModel.configureCell(cell: cell, at: indexPath.row)
 
         return cell
     }

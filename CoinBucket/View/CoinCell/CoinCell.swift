@@ -17,9 +17,17 @@ class CoinCell: UICollectionViewCell {
     public func configure(using viewModel: CoinCellViewModel) {
         coinFullName?.text = viewModel.fullName
         
-        if let url = URL(string: "\(API.baseUrl)\(viewModel.imageUrl)") {
-            let placeholderImage = UIImage(named: "coin_deposit")!
-            coinImage.af_setImage(withURL: url, placeholderImage: placeholderImage)
+        viewModel.getCoinPriceData {
+            print("Hey")
         }
+        
+        configureImage(viewModel.imageUrl)
+    }
+    
+    private func configureImage(_ imageUrl: String) {
+        guard let url = URL(string: "\(API.baseUrl)\(imageUrl)"), let placeholderImage = UIImage(named: "coin_deposit") else {
+                return
+        }
+        coinImage.af_setImage(withURL: url, placeholderImage: placeholderImage)
     }
 }

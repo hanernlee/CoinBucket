@@ -19,6 +19,10 @@
 		5059673A2160F55F00DA1124 /* CoinCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 505967382160F55F00DA1124 /* CoinCell.xib */; };
 		5059673C2160FF8600DA1124 /* CoinCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5059673B2160FF8600DA1124 /* CoinCellViewModel.swift */; };
 		50596740216104CF00DA1124 /* AlamofireImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5059673F216104CF00DA1124 /* AlamofireImage.framework */; };
+		505967442163A45E00DA1124 /* PriceResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 505967432163A45E00DA1124 /* PriceResult.swift */; };
+		505967462163A5E900DA1124 /* RawPriceData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 505967452163A5E900DA1124 /* RawPriceData.swift */; };
+		505967482163A5F400DA1124 /* DisplayPriceData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 505967472163A5F400DA1124 /* DisplayPriceData.swift */; };
+		5059674A2163A6C900DA1124 /* CoinPriceData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 505967492163A6C900DA1124 /* CoinPriceData.swift */; };
 		5074D9DF213985DD0082C962 /* BucketViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5074D9DE213985DD0082C962 /* BucketViewController.swift */; };
 		5074D9E1213985F40082C962 /* AllCoinsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5074D9E0213985F40082C962 /* AllCoinsViewController.swift */; };
 		5074D9E32139860C0082C962 /* CoinViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5074D9E22139860C0082C962 /* CoinViewController.swift */; };
@@ -52,6 +56,10 @@
 		5059673B2160FF8600DA1124 /* CoinCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinCellViewModel.swift; sourceTree = "<group>"; };
 		5059673D216104C700DA1124 /* AlamofireImage.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; name = AlamofireImage.framework.dSYM; path = Carthage/Build/iOS/AlamofireImage.framework.dSYM; sourceTree = "<group>"; };
 		5059673F216104CF00DA1124 /* AlamofireImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AlamofireImage.framework; path = Carthage/Build/iOS/AlamofireImage.framework; sourceTree = "<group>"; };
+		505967432163A45E00DA1124 /* PriceResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PriceResult.swift; sourceTree = "<group>"; };
+		505967452163A5E900DA1124 /* RawPriceData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RawPriceData.swift; sourceTree = "<group>"; };
+		505967472163A5F400DA1124 /* DisplayPriceData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisplayPriceData.swift; sourceTree = "<group>"; };
+		505967492163A6C900DA1124 /* CoinPriceData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinPriceData.swift; sourceTree = "<group>"; };
 		5074D9DE213985DD0082C962 /* BucketViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BucketViewController.swift; sourceTree = "<group>"; };
 		5074D9E0213985F40082C962 /* AllCoinsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllCoinsViewController.swift; sourceTree = "<group>"; };
 		5074D9E22139860C0082C962 /* CoinViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinViewController.swift; sourceTree = "<group>"; };
@@ -222,9 +230,13 @@
 		5074DA0B21399D580082C962 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				5074DA0C21399DB70082C962 /* Result.swift */,
-				5074DA0E21399DC10082C962 /* Coin.swift */,
 				50596721216091FD00DA1124 /* CustomCellIdentifiers.swift */,
+				5074DA0E21399DC10082C962 /* Coin.swift */,
+				5074DA0C21399DB70082C962 /* Result.swift */,
+				505967432163A45E00DA1124 /* PriceResult.swift */,
+				505967452163A5E900DA1124 /* RawPriceData.swift */,
+				505967472163A5F400DA1124 /* DisplayPriceData.swift */,
+				505967492163A6C900DA1124 /* CoinPriceData.swift */,
 			);
 			name = Model;
 			path = "New Group";
@@ -356,7 +368,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				505967442163A45E00DA1124 /* PriceResult.swift in Sources */,
 				5074D9E1213985F40082C962 /* AllCoinsViewController.swift in Sources */,
+				505967462163A5E900DA1124 /* RawPriceData.swift in Sources */,
 				5074DA08213998940082C962 /* TabBarController.swift in Sources */,
 				5074D9F4213987EA0082C962 /* CoinViewModel.swift in Sources */,
 				505967302160BFFB00DA1124 /* UIView+Center.swift in Sources */,
@@ -373,8 +387,10 @@
 				5074D9FF21398F2D0082C962 /* APIStruct.swift in Sources */,
 				5074D9E8213986500082C962 /* EnvironmentService.swift in Sources */,
 				50596722216091FD00DA1124 /* CustomCellIdentifiers.swift in Sources */,
+				505967482163A5F400DA1124 /* DisplayPriceData.swift in Sources */,
 				505967392160F55F00DA1124 /* CoinCell.swift in Sources */,
 				503F9E8A213AC4C900D1714E /* ViewControllerFactory.swift in Sources */,
+				5059674A2163A6C900DA1124 /* CoinPriceData.swift in Sources */,
 				5074DA0A21399BE20082C962 /* DataStorageKeys.swift in Sources */,
 				5074D9E32139860C0082C962 /* CoinViewController.swift in Sources */,
 				5059672A2160A27600DA1124 /* UIView+LoadingIndicator.swift in Sources */,

@@ -15,16 +15,15 @@ enum NetworkResult<T> {
 }
 
 protocol Gettable {
-    associatedtype T
-//    func get(_ url: String, completion: @escaping (Result<T>) -> Void)
-    func getAllCoins(completion: @escaping (NetworkResult<T>) -> Void)
+    func getAllCoins(completion: @escaping (NetworkResult<[Coin]>) -> Void)
+    func getCoinPriceData(symbol: String, completion: @escaping (NetworkResult<CoinPriceData>) -> Void)
 }
 
 public struct NetworkService: Gettable {
     private let decoder = JSONDecoder()
     
     func getAllCoins(completion: @escaping (NetworkResult<[Coin]>) -> Void) {
-        guard let url = URL(string: API.all) else { return }
+        guard let url = URL(string: API.getAll()) else { return }
         
         Alamofire.request(url).responseData { (dataResponse) in
             if let error = dataResponse.error {
@@ -51,5 +50,38 @@ public struct NetworkService: Gettable {
                 print("Failed to decode, Handle Error here: \(decodeError)")
             }
         }
+    }
+    
+    func getCoinPriceData(symbol: String, completion: @escaping (NetworkResult<CoinPriceData>) -> Void) {
+        
+        guard let url = URL(string: API.getPriceData(symbol)) else { return }
+        
+        Alamofire.request(url).responseData { (dataResponse) in
+            if let error = dataResponse.error {
+                print("Handle Error Please: \(error)")
+            }
+            
+            guard let data = dataResponse.data else {
+                print("no daata")
+                return
+            }
+
+            do {
+                let result = try self.decoder.decode(PriceResult.self, from: data)
+                
+                guard let rawPriceData = result.rawData[symbol], let displayPriceData = result.displayData[symbol] else {
+                        print("Failed to downcast price data")
+                        return
+                }
+                
+                let coinPriceData = CoinPriceData(rawPriceData: rawPriceData, displayPriceData: displayPriceData)
+               print(coinPriceData)
+                completion(.Success(coinPriceData))
+            }
+            catch let decodeError {
+                print("Failed to decode, Handle Error here: \(decodeError)")
+            }
+        }
+        
     }
 }

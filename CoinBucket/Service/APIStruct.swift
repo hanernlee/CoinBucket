@@ -10,6 +10,13 @@ import Foundation
 
 public struct API {
     static let baseUrl = "https://www.cryptocompare.com"
-    static let all =  "https://min-api.cryptocompare.com/data/all/coinlist"
-    static let price = "price?fsym=BTC&tsyms="
+    static let dataUrl = "https://min-api.cryptocompare.com/data"
+    
+    static func getAll() -> String {
+        return "\(dataUrl)/all/coinlist"
+    }
+    
+    static func getPriceData(_ symbol: String) -> String {
+        return "\(dataUrl)/pricemultifull?fsyms=\(symbol)&tsyms=USD,BTC"
+    }
 }

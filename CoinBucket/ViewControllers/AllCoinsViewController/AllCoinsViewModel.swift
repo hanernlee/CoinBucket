@@ -16,7 +16,6 @@ public class AllCoinsViewModel {
     init (environmentService: EnvironmentServiceProtocol, networkService: NetworkService) {
         self.environmentService = environmentService
         self.networkService = networkService
-        
     }
     
     func getAllCoins(completion: @escaping () -> Void) {
@@ -41,5 +40,12 @@ public class AllCoinsViewModel {
     
     func getCoinsCount() -> Int {
         return coins.count
+    }
+    
+    // MARK: - Configure Cell
+    func configureCell(cell: CoinCell, at index: Int) {
+        let coin = coins[index]
+        let coinCellViewModel = CoinCellViewModel(model: coin, networkService: networkService)
+        cell.configure(using: coinCellViewModel)
     }
 }
