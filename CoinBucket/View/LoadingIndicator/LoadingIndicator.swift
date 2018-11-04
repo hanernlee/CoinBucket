@@ -24,7 +24,7 @@ class LoadingIndicator: UIView {
     
     public var containerView: UIView = {
         let containerView = UIView()
-        containerView.backgroundColor = .groupTableViewBackground
+        containerView.backgroundColor = .bgGray
         containerView.frame = CGRect(x: 0, y: 0, width: 100, height: 100)
         containerView.layer.cornerRadius = 8
         containerView.layer.masksToBounds = true

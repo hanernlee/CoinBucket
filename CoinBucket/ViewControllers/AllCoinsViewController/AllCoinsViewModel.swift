@@ -11,18 +11,39 @@ import Foundation
 public class AllCoinsViewModel {
     private let environmentService: EnvironmentServiceProtocol
     private let networkService: NetworkService
-    private var coins = [Coin]()
+
+    private var coins = [ConstructedCoin]()
+    private var coinPrices : [Int: String] = [:]
+    private var page: Int = 0
+    public var isLoadingNextPage: Bool = false
+    public var hasLoadedAllCoins: Bool = false
     
     init (environmentService: EnvironmentServiceProtocol, networkService: NetworkService) {
         self.environmentService = environmentService
         self.networkService = networkService
     }
     
-    func getAllCoins(completion: @escaping () -> Void) {
-        networkService.getAllCoins { result in
+    func getCoins(completion: @escaping() -> Void) {
+        guard isLoadingNextPage == false,
+            hasLoadedAllCoins == false
+            else { return }
+
+        isLoadingNextPage = true
+
+        networkService.getCoins(page: page) { [weak self] result in
+            guard let `self` = self else { return }
+
             switch result {
-            case .Success(let coins):
-                self.coins = coins
+            case .Success(let constructedCoins):
+                guard constructedCoins.count > 0 else {
+                    self.isLoadingNextPage = false
+                    self.hasLoadedAllCoins = true
+                    return completion()
+                }
+                
+                constructedCoins.forEach{ self.coins.append($0) }
+                self.page += 1
+                self.isLoadingNextPage = false
                 completion()
             case .Error:
                 print("Failed")
@@ -30,22 +51,19 @@ public class AllCoinsViewModel {
         }
     }
     
-    func getCoin(at index: Int) -> Coin? {
-        if coins.count > 0 {
-            return coins[index]
-        } else {
-            return nil
-        }
-    }
-    
     func getCoinsCount() -> Int {
         return coins.count
     }
-    
+
     // MARK: - Configure Cell
+
     func configureCell(cell: CoinCell, at index: Int) {
-        let coin = coins[index]
-        let coinCellViewModel = CoinCellViewModel(model: coin, networkService: networkService)
+        guard coins.indices.contains(index) else { return }
+        
+        let coin = coins[index].coin
+        let price =  coins[index].price
+        
+        let coinCellViewModel = CoinCellViewModel(coinModel: coin, priceModel: price, networkService: networkService)
         cell.configure(using: coinCellViewModel)
     }
 }

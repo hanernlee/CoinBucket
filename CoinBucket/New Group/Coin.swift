@@ -13,14 +13,12 @@ class Coin: Codable {
     let name: String
     let fullName: String
     let imageUrl: String
-    let sortOrder: String
     
     private enum CoinResponseKeys: String, CodingKey {
         case id = "Id"
         case name = "Name"
         case fullName = "FullName"
         case imageUrl = "ImageUrl"
-        case sortOrder = "SortOrder"
     }
     
     public required init(from decoder: Decoder) throws {
@@ -30,6 +28,5 @@ class Coin: Codable {
         self.name = try container.decode(String.self, forKey: .name)
         self.fullName = try container.decode(String.self, forKey: .fullName)
         self.imageUrl = try container.decodeIfPresent(String.self, forKey: .imageUrl) ?? "https://via.placeholder.com/350x150"
-        self.sortOrder = try container.decode(String.self, forKey: .sortOrder)
     }
 }

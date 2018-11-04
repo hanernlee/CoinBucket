@@ -9,12 +9,10 @@
 import Foundation
 
 struct Result: Codable {
-    let response: String
     let message: String
-    let data: [String: Coin]
+    let data: [CoinData]
     
     private enum CodingKeys: String, CodingKey {
-        case response = "Response"
         case message = "Message"
         case data = "Data"
     }

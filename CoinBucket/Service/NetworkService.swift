@@ -15,15 +15,15 @@ enum NetworkResult<T> {
 }
 
 protocol Gettable {
-    func getAllCoins(completion: @escaping (NetworkResult<[Coin]>) -> Void)
-    func getCoinPriceData(symbol: String, completion: @escaping (NetworkResult<CoinPriceData>) -> Void)
+    func getCoins(page: Int, completion: @escaping (NetworkResult<[ConstructedCoin]>) -> Void)
+    func getPrices(symbols: String, currency: String, completion: @escaping (NetworkResult<CoinPriceResult>) -> Void)
 }
 
 public struct NetworkService: Gettable {
     private let decoder = JSONDecoder()
     
-    func getAllCoins(completion: @escaping (NetworkResult<[Coin]>) -> Void) {
-        guard let url = URL(string: API.getAll()) else { return }
+    func getCoins(page: Int, completion: @escaping (NetworkResult<[ConstructedCoin]>) -> Void) {
+        guard let url = URL(string: APIClient.getCoins(page: page)) else { return }
         
         Alamofire.request(url).responseData { (dataResponse) in
             if let error = dataResponse.error {
@@ -34,17 +34,29 @@ public struct NetworkService: Gettable {
                 print("no daata")
                 return
             }
-            
+
             do {
                 let result = try self.decoder.decode(Result.self, from: data)
-                var coins = [Coin]()
-                for (_, value) in result.data {
-                    coins.append(value)
-                }
-                
-                coins = coins.sorted(by: { Int($0.sortOrder)! < Int($1.sortOrder)! })
 
-                completion(.Success(coins))
+                let coinSymbols = result.data.map({ $0.coin.name }).joined(separator: ",")
+                let coins = result.data.map({ $0.coin })
+                print("Network coins count \(coins.count)")
+                var constructedCoins = [ConstructedCoin]()
+                
+                self.getPrices(symbols: coinSymbols, currency: "USD", completion: { result in
+                    switch result {
+                    case .Success(let coinPrices):
+                        coins.forEach {
+                            guard let price = coinPrices.display[$0.name] else { return }
+                            let constructedCoin = ConstructedCoin(coin: $0, price: price)
+                            constructedCoins.append(constructedCoin)
+                        }
+                        
+                        completion(.Success(constructedCoins))
+                    case .Error:
+                        print("Failed")
+                    }
+                })
             }
             catch let decodeError {
                 print("Failed to decode, Handle Error here: \(decodeError)")
@@ -52,10 +64,9 @@ public struct NetworkService: Gettable {
         }
     }
     
-    func getCoinPriceData(symbol: String, completion: @escaping (NetworkResult<CoinPriceData>) -> Void) {
-        
-        guard let url = URL(string: API.getPriceData(symbol)) else { return }
-        
+    func getPrices(symbols: String, currency: String, completion: @escaping (NetworkResult<CoinPriceResult>) -> Void) {
+        guard let url = URL(string: APIClient.getPrices(symbols)) else { return }
+
         Alamofire.request(url).responseData { (dataResponse) in
             if let error = dataResponse.error {
                 print("Handle Error Please: \(error)")
@@ -65,23 +76,14 @@ public struct NetworkService: Gettable {
                 print("no daata")
                 return
             }
-
+            
             do {
-                let result = try self.decoder.decode(PriceResult.self, from: data)
-                
-                guard let rawPriceData = result.rawData[symbol], let displayPriceData = result.displayData[symbol] else {
-                        print("Failed to downcast price data")
-                        return
-                }
-                
-                let coinPriceData = CoinPriceData(rawPriceData: rawPriceData, displayPriceData: displayPriceData)
-               print(coinPriceData)
-                completion(.Success(coinPriceData))
+                let result = try self.decoder.decode(CoinPriceResult.self, from: data)
+                completion(.Success(result))
             }
             catch let decodeError {
                 print("Failed to decode, Handle Error here: \(decodeError)")
             }
         }
-        
     }
 }

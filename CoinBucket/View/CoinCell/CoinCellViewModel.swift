@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 class CoinCellViewModel {
     let id: String
@@ -14,23 +15,25 @@ class CoinCellViewModel {
     let fullName: String
     let imageUrl: String
     let networkService: NetworkService
+    let price: String
+    let priceBTC: String
+    let changePercent24Hour: String
     
-    init(model: Coin, networkService: NetworkService) {
-        self.id = model.id
-        self.name = model.name
-        self.fullName = model.fullName
-        self.imageUrl = model.imageUrl
+    init(coinModel: Coin, priceModel: [String: CoinPriceDisplay], networkService: NetworkService) {
+        self.id = coinModel.id
+        self.name = coinModel.name
+        self.fullName = coinModel.fullName
+        self.imageUrl = coinModel.imageUrl
+        
+        self.price = priceModel["USD"]?.price ?? ""
+        self.priceBTC = priceModel["BTC"]?.price ?? ""
+        self.changePercent24Hour = priceModel["USD"]?.changePercent24Hour ?? ""
+
         self.networkService = networkService
     }
     
-    public func getCoinPriceData(completion: @escaping () -> Void) {
-        networkService.getCoinPriceData(symbol: name) { result in
-            switch result {
-            case .Success(let coinPriceData):
-                print(coinPriceData)
-            case .Error:
-                print("Failed")
-            }
-        }
+    func percentColor() -> UIColor {
+        guard let percentChange = Float(changePercent24Hour) else { return .red }
+        return percentChange >= 0 ? .green : .red
     }
 }
