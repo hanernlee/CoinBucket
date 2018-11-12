@@ -21,7 +21,22 @@ class CoinCell: UICollectionViewCell {
     
     // MARK: - Properties
     
-    public override func awakeFromNib() {
+    override func awakeFromNib() {
+        super.awakeFromNib()
+
+        configureShape()
+    }
+    
+    public override func prepareForReuse() {
+        super.prepareForReuse()
+
+        coinPriceLabel.text = ""
+        coinImage.image = nil
+    }
+    
+    // MARK: - Configure
+    
+    private func configureShape() {
         self.contentView.layer.cornerRadius = 12.0
         self.contentView.layer.borderWidth = 1.0
         self.contentView.layer.borderColor = UIColor.clear.cgColor
@@ -35,13 +50,6 @@ class CoinCell: UICollectionViewCell {
         self.layer.cornerRadius = 12.0
         self.layer.shadowPath = UIBezierPath(roundedRect: self.bounds, cornerRadius: self.contentView.layer.cornerRadius).cgPath
     }
-
-    public override func prepareForReuse() {
-        coinPriceLabel.text = ""
-        coinImage.image = nil
-    }
-    
-    // MARK: - Configure
     
     public func configure(using viewModel: CoinCellViewModel) {
         coinFullName.text = viewModel.fullName

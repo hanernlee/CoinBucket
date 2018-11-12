@@ -19,15 +19,15 @@ class CoinCellViewModel {
     let priceBTC: String
     let changePercent24Hour: String
     
-    init(coinModel: Coin, priceModel: [String: CoinPriceDisplay], networkService: NetworkService) {
+    init(coinModel: Coin, priceModel: [String: CoinPriceDisplay], networkService: NetworkService, environmentService: EnvironmentServiceProtocol) {
         self.id = coinModel.id
         self.name = coinModel.name
         self.fullName = coinModel.fullName
         self.imageUrl = coinModel.imageUrl
         
-        self.price = priceModel["USD"]?.price ?? ""
+        self.price = priceModel[environmentService.currency]?.price ?? ""
         self.priceBTC = priceModel["BTC"]?.price ?? ""
-        self.changePercent24Hour = priceModel["USD"]?.changePercent24Hour ?? ""
+        self.changePercent24Hour = priceModel[environmentService.currency]?.changePercent24Hour ?? ""
 
         self.networkService = networkService
     }

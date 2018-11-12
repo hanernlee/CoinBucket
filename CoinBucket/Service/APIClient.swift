@@ -12,11 +12,19 @@ public struct APIClient {
     static let apiUrl: String =  "https://min-api.cryptocompare.com"
     static let baseUrl: String = "https://cryptocompare.com"
 
-    static func getCoins(page: Int = 0, symbol: String = "USD") -> String {
-        return "\(apiUrl)/data/top/totalvol?limit=50&page=\(page)&tsym=\(symbol)"
+    static func getCoins(page: Int = 0, currency: String) -> String {
+        return "\(apiUrl)/data/top/totalvol?limit=50&page=\(page)&tsym=\(currency)"
     }
     
-    static func getPrices(_ symbols: String) -> String {
-        return "\(apiUrl)/data/pricemultifull?fsyms=\(symbols)&tsyms=USD,BTC"
+    static func getPrices(_ symbols: String, currency: String) -> String {
+        return "\(apiUrl)/data/pricemultifull?fsyms=\(symbols)&tsyms=\(currency),BTC"
+    }
+    
+    static func getSuggestions(_ searchText: String) -> String {
+        return "\(baseUrl)/api/autosuggest/all/?maxRows=10&q=\(searchText)"
+    }
+    
+    static func getCoin(symbol: String, currency: String) -> String {
+        return "\(apiUrl)/data/coin/generalinfo?fsyms=\(symbol)&tsym=\(currency)"
     }
 }

@@ -10,6 +10,7 @@ import Foundation
 
 protocol EnvironmentServiceProtocol {
     var theme: String { get set }
+    var currency: String { get set }
     func reset()
 }
 
@@ -17,11 +18,17 @@ class EnvironmentService: EnvironmentServiceProtocol {
     private let dataStorage: DataStorage = DataStorage()
     
     public func reset() {
+        dataStorage.removeValue(forKey: DataStorageKeys.currency)
         dataStorage.removeValue(forKey: DataStorageKeys.theme)
     }
     
     var theme: String {
         get { return dataStorage.getValue(forKey: DataStorageKeys.theme)}
         set { dataStorage.setValue(newValue, forKey: DataStorageKeys.theme) }
+    }
+    
+    var currency: String {
+        get { return dataStorage.getValue(forKey: DataStorageKeys.currency)}
+        set { dataStorage.setValue(newValue, forKey: DataStorageKeys.currency) }
     }
 }
