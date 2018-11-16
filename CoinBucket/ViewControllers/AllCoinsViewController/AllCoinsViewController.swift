@@ -49,10 +49,16 @@ public class AllCoinsViewController: UIViewController {
         configure()
     }
     
-    public override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
+    public override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         
-        currencyRightButton.setTitle(viewModel.getSelectedCurrency(), for: .normal)
+        configureNavigationBar()
+    }
+    
+    public override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        currencyRightButton.removeFromSuperview()
     }
     
     // MARK: - Instantiate
@@ -64,7 +70,6 @@ public class AllCoinsViewController: UIViewController {
     
     // MARK: - Configure
     private func configure() {
-        configureNavigationBar()
         configureSearchController()
         configureCollectionView()
         configureInitialCoinCollection()
@@ -83,6 +88,8 @@ public class AllCoinsViewController: UIViewController {
             currencyRightButton.bottomAnchor.constraint(equalTo: navigationBar.bottomAnchor, constant: -6),
             currencyRightButton.rightAnchor.constraint(equalTo: navigationBar.rightAnchor, constant: -16)
         ])
+        
+        configureCurrency()
     }
     
     private func configureSearchController() {
@@ -95,6 +102,17 @@ public class AllCoinsViewController: UIViewController {
 
         navigationItem.searchController = searchController
         navigationItem.hidesSearchBarWhenScrolling = false
+    }
+    
+    // MARK: - Configure Currency
+    private func configureCurrency() {
+        viewModel.shouldRefreshCurrency { [weak self] (shouldRefresh) in
+            guard let `self` = self, shouldRefresh else { return }
+            
+            self.configureInitialCoinCollection()
+        }
+
+        currencyRightButton.setTitle(viewModel.getSelectedCurrency(), for: .normal)
     }
     
     // MARK: - Configure CollectionView
@@ -204,6 +222,12 @@ extension AllCoinsViewController: UICollectionViewDelegate, UICollectionViewData
     
     public func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
+    }
+    
+    public func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        navigationItem.rightBarButtonItem = nil
+        let coinDetailsViewController = viewModel.createCoinDetailsViewController(for: indexPath.item)
+        navigationController?.pushViewController(coinDetailsViewController, animated: true)
     }
     
     public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {

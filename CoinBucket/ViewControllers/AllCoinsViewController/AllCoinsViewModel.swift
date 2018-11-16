@@ -26,9 +26,12 @@ public class AllCoinsViewModel {
     public var hasLoadedAllCoins: Bool = false
     public var isFiltering: Bool = false
     
+    private var initialCurrency: String
+    
     init(environmentService: EnvironmentServiceProtocol, networkService: NetworkService) {
         self.environmentService = environmentService
         self.networkService = networkService
+        self.initialCurrency = environmentService.currency
     }
     
     func getCoins(completion: @escaping () -> Void) {
@@ -85,6 +88,15 @@ public class AllCoinsViewModel {
     
     func getSelectedCurrency() -> String {
         return environmentService.currency
+    }
+    
+    // MARK: - Create Details View Controller
+    func createCoinDetailsViewController(for index: Int) -> CoinDetailsViewController {
+        let coin = filteredCoins[index].coin
+        let price =  filteredCoins[index].price
+        
+        let viewModel = CoinDetailsViewModel(coinModel: coin, priceModel: price, environmentService: environmentService)
+        return CoinDetailsViewController.instantiate(viewModel: viewModel)
     }
     
     // MARK: - Filter
@@ -151,5 +163,30 @@ public class AllCoinsViewModel {
     
     func getSearchText() -> String {
         return searchText
+    }
+    
+    func shouldRefreshCurrency(completion: @escaping (Bool) -> Void) {
+        let shouldRefresh = (initialCurrency != environmentService.currency)
+        
+        if shouldRefresh {
+            initialCurrency = environmentService.currency
+            reset()
+        }
+
+        completion(shouldRefresh)
+    }
+    
+    func reset() {
+        coins = [ConstructedCoin]()
+        filteredCoins = [ConstructedCoin]()
+        suggestions = [Suggestion]()
+        coinPrices = [:]
+        
+        page = 0
+        searchText = ""
+        
+        isLoadingNextPage = false
+        hasLoadedAllCoins = false
+        isFiltering = false
     }
 }
