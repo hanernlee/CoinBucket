@@ -21,6 +21,8 @@ struct CoinPriceDisplay: Decodable{
     let changePercent24Hour: String
     let marketCap: String
     let supply: String
+    let volume24H: String
+    let volume24HTO: String
     let totalVolume24H: String
     let totalVolume24HTO: String
     let priceOpen24Hour: String
@@ -32,6 +34,8 @@ struct CoinPriceDisplay: Decodable{
         case changePercent24Hour = "CHANGEPCT24HOUR"
         case marketCap = "MKTCAP"
         case supply = "SUPPLY"
+        case volume24H = "VOLUME24HOUR"
+        case volume24HTO = "VOLUME24HOURTO"
         case totalVolume24H = "TOTALVOLUME24H"
         case totalVolume24HTO = "TOTALVOLUME24HTO"
         case priceOpen24Hour = "OPEN24HOUR"

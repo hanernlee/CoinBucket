@@ -25,6 +25,9 @@ public class AllCoinsViewModel {
     public var isLoadingNextPage: Bool = false
     public var hasLoadedAllCoins: Bool = false
     public var isFiltering: Bool = false
+    public var isRefreshing: Bool = false
+    
+    public var refreshControlText: NSAttributedString = NSAttributedString(string: "")
     
     private var initialCurrency: String
     
@@ -35,8 +38,13 @@ public class AllCoinsViewModel {
     }
     
     func getCoins(completion: @escaping () -> Void) {
+        if isRefreshing {
+            reset()
+        }
+        
         guard isLoadingNextPage == false,
-            hasLoadedAllCoins == false
+            hasLoadedAllCoins == false,
+            isRefreshing == false
             else { return }
 
         isLoadingNextPage = true
@@ -48,6 +56,7 @@ public class AllCoinsViewModel {
             case .Success(let constructedCoins):
                 guard constructedCoins.count > 0 else {
                     self.isLoadingNextPage = false
+                    self.isRefreshing = false
                     self.hasLoadedAllCoins = true
                     return completion()
                 }
@@ -56,9 +65,12 @@ public class AllCoinsViewModel {
                 self.filteredCoins = self.coins
                 self.page += 1
                 self.isLoadingNextPage = false
+                self.isRefreshing = false
+                self.configureRefreshControlText()
                 completion()
             case .Error:
-                print("Failed")
+                print("Failed to get Coins")
+//                completion()
             }
         }
     }
@@ -114,6 +126,7 @@ public class AllCoinsViewModel {
     // MARK: - Suggestions
     
     func getSuggestions(with searchText: String, completion: @escaping (Int) -> Void) {
+        
         suggestions.removeAll()
 
         networkService.getSuggestions(searchText: searchText) { [weak self] (result) in
@@ -125,6 +138,7 @@ public class AllCoinsViewModel {
                 completion(suggestions.count)
             case .Error:
                 print("Failed to get suggestions")
+//                completion()
             }
         }
     }
@@ -134,7 +148,7 @@ public class AllCoinsViewModel {
         
         let suggestion = suggestions[index]
         let suggestionCellViewModel = SuggestionCellViewModel(model: suggestion, networkService: networkService, environmentService: environmentService)
-        cell.didTapCell = { [weak self] in
+        cell.didTapSuggestionCell = { [weak self] in
             guard let `self` = self else { return }
 
             self.suggestions.removeAll()
@@ -147,9 +161,17 @@ public class AllCoinsViewModel {
         cell.configure(using: suggestionCellViewModel)
     }
     
+    func configureSuggestionHeaderLabel(headerView: SuggestionHeaderView) {
+        headerView.suggestionHeaderLabel.text = "Search results for \"\(searchText)\""
+    }
+    
+    func hasSuggestions() -> Bool {
+        return suggestions.count > 0
+    }
+    
     func selectSuggestionCell(cell: SuggestionCell, at index: Int) {
         suggestions.removeAll()
-        cell.didTapCell!()
+        cell.didTapSuggestionCell!()
     }
     
     func getSuggestionCount() -> Int {
@@ -176,6 +198,11 @@ public class AllCoinsViewModel {
         completion(shouldRefresh)
     }
     
+    func configureRefreshControlText() {
+        let displayString = Date().toString(dateFormat: "d MMM yyyy h:mm a")
+        refreshControlText = NSAttributedString(string: "Last updated \(displayString)")
+    }
+    
     func reset() {
         coins = [ConstructedCoin]()
         filteredCoins = [ConstructedCoin]()
@@ -188,5 +215,6 @@ public class AllCoinsViewModel {
         isLoadingNextPage = false
         hasLoadedAllCoins = false
         isFiltering = false
+        isRefreshing = false
     }
 }

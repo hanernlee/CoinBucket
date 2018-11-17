@@ -16,6 +16,7 @@ public class AllCoinsViewController: UIViewController {
     // MARK: - Private properties
     private let searchController = UISearchController(searchResultsController: nil)
     private var viewModel: AllCoinsViewModel!
+    private var refreshControl: UIRefreshControl?
     
     private let searchTableView: UITableView = {
         let tableView = UITableView()
@@ -45,7 +46,7 @@ public class AllCoinsViewController: UIViewController {
     // MARK: - Lifecycle
     public override func viewDidLoad() {
         super.viewDidLoad()
-
+        viewModel.configureRefreshControlText()
         configure()
     }
     
@@ -118,10 +119,12 @@ public class AllCoinsViewController: UIViewController {
     // MARK: - Configure CollectionView
     private func configureCollectionView() {
         collectionView.backgroundColor = .bgGray
-
+        
         collectionView.delegate = self
         collectionView.dataSource = self
         collectionView.register(UINib(nibName: "CoinCell", bundle: nil), forCellWithReuseIdentifier: CustomCellIdentifier.coinCell)
+        configureRefreshControl()
+
         configureCollectionViewFlowLayout()
     }
     
@@ -141,6 +144,7 @@ public class AllCoinsViewController: UIViewController {
         viewModel.getCoins { [weak self] in
             guard let `self` = self else { return }
             
+            self.refreshControl?.attributedTitle = self.viewModel.refreshControlText
             self.view.hideLoadingIndicator()
             self.collectionView.reloadData()
         }
@@ -161,6 +165,9 @@ public class AllCoinsViewController: UIViewController {
         searchTableView.tableFooterView = UIView()
         searchTableView.backgroundColor = .bgGray
         searchTableView.register(UINib(nibName: "SuggestionCell", bundle: nil), forCellReuseIdentifier: CustomCellIdentifier.suggestionCell)
+        searchTableView.register(UINib(nibName: "SuggestionHeaderView", bundle: nil), forHeaderFooterViewReuseIdentifier: CustomCellIdentifier.suggestionHeaderView)
+        collectionView.alwaysBounceVertical = false
+        searchTableView.alwaysBounceVertical = true
         
         if let navigationBarFrame = navigationController?.navigationBar.frame {
             let edgeInsets = UIEdgeInsets(top: -navigationBarFrame.origin.y, left: 0, bottom: 0, right: 0)
@@ -169,7 +176,7 @@ public class AllCoinsViewController: UIViewController {
         }
         
         loadSuggestions()
-        
+
         collectionView?.backgroundView = self.searchTableView
     }
     
@@ -194,9 +201,50 @@ public class AllCoinsViewController: UIViewController {
         ])
     }
     
+    private func configureRefreshControl() {
+        removeRefreshControl()
+
+        refreshControl = UIRefreshControl()
+        guard let refreshControl = refreshControl else { return }
+
+        refreshControl.attributedTitle = viewModel.refreshControlText
+        refreshControl.tintColor = .clear
+        refreshControl.addTarget(self, action: #selector(handleRefresh), for: .valueChanged)
+        collectionView.refreshControl = refreshControl
+    }
+
+    private func removeRefreshControl() {
+        refreshControl?.removeTarget(self, action: #selector(handleRefresh), for: .valueChanged)
+        collectionView.refreshControl = nil
+        self.refreshControl?.removeFromSuperview()
+        self.refreshControl = nil
+    }
+
+    // MARK: - Refresh
+    @objc private func handleRefresh() {
+        collectionView?.backgroundView = nil
+        
+        refreshControl?.beginRefreshing()
+
+        viewModel.isRefreshing = true
+        self.view.showLoadingIndicator()
+
+        viewModel.getCoins { [weak self] in
+            guard let `self` = self else { return }
+            
+            self.refreshControl?.endRefreshing()
+            self.refreshControl?.attributedTitle = self.viewModel.refreshControlText
+
+            self.viewModel.isRefreshing = false
+            self.view.hideLoadingIndicator()
+            self.collectionView.reloadData()
+        }
+    }
+    
     // MARK: - Reload Suggestion
     private func loadSuggestions() {
         self.view.showLoadingIndicator()
+        
         self.searchTableView.backgroundView = nil
 
         viewModel.getSuggestions(with: viewModel.getSearchText()) { [weak self] count in
@@ -264,6 +312,21 @@ extension AllCoinsViewController: UITableViewDelegate, UITableViewDataSource {
         return viewModel.getSuggestionCount()
     }
     
+    public func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        guard viewModel.hasSuggestions(),
+            let headerView = tableView.dequeueReusableHeaderFooterView(withIdentifier: CustomCellIdentifier.suggestionHeaderView) as? SuggestionHeaderView else {
+            return UIView()
+        }
+
+        viewModel.configureSuggestionHeaderLabel(headerView: headerView)
+
+        return headerView
+    }
+    
+    public func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 44
+    }
+    
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: CustomCellIdentifier.suggestionCell, for: indexPath) as? SuggestionCell else {
             return UITableViewCell()
@@ -271,8 +334,11 @@ extension AllCoinsViewController: UITableViewDelegate, UITableViewDataSource {
 
         viewModel.didTapSuggestionCell = { [weak self] in
             guard let `self` = self else { return }
+            self.collectionView?.alwaysBounceVertical = true
+            self.searchTableView.alwaysBounceVertical = false
 
             self.view.hideLoadingIndicator()
+
             self.collectionView.reloadData()
         }
         
@@ -283,9 +349,13 @@ extension AllCoinsViewController: UITableViewDelegate, UITableViewDataSource {
     public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard let cell = tableView.cellForRow(at: indexPath) as? SuggestionCell else { return }
         self.view.showLoadingIndicator()
-        self.collectionView?.backgroundView  = nil
+        self.collectionView?.backgroundView = nil
         viewModel.selectSuggestionCell(cell: cell, at: indexPath.row)
         self.searchTableView.reloadData()
+    }
+    
+    public func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 33
     }
 }
 
@@ -314,15 +384,18 @@ extension AllCoinsViewController: UISearchBarDelegate, UISearchResultsUpdating {
     public func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         collectionView?.backgroundView = nil
         viewModel.isFiltering = false
+        configureRefreshControl()
     }
     
     public func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
         viewModel.isFiltering = true
+        removeRefreshControl()
     }
     
     public func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
         collectionView?.backgroundView = nil
         viewModel.isFiltering = false
+        configureRefreshControl()
     }
 }
 

@@ -14,7 +14,7 @@ class SuggestionCell: UITableViewCell {
     @IBOutlet weak var nameLabel: UILabel!
     
     // MARK: - Properties
-    public var didTapCell: (() -> Void)?
+    public var didTapSuggestionCell: (() -> Void)?
 
     override func prepareForReuse() {
         super.prepareForReuse()

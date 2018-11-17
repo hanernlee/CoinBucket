@@ -12,4 +12,5 @@ enum CustomCellIdentifier {
     static let coinCell = "CoinCellID"
     static let currencyCell = "CurrencyCellID"
     static let suggestionCell = "SuggestionCellID"
+    static let suggestionHeaderView = "SuggestionHeaderViewID"
 }

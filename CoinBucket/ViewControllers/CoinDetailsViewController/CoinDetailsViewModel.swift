@@ -19,7 +19,10 @@ class CoinDetailsViewModel {
     let changePercent24Hour: String
     let changePercent24HourBTC: String
     let marketCap: String
+    let marketCapBTC: String
     let supply: String
+    let volume24H: String
+    let volume24HTO: String
     let totalVolume24H: String
     let totalVolume24HTO: String
     let priceOpen24Hour: String
@@ -40,7 +43,13 @@ class CoinDetailsViewModel {
         self.changePercent24HourBTC = priceModel["BTC"]?.changePercent24Hour ?? ""
         
         self.marketCap = priceModel[environmentService.currency]?.marketCap ?? ""
+        self.marketCapBTC = priceModel["BTC"]?.marketCap ?? ""
+        
         self.supply = priceModel[environmentService.currency]?.supply ?? ""
+        
+        self.volume24H = priceModel[environmentService.currency]?.volume24H ?? ""
+        self.volume24HTO = priceModel[environmentService.currency]?.volume24HTO ?? ""
+
         self.totalVolume24H = priceModel[environmentService.currency]?.totalVolume24H ?? ""
         self.totalVolume24HTO = priceModel[environmentService.currency]?.totalVolume24HTO ?? ""
         

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="rNW-GG-Lj8" customClass="SuggestionHeaderView" customModule="CoinBucket" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="search" translatesAutoresizingMaskIntoConstraints="NO" id="7wp-iY-WdT">
+                    <rect key="frame" x="16" y="326" width="15" height="15"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="15" id="VoS-VZ-pVE"/>
+                        <constraint firstAttribute="width" constant="15" id="lum-Uv-tIr"/>
+                    </constraints>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Xf-YD-vRf">
+                    <rect key="frame" x="47" y="326.5" width="312" height="14.5"/>
+                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="12"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="7wp-iY-WdT" firstAttribute="leading" secondItem="dmr-QW-Dkv" secondAttribute="leading" constant="16" id="0PS-DR-Zev"/>
+                <constraint firstItem="5Xf-YD-vRf" firstAttribute="leading" secondItem="7wp-iY-WdT" secondAttribute="trailing" constant="16" id="Mpn-Dp-FMj"/>
+                <constraint firstItem="7wp-iY-WdT" firstAttribute="centerY" secondItem="rNW-GG-Lj8" secondAttribute="centerY" id="b0U-nx-qhN"/>
+                <constraint firstItem="5Xf-YD-vRf" firstAttribute="centerY" secondItem="rNW-GG-Lj8" secondAttribute="centerY" id="uPJ-y2-daR"/>
+                <constraint firstItem="dmr-QW-Dkv" firstAttribute="trailing" secondItem="5Xf-YD-vRf" secondAttribute="trailing" constant="16" id="yer-dE-8E9"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="dmr-QW-Dkv"/>
+            <connections>
+                <outlet property="suggestionHeaderLabel" destination="5Xf-YD-vRf" id="3pd-QA-GzN"/>
+            </connections>
+            <point key="canvasLocation" x="127" y="45"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="search" width="44" height="44"/>
+    </resources>
+</document>
