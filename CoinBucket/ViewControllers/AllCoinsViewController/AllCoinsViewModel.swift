@@ -108,7 +108,8 @@ public class AllCoinsViewModel {
         let price =  filteredCoins[index].price
         
         let viewModel = CoinDetailsViewModel(coinModel: coin, priceModel: price, environmentService: environmentService)
-        return CoinDetailsViewController.instantiate(viewModel: viewModel)
+        let addToBucketLauncher = AddToBucketLauncher(coin: coin, environmentService: environmentService)
+        return CoinDetailsViewController.instantiate(viewModel: viewModel, addToBucketLauncher: addToBucketLauncher)
     }
     
     // MARK: - Filter

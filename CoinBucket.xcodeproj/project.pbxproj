@@ -47,12 +47,16 @@
 		5088A339218EF45D00D41CFF /* CurrencyCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5088A338218EF45D00D41CFF /* CurrencyCell.xib */; };
 		5088A33B218EF90000D41CFF /* CurrencyCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5088A33A218EF90000D41CFF /* CurrencyCellViewModel.swift */; };
 		5088A33D218EF94400D41CFF /* Currency.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5088A33C218EF94400D41CFF /* Currency.swift */; };
+		50A5D60021A0FB9800B2DE32 /* TallyViewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50A5D5FF21A0FB9800B2DE32 /* TallyViewViewModel.swift */; };
+		50A5D60221A109CD00B2DE32 /* AddToBucketLauncher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50A5D60121A109CD00B2DE32 /* AddToBucketLauncher.swift */; };
 		50CDC1AF1FDBB87C009A2E22 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50CDC1AE1FDBB87C009A2E22 /* AppDelegate.swift */; };
 		50CDC1B61FDBB87C009A2E22 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 50CDC1B51FDBB87C009A2E22 /* Assets.xcassets */; };
 		50CDC1B91FDBB87C009A2E22 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 50CDC1B71FDBB87C009A2E22 /* LaunchScreen.storyboard */; };
 		50CEB77E21A047D100C31232 /* SuggestionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50CEB77D21A047D100C31232 /* SuggestionHeaderView.swift */; };
 		50CEB78121A0484300C31232 /* SuggestionHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 50CEB78021A0484300C31232 /* SuggestionHeaderView.xib */; };
 		50CEB78321A0589D00C31232 /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50CEB78221A0589D00C31232 /* Date+Extension.swift */; };
+		50CEB78A21A05FBC00C31232 /* TallyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50CEB78921A05FBC00C31232 /* TallyView.swift */; };
+		50CEB78C21A05FC500C31232 /* TallyView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 50CEB78B21A05FC500C31232 /* TallyView.xib */; };
 		50D9DC532198164F006D746D /* Suggestion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50D9DC522198164F006D746D /* Suggestion.swift */; };
 		50D9DC5521981C07006D746D /* SuggestionCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50D9DC5421981C07006D746D /* SuggestionCellViewModel.swift */; };
 		50D9DC5A2199A801006D746D /* CoinDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50D9DC592199A801006D746D /* CoinDetailsViewController.swift */; };
@@ -105,6 +109,8 @@
 		5088A338218EF45D00D41CFF /* CurrencyCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CurrencyCell.xib; sourceTree = "<group>"; };
 		5088A33A218EF90000D41CFF /* CurrencyCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyCellViewModel.swift; sourceTree = "<group>"; };
 		5088A33C218EF94400D41CFF /* Currency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Currency.swift; sourceTree = "<group>"; };
+		50A5D5FF21A0FB9800B2DE32 /* TallyViewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TallyViewViewModel.swift; sourceTree = "<group>"; };
+		50A5D60121A109CD00B2DE32 /* AddToBucketLauncher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddToBucketLauncher.swift; sourceTree = "<group>"; };
 		50CDC1AB1FDBB87C009A2E22 /* CoinBucket.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CoinBucket.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		50CDC1AE1FDBB87C009A2E22 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		50CDC1B51FDBB87C009A2E22 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -113,6 +119,8 @@
 		50CEB77D21A047D100C31232 /* SuggestionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuggestionHeaderView.swift; sourceTree = "<group>"; };
 		50CEB78021A0484300C31232 /* SuggestionHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SuggestionHeaderView.xib; sourceTree = "<group>"; };
 		50CEB78221A0589D00C31232 /* Date+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
+		50CEB78921A05FBC00C31232 /* TallyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TallyView.swift; sourceTree = "<group>"; };
+		50CEB78B21A05FC500C31232 /* TallyView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TallyView.xib; sourceTree = "<group>"; };
 		50D9DC522198164F006D746D /* Suggestion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Suggestion.swift; sourceTree = "<group>"; };
 		50D9DC5421981C07006D746D /* SuggestionCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuggestionCellViewModel.swift; sourceTree = "<group>"; };
 		50D9DC592199A801006D746D /* CoinDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinDetailsViewController.swift; sourceTree = "<group>"; };
@@ -156,6 +164,7 @@
 		5059671B216090BD00DA1124 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				50CEB78821A05FA800C31232 /* TallyView */,
 				50CEB77F21A0483000C31232 /* SuggestionHeaderView */,
 				50FBF518219105C100ECE4C3 /* SuggestionCell */,
 				5088A335218EF3BF00D41CFF /* CurrencyCell */,
@@ -199,6 +208,7 @@
 			isa = PBXGroup;
 			children = (
 				5059674C216651FB00DA1124 /* Array+chunked.swift */,
+				50A5D60121A109CD00B2DE32 /* AddToBucketLauncher.swift */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -364,6 +374,16 @@
 			path = SuggestionHeaderView;
 			sourceTree = "<group>";
 		};
+		50CEB78821A05FA800C31232 /* TallyView */ = {
+			isa = PBXGroup;
+			children = (
+				50CEB78921A05FBC00C31232 /* TallyView.swift */,
+				50CEB78B21A05FC500C31232 /* TallyView.xib */,
+				50A5D5FF21A0FB9800B2DE32 /* TallyViewViewModel.swift */,
+			);
+			path = TallyView;
+			sourceTree = "<group>";
+		};
 		50D9DC582199A7DA006D746D /* CoinDetailsViewController */ = {
 			isa = PBXGroup;
 			children = (
@@ -453,6 +473,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				50CEB78C21A05FC500C31232 /* TallyView.xib in Resources */,
 				5088A334218EF2BB00D41CFF /* CurrencyViewController.storyboard in Resources */,
 				50CDC1B91FDBB87C009A2E22 /* LaunchScreen.storyboard in Resources */,
 				50CDC1B61FDBB87C009A2E22 /* Assets.xcassets in Resources */,
@@ -497,6 +518,7 @@
 				50CEB77E21A047D100C31232 /* SuggestionHeaderView.swift in Sources */,
 				5074DA08213998940082C962 /* TabBarController.swift in Sources */,
 				5088A32E218EE9AC00D41CFF /* CurrencyViewController.swift in Sources */,
+				50A5D60021A0FB9800B2DE32 /* TallyViewViewModel.swift in Sources */,
 				5074D9F4213987EA0082C962 /* CoinViewModel.swift in Sources */,
 				50D9DC5521981C07006D746D /* SuggestionCellViewModel.swift in Sources */,
 				505967302160BFFB00DA1124 /* UIView+Center.swift in Sources */,
@@ -527,6 +549,7 @@
 				500F3CF0217CB56F003CE89F /* ConversionInfo.swift in Sources */,
 				503F9E8A213AC4C900D1714E /* ViewControllerFactory.swift in Sources */,
 				5074DA0A21399BE20082C962 /* DataStorageKeys.swift in Sources */,
+				50A5D60221A109CD00B2DE32 /* AddToBucketLauncher.swift in Sources */,
 				50D9DC5E2199A822006D746D /* CoinDetailsViewModel.swift in Sources */,
 				5088A33B218EF90000D41CFF /* CurrencyCellViewModel.swift in Sources */,
 				5074D9E32139860C0082C962 /* CoinViewController.swift in Sources */,
@@ -535,6 +558,7 @@
 				500F3D232187385A003CE89F /* CoinPrice.swift in Sources */,
 				503F9E8C213ACA8200D1714E /* Storyboardable.swift in Sources */,
 				50D9DC5A2199A801006D746D /* CoinDetailsViewController.swift in Sources */,
+				50CEB78A21A05FBC00C31232 /* TallyView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

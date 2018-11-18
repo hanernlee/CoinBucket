@@ -11,4 +11,5 @@ import Foundation
 public struct DataStorageKeys {
     static let theme = DataStorageKey("Theme", dataStoreOption: .userDefaults, valueType: String.self, defaultValue: "orange")
     static let currency = DataStorageKey("Currency", dataStoreOption: .userDefaults, valueType: String.self, defaultValue: "USD")
+    static let bucket = DataStorageKey("Bucket", dataStoreOption: .userDefaults, valueType: [String: Float].self, defaultValue: [:])
 }
