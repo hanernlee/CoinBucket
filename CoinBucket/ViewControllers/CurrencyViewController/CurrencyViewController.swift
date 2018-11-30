@@ -58,6 +58,7 @@ public class CurrencyViewController: UIViewController {
         searchController.dimsBackgroundDuringPresentation = false
         searchController.searchBar.delegate = self
         searchController.searchResultsUpdater = self
+        searchController.searchBar.tintColor = .orangey
         navigationItem.searchController = searchController
         navigationItem.hidesSearchBarWhenScrolling = false
         navigationController?.navigationBar.tintColor = .orangey

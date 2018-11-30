@@ -99,6 +99,7 @@ public class AllCoinsViewController: UIViewController {
         searchController.searchBar.delegate = self
         searchController.searchResultsUpdater = self
         searchController.definesPresentationContext = true
+        searchController.searchBar.tintColor = .orangey
 
         definesPresentationContext = true
 

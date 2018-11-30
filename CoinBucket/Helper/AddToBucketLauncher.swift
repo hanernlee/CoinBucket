@@ -68,7 +68,7 @@ class AddToBucketLauncher: NSObject {
     }
     
     public func handleKeyboardShown(with height: CGFloat) {
-        self.tallyView.frame = CGRect(x: 0, y: height + 10, width: self.tallyView.frame.width, height: self.tallyView.frame.height)
+        self.tallyView.frame = CGRect(x: 0, y: height + 70, width: self.tallyView.frame.width, height: self.tallyView.frame.height)
 
         UIView.animate(withDuration: 0.5) {
             self.tallyView.layoutIfNeeded()
