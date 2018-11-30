@@ -15,7 +15,6 @@ public class AllCoinsViewModel {
     private var coins = [ConstructedCoin]()
     private var filteredCoins = [ConstructedCoin]()
     private var suggestions = [Suggestion]()
-    private var coinPrices : [Int: String] = [:]
     
     public var didTapSuggestionCell: (() -> Void)?
     
@@ -208,7 +207,6 @@ public class AllCoinsViewModel {
         coins = [ConstructedCoin]()
         filteredCoins = [ConstructedCoin]()
         suggestions = [Suggestion]()
-        coinPrices = [:]
         
         page = 0
         searchText = ""

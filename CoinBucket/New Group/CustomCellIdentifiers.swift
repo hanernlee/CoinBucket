@@ -10,7 +10,11 @@ import Foundation
 
 enum CustomCellIdentifier {
     static let coinCell = "CoinCellID"
+    static let bucketCoinCell = "BucketCoinCellID"
     static let currencyCell = "CurrencyCellID"
     static let suggestionCell = "SuggestionCellID"
     static let suggestionHeaderView = "SuggestionHeaderViewID"
+    static let bucketCoinHeader = "BucketCoinHeaderID"
+    static let bucketCoinHeaderEmpty = "BucketCoinHeaderEmptyID"
+    static let settingMailCell = "SettingMailCellID"
 }

@@ -24,7 +24,7 @@ public struct APIClient {
         return "\(baseUrl)/api/autosuggest/all/?maxRows=10&q=\(searchText)"
     }
     
-    static func getCoin(symbol: String, currency: String) -> String {
-        return "\(apiUrl)/data/coin/generalinfo?fsyms=\(symbol)&tsym=\(currency)"
+    static func getCoin(symbols: String, currency: String) -> String {
+        return "\(apiUrl)/data/coin/generalinfo?fsyms=\(symbols)&tsym=\(currency)"
     }
 }

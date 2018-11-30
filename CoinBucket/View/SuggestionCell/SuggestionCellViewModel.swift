@@ -25,7 +25,7 @@ class SuggestionCellViewModel {
     }
     
     func getCoin(completion: @escaping ([ConstructedCoin]) -> Void) {
-        networkService.getCoin(symbol: symbol, currency: environmentService.currency) { (result) in
+        networkService.getCoin(symbols: [symbol], currency: environmentService.currency) { (result) in
             
             switch result {
             case .Success(let constructedCoins):

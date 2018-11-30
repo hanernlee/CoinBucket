@@ -17,8 +17,17 @@ public struct ViewControllerFactory {
         self.networkService = networkService
     }
     
+    func createBucketViewController() -> BucketViewController {
+        let viewModel = BucketViewModel(environmentService: environmentService, networkService: networkService)
+        return BucketViewController.instantiate(viewModel: viewModel)
+    }
+    
     func createAllCoinsViewController() -> AllCoinsViewController {
         let viewModel = AllCoinsViewModel(environmentService: environmentService, networkService: networkService)
         return AllCoinsViewController.instantiate(viewModel: viewModel)
+    }
+    
+    func createSettingsViewController() -> SettingViewController {
+        return SettingViewController.instantiate()
     }
 }

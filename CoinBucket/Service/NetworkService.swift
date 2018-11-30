@@ -16,7 +16,7 @@ enum NetworkResult<T> {
 
 protocol Gettable {
     func getCoins(page: Int, currency: String, completion: @escaping (NetworkResult<[ConstructedCoin]>) -> Void)
-    func getCoin(symbol: String, currency: String, completion: @escaping (NetworkResult<[ConstructedCoin]>) -> Void)
+    func getCoin(symbols: [String], currency: String, completion: @escaping (NetworkResult<[ConstructedCoin]>) -> Void)
     func getPrices(symbols: String, currency: String, completion: @escaping (NetworkResult<CoinPriceResult>) -> Void)
     func getSuggestions(searchText: String, completion: @escaping (NetworkResult<[Suggestion]>) -> Void)
 
@@ -67,8 +67,11 @@ public struct NetworkService: Gettable {
         }
     }
     
-    func getCoin(symbol: String, currency: String, completion: @escaping (NetworkResult<[ConstructedCoin]>) -> Void) {
-        guard let url = URL(string: APIClient.getCoin(symbol: symbol, currency: currency)) else { return }
+    func getCoin(symbols: [String], currency: String, completion: @escaping (NetworkResult<[ConstructedCoin]>) -> Void) {
+        
+        let symbols = symbols.joined(separator: ",")
+    
+        guard let url = URL(string: APIClient.getCoin(symbols: symbols, currency: currency)) else { return }
         
         Alamofire.request(url).responseData { (dataResponse) in
             if let error = dataResponse.error {

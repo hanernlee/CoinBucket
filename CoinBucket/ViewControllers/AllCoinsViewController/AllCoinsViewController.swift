@@ -46,6 +46,7 @@ public class AllCoinsViewController: UIViewController {
     // MARK: - Lifecycle
     public override func viewDidLoad() {
         super.viewDidLoad()
+
         viewModel.configureRefreshControlText()
         configure()
     }
@@ -109,6 +110,8 @@ public class AllCoinsViewController: UIViewController {
     private func configureCurrency() {
         viewModel.shouldRefreshCurrency { [weak self] (shouldRefresh) in
             guard let `self` = self, shouldRefresh else { return }
+            
+            self.view.hideLoadingIndicator()
             
             self.configureInitialCoinCollection()
         }

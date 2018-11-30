@@ -27,8 +27,10 @@ public class TabBarController: UITabBarController {
     }
     
     private func configure() {
+        let bucketViewController = configureTabViewController("Bucket", unselectedImage: #imageLiteral(resourceName: "bucket_unselected"), selectedImage: #imageLiteral(resourceName: "bucket_selected"), rootViewController: viewControllerFactory.createBucketViewController())
         let coinsViewController = configureTabViewController("Coins", unselectedImage: #imageLiteral(resourceName: "coins_unselected"), selectedImage: #imageLiteral(resourceName: "coins_selected") , rootViewController: viewControllerFactory.createAllCoinsViewController())
-        viewControllers = [coinsViewController]
+        let settingViewController = configureTabViewController("Settings", unselectedImage: #imageLiteral(resourceName: "settings_unselected"), selectedImage: #imageLiteral(resourceName: "settings_selected") , rootViewController: viewControllerFactory.createSettingsViewController())
+        viewControllers = [bucketViewController, coinsViewController, settingViewController]
     }
     
     private func configureTabViewController(_ title: String, unselectedImage: UIImage, selectedImage: UIImage, rootViewController: UIViewController) -> UINavigationController {
