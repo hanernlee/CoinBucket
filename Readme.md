@@ -9,17 +9,17 @@ Cryptocurrency Portfolio Tracker iOS  App
 
 CoinBucket is a simple yet intuitive way to track and display your Cryptocurrency Portfolio in one place. In a few taps you can track your portfolio by adding coins to your bucket with the option to display prices in your preferred currency.
 
-Track the prices of over 1400 different cryptocurrencies including Bitcoin, Ethereum, Litecoin and other Altcoins. View other information such as market cap, volume and circulating supply.
+Track the prices of over 5,600 different cryptocurrencies including Bitcoin, Ethereum, Litecoin and other Altcoins. View other information such as market cap, volume and circulating supply.
 
-Supports conversion to 31 different Fiat Currencies (USD, AUD, EUR, etc).
+Supports conversion to different Fiat Currencies (USD, AUD, EUR, etc).
 
 Please note that this app does not connect to any Cryptocurrency wallets or blockchain. There is no registration required and data that is saved is only storred locally on the device. 
 
-Cryptocurrency data provided by https://coinmarketcap.com
+Cryptocurrency data provided by https://cryptocompare.com
 Icons provided by https://icons8.com/
 
 ## Version
-v1.3
+v2.0
 
 ## Technologies
 1. Swift
