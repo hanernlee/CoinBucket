@@ -26,6 +26,7 @@ public class CurrencyViewModel {
     func getCurrencies() {
         guard let currencies = Currencies.getCurrencies() else { return }
         self.currencies = currencies
+        print(currencies.count)
         self.filteredCurrencies = currencies
     }
     
