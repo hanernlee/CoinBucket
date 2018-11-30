@@ -1,3 +1,4 @@
+// swift-tools-version:4.2
 //
 //  Package.swift
 //
@@ -24,4 +25,17 @@
 
 import PackageDescription
 
-let package = Package(name: "Alamofire", dependencies : [], exclude: ["Tests"])
+let package = Package(
+    name: "Alamofire",
+    products: [
+        .library(
+            name: "Alamofire",
+            targets: ["Alamofire"])
+    ],
+    targets: [
+        .target(
+            name: "Alamofire",
+            path: "Source")
+    ],
+    swiftLanguageVersions: [3, 4]
+)

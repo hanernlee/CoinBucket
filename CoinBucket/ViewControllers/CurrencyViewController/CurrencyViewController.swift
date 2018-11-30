@@ -60,6 +60,7 @@ public class CurrencyViewController: UIViewController {
         searchController.searchResultsUpdater = self
         navigationItem.searchController = searchController
         navigationItem.hidesSearchBarWhenScrolling = false
+        navigationController?.navigationBar.tintColor = .orangey
     }
     
     private func configureTableView() {

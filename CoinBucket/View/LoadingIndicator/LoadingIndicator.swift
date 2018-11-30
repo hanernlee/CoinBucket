@@ -88,6 +88,7 @@ class LoadingIndicator: UIView {
         basicAnimation.duration = 0.8
         basicAnimation.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.linear)
         basicAnimation.repeatCount = .infinity
+        basicAnimation.isRemovedOnCompletion = false
         loadingShapeLayer.add(basicAnimation, forKey: "spinAnimation")
     }
 }

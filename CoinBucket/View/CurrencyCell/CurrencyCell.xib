@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -32,15 +32,8 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="uJY-nb-rP0">
-                                <rect key="frame" x="16" y="10.5" width="25" height="25"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="25" id="9vt-og-RKr"/>
-                                    <constraint firstAttribute="height" constant="25" id="afD-LP-WCo"/>
-                                </constraints>
-                            </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4cu-as-mg0">
-                                <rect key="frame" x="57" y="14.5" width="36" height="17"/>
+                                <rect key="frame" x="16" y="14.5" width="36" height="17"/>
                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="14"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -49,10 +42,8 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="Izc-wo-niz" firstAttribute="centerY" secondItem="YRa-D7-GWD" secondAttribute="centerY" id="7dQ-mu-AGk"/>
-                            <constraint firstItem="uJY-nb-rP0" firstAttribute="leading" secondItem="YRa-D7-GWD" secondAttribute="leading" constant="16" id="KRg-7X-Hw8"/>
-                            <constraint firstItem="uJY-nb-rP0" firstAttribute="centerY" secondItem="YRa-D7-GWD" secondAttribute="centerY" id="NtC-BZ-wgL"/>
                             <constraint firstItem="4cu-as-mg0" firstAttribute="centerY" secondItem="YRa-D7-GWD" secondAttribute="centerY" id="T1m-If-3ar"/>
-                            <constraint firstItem="4cu-as-mg0" firstAttribute="leading" secondItem="uJY-nb-rP0" secondAttribute="trailing" constant="16" id="YqA-dx-fYE"/>
+                            <constraint firstItem="4cu-as-mg0" firstAttribute="leading" secondItem="YRa-D7-GWD" secondAttribute="leading" constant="16" id="TOL-zq-IiG"/>
                             <constraint firstAttribute="trailing" secondItem="Izc-wo-niz" secondAttribute="trailing" constant="16" id="uIW-so-WLc"/>
                         </constraints>
                     </view>
@@ -69,7 +60,6 @@
                 <outlet property="checkmarkLabel" destination="Izc-wo-niz" id="RST-M8-q5y"/>
                 <outlet property="containerView" destination="YRa-D7-GWD" id="lJd-vf-wtk"/>
                 <outlet property="containerViewTopConstraint" destination="SbV-8V-n79" id="uNi-NX-KXi"/>
-                <outlet property="currencyImageView" destination="uJY-nb-rP0" id="ZyC-XE-SZ3"/>
                 <outlet property="nameLabel" destination="4cu-as-mg0" id="IWM-4M-lMn"/>
             </connections>
             <point key="canvasLocation" x="20" y="24.287856071964018"/>

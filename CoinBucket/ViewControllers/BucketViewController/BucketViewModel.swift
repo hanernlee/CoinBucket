@@ -72,12 +72,12 @@ public class BucketViewModel {
         return coins.count
     }
     
-    func checkBucketChanges() -> Bool {
+    func shouldBucketChange() -> Bool {
         return currentBucket != environmentService.bucket
     }
-    
-    private func calculateTotal() {
-        
+
+    func bucketIsEmpty() -> Bool {
+        return environmentService.bucket.isEmpty
     }
     
     // MARK: - Currency View Controller

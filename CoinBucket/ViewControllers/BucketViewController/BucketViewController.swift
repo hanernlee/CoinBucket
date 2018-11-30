@@ -17,7 +17,7 @@ public class BucketViewController: UIViewController {
     // MARK: - Properties
     
     private var viewModel: BucketViewModel!
-//    private var refreshControl: UIRefreshControl?
+
     private let refreshControl: UIRefreshControl = {
         let refreshControl = UIRefreshControl()
         return refreshControl
@@ -29,6 +29,22 @@ public class BucketViewController: UIViewController {
         button.titleLabel?.font = UIFont.systemFont(ofSize: 18, weight: .medium)
         button.setTitleColor(.gray, for: .normal)
         return button
+    }()
+
+    lazy var addCoinButton: UIButton = {
+        let button = UIButton()
+        button.setTitle("+ Add Coins", for: .normal)
+        button.backgroundColor = .orange
+        button.layer.cornerRadius = 12.0
+        button.layer.masksToBounds = true
+        button.frame = CGRect(x: 0, y: 0, width: 150, height: 50)
+        button.addTarget(self, action: #selector(goToCoins), for: .touchUpInside)
+        return button
+    }()
+
+    let emptyView: UIView = {
+        let view = UIView()
+        return view
     }()
     
     // MARK: - Instantiate
@@ -43,6 +59,12 @@ public class BucketViewController: UIViewController {
         
         viewModel.configureRefreshControlText()
         configure()
+    }
+
+    public override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+
+        toggleDisplayAddCoinButton()
     }
     
     public override func viewWillAppear(_ animated: Bool) {
@@ -114,9 +136,17 @@ public class BucketViewController: UIViewController {
         collectionView.register(BucketCoinHeader.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: CustomCellIdentifier.bucketCoinHeader)
         collectionView.register(BucketCoinHeaderEmpty.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: CustomCellIdentifier.bucketCoinHeaderEmpty)
         collectionView.register(UINib(nibName: "BucketCoinCell", bundle: nil), forCellWithReuseIdentifier: CustomCellIdentifier.bucketCoinCell)
-        
+
         configureRefreshControl()
+        configureBackgroundCollectionView()
         configureCollectionViewFlowLayout()
+    }
+
+    private func configureBackgroundCollectionView() {
+        collectionView.backgroundView = emptyView
+        emptyView.addSubview(addCoinButton)
+        addCoinButton.frame = CGRect(x: view.frame.width / 3, y: view.frame.height / 2, width: 150, height: 50)
+        addCoinButton.isHidden = false
     }
     
     // MARK: - Configure CollectionViewFlowLayout
@@ -140,7 +170,18 @@ public class BucketViewController: UIViewController {
         refreshControl.removeTarget(self, action: #selector(handleRefresh), for: .valueChanged)
         collectionView.refreshControl = nil
         self.refreshControl.removeFromSuperview()
-//        self.refreshControl = nil
+    }
+
+    private func toggleDisplayAddCoinButton() {
+        if viewModel.bucketIsEmpty() {
+            addCoinButton.isHidden = false
+        } else {
+            addCoinButton.isHidden = true
+        }
+    }
+
+    @objc func goToCoins() {
+        tabBarController?.selectedIndex = 1
     }
     
     // MARK: - Refresh
@@ -156,7 +197,6 @@ public class BucketViewController: UIViewController {
             
             DispatchQueue.main.async {
                 self.refreshControl.endRefreshing()
-//                self.collectionView.setContentOffset(CGPoint.zero, animated: true)
                 self.refreshControl.attributedTitle = self.viewModel.refreshControlText
                 self.viewModel.isRefreshing = false
                 
@@ -167,7 +207,7 @@ public class BucketViewController: UIViewController {
     }
     
     private func checkForBucketChanges() {
-        if viewModel.checkBucketChanges() {
+        if viewModel.shouldBucketChange() {
             configureInitialCoinCollection()
         }
     }
