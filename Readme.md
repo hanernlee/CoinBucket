@@ -21,10 +21,6 @@ Icons provided by https://icons8.com/
 ## Version
 v2.0
 
-## Technologies
-1. Swift
-2. <a href="https://coinmarketcap.com/api/">CoinMarketCap</a>
-
 ## Background
 Blockchain and Cryptocurrency has been making headlines for the most of 2017 and I figured it would be good to get my feet wet by combining both my interest in iOS development together with cryptocurrencies. Having invested in some of these coins, I found myself having to check prices of these crypto coins constantly and that was when I decided to create this app for my personal use. At the moment, the app is powered using cryptocompare's API which has over 5,600 coins and support for different currencies.
 
