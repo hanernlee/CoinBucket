@@ -42,7 +42,7 @@ public class BucketViewModel {
         if environmentService.bucket.isEmpty {
             completion()
         }
-        
+        overallTotal = 0
         environmentService.bucket.forEach { (key, value) in
             if value != 0.0 {
                 currencySymbols.append(key)
@@ -55,7 +55,7 @@ public class BucketViewModel {
             networkService.getCoin(symbols: symbolArray, currency: environmentService.currency) { (result) in
                 switch result {
                 case .Success(let constructedCoins):
-                    self.coins.append(contentsOf: constructedCoins)
+                    self.coins = constructedCoins
                     self.coins = self.coins.sorted(by: { $1.coin.fullName > $0.coin.fullName })
                     completion()
                 case .Error:
@@ -99,6 +99,9 @@ public class BucketViewModel {
         
         let bucketCoinCellViewModel = BucketCoinCellViewModel(coinModel: coin, priceModel: price, networkService: networkService, environmentService: environmentService)
 
+        
+        print(bucketCoinCellViewModel.totalPriceFloat)
+        
         overallTotal += bucketCoinCellViewModel.totalPriceFloat
 
         cell.configure(using: bucketCoinCellViewModel)

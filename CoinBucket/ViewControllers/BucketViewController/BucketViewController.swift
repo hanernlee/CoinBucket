@@ -38,7 +38,6 @@ public class BucketViewController: UIViewController {
         button.layer.cornerRadius = 12.0
         button.layer.masksToBounds = true
         button.frame = CGRect(x: 0, y: 0, width: 150, height: 50)
-        button.addTarget(self, action: #selector(goToCoins), for: .touchUpInside)
         return button
     }()
 
@@ -145,8 +144,17 @@ public class BucketViewController: UIViewController {
     private func configureBackgroundCollectionView() {
         collectionView.backgroundView = emptyView
         emptyView.addSubview(addCoinButton)
-        addCoinButton.frame = CGRect(x: view.frame.width / 3, y: view.frame.height / 2, width: 150, height: 50)
+        
+        addCoinButton.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            addCoinButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            addCoinButton.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+            addCoinButton.widthAnchor.constraint(equalToConstant: 150),
+            addCoinButton.heightAnchor.constraint(equalToConstant: 50)
+            ])
         addCoinButton.isHidden = false
+        
+        addCoinButton.addTarget(self, action: #selector(goToCoins), for: .touchUpInside)
     }
     
     // MARK: - Configure CollectionViewFlowLayout
@@ -248,6 +256,7 @@ extension BucketViewController: UICollectionViewDelegate, UICollectionViewDataSo
     public func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         if viewModel.getCoinsCount() == 0 {
             let headerEmpty = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: CustomCellIdentifier.bucketCoinHeaderEmpty, for: indexPath) as! BucketCoinHeaderEmpty
+            headerEmpty.frame = CGRect.zero
             return headerEmpty
         }
         

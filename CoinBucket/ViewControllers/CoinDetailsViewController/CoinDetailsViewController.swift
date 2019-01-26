@@ -129,6 +129,10 @@ class CoinDetailsViewController: UIViewController {
         buttonContainerView.backgroundColor = UIColor(white: 1, alpha: 0.8)
         addToBucketButton.layer.cornerRadius = 6
         addToBucketButton.clipsToBounds = true
+        
+        if viewModel.presentInBucket() {
+            addToBucketButton.setTitle("Edit Bucket", for: .normal)
+        }
     }
     
     private func registerKeyboardListeners() {
@@ -156,7 +160,8 @@ class CoinDetailsViewController: UIViewController {
         }
         
         self.isKeyboardShown = true
-        addToBucketLauncher.handleKeyboardShown(with: keyboardEndRect.height)
+        let keyboardHeight =  UIScreen.main.bounds.height - keyboardEndRect.origin.y
+        addToBucketLauncher.handleKeyboardShown(with: keyboardHeight)
     }
     
     @objc private func keyboardWillDismiss(_ notification: Notification) {

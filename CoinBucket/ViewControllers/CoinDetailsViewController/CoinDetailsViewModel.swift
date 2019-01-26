@@ -69,4 +69,8 @@ class CoinDetailsViewModel {
         guard let percentChange = Float(changePercent24HourBTC) else { return .red }
         return percentChange >= 0 ? .green : .red
     }
+    
+    func presentInBucket() -> Bool {
+        return environmentService.bucket[name] != nil
+    }
 }
