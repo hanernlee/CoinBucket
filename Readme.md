@@ -1,8 +1,6 @@
 # CoinBucket
 Cryptocurrency Portfolio Tracker iOS  App
 
-<a href="https://itunes.apple.com/us/app/coinbucket/id1363663110?mt=8">CoinBucket is now on the AppStore</a>
-
 <img src="https://firebasestorage.googleapis.com/v0/b/foliotopher.appspot.com/o/CoinBucketLogo.png?alt=media&token=fa8839c1-1c2e-42c1-9977-d82314bfdef5">
 
 <img src="https://firebasestorage.googleapis.com/v0/b/foliotopher.appspot.com/o/coinbucket.png?alt=media&token=4dfa3a90-6f1b-457c-b3fe-bf83c3aebc7a" width="400">
